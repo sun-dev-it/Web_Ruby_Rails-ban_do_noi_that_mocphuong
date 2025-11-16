@@ -1,0 +1,2 @@
+module DecorationHelper
+end
