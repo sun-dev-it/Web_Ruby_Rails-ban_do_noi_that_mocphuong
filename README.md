@@ -1,24 +1,10 @@
-# README
+# Build
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TailwindCSS
 
-Things you may want to cover:
+# Database
 
-* Ruby version
+# Run
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+rails server
+rails tailwindcss:watch

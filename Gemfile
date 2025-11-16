@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
 
+gem "tailwindcss-rails", "~> 4.3"
+
 gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

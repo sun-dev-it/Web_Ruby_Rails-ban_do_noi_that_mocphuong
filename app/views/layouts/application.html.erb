@@ -19,9 +19,13 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+    <%= render "layouts/header" %>
+    <div class="mt-20">
+      <%= yield %>
+    </div>
+  </body>ss
 </html>
