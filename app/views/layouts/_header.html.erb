@@ -13,7 +13,13 @@
 
     <%= link_to "Văn phòng thiết kế", design_offices_path %>
 
-    <%= link_to "User Account", users_path %>
+    <%= link_to "User Account", new_user_path %>
+    
+    <% if session[:user_id] %>
+      <%= button_to "Đăng xuất", logout_path, method: :delete %>
+    <% else %>
+      <%= link_to "Đăng nhập", login_path %>
+    <% end %>
 
     <%= link_to "Giỏ hàng", shoppings_path %>
 
