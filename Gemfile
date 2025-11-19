@@ -7,7 +7,7 @@ gem "tailwindcss-rails", "~> 4.3"
 
 gem 'dotenv-rails'
 
-gem "rails", "~> 8.0.3"
+gem "rails", "~> 8.1.1"
 gem "propshaft"
 gem "mysql2", "~> 0.5"
 gem "puma", ">= 5.0"
