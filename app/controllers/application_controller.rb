@@ -7,16 +7,16 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    current_user.present?
+    current_user.present? 
   end
 
   def admin?
-    logged_in? && current_user.admin?
+    logged_in? && current_user.role?
   end
 
   def require_admin
-    unless admin?
-      redirect_to root_path, alert: "Bạn không có quyền truy cập."
+    unless current_user.role?
+      redirect_to root_path
     end
   end
 end

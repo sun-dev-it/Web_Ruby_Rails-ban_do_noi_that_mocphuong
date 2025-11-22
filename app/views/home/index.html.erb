@@ -1,8 +1,11 @@
 <h1>Danh sách User</h1>
 
 <% @users.each do |user| %>
-    <%= user.name %>
-    <%= user.email %>
-    <%= button_to "Xóa", user_path(user), method: :delete %>
+  <p>
+    <strong>Tên:</strong> <%= user.name %><br>
+    <strong>Email:</strong> <%= user.email %><br>
+    <strong>Role:</strong> <%= user.role %>
+  </p>
+  <%= button_to "Xóa", user_path(user), method: :delete %>
+  <br>
 <% end %>
-

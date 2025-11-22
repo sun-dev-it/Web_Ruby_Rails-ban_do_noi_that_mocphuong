@@ -1,19 +1,19 @@
-<h1>Đăng nhập</h1>
+  <h1>Đăng nhập</h1>
 
-<%= form_with url: login_path, local: true do |f| %>
-  <div>
-    <%= label_tag :email, "Email" %>
-    <%= email_field_tag :email %>
-  </div>
+  <%= form_with url: login_path, local: true do |f| %>
+    <div>
+      <%= label_tag :email, "Email" %>
+      <%= email_field_tag :email %>
+    </div>
 
-  <div>
-    <%= label_tag :password, "Mật khẩu" %>
-    <%= password_field_tag :password %>
-  </div>
+    <div>
+      <%= label_tag :password, "Mật khẩu" %>
+      <%= password_field_tag :password %>
+    </div>
 
-  <div>
-    <%= submit_tag "Đăng nhập" %>
-  </div>
-<% end %>
+    <div>
+      <%= submit_tag "Đăng nhập" %>
+    </div>
+  <% end %>
 
-<%= link_to "Tạo tài khoản", new_user_path %>
+  <%= link_to "Tạo tài khoản", new_user_path %>

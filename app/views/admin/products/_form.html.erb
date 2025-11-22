@@ -1,0 +1,30 @@
+<%= form_with model: [:admin, @product], local: true do |f| %>
+  <div>
+
+    <div>
+      <%= f.label :name, "Tên sản phẩm" %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :price, "Giá" %>
+      <%= f.number_field :price, step: 1 %>
+    </div>
+
+    <div>
+      <%= f.label :description, "Mô tả" %>
+      <%= f.text_area :description, rows: 4 %>
+    </div>
+
+    <div>
+      <%= f.label :category_id, "Danh mục"%>
+      <%= f.collection_select :category_id, Category.all, :id, :name,
+          { prompt: "Chọn danh mục" } %>
+    </div>
+
+    <div>
+      <%= f.submit "Lưu sản phẩm" %>
+    </div>
+
+  </div>
+<% end %>

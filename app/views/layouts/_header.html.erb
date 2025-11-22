@@ -13,15 +13,16 @@
 
     <%= link_to "Văn phòng thiết kế", design_offices_path %>
 
-    <%= link_to "User Account", new_user_path %>
-    
-    <% if session[:user_id] %>
-      <%= button_to "Đăng xuất", logout_path, method: :delete %>
+    <% if admin? %>
+      <%= link_to "Admin Dashboard", admin_dashboard_path %>
     <% else %>
-      <%= link_to "Đăng nhập", login_path %>
+      <% if current_user %>
+        <%= link_to "Trang cá nhân", user_path(current_user) %>
+        <%= link_to "Giỏ hàng", shoppings_path %>
+      <% else %>
+        <%= link_to "Đăng nhập", login_path %>
+      <% end %>
     <% end %>
-
-    <%= link_to "Giỏ hàng", shoppings_path %>
 
 </header>
 

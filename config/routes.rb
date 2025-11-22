@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  root "home#index"
+
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
-  root "home#index"
 
   get    "login",  to: "sessions#new"
   post   "login",  to: "sessions#create"
@@ -18,8 +19,11 @@ Rails.application.routes.draw do
   resources :shoppings
 
   namespace :admin do
-    resources :products
+    get "dashboard"       , to: "dashboard#index", as: "dashboard"
+    resources :categories 
+    resources :products 
   end
+
 
 
   get "up" => "rails/health#show", as: :rails_health_check

@@ -1,9 +1,9 @@
 class Admin::ProductsController < ApplicationController
-  before_action :require_admin
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.all
+    @product = Product.new
   end
 
   def new
@@ -31,7 +31,7 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to admin_products_path, notice: "Xóa thành công!"
+    redirect_to admin_products_path, notice: "Đã xóa sản phẩm!"
   end
 
   private
@@ -41,6 +41,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :description)
+    params.require(:product).permit(
+      :name,
+      :price,
+      :description,
+      :category_id
+    )
   end
 end
