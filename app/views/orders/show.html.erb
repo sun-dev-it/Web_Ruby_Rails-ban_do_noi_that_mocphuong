@@ -1,0 +1,45 @@
+<h1>Chi tiết đơn hàng #<%= @order.id %></h1>
+
+<p>
+  <strong>Trạng thái:</strong>
+  <%= @order.status.capitalize %>
+</p>
+
+<p>
+  <strong>Ngày đặt:</strong>
+  <%= @order.created_at.strftime("%d/%m/%Y %H:%M") %>
+</p>
+
+<h2>Sản phẩm trong đơn</h2>
+
+<table border="1" cellpadding="6">
+  <thead>
+    <tr>
+      <th>Sản phẩm</th>
+      <th>Số lượng</th>
+      <th>Giá</th>
+      <th>Thành tiền</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% total = 0 %>
+    <% @order.order_items.each do |item| %>
+      <% total += item.price * item.quantity %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.price %> VND</td>
+        <td><%= item.price * item.quantity %> VND</td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td colspan="3"><strong>Tổng tiền</strong></td>
+      <td><strong><%= total %> VND</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "Quay lại sản phẩm", products_path %>

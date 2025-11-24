@@ -1,0 +1,47 @@
+<h1>Giỏ hàng của bạn</h1>
+
+<% if @cart_items.empty? %>
+  <p>Giỏ hàng trống!</p>
+  <%= link_to "Quay lại mua hàng", products_path %>
+<% else %>
+
+  <table border="1" cellpadding="6">
+    <thead>
+      <tr>
+        <th>Sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Giá</th>
+        <th>Thành tiền</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% total = 0 %>
+
+      <% @cart_items.each do |item| %>
+        <% total += item.quantity * item.product.price %>
+
+        <tr>
+          <td><%= item.product.name %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(item.product.price, unit: "VND", precision: 0) %></td>
+          <td><%= number_to_currency(item.quantity * item.product.price, unit: "VND", precision: 0) %></td>
+          <td>
+            <%= button_to "Bớt 1", remove_cart_path(product_id: item.product.id), method: :post %>
+            <%= button_to "Thêm 1", add_cart_path(product_id: item.product.id), method: :post %>
+            <%= button_to "Xóa", remove_all_cart_path(product_id: item.product.id), method: :post %>
+          </td>
+        </tr>
+      <% end %>
+
+      <tr>
+        <td colspan="3"><strong>Tổng tiền</strong></td>
+        <td colspan="2"><strong><%= number_to_currency(total, unit: "VND", precision: 0) %></strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <%= link_to "Tiến hành đặt hàng", new_order_path, class: "btn btn-primary" %>
+<% end %>

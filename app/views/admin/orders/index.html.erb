@@ -1,0 +1,26 @@
+<h1>Quản lý đơn hàng</h1>
+<table border="1" cellpadding="6">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Khách hàng</th>
+      <th>Tổng tiền</th>
+      <th>Trạng thái</th>
+      <th>Ngày tạo</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user.name %></td>
+        <td><%= number_to_currency(order.total_price, unit: "", delimiter: ".") %> VND</td>
+        <td><%= order.status %></td>
+        <td><%= order.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        <td><%= link_to "Xem", admin_order_path(order) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

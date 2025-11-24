@@ -18,7 +18,7 @@
     <% else %>
       <% if current_user %>
         <%= link_to "Trang cá nhân", user_path(current_user) %>
-        <%= link_to "Giỏ hàng", shoppings_path %>
+        <%= link_to "Giỏ hàng", cart_path %>
       <% else %>
         <%= link_to "Đăng nhập", login_path %>
       <% end %>

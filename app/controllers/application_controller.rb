@@ -11,12 +11,18 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    logged_in? && current_user.role?
+    logged_in? && current_user.role == "admin"
   end
 
   def require_admin
-    unless current_user.role?
+    unless admin?
       redirect_to root_path
+    end
+  end
+
+  def require_login
+    unless logged_in?
+      redirect_to login_path
     end
   end
 end

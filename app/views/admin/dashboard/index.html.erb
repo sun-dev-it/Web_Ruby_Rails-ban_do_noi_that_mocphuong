@@ -1,5 +1,10 @@
-<%= link_to "Danh mục", admin_categories_path %>
-<br>
-<%= link_to "Sản phẩm", admin_products_path %>
-<br>
+<h1>Admin Dashboard</h1>
+
+<ul>
+  <li><%= link_to "Quản lý danh mục", admin_categories_path %></li>
+  <li><%= link_to "Quản lý sản phẩm", admin_products_path %></li>
+  <li><%= link_to "Quản lý đơn hàng", admin_orders_path %></li>
+  <li><%= link_to "Chỉnh sửa thông tin admin", root_path %></li>
+</ul>
+
 <%= button_to "Đăng xuất", logout_path, method: :delete %>

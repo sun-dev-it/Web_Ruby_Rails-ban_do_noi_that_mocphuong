@@ -1,0 +1,32 @@
+<h1>Danh sách đơn hàng</h1>
+
+<% if @orders.any? %>
+  <table border="1" cellpadding="6">
+    <thead>
+      <tr>
+        <th>Mã đơn hàng</th>
+        <th>Trạng thái</th>
+        <th>Tổng tiền</th>
+        <th>Ngày tạo</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order| %>
+        <% total = order.order_items.sum { |item| item.price * item.quantity } %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.status %></td>
+          <td><%= total %> VND</td>
+          <td><%= order.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+          <td>
+            <%= link_to "Xem chi tiết", order_path(order) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Bạn chưa có đơn hàng nào.</p>
+<% end %>

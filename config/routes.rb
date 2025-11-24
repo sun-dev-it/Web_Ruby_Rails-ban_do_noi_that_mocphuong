@@ -16,12 +16,22 @@ Rails.application.routes.draw do
   resources :design_offices
   resources :project_informations
   resources :users
-  resources :shoppings
+
+  resource :cart, only: [:show] do
+    post "add/:product_id",     to: "carts#add",        as: :add
+    post "remove/:product_id",  to: "carts#remove",     as: :remove
+    post "remove_all",          to: "carts#remove_all", as: :remove_all
+  end
+
+  resources :cart_items, only: [:create, :update, :destroy]
+  resources :orders,     only: [:new, :create, :show, :index]
 
   namespace :admin do
     get "dashboard"       , to: "dashboard#index", as: "dashboard"
     resources :categories 
     resources :products 
+    resources :orders, only: [:index, :show, :update]
+    resources :accounts
   end
 
 
