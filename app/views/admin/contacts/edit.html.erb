@@ -1,0 +1,26 @@
+<h1>Chỉnh sửa thông tin liên hệ</h1>
+
+<%= form_with model: [:admin, @contact], local: true do |f| %>
+
+  <p>
+    <%= f.label :fb, "Link fb" %><br>
+    <%= f.text_field :fb %>
+  </p>
+
+  <p>
+    <%= f.label :zalo, "Số zalo" %><br>
+    <%= f.email_field :zalo %>
+  </p>
+
+  <p>
+    <%= f.label :phone, "Số điện thoại" %><br>
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.label :address, "Địa chỉ" %><br>
+    <%= f.text_field :address %>
+  </p>
+
+  <%= f.submit "Lưu thay đổi" %>
+<% end %>

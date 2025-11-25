@@ -1,0 +1,12 @@
+<h1>Chỉnh sửa Slogan</h1>
+
+<%= form_with model: @slogan, url: admin_slogan_path, local: true, method: :patch do |f| %>
+  <div>
+    <%= f.label :content, "Nội dung Slogan" %><br>
+    <%= f.text_area :content, rows: 3 %>
+  </div>
+
+  <div>
+    <%= f.submit "Cập nhật" %>
+  </div>
+<% end %>

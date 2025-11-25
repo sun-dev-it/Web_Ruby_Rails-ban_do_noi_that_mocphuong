@@ -1,0 +1,31 @@
+<%= form_with model: @user,
+              url: admin_account_path,
+              method: :patch,
+              local: true do |f| %>
+
+  <div>
+    <div>
+      <%= f.label :name, "Họ và tên" %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :email, "Email" %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div>
+      <%= f.label :password, "Mật khẩu (để trống nếu không đổi)" %>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation, "Xác nhận mật khẩu" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div>
+      <%= f.submit "Cập nhật" %>
+    </div>
+  </div>
+<% end %>

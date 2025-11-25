@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   helper_method :current_user, :logged_in?, :admin?
+  before_action :slogan
+
+  private
+
+  def slogan
+    @slogan = Slogan.first
+  end
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])

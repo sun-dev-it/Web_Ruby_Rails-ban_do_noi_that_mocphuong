@@ -9,3 +9,9 @@
   <%= button_to "Xóa", user_path(user), method: :delete %>
   <br>
 <% end %>
+
+<h2>Giới thiệu</h2>
+<p><%= @introduction.content if @introduction %></p>
+
+<h2>Slogan</h2>
+<p><%= @slogan.content if @slogan %></p>

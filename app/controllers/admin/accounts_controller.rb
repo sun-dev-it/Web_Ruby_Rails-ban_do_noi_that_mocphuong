@@ -21,7 +21,7 @@ module Admin
     def create
       @user = User.new(user_params)
       if @user.save
-        redirect_to admin_accounts_path, notice: "Tạo tài khoản thành công"
+        redirect_to admin_accounts_path
       else
         render :new
       end
@@ -29,12 +29,14 @@ module Admin
 
     # Form chỉnh sửa user
     def edit
+      @user = User.find(params[:id])
     end
+
 
     # Cập nhật user
     def update
       if @user.update(user_params)
-        redirect_to admin_accounts_path, notice: "Cập nhật thành công"
+        redirect_to admin_accounts_path
       else
         render :edit
       end
@@ -43,7 +45,7 @@ module Admin
     # Xóa user
     def destroy
       @user.destroy
-      redirect_to admin_accounts_path, notice: "Xóa thành công"
+      redirect_to admin_accounts_path
     end
 
     private

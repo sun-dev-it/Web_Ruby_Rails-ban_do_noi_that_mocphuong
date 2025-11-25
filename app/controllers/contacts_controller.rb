@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
-  def index
+  def show
+    @contact = Contact.first
   end
 end

@@ -9,29 +9,35 @@ Rails.application.routes.draw do
   post   "login",  to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  
   resources :products
-  resources :contacts
   resources :decorations
+  resource  :contact,           only: [:show]
+
   resources :factorys
   resources :design_offices
   resources :project_informations
   resources :users
 
-  resource :cart, only: [:show] do
+  resource :cart,               only: [:show] do
     post "add/:product_id",     to: "carts#add",        as: :add
     post "remove/:product_id",  to: "carts#remove",     as: :remove
     post "remove_all",          to: "carts#remove_all", as: :remove_all
   end
 
-  resources :cart_items, only: [:create, :update, :destroy]
-  resources :orders,     only: [:new, :create, :show, :index]
+  resources :cart_items,        only: [:create, :update, :destroy]
+  resources :orders,            only: [:new, :create, :show, :index]
 
   namespace :admin do
-    get "dashboard"       , to: "dashboard#index", as: "dashboard"
+    get "dashboard",            to: "dashboard#index", as: "dashboard"
     resources :categories 
     resources :products 
-    resources :orders, only: [:index, :show, :update]
+    resources :orders,          only: [:index, :show, :update]
     resources :accounts
+    resource :contact,          only: [:edit, :update]
+    resource :introduction,     only: [:edit, :update]
+    resource :slogan,           only: [:edit, :update]
+    resource :color,            only: [:edit, :update]
   end
 
 
