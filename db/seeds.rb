@@ -80,7 +80,9 @@ Introduction.first_or_create!(
 "Công ty TNHH Thương mại & sản xuất nội thất Mộc Phương là đơn vị chuyên thi công nhà phố, nhà hàng, biệt thự, cửa hàng với đa dạng phong cách thiết kế như hiện đại, tân cổ điển, indochin, japandi, minimalism.
 Với trang thiết bị hiện đại  và đội ngũ thợ lành nghề, Mộc Phương cam kết mang đến chất lượng hài lòng cho khách hàng, mỗi sản phẩm hoàn thành đều thể hiện được sự tinh tế phù hợp với không gian của bạn.
 Sự tin tưởng và ủng hộ của quý khách hàng trong suốt thời gian qua là nguồn động lực to lớn cho sự nghiệp phát triển của Mộc Phương, chúng tôi cam kết sẽ luôn mang lại sự hài lòng 
-")
+",
+  link_video: "https://www.youtube.com/embed/Scxs7L0vhZ4",
+  project_informations: "Thông tin dự án")
 
 ######
 Slogan.delete_all

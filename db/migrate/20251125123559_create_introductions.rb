@@ -3,6 +3,8 @@ class CreateIntroductions < ActiveRecord::Migration[8.0]
     create_table :introductions do |t|
       t.timestamps
       t.text :content
+      t.string :link_video
+      t.text :project_informations
     end
   end
 end

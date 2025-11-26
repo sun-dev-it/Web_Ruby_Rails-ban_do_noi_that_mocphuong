@@ -77,6 +77,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_26_075138) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "content"
+    t.string "link_video"
+    t.text "project_informations"
   end
 
   create_table "order_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

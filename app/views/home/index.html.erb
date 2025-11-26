@@ -7,4 +7,18 @@
   <div class="text-lg leading-relaxed text-gray-800 space-y-4">
     <%= simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
   </div>
+
+  <% if @introduction&.link_video.present? %>
+    <div class="flex justify-center">
+      <iframe width="560" height="315" 
+              src="<%= @introduction.link_video %>" 
+              title="YouTube video" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              class="w-full max-w-3xl aspect-video rounded-lg shadow-lg">
+      </iframe>
+    </div>
+  <% end %>
+
 </section>

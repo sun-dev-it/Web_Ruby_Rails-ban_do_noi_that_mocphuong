@@ -9,7 +9,7 @@ module Admin
     def update
       @introduction = Introduction.first || Introduction.new
       if @introduction.update(introduction_params)
-        redirect_to admin_dashboard_path, notice: "Cập nhật giới thiệu thành công"
+        redirect_to admin_dashboard_path
       else
         render :edit
       end
@@ -18,7 +18,7 @@ module Admin
     private
 
     def introduction_params
-      params.require(:introduction).permit(:title, :content)
+      params.require(:introduction).permit(:title, :content, :link_video, :project_informations)
     end
   end
 end

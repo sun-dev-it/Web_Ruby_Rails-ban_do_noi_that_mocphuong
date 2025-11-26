@@ -1,10 +1,17 @@
-<h1>Chỉnh sửa Giới thiệu</h1>
-
 <%= form_with model: @introduction, url: admin_introduction_path, local: true, method: :patch do |f| %>
   <div>
-    <%= f.label :content, "Nội dung" %><br>
+    <%= f.label :content, "Lời giới thiệu trang home" %><br>
     <%= f.text_area :content, rows: 10, cols: 80 %>
   </div>
+  <div>
+    <%= f.label :link_video, "Link Video YouTube home" %><br>
+    <%= f.text_field :link_video, size: 80 %>
+  </div>
+  <div>
+    <%= f.label :project_informations, "Lời giới thiệu trang thông tin dự án" %><br>
+    <%= f.text_area :project_informations, rows: 10, cols: 80 %>
+  </div>
+
 
   <div>
     <%= f.submit "Cập nhật" %>
