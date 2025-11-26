@@ -56,10 +56,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_26_075138) do
   end
 
   create_table "colors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "background"
-    t.string "background1"
-    t.string "header"
-    t.string "footer"
+    t.string "background", default: "#ffffff"
+    t.string "background1", default: "#ffffff"
+    t.string "header", default: "#ffffff"
+    t.string "footer", default: "#ffffff"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

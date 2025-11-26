@@ -13,17 +13,19 @@ module Admin
     def create
       @color = Color.new(color_params)
       if @color.save
-        redirect_to admin_colors_path, notice: "Tạo màu thành công!"
+        redirect_to admin_colors_path
       else
         render :new
       end
     end
 
-    def edit; end
+    def edit
+      @color = Color.first
+    end
 
     def update
       if @color.update(color_params)
-        redirect_to admin_colors_path, notice: "Cập nhật màu thành công!"
+        redirect_to admin_colors_path
       else
         render :edit
       end
@@ -31,13 +33,13 @@ module Admin
 
     def destroy
       @color.destroy
-      redirect_to admin_colors_path, notice: "Đã xóa màu!"
+      redirect_to admin_colors_path
     end
 
     private
 
     def color_params
-      params.require(:color).permit(:name, :hex)
+      params.require(:color).permit(:bachground, :background1, :header, :footer)
     end
   end
 end
