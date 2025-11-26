@@ -6,7 +6,7 @@ Product.delete_all
 Category.delete_all
 User.delete_all
 
-
+#####
 User.create!(
   name: "admin",
   email: "admin@gmail.com",
@@ -65,6 +65,7 @@ categories.each do |name|
 end
 
 #####
+Contact.delete_all
 Contact.first_or_create!(
   fb: "Link fb",
   zalo: "Số zalo",
@@ -73,6 +74,7 @@ Contact.first_or_create!(
 )
 
 #####
+Introduction.delete_all
 Introduction.first_or_create!(
   content: 
 "Công ty TNHH Thương mại & sản xuất nội thất Mộc Phương là đơn vị chuyên thi công nhà phố, nhà hàng, biệt thự, cửa hàng với đa dạng phong cách thiết kế như hiện đại, tân cổ điển, indochin, japandi, minimalism.
@@ -81,12 +83,16 @@ Sự tin tưởng và ủng hộ của quý khách hàng trong suốt thời gia
 ")
 
 ######
+Slogan.delete_all
 Slogan.first_or_create!(
   content: "Cam kết chất lượng - hậu mãi tốt nhất"
 )
 
+######
+Color.delete_all
 Color.first_or_create!(
-  background: "#363636",
-  header: "#FF5733",
-  footer: "#333333"
+  background: "#e4e4e4",
+  background1:  "#8b8b8b",
+  header:     "#FF6A2C",
+  footer:     "#1F1F1F",
 )

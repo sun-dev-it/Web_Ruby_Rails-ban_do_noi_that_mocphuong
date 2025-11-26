@@ -23,8 +23,25 @@
     </div>
 
     <div>
+      <%= f.label :images, "Ảnh sản phẩm" %>
+      <%= f.file_field :images, multiple: true %>
+    </div>
+
+    <div>
       <%= f.submit "Lưu sản phẩm" %>
     </div>
 
   </div>
+<% end %>
+
+Ảnh sản phẩm
+<% if @product.images.attached? %>
+  <div>
+    <% @product.images.each do |image| %>
+      <div>
+        <%= image_tag image, class: "w-48 h-48 object-cover" %>
+        <%= button_to "Xóa", remove_image_admin_product_path(@product, image_id: image.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>  
 <% end %>

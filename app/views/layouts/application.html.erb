@@ -24,11 +24,23 @@
 
   </head>
 
-  <body>
-    <%= render "layouts/header" %>
-    <div>
+  <body class="min-h-screen flex flex-col">
+    <!-- HEADER -->
+    <div style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+      <%= render "layouts/header" %>
+    </div>  
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 p-4" 
+          style="background-color: <%= Color.first&.background || '#ffffff' %>;">
       <%= yield %>
+    </main> 
+
+    <!-- FOOTER -->
+    <div style="background-color: <%= Color.first&.footer || '#ffffff' %>;">
+      <%= render "layouts/footer" %>
     </div>
-    <%= render "layouts/footer" %>
   </body>
+
+
 </html>

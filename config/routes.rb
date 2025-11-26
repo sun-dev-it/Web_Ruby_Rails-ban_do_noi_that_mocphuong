@@ -28,10 +28,18 @@ Rails.application.routes.draw do
   resources :cart_items,        only: [:create, :update, :destroy]
   resources :orders,            only: [:new, :create, :show, :index]
 
-  namespace :admin do
-    get "dashboard",            to: "dashboard#index", as: "dashboard"
-    resources :categories 
-    resources :products 
+namespace :admin do
+  get "dashboard", to: "dashboard#index", as: "dashboard"
+
+  resources :categories
+
+  resources :products do
+    member do
+      delete "remove_image/:image_id", to: "products#remove_image", as: :remove_image
+    end
+  end
+
+
     resources :orders,          only: [:index, :show, :update]
     resources :accounts
     resource :contact,          only: [:edit, :update]

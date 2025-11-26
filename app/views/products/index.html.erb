@@ -6,13 +6,21 @@
       <h3><%= product.name %></h3>
       <p>Giá: <%= product.price %> VND</p>
 
+
+      <% if product.images.attached? %>
+        <div>
+          <%= image_tag product.images.first, class: "w-48 h-48 object-cover" %>
+        </div>
+      <% else %>
+        <p>Không có ảnh</p>
+      <% end %>
+
+      
       <%= button_to "Thêm vào giỏ",
             add_cart_path(product_id: product.id),
             method: :post, 
             form: { data: { remote: true } } %>
+      <p><%= product.description %></p>
     </div>
   <% end %>
 </div>
-
-<br>
-<%= link_to "Xem giỏ hàng", cart_path %>
