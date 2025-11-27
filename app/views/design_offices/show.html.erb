@@ -1,0 +1,7 @@
+<div>
+  <% if @design_office.image.attached? %>
+    <%= image_tag @design_office.image, class: "w-64 h-auto rounded" %>
+  <% end %>
+
+  <p><%= @design_office.content %></p>
+</div>

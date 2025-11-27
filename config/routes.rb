@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   resources :products
   resources :decorations
   resource  :contact,           only: [:show]
+  resource  :design_office,     only: [:show]
 
   resources :factorys
-  resources :design_offices
   resources :project_informations
   resources :users
 
@@ -28,17 +28,15 @@ Rails.application.routes.draw do
   resources :cart_items,        only: [:create, :update, :destroy]
   resources :orders,            only: [:new, :create, :show, :index]
 
-namespace :admin do
-  get "dashboard", to: "dashboard#index", as: "dashboard"
+  namespace :admin do
+    get "dashboard", to: "dashboard#index", as: "dashboard"
 
-  resources :categories
-
-  resources :products do
-    member do
-      delete "remove_image/:image_id", to: "products#remove_image", as: :remove_image
+    resources :categories
+    resources :products do
+      member do
+        delete "remove_image/:image_id", to: "products#remove_image", as: :remove_image
+      end
     end
-  end
-
 
     resources :orders,          only: [:index, :show, :update]
     resources :accounts
@@ -46,6 +44,7 @@ namespace :admin do
     resource :introduction,     only: [:edit, :update]
     resource :slogan,           only: [:edit, :update]
     resource :color,            only: [:edit, :update]
+    resource :design_office,    only: [:edit, :update]
   end
 
 

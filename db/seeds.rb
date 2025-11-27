@@ -98,3 +98,9 @@ Color.first_or_create!(
   header:     "#FF6A2C",
   footer:     "#1F1F1F",
 )
+
+######ProjectInformation.delete_all
+DesignOffice.delete_all
+DesignOffice.first_or_create!(
+  content: "Chúng tôi chuyên cung cấp, tư vấn các giải pháp thiết kế"
+)

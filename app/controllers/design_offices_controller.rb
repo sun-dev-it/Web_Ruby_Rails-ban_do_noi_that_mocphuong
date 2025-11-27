@@ -1,4 +1,5 @@
 class DesignOfficesController < ApplicationController
-  def index
+  def show
+    @design_office = DesignOffice.first
   end
 end

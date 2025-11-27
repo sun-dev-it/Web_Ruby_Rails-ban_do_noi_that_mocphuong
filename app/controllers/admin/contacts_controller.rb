@@ -6,6 +6,7 @@ class Admin::ContactsController < ApplicationController
   end
 
   def update
+    @contact = Contact.first_or_create!
     if @contact.update(contact_params)
       redirect_to edit_admin_contact_path
     else
