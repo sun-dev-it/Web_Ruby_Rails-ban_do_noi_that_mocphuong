@@ -99,8 +99,28 @@ Color.first_or_create!(
   footer:     "#1F1F1F",
 )
 
-######ProjectInformation.delete_all
+######
 DesignOffice.delete_all
 DesignOffice.first_or_create!(
   content: "Chúng tôi chuyên cung cấp, tư vấn các giải pháp thiết kế"
 )
+
+######
+Factory.delete_all
+Factory.first_or_create!(
+  content: "Xưởng sản xuất nội thất Mộc Phương với diện tích rộng lớn")
+
+######
+ProjectInformation.delete_all
+
+projectInformation = [
+  "Biệt thự",
+  "Nhà phố",
+  "Cửa hàng",
+  "Nhà hàng",
+  "Khách sạn"
+]
+
+projectInformation.each do |name|
+  ProjectInformation.find_or_create_by!(name: name)
+end

@@ -1,3 +1,5 @@
+<%= render "form", project_information: @project_information %>
+
 <ul class="mt-4 space-y-2">
   <% @project_informations.each do |project_information| %>
     <li>
@@ -6,8 +8,13 @@
       <% if project_information.image.attached? %>
         <%= image_tag project_information.image, class: "w-48 h-48 object-cover" %>
       <% else %>
-        Chưa có ảnh
+        <p>Không có hình ảnh</p>
       <% end %>
+      
+      <%= link_to "Sửa", edit_admin_project_information_path(project_information) %> |
+      <%= button_to "Xóa",
+      admin_project_information_path(project_information),
+      method: :delete %>
 
     </li>
   <% end %>

@@ -1,0 +1,7 @@
+<div>
+  <% if @factory.image.attached? %>
+    <%= image_tag @factory.image, class: "w-64 h-auto rounded" %>
+  <% end %>
+
+  <p><%= @factory.content %></p>
+</div>

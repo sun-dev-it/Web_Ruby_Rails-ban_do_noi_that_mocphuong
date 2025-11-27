@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_26_184826) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_27_185833) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -79,12 +79,29 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_26_184826) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "factories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "introductions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "content"
     t.string "link_video"
     t.text "project_informations"
+  end
+
+  create_table "order_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.string "previous_status"
+    t.string "new_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_histories_on_order_id"
+    t.index ["user_id"], name: "index_order_histories_on_user_id"
   end
 
   create_table "order_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -118,6 +135,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_26_184826) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "project_informations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "content"
+  end
+
   create_table "slogans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
@@ -137,6 +161,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_26_184826) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "products"
   add_foreign_key "cart_items", "users"
+  add_foreign_key "order_histories", "orders"
+  add_foreign_key "order_histories", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"

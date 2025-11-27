@@ -1,26 +1,48 @@
-<h1>Quản lý đơn hàng</h1>
-<table border="1" cellpadding="6">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Khách hàng</th>
-      <th>Tổng tiền</th>
-      <th>Trạng thái</th>
-      <th>Ngày tạo</th>
-      <th></th>
-    </tr>
-  </thead>
+<h1 class="text-2xl font-bold mb-6">Quản lý đơn hàng</h1>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.user.name %></td>
-        <td><%= number_to_currency(order.total_price, unit: "", delimiter: ".") %> VND</td>
-        <td><%= order.status %></td>
-        <td><%= order.created_at.strftime("%d/%m/%Y %H:%M") %></td>
-        <td><%= link_to "Xem", admin_order_path(order) %></td>
-      </tr>
+<div x-data="{ tab: 0 }">
+
+  <!-- TAB HEADER -->
+  <div class="border-b mb-4 flex space-x-4">
+    <% @orders_by_status.keys.each_with_index do |status, index| %>
+      <button
+        @click="tab = <%= index %>"
+        :class="tab === <%= index %> 
+          ? 'border-b-2 border-blue-600 text-blue-600 font-semibold' 
+          : 'text-gray-600'"
+        class="pb-2 px-4 text-lg hover:text-blue-600 transition">
+        <%= status %>
+      </button>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <!-- TAB CONTENT -->
+  <% @orders_by_status.each_with_index do |(status, orders), index| %>
+    <div x-show="tab === <%= index %>" class="mt-4">
+
+      <table class="w-full border-collapse bg-white shadow rounded-lg overflow-hidden">
+        <thead>
+          <tr class="bg-gray-100 text-left">
+            <th class="p-3 border">ID</th>
+            <th class="p-3 border">Khách hàng</th>
+            <th class="p-3 border">Tổng tiền</th>
+            <th class="p-3 border">Trạng thái</th>
+            <th class="p-3 border">Ngày tạo</th>
+            <th class="p-3 border"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% orders.each do |order| %>
+            <%= render partial: "list_orders", locals: { order: order } %>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  <% end %>
+
+</div>
+
+<!-- AlpineJS -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>

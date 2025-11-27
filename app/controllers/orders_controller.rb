@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
     order = current_user.orders.create!(
       total_price: total,
-      status: :pending
+      status: "Đang chờ liên hệ"
     )
 
     cart_items.each do |i|

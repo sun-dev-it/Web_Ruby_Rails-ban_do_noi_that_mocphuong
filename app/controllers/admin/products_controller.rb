@@ -37,6 +37,7 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  
   def destroy
     @product.destroy
     redirect_to admin_products_path, notice: "Đã xóa sản phẩm!"

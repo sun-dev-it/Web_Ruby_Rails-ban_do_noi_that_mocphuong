@@ -1,6 +1,24 @@
-<h1>Chi tiết đơn hàng ##<%= @order.id %></h1>
+<h1>Chi tiết đơn hàng </h1>
 
 <p><strong>Khách hàng:</strong> <%= @order.user.name %></p>
+
+<%= form_with model: [:admin, @order], local: true do |f| %>
+  <div>
+    <%= f.label :status, "Trạng thái" %><br>
+    <%= f.select :status, [
+        ["Đang chờ liên hệ"],
+        ["Đã liên hệ"],
+        ["Đang giao hàng"],
+        ["Đã giao hàng"],
+        ["Đã hủy"]
+      ] %>
+  </div>
+
+  <br>
+
+  <%= f.submit "Cập nhật", class: "btn btn-primary" %>
+<% end %>
+
 <p><strong>Email:</strong> <%= @order.user.email %></p>
 <p><strong>Tổng tiền:</strong> <%= @order.total_price %> VND</p>
 
@@ -27,15 +45,12 @@
   </tbody>
 </table>
 
-<h3>Cập nhật trạng thái</h3>
-
-<%= form_with model: [:admin, @order], method: :patch, local: true do |f| %>
-  <%= f.label :status, "Trạng thái" %><br>
-  
-  <%= f.select :status, Order.statuses.keys.map { |s| [s.humanize, s] } %>
-
-  <%= f.submit "Cập nhật" %>
+<% @order.order_histories.each do |history| %>
+   <tr>
+     <td><%= history.user.name %></td>
+     <td><%= history.previous_status %> -> <%= history.new_status %></td>
+     <td><%= history.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+   </tr>
 <% end %>
 
-<br>
 <%= link_to "← Quay lại", admin_orders_path %>

@@ -1,0 +1,27 @@
+<div>
+    
+    <%= form_with model: [:admin, @factory], local: true do |form| %>
+   
+      <div class="field">
+          <%= form.label :content %>
+          <%= form.text_field :content %>
+      </div>
+      <div class="field">
+          <%= form.label :image, "Ảnh" %>
+          <%= form.file_field :image %>
+      </div>
+      
+      <div>
+        <%= form.submit "Lưu", class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+      </div>
+      </div>
+    <% end %>
+
+    <% if @factory.image.attached? %>
+      <div>
+        <p>Ảnh hiện tại:</p>
+        <%= image_tag @factory.image, class: "w-64 h-auto border rounded" %>
+      </div>
+    <% end %>
+</div>
+
