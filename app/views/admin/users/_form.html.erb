@@ -1,11 +1,7 @@
-<%= form_with model: @user,
-              url: admin_account_path,
-              method: :patch,
-              local: true do |f| %>
-
+<%= form_with model: [:admin, @user], local: true do |f| %>
   <div>
     <div>
-      <%= f.label :name, "Họ và tên" %>
+      <%= f.label :name, "Tên"%>
       <%= f.text_field :name %>
     </div>
 
@@ -15,7 +11,14 @@
     </div>
 
     <div>
-      <%= f.label :password, "Mật khẩu (để trống nếu không đổi)" %>
+      <%= f.label :role, "Vai trò" %>
+      <%= f.select :role,
+            ["Quản lí đơn hàng", "Quản lí web"] %>
+    </div>
+
+
+    <div>
+      <%= f.label :password, "Mật khẩu"%>
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
@@ -25,7 +28,7 @@
     </div>
 
     <div>
-      <%= f.submit "Cập nhật" %>
+      <%= f.submit "Đăng ký" %>
     </div>
   </div>
 <% end %>

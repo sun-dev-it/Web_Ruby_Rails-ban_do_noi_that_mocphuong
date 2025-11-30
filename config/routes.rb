@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   post   "login",  to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
-  
   resources :products
-  resources :decorations
-  resource  :contact,           only: [:show]
-  resource  :design_office,     only: [:show]
-  resource  :factory,           only: [:show]
+  resources :decorations,           only: [:index]
+  resources :project_informations,  only: [:index]
+  resources :accessories,           only: [:index]
+  resource  :contact,               only: [:show]
+  resource  :design_office,         only: [:show]
+  resource  :factory,               only: [:show]
 
-  resources :project_informations
   resources :users
 
   resource :cart,               only: [:show] do
@@ -40,13 +40,17 @@ Rails.application.routes.draw do
 
     resources :orders,                only: [:index, :show, :update]
     resources :project_informations
-    resources :accounts
+    resources :users
+    resources :decorations
+    resources :accessories
+    resources :promotions
     resource :contact,                only: [:edit, :update]
     resource :introduction,           only: [:edit, :update]
     resource :slogan,                 only: [:edit, :update]
     resource :color,                  only: [:edit, :update]
     resource :design_office,          only: [:edit, :update]
     resource :factory,                only: [:edit, :update]
+
   end
 
 

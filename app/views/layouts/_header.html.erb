@@ -1,8 +1,7 @@
-<header class="w-full text-white shadow-lg"
+<header class="w-full text-white"
         style="background-color: <%= Color.first&.header || '#FF5733' %>;">
-  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+  <div class="mx-auto px-4 py-3 flex items-center justify-between">
     
-    <!-- LOGO + SLOGAN -->
     <div class="flex items-center space-x-3">
       <%= link_to "Logo", root_path, class: "text-xl font-bold tracking-wide" %>
 
@@ -13,13 +12,7 @@
       <% end %>
     </div>
 
-    <!-- Nút mở menu mobile -->
-    <button id="menuBtn" class="md:hidden text-3xl focus:outline-none">
-      ☰
-    </button>
-
-    <!-- MENU DESKTOP -->
-    <nav class="hidden md:flex items-center space-x-6 text-white font-medium">
+    <nav class="flex items-center space-x-3 text-white font-medium">
 
       <%= link_to "Thông tin dự án", project_informations_path,
             class: "hover:text-gray-200 transition-colors" %>
@@ -37,6 +30,9 @@
             class: "hover:text-gray-200 transition-colors" %>
 
       <%= link_to "Văn phòng thiết kế", design_office_path,
+            class: "hover:text-gray-200 transition-colors" %>
+
+      <%= link_to "Thiết bị và phụ kiện", accessories_path,
             class: "hover:text-gray-200 transition-colors" %>
 
       <% if admin? %>
@@ -63,58 +59,4 @@
 
     </nav>
   </div>
-
-  <!-- MENU MOBILE DROPDOWN -->
-  <nav id="mobileMenu"
-       class="md:hidden hidden flex-col py-3 px-4 space-y-2 
-              bg-gray-800 text-white shadow-lg rounded-b-xl">
-
-    <%= link_to "Thông tin dự án", project_informations_path,
-          class: "block py-2 px-3 rounded-lg hover:bg-gray-700" %>
-
-    <%= link_to "Sản phẩm", products_path,
-          class: "block py-2 px-3 rounded-lg hover:bg-gray-700" %>
-
-    <%= link_to "Trang trí nội thất", decorations_path,
-          class: "block py-2 px-3 rounded-lg hover:bg-gray-700" %>
-
-    <%= link_to "Liên hệ", contact_path,
-          class: "block py-2 px-3 rounded-lg hover:bg-gray-700" %>
-
-    <%= link_to "Xưởng sản xuất", factory_path,
-          class: "block py-2 px-3 rounded-lg hover:bg-gray-700" %>
-
-    <%= link_to "Văn phòng thiết kế", design_office_path,
-          class: "block py-2 px-3 rounded-lg hover:bg-gray-700" %>
-
-    <% if admin? %>
-      <%= link_to "Admin Dashboard", admin_dashboard_path,
-            class: "block py-2 px-3 rounded-lg bg-orange-600 hover:bg-orange-500 font-semibold" %>
-
-    <% else %>
-      <% if current_user %>
-        <%= link_to "Trang cá nhân", user_path(current_user),
-              class: "block py-2 px-3 rounded-lg hover:bg-gray-700" %>
-
-        <%= link_to "Giỏ hàng", cart_path,
-              class: "block py-2 px-3 rounded-lg hover:bg-gray-700" %>
-
-      <% else %>
-        <%= link_to "Đăng nhập", login_path,
-              class: "block py-2 px-3 rounded-lg bg-orange-600 hover:bg-orange-500 font-semibold text-black" %>
-      <% end %>
-    <% end %>
-
-  </nav>
-
 </header>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const btn = document.getElementById("menuBtn");
-    const menu = document.getElementById("mobileMenu");
-    btn.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
-  });
-</script>

@@ -1,4 +1,6 @@
 class Admin::ProjectInformationsController < ApplicationController
+  before_action :require_admin_manager
+
   def index
     @project_informations = ProjectInformation.all
     @project_information = ProjectInformation.new

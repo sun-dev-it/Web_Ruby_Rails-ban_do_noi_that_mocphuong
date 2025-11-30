@@ -1,5 +1,5 @@
 class Admin::FactoriesController < ApplicationController
-    before_action :require_admin
+    before_action :require_admin_manager
 
     def edit
       @factory = Factory.first

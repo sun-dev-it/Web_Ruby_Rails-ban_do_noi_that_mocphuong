@@ -1,39 +1,18 @@
 module Admin
   class ColorsController < ApplicationController
-    before_action :require_admin
-
-    def index
-      @colors = Color.all
-    end
-
-    def new
-      @color = Color.new
-    end
-
-    def create
-      @color = Color.new(color_params)
-      if @color.save
-        redirect_to admin_colors_path
-      else
-        render :new
-      end
-    end
+    before_action :require_admin_manager
 
     def edit
-      @color = Color.first
+      @color ||= Color.first
     end
 
     def update
+      @color = Color.first
       if @color.update(color_params)
-        redirect_to admin_colors_path
+        redirect_to edit_admin_color_path
       else
         render :edit
       end
-    end
-
-    def destroy
-      @color.destroy
-      redirect_to admin_colors_path
     end
 
     private

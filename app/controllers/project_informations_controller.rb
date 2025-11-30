@@ -3,3 +3,4 @@ class ProjectInformationsController < ApplicationController
     @project_informations = ProjectInformation.all
   end
 end
+

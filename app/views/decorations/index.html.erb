@@ -1,3 +1,14 @@
-<div>
-  <h1 class="font-bold text-4xl">Decoration#index</h1>
-</div>
+<ul class="mt-4 space-y-2">
+  <% @decorations.each do |decoration| %>
+    <li>
+      <%= decoration.name %>
+      <%= decoration.content %>
+      <% if decoration.image.attached? %>
+        <%= image_tag decoration.image, class: "w-48 h-48 object-cover" %>
+      <% else %>
+        Chưa có ảnh
+      <% end %>
+
+    </li>
+  <% end %>
+</ul>

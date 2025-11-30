@@ -1,0 +1,14 @@
+<ul class="mt-4 space-y-2">
+  <% @accessories.each do |accessory| %>
+    <li>
+      <%= accessory.name %>
+      <%= accessory.content %>
+      <% if accessory.image.attached? %>
+        <%= image_tag accessory.image, class: "w-48 h-48 object-cover" %>
+      <% else %>
+        Chưa có ảnh
+      <% end %>
+
+    </li>
+  <% end %>
+</ul>

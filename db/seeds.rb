@@ -12,7 +12,7 @@ User.create!(
   email: "admin@gmail.com",
   password: "admin12",
   password_confirmation: "admin12",
-  role: "admin",
+  role: "Quản lí web",
 )
 
 User.create!(
@@ -112,7 +112,6 @@ Factory.first_or_create!(
 
 ######
 ProjectInformation.delete_all
-
 projectInformation = [
   "Biệt thự",
   "Nhà phố",
@@ -124,3 +123,41 @@ projectInformation = [
 projectInformation.each do |name|
   ProjectInformation.find_or_create_by!(name: name)
 end
+
+######
+Decoration.delete_all
+decoration = [
+  "Sàn gỗ công nghiệp",
+  "Sàn nhựa terrazzo",
+  "Phào chỉ nhựa PU, PS",
+  "Tấm ốp (PVC, lam sóng, than tre, nano)",
+  "Cửa nhựa composite"
+]
+
+decoration.each do |name|
+  Decoration.find_or_create_by!(name: name)
+end
+
+######
+Accessory.delete_all
+accessories = [
+  "Hafele",
+  "Kaff",
+  "Garis",
+  "Eurogold",
+  "Euroking",
+  "Grandx"
+]
+accessories.each do |name|
+  Accessory.find_or_create_by!(name: name)
+end
+
+######
+
+Promotion.delete_all
+Promotion.create!(
+  name: "Khuyến mãi tháng 6",
+  content: "Giảm ngay 10% cho đơn hàng trên 20 triệu đồng",
+  video: "https://www.youtube.com/embed/Scxs7L0vhZ4"
+) 
+

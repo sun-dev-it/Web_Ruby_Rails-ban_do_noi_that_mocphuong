@@ -1,5 +1,5 @@
 class Admin::ContactsController < ApplicationController
-  before_action :require_admin
+  before_action :require_admin_manager
 
   def edit
     @contact = Contact.first

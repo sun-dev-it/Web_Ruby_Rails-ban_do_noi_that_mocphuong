@@ -1,6 +1,5 @@
 <h1>Chỉnh sửa màu sắc</h1>
-
-<%= form_with model: @color, url: admin_color_path, local: true, method: :patch do |f| %>
+<%= form_with model: [:admin, @color], local: true do |f| %>
   <div class="space-y-4 max-w-md">
 
     <!-- Nền chính -->

@@ -1,0 +1,29 @@
+<%= render "form" %>
+
+<h1>Danh sách admin</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Họ và tên</th>
+      <th>Email</th>
+      <th>Vai trò</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+        <td>
+          <%= link_to 'Chỉnh sửa', edit_admin_user_path(user) %> |
+          <% if !@Manager %>
+            <%= button_to 'Xóa', admin_user_path(user), method: :delete %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -20,5 +20,28 @@
       </iframe>
     </div>
   <% end %>
-
 </section>
+
+  <% if @promotions.present? %>
+    <h1>Khuyến mãi</h1>
+    <% @promotions.each do |promotion| %>
+      <%= promotion.name %>
+      <% if promotion.video.present? %>
+        <div class="flex justify-center">
+          <iframe width="560" height="315" 
+                  src="<%= promotion.video %>" 
+                  title="YouTube video" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  class="w-full max-w-3xl aspect-video rounded-lg shadow-lg">
+          </iframe>
+        </div>
+      <% end %>
+      <% if promotion.images.attached? %>
+        <%= image_tag promotion.images, class: "w-48 h-48 object-cover" %>
+      <% end %>
+
+      <%= promotion.content %>
+    <% end %>
+  <% end %>

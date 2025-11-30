@@ -9,7 +9,7 @@
 
       <%= link_to "Sửa", edit_admin_product_path(product) %> |
       <%= link_to "Xóa", admin_product_path(product),
-            data: { turbo_method: :delete, turbo_confirm: "Xóa sản phẩm?" } %>
+            data: { turbo_method: :delete } %>
     </li>
   <% end %>
 </ul>
