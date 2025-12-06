@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_30_173857) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_04_090100) do
   create_table "accessories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.text "content"
@@ -104,7 +104,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_30_173857) do
     t.datetime "updated_at", null: false
     t.text "content"
     t.string "link_video"
-    t.text "project_informations"
   end
 
   create_table "order_histories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -143,17 +142,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_30_173857) do
     t.integer "price"
     t.text "description"
     t.integer "discount", default: 0
+    t.text "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "project_information_infors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "content"
+  end
+
   create_table "project_informations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "content"
+    t.text "content"
   end
 
   create_table "promotions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

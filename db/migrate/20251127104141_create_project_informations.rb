@@ -3,7 +3,7 @@ class CreateProjectInformations < ActiveRecord::Migration[8.0]
     create_table :project_informations do |t|
       t.timestamps
       t.string :name
-      t.string :content
+      t.text :content
       
     end
   end

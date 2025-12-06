@@ -4,7 +4,6 @@ class CreateIntroductions < ActiveRecord::Migration[8.0]
       t.timestamps
       t.text :content
       t.string :link_video
-      t.text :project_informations
     end
   end
 end

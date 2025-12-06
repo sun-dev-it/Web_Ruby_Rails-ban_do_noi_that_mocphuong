@@ -1,0 +1,71 @@
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("ButtonPageHidden");
+  const panel = document.getElementById("PageHidden");
+  const overlay = document.getElementById("OverlayPageHidden");
+
+  // --- MỞ PANEL ---
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    panel.classList.remove("hidden", "slide-out-left");
+    overlay.classList.remove("hidden");
+
+    // reset animation mở
+    panel.classList.remove("slide-left");
+    void panel.offsetWidth;
+    panel.classList.add("slide-left");
+  });
+
+  // --- ĐÓNG PANEL (CLICK NGOÀI) ---
+  document.addEventListener("click", () => {
+    if (!panel.classList.contains("hidden")) {
+      panel.classList.remove("slide-left");
+
+      panel.classList.add("slide-out-left");
+
+      setTimeout(() => {
+        panel.classList.add("hidden");
+        overlay.classList.add("hidden");
+      }, 250);
+    }
+  });
+
+  // Không đóng khi click vào panel
+  panel.addEventListener("click", (e) => e.stopPropagation());
+
+
+  // --- MENU CON ---
+
+  const buttonListCatalogHidden = document.getElementById("ButtonListCatalogHidden");
+  const listCatalogHidden = document.getElementById("ListCatalogHidden");
+  const buttonListDecorationHidden = document.getElementById("ButtonListDecorationHidden");
+  const listDecorationHidden = document.getElementById("ListDecorationHidden");
+  const buttonListProjectInformationHidden = document.getElementById("ButtonListProjectInformationHidden");
+  const listProjectInformationHidden = document.getElementById("ListProjectInformationHidden");
+  const buttonListAccessoriehidden = document.getElementById("ButtonListAccessoriehidden");
+  const listAccessoriehidden = document.getElementById("ListAccessoriehidden");
+
+  buttonListCatalogHidden.addEventListener("click", (e) => {
+    e.stopPropagation();
+    listCatalogHidden.classList.toggle("hidden");
+  });
+
+  buttonListDecorationHidden.addEventListener("click", (e) => {
+    e.stopPropagation();
+    listDecorationHidden.classList.toggle("hidden");
+  });
+
+  buttonListProjectInformationHidden.addEventListener("click", (e) => {
+    e.stopPropagation();
+    listProjectInformationHidden.classList.toggle("hidden");
+  });
+
+
+  buttonListAccessoriehidden.addEventListener("click", (e) => {
+    e.stopPropagation();
+    listAccessoriehidden.classList.toggle("hidden");
+  });
+
+});
+</script>

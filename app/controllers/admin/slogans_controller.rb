@@ -16,7 +16,7 @@ module Admin
     private
 
     def slogan_params
-      params.require(:slogan).permit(:content)
+      params.require(:slogan).permit(:content, :image)
     end
   end
 end

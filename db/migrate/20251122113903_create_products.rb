@@ -5,6 +5,7 @@ class CreateProducts < ActiveRecord::Migration[8.0]
       t.integer :price
       t.text :description
       t.integer :discount, default: 0
+      t.text :size
 
       t.timestamps
     end

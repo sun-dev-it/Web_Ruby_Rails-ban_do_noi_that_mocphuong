@@ -1,47 +1,7 @@
-<section class="max-w-5xl mx-auto px-6 py-12 rounded-lg shadow-lg text-center"
-         style="background-color: <%= Color.first&.background1 || '#ffffff' %>;">
-  <h2 class="text-4xl font-extrabold mb-6 text-gray-900">
-    Giới thiệu
-  </h2>
-
-  <div class="text-lg leading-relaxed text-gray-800 space-y-4">
-    <%= simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
-  </div>
-
-  <% if @introduction&.link_video.present? %>
-    <div class="flex justify-center">
-      <iframe width="560" height="315" 
-              src="<%= @introduction.link_video %>" 
-              title="YouTube video" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen
-              class="w-full max-w-3xl aspect-video rounded-lg shadow-lg">
-      </iframe>
-    </div>
-  <% end %>
-</section>
-
-  <% if @promotions.present? %>
-    <h1>Khuyến mãi</h1>
-    <% @promotions.each do |promotion| %>
-      <%= promotion.name %>
-      <% if promotion.video.present? %>
-        <div class="flex justify-center">
-          <iframe width="560" height="315" 
-                  src="<%= promotion.video %>" 
-                  title="YouTube video" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen
-                  class="w-full max-w-3xl aspect-video rounded-lg shadow-lg">
-          </iframe>
-        </div>
-      <% end %>
-      <% if promotion.images.attached? %>
-        <%= image_tag promotion.images, class: "w-48 h-48 object-cover" %>
-      <% end %>
-
-      <%= promotion.content %>
-    <% end %>
-  <% end %>
+<%= render "home/image_main" %>
+<div class="flex justify-center">
+  <%= render "home/introduction" %>
+</div>
+<div class="flex justify-center">
+  <%= render "home/promotion" %>
+</div>

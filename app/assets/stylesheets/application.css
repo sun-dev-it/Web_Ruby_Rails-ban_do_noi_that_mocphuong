@@ -8,3 +8,102 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+.left-door, .right-door {
+  transition: transform 1.2s ease-in-out;
+}
+
+.left-door { transform: translateX(0); }
+.right-door { transform: translateX(0); }
+
+.left-door.open { transform: translateX(-100%); }
+.right-door.open { transform: translateX(100%); }
+
+.loading-text {
+  animation: fadeIn 1.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+#OverlayPageHidden {
+  transition: opacity 0.25s;
+}
+
+
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-left {
+  animation: slideInLeft 0.25s ease-out forwards;
+}
+
+
+@keyframes slideOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.25s ease-in forwards;
+}
+
+
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  animation: slideInDown 0.5s ease-out forwards;
+}
+
+
+
+/* Custom scrollbar */
+.custom-scroll {
+  scrollbar-width: thin;               /* Firefox */
+  scrollbar-color: #888 #f1f1f1;       /* Firefox */
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

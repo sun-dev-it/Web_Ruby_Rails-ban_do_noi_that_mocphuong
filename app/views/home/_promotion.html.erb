@@ -1,0 +1,49 @@
+<div class="w-[80%]">
+  <% if @promotions.present? %>
+    <div class="m-12">
+      <% @promotions.each do |promotion| %>
+
+        <hr class="border-0 h-[2px] rounded-full" style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+        <div class="text-center mt-10 mb-8">
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
+              style="color: <%= Color.first&.header || '#ffffff' %>;">
+            <span class="inline-block relative">
+                
+              <%= promotion.name %>
+                
+              <!-- Gạch highlight dưới -->
+              <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
+                    style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+              </span>
+                
+            </span>
+          </h2>
+        </div>
+
+        
+        <div class="flex justify-center">
+            <% if promotion.image.attached? %>
+              <%= image_tag promotion.image, class: "w-full object-cover" %>
+            <% end %>
+        </div>
+
+
+        <div class="m-6 text-center">
+          <%= promotion.content %>
+        </div>
+
+        <% if promotion.video.present? %>
+          <div class="flex justify-center">
+            <iframe src="<%= promotion.video %>" 
+                    title="YouTube video" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    class="w-full max-w-3xl aspect-video rounded-lg shadow-lg">
+            </iframe>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   post   "login",  to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
-  resources :products
+  resources :products,              only: [:index, :show]
+  resources :categories,            only: [:index, :show]
   resources :decorations,           only: [:index]
-  resources :project_informations,  only: [:index]
+  resources :project_informations,  only: [:index, :show]
   resources :accessories,           only: [:index]
   resource  :contact,               only: [:show]
   resource  :design_office,         only: [:show]

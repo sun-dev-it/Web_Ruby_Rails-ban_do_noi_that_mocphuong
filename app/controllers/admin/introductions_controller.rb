@@ -3,22 +3,23 @@ module Admin
     before_action :require_admin_manager
 
     def edit
-      @introduction = Introduction.first || Introduction.new
+      @introduction = Introduction.first_or_initialize
     end
-
+    
     def update
-      @introduction = Introduction.first || Introduction.new
+      @introduction = Introduction.first_or_initialize
       if @introduction.update(introduction_params)
-        redirect_to admin_dashboard_path
+        redirect_to edit_admin_introduction_path
       else
         render :edit
       end
     end
 
+
     private
 
     def introduction_params
-      params.require(:introduction).permit(:title, :content, :link_video, :project_informations)
+      params.require(:introduction).permit(:title, :image, :content, :link_video)
     end
   end
 end

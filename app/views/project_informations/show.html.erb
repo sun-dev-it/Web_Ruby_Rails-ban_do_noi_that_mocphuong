@@ -1,0 +1,36 @@
+<div class="max-w-6xl mx-auto mt-10 px-4">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
+    <!-- Cột trái: Hình ảnh + Tên dự án -->
+    <div>
+      <% if @project_information.image.attached? %>
+        <div class="overflow-hidden shadow-lg border border-gray-700">
+          <%= image_tag @project_information.image,
+              class: "w-full h-auto object-cover transition duration-700 hover:scale-105" %>
+        </div>
+      <% end %>
+
+      <!-- Tên dự án -->
+      <h1 class="font-bold text-center mt-4 tracking-wide">
+        <%= @project_information.name %>
+      </h1>
+    </div>
+
+    <!-- Cột phải: Nội dung -->
+    <div style="<%= bg_rgba(Color.first&.background1, 0.7) %>;" 
+       class="backdrop-blur-sm py-6 md:py-10 px-6 md:px-12 shadow-xl z-47">
+
+      <%= simple_format(@project_information.content) %>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div class="flex justify-center">
+  <div class="w-[80%] md:w-[60%]">
+    <%= render "form/advise" %>
+  </div>
+</div>

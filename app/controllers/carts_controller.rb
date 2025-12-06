@@ -1,5 +1,6 @@
   class CartsController < ApplicationController
-
+    before_action :require_login
+    
     def show
       @cart_items = current_user.cart_items.includes(:product)
       @products = @cart_items.map(&:product)

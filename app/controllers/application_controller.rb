@@ -1,9 +1,25 @@
 class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   helper_method :current_user, :logged_in?, :admin?
-  before_action :slogan
+  before_action :slogan, :categories, :project_informations, :decorations, :accessories
 
   private
+
+  def accessories
+    @accessories = Accessory.order(:name)
+  end
+
+  def decorations
+    @decorations = Decoration.order(:name)
+  end
+
+  def project_informations
+    @project_informations = ProjectInformation.order(:name)
+  end
+
+  def categories
+    @categories = Category.order(:name)
+  end
 
   def slogan
     @slogan = Slogan.first

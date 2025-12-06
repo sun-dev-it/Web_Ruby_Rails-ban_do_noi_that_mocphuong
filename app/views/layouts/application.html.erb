@@ -25,21 +25,36 @@
   </head>
 
   <body class="min-h-screen flex flex-col">
-    <!-- HEADER -->
+
+    <div id="page-loading"
+         class="fixed inset-0 bg-white flex flex-col items-center justify-center z-[999999]">
+    
+      <div class="w-12 h-12 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+    
+      <div class="mt-4 text-xl tracking-widest font-semibold text-gray-800 opacity-0 loading-text">
+        NỘI THẤT MỘC PHƯƠNG
+      </div>
+    </div>
+
+    <div id="OverlayPageHidden" class="z-49 fixed inset-0 bg-black/50 hidden"></div>
+
     <div style="background-color: <%= Color.first&.header || '#ffffff' %>;">
       <%= render "layouts/header" %>
-    </div>  
+    </div>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 p-4" 
+    <%= render "layouts/page_hidden_list" %>
+
+    <main class="flex-1" 
           style="background-color: <%= Color.first&.background || '#ffffff' %>;">
       <%= yield %>
     </main> 
 
-    <!-- FOOTER -->
     <div style="background-color: <%= Color.first&.footer || '#ffffff' %>;">
       <%= render "layouts/footer" %>
     </div>
+
+    <%= render "script/application" %>
+
   </body>
 
 

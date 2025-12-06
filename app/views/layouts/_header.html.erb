@@ -1,62 +1,23 @@
-<header class="w-full text-white"
+<header class="font-semibold text-white font-sans text-sm fixed top-0 left-0 w-full z-48"
         style="background-color: <%= Color.first&.header || '#FF5733' %>;">
-  <div class="mx-auto px-4 py-3 flex items-center justify-between">
-    
-    <div class="flex items-center space-x-3">
-      <%= link_to "Logo", root_path, class: "text-xl font-bold tracking-wide" %>
-
-      <% if @slogan %>
-        <span class="hidden sm:inline text-sm opacity-90">
-          <%= @slogan.content %>
-        </span>
-      <% end %>
+  <div class="flex items-center pr-1 sm:pr-3 pt-3 pb-1">
+    <div class="flex-[1]">
+      <%= render "layouts/page_hidden" %>
     </div>
 
-    <nav class="flex items-center space-x-3 text-white font-medium">
-
-      <%= link_to "Thông tin dự án", project_informations_path,
-            class: "hover:text-gray-200 transition-colors" %>
-
-      <%= link_to "Sản phẩm", products_path,
-            class: "hover:text-gray-200 transition-colors" %>
-
-      <%= link_to "Trang trí nội thất", decorations_path,
-            class: "hover:text-gray-200 transition-colors" %>
-
-      <%= link_to "Liên hệ", contact_path,
-            class: "hover:text-gray-200 transition-colors" %>
-
-      <%= link_to "Xưởng sản xuất", factory_path,
-            class: "hover:text-gray-200 transition-colors" %>
-
-      <%= link_to "Văn phòng thiết kế", design_office_path,
-            class: "hover:text-gray-200 transition-colors" %>
-
-      <%= link_to "Thiết bị và phụ kiện", accessories_path,
-            class: "hover:text-gray-200 transition-colors" %>
-
-      <% if admin? %>
-
-        <%= link_to "Admin Dashboard", admin_dashboard_path,
-              class: "px-3 py-1 bg-orange-500 rounded-lg hover:bg-orange-400 text-black font-semibold transition" %>
-
-      <% else %>
-        <% if current_user %>
-
-          <%= link_to "Trang cá nhân", user_path(current_user),
-                class: "hover:text-gray-200 transition-colors" %>
-
-          <%= link_to "Giỏ hàng", cart_path,
-                class: "hover:text-gray-200 transition-colors" %>
-
-        <% else %>
-
-          <%= link_to "Đăng nhập", login_path,
-                class: "px-3 py-1 bg-orange-500 rounded-lg hover:bg-orange-400 text-black font-semibold transition" %>
-
-        <% end %>
-      <% end %>
-
-    </nav>
+    <div class="flex-[12] md:flex-[3]">
+      <%= render "layouts/logo" %>
+    </div>
+    <div class="hidden md:flex flex-[12]">
+      <%= render "layouts/page" %>
+    </div>
+    <div class="flex-[1]">
+      <%= render "layouts/user" %>
+    </div>
   </div>
+
 </header>
+
+<div class="h-20"></div>
+
+<%= render "layouts/script_lap" %>
