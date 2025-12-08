@@ -1,6 +1,6 @@
 <div class="py-3 px-5">
   <h1 class="text-1xl md:text-3xl font-semi font-bold text-gray-700 my-1">
-    Thông tin dự án
+    Thiết bị và phụ kiện
   </h1>
   <div class="flex text-xs">
       <%= link_to root_path do %>
@@ -12,8 +12,8 @@
           </div>
       <% end %>
       
-      > <%= link_to "Dự án", request.referer %> 
-      ><%= @project_information.name %>>
+      > <%= link_to "Thiết bị và phụ kiện", request.referer %> 
+      ><%= @accessory.name %>>
   </div>
 </div>
 
@@ -23,21 +23,21 @@
   <div class="w-[90%] sm:w-[80%] sm:flex justify-between">
 
     <div class="flex-3">
-      <% if @project_information.image.attached? %>
+      <% if @accessory.image.attached? %>
         <div class="overflow-hidden">
-          <%= image_tag @project_information.image,
+          <%= image_tag @accessory.image,
               class: "w-full h-auto object-cover transition duration-700 hover:scale-105" %>
         </div>
       <% end %>
     </div>
     
     <div class="flex-2 sm:mt-0 mt-4 px-1 sm:px-4">
-      <p class="text-2xl text-center mb-2 font-bold font-semi text-gray-700 group-hover:text-black transition">
-        <%= @project_information.name %>
+      <p class="text-2xl font-bold font-semi text-gray-700 group-hover:text-black transition">
+        <%= @accessory.name %>
       </p>
       <div>
 
-        <%= simple_format(@project_information.content) %>
+        <%= simple_format(@accessory.content) %>
       </div>
     </div>
 
@@ -46,6 +46,10 @@
 
 </div>
 
+<div class="flex justify-center">
+  <div class="w-[80%] md:w-[60%]">
+    <%= render "form/advise" %>
+  </div>
+</div>
 
-<%= render "form/advise" %>
 <%= render "items/name_web" %>

@@ -38,7 +38,6 @@
             </div>     
           </div>
 
-
           <div class="flex items-center justify-between">
             <%= header_hidden_link "TRANG TRÍ NỘI THẤT", decorations_path %>
 
@@ -52,7 +51,7 @@
           <div id="ListDecorationHidden" class="hidden">
             <div class="flex flex-col slide-down mt-[-5px] space-y-3 ml-6">
               <% @decorations.each do |decoration| %>
-                <div><%= decoration.name %></div>
+                <div><%= link_to decoration.name, decoration_path(decoration) %></div>
               <% end %>      
             </div>
           </div>
@@ -74,7 +73,7 @@
           <div id="ListAccessoriehidden" class="hidden">
             <div class="flex flex-col slide-down mt-[-5px] space-y-3 ml-6">
               <% @accessories.each do |accessory| %>
-                <div><%= accessory.name %></div>
+                <div><%= link_to accessory.name, accessory_path(accessory) %></div>
               <% end %>      
             </div>
           </div>

@@ -12,8 +12,10 @@
             </div>
         <% end %>
  
-        > Sản phẩm > <%= @category.name %> >
+        > <%= link_to "Sản phẩm", request.referer %> ><%= @category.name %>>
     </div>
 </div>
 
 <%= render "product" %>
+
+<%= render "items/name_web" %>

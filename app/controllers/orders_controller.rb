@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   def create
     cart_items = current_user.cart_items.includes(:product)
     total = cart_items.sum { |i| i.product.price * i.quantity }
-
+    phone_number = params[:phone]
     order = current_user.orders.create!(
       total_price: total,
       status: "Đang chờ liên hệ"

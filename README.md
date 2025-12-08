@@ -1,7 +1,3 @@
-# Build
-
-TailwindCSS
-
 # Code
 
 Ruby on Rails Integration Test with Minitest
@@ -13,3 +9,13 @@ Automated route & controller testing
 
 rails server
 rails tailwindcss:watch
+
+# Build
+
+# JavaScript
+
+Alpine.js
+
+# framework CSS
+
+Tailwind CSS

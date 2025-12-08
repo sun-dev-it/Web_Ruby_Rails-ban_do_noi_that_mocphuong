@@ -1,47 +1,71 @@
-<h1>Giỏ hàng của bạn</h1>
-
+<div class="flex justify-center">
+    <div class="w-[90%] sm:w-[60%] mt-6 sm:mt-14 boder bg-white rounded-lg p-2 sm:p-10">
+      <p class="text-center font-bold text-2xl sm:text-4xl mb-4">Giỏ hàng của bạn </p>
+      
 <% if @cart_items.empty? %>
   <p>Giỏ hàng trống!</p>
   <%= link_to "Quay lại mua hàng", products_path %>
 <% else %>
 
-  <table border="1" cellpadding="6">
-    <thead>
-      <tr>
-        <th>Sản phẩm</th>
-        <th>Số lượng</th>
-        <th>Giá</th>
-        <th>Thành tiền</th>
-        <th>Thao tác</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <% total = 0 %>
+<table class="w-full border border-gray-300 rounded-lg overflow-hidden text-center">
+  <thead class="bg-gray-100 border-b border-gray-300">
+    <tr>
+      <th class="px-4 py-2 border-r border-gray-300">Sản phẩm</th>
+      <th class="px-4 py-2 border-r border-gray-300">Giá</th>
+      <th class="px-4 py-2 border-r border-gray-300">Số lượng</th>
+      <th class="px-4 py-2 border-r border-gray-300">Thành tiền</th>
+      <th class="px-4 py-2">Thao tác</th>
+    </tr>
+  </thead>
 
-      <% @cart_items.each do |item| %>
-        <% total += item.quantity * item.product.price %>
-
-        <tr>
-          <td><%= item.product.name %></td>
-          <td><%= item.quantity %></td>
-          <td><%= number_to_currency(item.product.price, unit: "VND", precision: 0) %></td>
-          <td><%= number_to_currency(item.quantity * item.product.price, unit: "VND", precision: 0) %></td>
-          <td>
-            <%= button_to "Bớt 1", remove_cart_path(product_id: item.product.id), method: :post %>
-            <%= button_to "Thêm 1", add_cart_path(product_id: item.product.id), method: :post %>
-            <%= button_to "Xóa", remove_all_cart_path(product_id: item.product.id), method: :post %>
+  <tbody>
+    <% total = 0 %>
+    <% @cart_items.each do |item| %>
+      <% total += item.quantity * item.product.price %>
+      <tr class="border-b border-gray-200 hover:bg-gray-50">
+        <td class="flex flex-col items-center justify-center px-4 py-2 border-r border-gray-200">
+          <% if item.product.images.attached? %>
+            <%= image_tag item.product.images.first, class: "w-16 h-16 object-cover rounded mb-2" %>
+          <% end %>
+          <span class="font-medium text-gray-700"><%= item.product.name %></span>
+        </td>
+        <td class="px-4 py-2 border-r border-gray-200 align-middle">
+          <%= number_to_currency(item.product.price, unit: "VND ", format: "%n %u", precision: 0) %>
           </td>
-        </tr>
-      <% end %>
-
-      <tr>
-        <td colspan="3"><strong>Tổng tiền</strong></td>
-        <td colspan="2"><strong><%= number_to_currency(total, unit: "VND", precision: 0) %></strong></td>
+        <td class="px-4 py-2 flex justify-center border-r border-gray-200 align-middle">
+          <%= button_to "-", remove_cart_path(product_id: item.product.id), method: :post, class: "border border-gray-200 px-2 mx-2" %>
+          <%= item.quantity %>
+          <%= button_to "+", add_cart_path(product_id: item.product.id), method: :post, class: "border border-gray-200 px-2 mx-2" %>
+        </td>
+        <td class="px-4 py-2 border-r border-gray-200 align-middle">
+          <%= number_to_currency(item.quantity * item.product.price, unit: "VND ", format: "%n %u", precision: 0) %>
+        </td>
+        <td class="flex justify-center space-x-2 px-4 py-2">
+          <%= button_to "Xóa", remove_all_cart_path(product_id: item.product.id), method: :post, class: "px-2 py-1 rounded" %>
+        </td>
       </tr>
-    </tbody>
-  </table>
+    <% end %>
+
+    <tr class="bg-gray-100 font-bold">
+      <td colspan="3" class="px-4 py-2 border-r border-gray-300">Tổng tiền</td>
+      <td colspan="2" class="px-4 py-2"><%= number_to_currency(total, unit: "VND ", format: "%n %u", precision: 0) %></td>
+    </tr>
+  </tbody>
+</table>
+
+
 
   <br>
-  <%= link_to "Tiến hành đặt hàng", new_order_path, class: "btn btn-primary" %>
+  <div class="flex justify-end">
+    <%= link_to "Tiến hành đặt hàng", new_order_path, class: "border border-gray-200 hover:bg-gray-200 p-2" %>
+  </div>
 <% end %>
+
+
+
+    </div>
+</div>
+
+
+<%= render "items/name_web" %>

@@ -4,7 +4,7 @@
   <div class="w-[80%] z-47">
 
     <!-- Phần mô tả -->
-    <div style="<%= bg_rgba(Color.first&.background1, 0.7) %>;"
+    <div style="<%= bg_rgba(Color.first&.background1, 0.8) %>;"
          class="py-4 md:py-8 px-6 md:px-12 min-h-[200px] shadow-lg mt-[-100px] md:mt-[-120px] backdrop-blur-md">
       <div class="text-base md:text-lg leading-relaxed italic text-center md:text-justify">
         <%= simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
@@ -68,3 +68,5 @@
 
   </div>
 </div>
+
+<%= render "items/name_web" %>

@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   resources :products,              only: [:index, :show]
   resources :categories,            only: [:index, :show]
-  resources :decorations,           only: [:index]
+  resources :decorations,           only: [:index, :show]
   resources :project_informations,  only: [:index, :show]
-  resources :accessories,           only: [:index]
+  resources :accessories,           only: [:index, :show]
   resource  :contact,               only: [:show]
   resource  :design_office,         only: [:show]
   resource  :factory,               only: [:show]

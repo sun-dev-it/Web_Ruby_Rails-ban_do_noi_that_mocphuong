@@ -1,14 +1,61 @@
-<ul class="mt-4 space-y-2">
-  <% @accessories.each do |accessory| %>
-    <li>
-      <%= accessory.name %>
-      <%= accessory.content %>
-      <% if accessory.image.attached? %>
-        <%= image_tag accessory.image, class: "w-48 h-48 object-cover" %>
-      <% else %>
-        Chưa có ảnh
+<div class="flex justify-center">
+  <div class="w-[80%] z-47">
+
+    <hr class="border-0 h-[2px] rounded-full" style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+    <div class="text-center mt-10 mb-8">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
+          style="color: <%= Color.first&.header || '#ffffff' %>;">
+        <span class="inline-block relative">
+
+          TRANG TRÍ NỘI THẤT
+
+          <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
+                style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+          </span>
+
+        </span>
+      </h2>
+    </div>
+
+
+    <!-- Danh sách project -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+
+      <% @accessories.each do |accessory| %>
+        <%= link_to accessory_path(accessory.id) do %>
+
+          <div class="group my-2">
+            <div class="relative overflow-hidden shadow-lg">
+
+              <% if accessory.image.attached? %>
+                <%= image_tag accessory.image,
+                    class: "w-full aspect-[4/3] object-cover transform transition duration-500 group-hover:scale-110" %>
+              <% end %>
+
+              <!-- Overlay đẹp với gradient tối -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
+                          opacity-0 group-hover:opacity-100 transition duration-500
+                          flex items-end p-5">
+                <p class="text-white text-lg font-medium translate-y-5
+                          group-hover:translate-y-0 transition duration-500">
+                  <%= truncate(accessory.content, length: 120) %>
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Tên project -->
+            <div class="font-semibold text-xl text-center mt-4 text-gray-900">
+              <%= accessory.name %>
+            </div>
+          </div>
+
+        <% end %>
       <% end %>
 
-    </li>
-  <% end %>
-</ul>
+    </div>
+
+  </div>
+</div>
+
+<%= render "items/name_web" %>

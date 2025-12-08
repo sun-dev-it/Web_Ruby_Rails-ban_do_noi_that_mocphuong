@@ -122,6 +122,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_04_090100) do
     t.bigint "product_id", null: false
     t.integer "quantity"
     t.decimal "price", precision: 10
+    t.text "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
