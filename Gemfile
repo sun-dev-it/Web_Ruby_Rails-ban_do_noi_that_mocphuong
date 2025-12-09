@@ -3,7 +3,7 @@ source "https://rubygems.org"
 
 gem 'bcrypt'
 
-gem "tailwindcss-rails", "~> 4.3"
+gem "tailwindcss-rails", "~> 3.3.1"
 
 gem 'dotenv-rails'
 
