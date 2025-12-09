@@ -268,7 +268,7 @@ slogan.image.attach(
 ######
 Color.delete_all
 Color.first_or_create!(
-  background: "#e4e4e4",
+  background: "#f0f0f0",
   background1:  "#d6d6d6",
   header:     "#FF6A2C",
   footer:     "#1F1F1F",

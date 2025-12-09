@@ -1,10 +1,11 @@
 default: &default
-  adapter: mysql2
-  encoding: utf8mb4
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV["MYSQL_USERNAME"] %>
-  password: <%= ENV["MYSQL_PASSWORD"] %>
-  host: <%= ENV.fetch("DB_HOST") { "127.0.0.1" } %>
+  username: <%= ENV["PGUSER"] %>
+  password: <%= ENV["PGPASSWORD"] %>
+  host: <%= ENV["PGHOST"] %>
+  port: <%= ENV["PGPORT"] %>
 
 development:
   <<: *default
@@ -15,20 +16,4 @@ test:
   database: web_ruby_rails_ban_do_noi_that_mocphuong_test
 
 production:
-  primary: &primary_production
-    <<: *default
-    database: web_ruby_rails_ban_do_noi_that_mocphuong_production
-    username: web_ruby_rails_ban_do_noi_that_mocphuong
-    password: <%= ENV["WEB_RUBY_RAILS_BAN_DO_NOI_THAT_MOCPHUONG_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: web_ruby_rails_ban_do_noi_that_mocphuong_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: web_ruby_rails_ban_do_noi_that_mocphuong_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: web_ruby_rails_ban_do_noi_that_mocphuong_production_cable
-    migrations_paths: db/cable_migrate
+  url: <%= ENV["DATABASE_URL"] %>

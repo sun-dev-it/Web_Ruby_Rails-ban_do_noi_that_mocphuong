@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   helper_method :current_user, :logged_in?, :admin?
-  before_action :slogan, :categories, :project_informations, :decorations, :accessories
+  before_action :slogan, :categories, :project_informations, :decorations, :accessories, :requests
 
   private
+
+  def requests
+    @request = Request.new
+  end
 
   def accessories
     @accessories = Accessory.order(:name)

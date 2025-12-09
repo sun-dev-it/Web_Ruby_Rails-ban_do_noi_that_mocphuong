@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "requests/new"
+  get "requests/create"
   root "home#index"
 
   get "sessions/new"
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   resource  :contact,               only: [:show]
   resource  :design_office,         only: [:show]
   resource  :factory,               only: [:show]
-
+  resources :requests,              only: [:new, :create]
   resources :users
 
   resource :cart,               only: [:show] do
@@ -30,6 +32,9 @@ Rails.application.routes.draw do
   resources :orders,            only: [:new, :create, :show, :index]
 
   namespace :admin do
+    get "requests/index"
+    get "requests/show"
+    get "requests/destroy"
     get "dashboard",                        to: "dashboard#index", as: "dashboard"
 
     resources :categories
@@ -40,6 +45,7 @@ Rails.application.routes.draw do
     end
 
     resources :orders,                only: [:index, :show, :update]
+    resources :requests,              only: [:index, :show, :destroy]
     resources :project_informations
     resources :users
     resources :decorations
@@ -51,6 +57,7 @@ Rails.application.routes.draw do
     resource :color,                  only: [:edit, :update]
     resource :design_office,          only: [:edit, :update]
     resource :factory,                only: [:edit, :update]
+    
 
   end
 
