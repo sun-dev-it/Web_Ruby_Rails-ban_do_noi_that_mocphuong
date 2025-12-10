@@ -1,4 +1,4 @@
-<div id="image-wrapper" class="relative overflow-hidden opacity-0 transition-opacity duration-700">
+<div id="image-wrapper" class="relative overflow-hidden opacity-0 transition-opacity duration-700 z-35">
   <% if @introduction.image.attached? %>
     <%= image_tag @introduction.image, class: "w-full aspect-[3/1] object-cover" %>
   <% end %>
