@@ -1,48 +1,50 @@
-<h1 class="text-2xl font-bold mb-6">Quản lý đơn hàng</h1>
+<div class="flex justify-center">
+  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Quản lý đơn hàng</h1>
 
-<div x-data="{ tab: 0 }">
+    <div x-data="{ tab: 0 }">
 
-  <!-- TAB HEADER -->
-  <div class="border-b mb-4 flex space-x-4">
-    <% @orders_by_status.keys.each_with_index do |status, index| %>
-      <button
-        @click="tab = <%= index %>"
-        :class="tab === <%= index %> 
-          ? 'border-b-2 border-blue-600 text-blue-600 font-semibold' 
-          : 'text-gray-600'"
-        class="pb-2 px-4 text-lg hover:text-blue-600 transition">
-        <%= status %>
-      </button>
-    <% end %>
-  </div>
+      <div class="border-b mb-4 flex space-x-4">
+        <% @orders_by_status.keys.each_with_index do |status, index| %>
+          <button
+            @click="tab = <%= index %>"
+            :class="tab === <%= index %> 
+              ? 'border-b-2 border-blue-600 text-blue-600 font-semibold' 
+              : 'text-gray-600'"
+            class="pb-2 px-4 text-lg hover:text-blue-600 transition">
+            <%= status %>
+          </button>
+        <% end %>
+      </div>
 
-  <!-- TAB CONTENT -->
-  <% @orders_by_status.each_with_index do |(status, orders), index| %>
-    <div x-show="tab === <%= index %>" class="mt-4">
+      <% @orders_by_status.each_with_index do |(status, orders), index| %>
+        <div x-show="tab === <%= index %>" class="mt-4">
 
-      <table class="w-full border-collapse bg-white shadow rounded-lg overflow-hidden">
-        <thead>
-          <tr class="bg-gray-100 text-left">
-            <th class="p-3 border">ID</th>
-            <th class="p-3 border">Khách hàng</th>
-            <th class="p-3 border">Tổng tiền</th>
-            <th class="p-3 border">Trạng thái</th>
-            <th class="p-3 border">Ngày tạo</th>
-            <th class="p-3 border"></th>
-          </tr>
-        </thead>
+          <table class="w-full border-collapse bg-white shadow rounded-lg overflow-hidden">
+            <thead>
+              <tr class="bg-gray-100 text-left">
+                <th class="p-3 border">ID</th>
+                <th class="p-3 border">Khách hàng</th>
+                <th class="p-3 border">Tổng tiền</th>
+                <th class="p-3 border">Trạng thái</th>
+                <th class="p-3 border">Ngày tạo</th>
+                <th class="p-3 border"></th>
+              </tr>
+            </thead>
 
-        <tbody>
-          <% orders.each do |order| %>
-            <%= render partial: "list_orders", locals: { order: order } %>
-          <% end %>
-        </tbody>
-      </table>
+            <tbody>
+              <% orders.each do |order| %>
+                <%= render partial: "list_orders", locals: { order: order } %>
+              <% end %>
+            </tbody>
+          </table>
+
+        </div>
+      <% end %>
 
     </div>
-  <% end %>
-
+    <%= link_to "← Quay lại", admin_dashboard_path, class:"text-blue-600 hover:text-blue-800"%>
+  </div>
 </div>
-
-<!-- AlpineJS -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+ 
+<%= render "script/library/alpine" %>

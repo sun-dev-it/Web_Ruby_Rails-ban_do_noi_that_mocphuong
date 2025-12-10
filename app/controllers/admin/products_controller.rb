@@ -47,7 +47,17 @@ class Admin::ProductsController < ApplicationController
     product = Product.find(params[:id])
     image = product.images.find(params[:image_id])
     image.purge
-    redirect_back fallback_location: edit_product_path(product)
+    redirect_back fallback_location: admin_product_path(product)
+  end
+
+  def change_image
+    @product = Product.find(params[:id])
+    old_image = @product.images.find(params[:image_id])
+
+    old_image.purge   # xóa ảnh cũ
+    @product.images.attach(params[:image])  # attach ảnh mới
+
+    redirect_back fallback_location: edit_admin_product_path(@product)
   end
 
   private

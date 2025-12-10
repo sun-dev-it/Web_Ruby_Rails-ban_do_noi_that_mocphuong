@@ -1,56 +1,59 @@
-<h1>Chi tiết đơn hàng </h1>
+<div class="flex justify-center">
+  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Chi tiết đơn hàng </h1>
 
-<p><strong>Khách hàng:</strong> <%= @order.user.name %></p>
-
-<%= form_with model: [:admin, @order], local: true do |f| %>
-  <div>
-    <%= f.label :status, "Trạng thái" %><br>
-    <%= f.select :status, [
-        ["Đang chờ liên hệ"],
-        ["Đã liên hệ"],
-        ["Đang giao hàng"],
-        ["Đã giao hàng"],
-        ["Đã hủy"]
-      ] %>
-  </div>
-
-  <br>
-
-  <%= f.submit "Cập nhật", class: "btn btn-primary" %>
-<% end %>
-
-<p><strong>Email:</strong> <%= @order.user.email %></p>
-<p><strong>Tổng tiền:</strong> <%= @order.total_price %> VND</p>
-
-<h3>Sản phẩm</h3>
-<table border="1" cellpadding="6">
-  <thead>
-    <tr>
-      <th>Sản phẩm</th>
-      <th>Số lượng</th>
-      <th>Giá</th>
-      <th>Thành tiền</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.product.name %></td>
-        <td><%= item.quantity %></td>
-        <td><%= item.price %> VND</td>
-        <td><%= item.quantity * item.price %> VND</td>
-      </tr>
+    <p><strong>Khách hàng:</strong> <%= @order.user.name %></p>
+    <%= form_with model: [:admin, @order], local: true do |f| %>
+      <div>
+        <%= f.label :status, "Trạng thái" %><br>
+        <%= f.select :status, [
+            ["Đang chờ liên hệ"],
+            ["Đã liên hệ"],
+            ["Đang giao hàng"],
+            ["Đã giao hàng"],
+            ["Đã hủy"]
+          ] %>
+      </div>
+    
+      <br>
+    
+      <%= f.submit "Cập nhật", class: "btn btn-primary" %>
     <% end %>
-  </tbody>
-</table>
-
-<% @order.order_histories.each do |history| %>
-   <tr>
-     <td><%= history.user.name %></td>
-     <td><%= history.previous_status %> -> <%= history.new_status %></td>
-     <td><%= history.created_at.strftime("%d/%m/%Y %H:%M") %></td>
-   </tr>
-<% end %>
-
-<%= link_to "← Quay lại", admin_orders_path %>
+    
+    <p><strong>Email:</strong> <%= @order.user.email %></p>
+    <p><strong>Tổng tiền:</strong> <%= @order.total_price %> VND</p>
+    
+    <h3>Sản phẩm</h3>
+    <table border="1" cellpadding="6">
+      <thead>
+        <tr>
+          <th>Sản phẩm</th>
+          <th>Số lượng</th>
+          <th>Giá</th>
+          <th>Thành tiền</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.product.name %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.price %> VND</td>
+            <td><%= item.quantity * item.price %> VND</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+        
+    <% @order.order_histories.each do |history| %>
+       <tr>
+         <td><%= history.user.name %></td>
+         <td><%= history.previous_status %> -> <%= history.new_status %></td>
+         <td><%= history.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+       </tr>
+    <% end %>
+    
+    <%= link_to "← Quay lại", admin_orders_path %>
+  </div>
+</div>
