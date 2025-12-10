@@ -4,100 +4,58 @@
   </h1>
   <div class="flex text-xs">
       <%= link_to root_path do %>
-          <div class="flex hover:text-black">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 mt-[2px]">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-              </svg>
-              <div>Trang chủ </div>
-          </div>
-      <% end %>
-      
-      > <%= link_to "Sản phẩm", request.referer %> 
-      > <%= link_to request.referer do %> <%= @product.category.name %> <% end %>
-      ><%= @product.name %>>
+        <div class="flex hover:text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 mt-[2px]">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+            <div>Trang chủ </div>
+        </div>
+      <% end %> > <%= link_to "Sản phẩm", request.referer %> > <%= link_to request.referer do %> <%= @product.category.name %> <% end %> ><%= @product.name %>>
   </div>
 </div>
     
 <div class="flex justify-center mb-4">
   <div class="w-[90%] sm:w-[80%]"> 
     <div class="sm:flex">
-      <div class="sm:flex-3">
+      <div class="sm:w-3/5">
         <% if @product.images.attached? %>
-          <%= image_tag @product.images.first,
-              class: "w-full aspect-[4/3] object-cover mb-4" %>
+          <%= image_tag @product.images.first, class: "w-full aspect-[4/3] object-cover mb-4" %>
         <% end %>
-        
         <% if @product.images.count > 1 %>
           <% images = @product.images.drop(1) %>
-
-          <div 
-            x-data="{ 
-              current: 0,
-              maxIndex: <%= images.count - 3 %>,
-              animating: false,
-
+          <div x-data="{ current: 0, maxIndex: <%= images.count - 3 %>, animating: false,
               slide(to) {
                 if (this.animating) return;
                 this.animating = true;
                 this.current = to;
-
-                // Tự tắt animation khóa sau 350ms
-                setTimeout(() => this.animating = false, 350);
-              }
-            }"
-            class="relative w-full overflow-hidden"
-          >
-            
-            <!-- Wrapper -->
-            <div class="flex transition-transform duration-300 ease-out"
-                 :class="animating ? 'opacity-80 scale-[0.98]' : 'opacity-100 scale-100'"
-                 :style="`transform: translateX(-${current * (100 / 3)}%)`">
-            
+                setTimeout(() => this.animating = false, 350); } }" class="relative w-full overflow-hidden">
+            <div class="flex transition-transform duration-300 ease-out" :class="animating ? 'opacity-80 scale-[0.98]' : 'opacity-100 scale-100'" :style="`transform: translateX(-${current * (100 / 3)}%)`">
               <% images.each do |img| %>
                 <div class="w-1/3 flex-shrink-0 transition-all duration-300">
                   <%= image_tag img, class: "w-full p-2 aspect-[4/3] object-cover shadow" %>
                 </div>
               <% end %>
             </div>
-              
-            <!-- Nút trái -->
-            <button 
-              x-show="current > 0"
-              @click="slide(current - 1)"
-              class="absolute top-1/2 left-2 -translate-y-1/2 bg-white/80 backdrop-blur px-3 py-2 rounded-full shadow hover:scale-110 transition"
-            >
+            <button x-show="current > 0" @click="slide(current - 1)" class="absolute top-1/2 left-2 -translate-y-1/2 bg-white/80 backdrop-blur px-3 py-2 rounded-full shadow hover:scale-110 transition">
               ‹
             </button>
-              
-            <!-- Nút phải -->
-            <button 
-              x-show="current < maxIndex"
-              @click="slide(current + 1)"
-              class="absolute top-1/2 right-2 -translate-y-1/2 bg-white/80 backdrop-blur px-3 py-2 rounded-full shadow hover:scale-110 transition"
-            >
+            <button x-show="current < maxIndex" @click="slide(current + 1)" class="absolute top-1/2 right-2 -translate-y-1/2 bg-white/80 backdrop-blur px-3 py-2 rounded-full shadow hover:scale-110 transition">
               ›
             </button>
-              
           </div>  
         <% end %>
       </div>
-      <div class="mt-6 sm:mt-0 px-1 sm:px-3 sm:flex-2">
+      <div class="mt-6 sm:mt-0 px-1 sm:px-3 sm:w-2/5">
         <p class="text-2xl font-bold font-semi text-gray-700 group-hover:text-black transition">
           <%= @product.name %>
         </p>
         <p class="text-sm font-sans font-bold text-red-500 mt-2">
           <%= number_to_currency(@product.price, unit: "VND ", format: "%n %u", precision: 0) %>
         </p>
-        <p><span class="font-bold">Kích thước:</span> <%= @product.size %></p>
-        <div>
-        <div class="mt-2">
-          <%= button_to "Thêm vào giỏ",
-                add_cart_path(product_id: @product.id),
-                method: :post,
-                form: { data: { remote: true } },
-                class: "bg-gray-300 text-gray-800 px-4 py-2 text-right rounded hover:bg-gray-350 transition" %>
+        <div class="mt-2 flex justify-end">
+          <%= button_to "Thêm vào giỏ", add_cart_path(product_id: @product.id), method: :post, form: { data: { remote: true } }, class: "bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition" %>
         </div>
-
+        <p><span class="font-bold">Kích thước:</span> <%= @product.size %></p>
         <p class="text-xl font-bold mt-2 text-gray-800"> Mô tả:</p>
         <p><%= @product.description %></p>
       </div>

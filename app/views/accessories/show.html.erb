@@ -22,7 +22,7 @@
 
   <div class="w-[90%] sm:w-[80%] sm:flex justify-between">
 
-    <div class="flex-3">
+    <div class="sm:w-3/5">
       <% if @accessory.image.attached? %>
         <div class="overflow-hidden">
           <%= image_tag @accessory.image,
@@ -31,12 +31,12 @@
       <% end %>
     </div>
     
-    <div class="flex-2 sm:mt-0 mt-4 px-1 sm:px-4">
+    <div class="sm:w-2/5 sm:mt-0 mt-4 px-1 sm:px-4">
       <p class="text-2xl font-bold font-semi text-gray-700 group-hover:text-black transition">
         <%= @accessory.name %>
       </p>
       <div>
-
+        <p class="text-md font-bold mt-2 text-gray-800"> Mô tả:</p>
         <%= simple_format(@accessory.content) %>
       </div>
     </div>
@@ -46,10 +46,5 @@
 
 </div>
 
-<div class="flex justify-center">
-  <div class="w-[80%] md:w-[60%]">
-    <%= render "form/advise" %>
-  </div>
-</div>
-
+<%= render "form/advise" %>
 <%= render "items/name_web" %>
