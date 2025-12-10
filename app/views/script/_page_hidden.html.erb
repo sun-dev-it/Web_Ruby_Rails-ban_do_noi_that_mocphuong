@@ -2,14 +2,23 @@
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("ButtonPageHidden");
   const panel = document.getElementById("PageHidden");
-  const overlay = document.getElementById("OverlayPageHidden");
+  const outPageHidden = document.getElementById("OutPageHidden")
+
+  outPageHidden.addEventListener("click", (e) => {
+      panel.classList.remove("slide-left");
+
+      panel.classList.add("slide-out-left");
+
+      setTimeout(() => {
+        panel.classList.add("hidden");
+      }, 250);
+  })
 
   // --- MỞ PANEL ---
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
 
     panel.classList.remove("hidden", "slide-out-left");
-    overlay.classList.remove("hidden");
 
     // reset animation mở
     panel.classList.remove("slide-left");
@@ -26,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         panel.classList.add("hidden");
-        overlay.classList.add("hidden");
       }, 250);
     }
   });
