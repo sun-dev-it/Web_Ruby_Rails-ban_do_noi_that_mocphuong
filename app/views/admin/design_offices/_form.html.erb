@@ -1,0 +1,33 @@
+<%= form_with model: [:admin, @design_office], local: true, multipart: true do |form| %>
+  <div class="space-y-6 bg-white p-6 rounded-xl shadow-lg">
+
+    <!-- Nội dung -->
+    <div>
+      <%= form.label :content, "Nội dung", class: "block font-medium mb-1" %>
+      <%= form.text_field :content,
+            class: "w-full border border-gray-300 rounded-lg px-3 py-4 focus:ring focus:ring-blue-300 focus:outline-none" %>
+    </div>
+
+    <!-- Ảnh văn phòng thiết kế -->
+    <div>
+      <%= form.label :image, "Ảnh", class: "block font-medium mb-1" %>
+      <%= form.file_field :image,
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 bg-white" %>
+    </div>
+
+    <!-- Nút Lưu -->
+    <div class="pt-4">
+      <%= form.submit "Lưu",
+            class: "w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition" %>
+    </div>
+
+  </div>
+<% end %>
+
+<!-- Hiển thị ảnh hiện tại nếu có -->
+<% if @design_office.image.attached? %>
+  <div class="mt-6 flex flex-col items-center space-y-2">
+    <p class="font-medium">Ảnh hiện tại:</p>
+    <%= image_tag @design_office.image, class: "w-64 h-auto border rounded" %>
+  </div>
+<% end %>

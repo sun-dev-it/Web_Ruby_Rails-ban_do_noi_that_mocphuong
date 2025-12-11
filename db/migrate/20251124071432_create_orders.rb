@@ -4,6 +4,7 @@ class CreateOrders < ActiveRecord::Migration[8.0]
       t.references :user, null: false, foreign_key: true
       t.decimal :total_price
       t.string :status, default: "pending"
+      t.text :phone
 
       t.timestamps
     end

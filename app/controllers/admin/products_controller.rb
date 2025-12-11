@@ -3,7 +3,7 @@ class Admin::ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.order(created_at: :desc).limit(10)
     @product = Product.new
   end
 

@@ -1,59 +1,88 @@
-<div class="flex justify-center">
-  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
-    <h1 class="text-2xl font-bold mb-6 text-center">Chi tiết đơn hàng </h1>
+<%= link_to "← Quay lại", admin_orders_path,
+      class:"text-blue-600 hover:text-blue-800 m-6 inline-block" %>
 
-    <p><strong>Khách hàng:</strong> <%= @order.user.name %></p>
+<div class="flex justify-center py-10">
+  <div class="sm:w-[90%] w-[95%] bg-white rounded-xl shadow-lg p-6 sm:p-10">
+
+    <!-- Tiêu đề -->
+    <h1 class="text-2xl font-bold mb-6 text-center">Chi tiết đơn hàng</h1>
+
+    <!-- Thông tin khách hàng -->
+    <div class="mb-6 space-y-2">
+      <p><strong>Khách hàng:</strong> <%= @order.user.name %></p>
+      <p><strong>Số điện thoại:</strong> <%= @order.user.phone %></p>
+      <p><strong>Email:</strong> <%= @order.user.email %></p>
+      <p><strong>Tổng tiền:</strong> <%= number_to_currency(@order.total_price, unit: "VND", delimiter: ",") %></p>
+    </div>
+
+    <!-- Form cập nhật trạng thái -->
     <%= form_with model: [:admin, @order], local: true do |f| %>
-      <div>
-        <%= f.label :status, "Trạng thái" %><br>
+      <div class="mb-6">
+        <%= f.label :status, "Trạng thái", class: "block font-medium mb-1" %>
         <%= f.select :status, [
-            ["Đang chờ liên hệ"],
-            ["Đã liên hệ"],
-            ["Đang giao hàng"],
-            ["Đã giao hàng"],
-            ["Đã hủy"]
-          ] %>
+              "Đang chờ liên hệ",
+              "Đã liên hệ",
+              "Đang giao hàng",
+              "Đã giao hàng",
+              "Đã hủy"
+            ],
+            {}, 
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
       </div>
-    
-      <br>
-    
-      <%= f.submit "Cập nhật", class: "btn btn-primary" %>
+
+      <div class="mb-6">
+        <%= f.submit "Cập nhật", class: "bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition" %>
+      </div>
     <% end %>
-    
-    <p><strong>Email:</strong> <%= @order.user.email %></p>
-    <p><strong>Tổng tiền:</strong> <%= @order.total_price %> VND</p>
-    
-    <h3>Sản phẩm</h3>
-    <table border="1" cellpadding="6">
-      <thead>
-        <tr>
-          <th>Sản phẩm</th>
-          <th>Số lượng</th>
-          <th>Giá</th>
-          <th>Thành tiền</th>
-        </tr>
-      </thead>
-    
-      <tbody>
-        <% @items.each do |item| %>
+
+    <!-- Bảng sản phẩm -->
+    <h3 class="text-xl font-semibold mb-2">Sản phẩm</h3>
+    <div class="overflow-x-auto">
+      <table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-left">
+        <thead class="bg-gray-50">
           <tr>
-            <td><%= item.product.name %></td>
-            <td><%= item.quantity %></td>
-            <td><%= item.price %> VND</td>
-            <td><%= item.quantity * item.price %> VND</td>
+            <th class="px-4 py-2 text-sm font-semibold text-gray-700">Sản phẩm</th>
+            <th class="px-4 py-2 text-sm font-semibold text-gray-700">Số lượng</th>
+            <th class="px-4 py-2 text-sm font-semibold text-gray-700">Giá</th>
+            <th class="px-4 py-2 text-sm font-semibold text-gray-700">Thành tiền</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-        
-    <% @order.order_histories.each do |history| %>
-       <tr>
-         <td><%= history.user.name %></td>
-         <td><%= history.previous_status %> -> <%= history.new_status %></td>
-         <td><%= history.created_at.strftime("%d/%m/%Y %H:%M") %></td>
-       </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <% @items.each do |item| %>
+            <tr>
+              <td class="px-4 py-2"><%= item.product.name %></td>
+              <td class="px-4 py-2"><%= item.quantity %></td>
+              <td class="px-4 py-2"><%= number_to_currency(item.price, unit: "VND", delimiter: ",") %></td>
+              <td class="px-4 py-2"><%= number_to_currency(item.quantity * item.price, unit: "VND", delimiter: ",") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Lịch sử trạng thái -->
+    <% if @order.order_histories.any? %>
+      <h3 class="text-xl font-semibold mt-6 mb-2">Lịch sử trạng thái</h3>
+      <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-200 divide-y divide-gray-200 text-left">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-4 py-2 text-sm font-semibold text-gray-700">Người cập nhật</th>
+              <th class="px-4 py-2 text-sm font-semibold text-gray-700">Trạng thái</th>
+              <th class="px-4 py-2 text-sm font-semibold text-gray-700">Ngày</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <% @order.order_histories.each do |history| %>
+              <tr>
+                <td class="px-4 py-2"><%= history.user.name %></td>
+                <td class="px-4 py-2"><%= history.previous_status %> → <%= history.new_status %></td>
+                <td class="px-4 py-2"><%= history.created_at.in_time_zone("Asia/Ho_Chi_Minh").strftime("%d/%m/%Y %H:%M") %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     <% end %>
-    
-    <%= link_to "← Quay lại", admin_orders_path %>
   </div>
 </div>

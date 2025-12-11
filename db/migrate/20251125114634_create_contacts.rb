@@ -4,6 +4,7 @@ class CreateContacts < ActiveRecord::Migration[8.0]
       t.string :fb
       t.string :zalo
       t.string :phone
+      t.string :gmail
       t.string :address
 
       t.timestamps

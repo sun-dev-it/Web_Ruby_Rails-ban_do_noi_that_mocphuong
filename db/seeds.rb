@@ -224,7 +224,8 @@ contactData = Contact.first_or_create!(
   fb: "https://www.facebook.com/",
   zalo: "0123456789",
   phone: "0123456789",
-  address: "Địa chỉ",
+  gmail: "admin@gmail.com",
+  address: "Hồ Chí Minh",
 )
 
 contactData.image.attach(

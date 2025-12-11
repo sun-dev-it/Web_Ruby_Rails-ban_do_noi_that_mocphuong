@@ -1,34 +1,55 @@
 <%= form_with model: [:admin, @user], local: true do |f| %>
-  <div>
+  <div class="space-y-6 bg-white p-6 rounded-xl shadow-lg">
+
+    <!-- TIÊU ĐỀ -->
+    <h2 class="text-2xl font-semibold text-gray-700 mb-4 text-center">
+      Thông tin Admin
+    </h2>
+
+    <!-- Tên -->
     <div>
-      <%= f.label :name, "Tên"%>
-      <%= f.text_field :name %>
+      <%= f.label :name, "Tên", class: "block font-medium mb-1" %>
+      <%= f.text_field :name,
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
     </div>
 
+    <!-- Email -->
     <div>
-      <%= f.label :email, "Email" %>
-      <%= f.email_field :email %>
+      <%= f.label :email, "Email", class: "block font-medium mb-1" %>
+      <%= f.email_field :email,
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
     </div>
 
+    <!-- Vai trò -->
     <div>
-      <%= f.label :role, "Vai trò" %>
+      <%= f.label :role, "Vai trò", class: "block font-medium mb-1" %>
       <%= f.select :role,
-            ["Quản lí đơn hàng", "Quản lí web"] %>
+            ["Quản lí đơn hàng", "Quản lí web"],
+            { prompt: "Chọn vai trò" },
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 bg-white focus:ring focus:ring-blue-300 focus:outline-none" %>
     </div>
 
-
+    <!-- Mật khẩu -->
     <div>
-      <%= f.label :password, "Mật khẩu"%>
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.label :password, "Mật khẩu", class: "block font-medium mb-1" %>
+      <%= f.password_field :password,
+            autocomplete: "new-password",
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
     </div>
 
+    <!-- Xác nhận mật khẩu -->
     <div>
-      <%= f.label :password_confirmation, "Xác nhận mật khẩu" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.label :password_confirmation, "Xác nhận mật khẩu", class: "block font-medium mb-1" %>
+      <%= f.password_field :password_confirmation,
+            autocomplete: "new-password",
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
     </div>
 
-    <div>
-      <%= f.submit "Đăng ký" %>
+    <!-- Nút Đăng ký -->
+    <div class="pt-4">
+      <%= f.submit "Đăng ký",
+            class: "w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition" %>
     </div>
+
   </div>
 <% end %>

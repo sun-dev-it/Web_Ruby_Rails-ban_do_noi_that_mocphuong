@@ -47,9 +47,12 @@
       <%= yield %>
     </main> 
 
+    <%= render "items/name_web" %>
+
     <div style="background-color: <%= Color.first&.footer || '#ffffff' %>;">
       <%= render "layouts/footer" %>
     </div>
+
 
     <%= render "script/application" %>
 

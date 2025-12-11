@@ -1,26 +1,46 @@
-<%= render "form", decoration: @decoration %>
+<%= link_to "← Quay lại", admin_dashboard_path,
+      class:"text-blue-600 hover:text-blue-800 m-6 inline-block" %>
+            
+<div class="flex justify-center">
+  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Quản lí trang trí</h1>
 
-<ul class="mt-4 space-y-2">
-  <% @decorations.each do |decoration| %>
-    <li>
-      <%= decoration.name %>
-      <% if decoration.content %>
-        <%= decoration.content %>
-      <% else %>
-        <p>Không có mô tả</p>
+    <!-- Form tạo/chỉnh sửa decoration -->
+    <%= render "form", decoration: @decoration %>
+
+    <!-- Danh sách decoration vừa thêm/chỉnh sửa -->
+    <ul class="mt-6 space-y-4">
+      <p class="font-bold">Decoration vừa thêm/chỉnh sửa</p>
+      <% @decorations.each do |decoration| %>
+        <li class="border rounded-lg p-4 space-y-2">
+          <div class="flex justify-between items-start">
+            <div>
+              <p class="font-semibold"><%= decoration.name %></p>
+              <% if decoration.content.present? %>
+                <p class="text-gray-700"><%= decoration.content %></p>
+              <% else %>
+                <p class="text-gray-400">Không có mô tả</p>
+              <% end %>
+            </div>
+
+            <!-- Ảnh decoration -->
+            <% if decoration.image.attached? %>
+              <%= image_tag decoration.image, class: "w-32 h-32 object-cover rounded border" %>
+            <% else %>
+              <p class="text-gray-400">Không có hình ảnh</p>
+            <% end %>
+          </div>
+
+          <!-- Nút Sửa/Xóa -->
+          <div class="flex space-x-4 justify-end">
+            <%= link_to "Sửa", edit_admin_decoration_path(decoration),
+                  class: "px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition" %>
+            <%= button_to "Xóa", admin_decoration_path(decoration),
+                  method: :delete,
+                  class: "px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition" %>
+          </div>
+        </li>
       <% end %>
-      <% if decoration.image.attached? %>
-        <%= image_tag decoration.image, class: "w-48 h-48 object-cover" %>
-      <% else %>
-        <p>Không có hình ảnh</p>
-      <% end %>
-      
-      <%= link_to "Sửa", edit_admin_decoration_path(decoration) %> |
-      <%= button_to "Xóa",
-      admin_decoration_path(decoration),
-      method: :delete %>
-
-    </li>
-  <% end %>
-</ul>
-
+    </ul>
+  </div>
+</div>

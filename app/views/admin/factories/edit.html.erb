@@ -1,27 +1,11 @@
-<div>
-    
-    <%= form_with model: [:admin, @factory], local: true do |form| %>
-   
-      <div class="field">
-          <%= form.label :content %>
-          <%= form.text_field :content %>
-      </div>
-      <div class="field">
-          <%= form.label :image, "Ảnh" %>
-          <%= form.file_field :image %>
-      </div>
-      
-      <div>
-        <%= form.submit "Lưu", class: "bg-blue-600 text-white px-4 py-2 rounded" %>
-      </div>
-      </div>
-    <% end %>
+<%= link_to "← Quay lại", admin_dashboard_path,
+      class:"text-blue-600 hover:text-blue-800 m-6 inline-block" %>
+        
+<div class="flex justify-center">
+  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Cập nhật xưởng sản xuất</h1>
 
-    <% if @factory.image.attached? %>
-      <div>
-        <p>Ảnh hiện tại:</p>
-        <%= image_tag @factory.image, class: "w-64 h-auto border rounded" %>
-      </div>
-    <% end %>
+      <%= render "form" %>
+
+  </div>
 </div>
-

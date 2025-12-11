@@ -4,7 +4,7 @@
       
 <% if @cart_items.empty? %>
   <p>Giỏ hàng trống!</p>
-  <%= link_to "Quay lại mua hàng", products_path %>
+  <%= link_to "Quay lại", user_path(current_user) %>
 <% else %>
 
 

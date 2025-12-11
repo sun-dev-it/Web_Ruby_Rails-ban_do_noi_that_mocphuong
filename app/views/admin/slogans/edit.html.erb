@@ -1,15 +1,11 @@
-<h1>Chỉnh sửa Slogan</h1>
+<%= link_to "← Quay lại", admin_dashboard_path,
+      class:"text-blue-600 hover:text-blue-800 m-6 inline-block" %>
+        
+<div class="flex justify-center">
+  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Chỉnh sửa Slogan</h1>
 
-<%= form_with model: @slogan, url: admin_slogan_path, local: true, method: :patch do |f| %>
-  <div>
-    <%= f.label :content, "Nội dung Slogan" %><br>
-    <%= f.text_area :content, rows: 3 %>
+      <%= render "form" %>
 
-    <%= f.label :image, "Logo" %>
-    <%= f.file_field :image %>
   </div>
-
-  <div>
-    <%= f.submit "Cập nhật" %>
-  </div>
-<% end %>
+</div>

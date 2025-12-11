@@ -1,1 +1,7 @@
-<%= render "form", project_information: @project_information %>
+<div class="flex justify-center">
+  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Sửa thông tin dự án</h1>
+    <%= render "form", project_information: @project_information %>
+    <%= link_to "← Quay lại", admin_project_informations_path, class:"text-blue-600 hover:text-blue-800"%>
+  </div>
+</div>

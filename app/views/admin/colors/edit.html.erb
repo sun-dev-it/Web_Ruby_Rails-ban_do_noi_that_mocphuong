@@ -1,34 +1,11 @@
-<h1>Chỉnh sửa màu sắc</h1>
-<%= form_with model: [:admin, @color], local: true do |f| %>
-  <div class="space-y-4 max-w-md">
+<%= link_to "← Quay lại", admin_dashboard_path,
+      class:"text-blue-600 hover:text-blue-800 m-6 inline-block" %>
+        
+<div class="flex justify-center">
+  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Chỉnh sửa màu sắc</h1>
 
-    <!-- Nền chính -->
-    <div>
-      <%= f.label :background, "Màu nền chính", class: "block font-semibold mb-1" %>
-      <%= f.color_field :background, value: @color.background, class: "w-full h-10" %>
-    </div>
-
-    <!-- Nền phụ -->
-    <div>
-      <%= f.label :background1, "Màu nền phụ", class: "block font-semibold mb-1" %>
-      <%= f.color_field :background1, value: @color.background1, class: "w-full h-10" %>
-    </div>
-
-    <!-- Header -->
-    <div>
-      <%= f.label :header, "Màu header", class: "block font-semibold mb-1" %>
-      <%= f.color_field :header, value: @color.header, class: "w-full h-10" %>
-    </div>
-
-    <!-- Footer -->
-    <div>
-      <%= f.label :footer, "Màu footer", class: "block font-semibold mb-1" %>
-      <%= f.color_field :footer, value: @color.footer, class: "w-full h-10" %>
-    </div>
-
-    <div>
-      <%= f.submit "Cập nhật màu sắc", class: "bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-500 transition" %>
-    </div>
+      <%= render "form" %>
 
   </div>
-<% end %>
+</div>

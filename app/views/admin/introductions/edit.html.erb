@@ -1,23 +1,11 @@
-<%= form_with model: @introduction, url: admin_introduction_path, local: true, method: :patch, multipart: true do |f| %>
-  <div>
-    <%= f.label :content, "Lời giới thiệu trang home" %><br>
-    <%= f.text_area :content, rows: 10, cols: 80 %>
-  </div>
-  <div>
-    <%= f.label :image, "Ảnh trang chủ" %>
-    <%= f.file_field :image %>
-  </div>
-  <div>
-    <%= f.label :link_video, "Link Video YouTube home" %><br>
-    <%= f.text_field :link_video, size: 80 %>
-  </div>
+<%= link_to "← Quay lại", admin_dashboard_path,
+      class:"text-blue-600 hover:text-blue-800 m-6 inline-block" %>
+        
+<div class="flex justify-center">
+  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">Cập nhật trang chủ</h1>
 
-  <div>
-    <%= f.submit "Cập nhật" %>
+      <%= render "form" %>
+
   </div>
-<% end %>
-
-
-<% if @introduction.image.attached? %>
-  <%= image_tag @introduction.image, class: "w-48 h-48 object-cover" %>
-<% end %>
+</div>
