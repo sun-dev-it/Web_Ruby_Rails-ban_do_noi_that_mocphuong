@@ -44,7 +44,7 @@ module Admin
     end
 
     def order_params
-      params.require(:order).permit(:status)
+      params.require(:order).permit(:status, :address)
     end
   end
 end

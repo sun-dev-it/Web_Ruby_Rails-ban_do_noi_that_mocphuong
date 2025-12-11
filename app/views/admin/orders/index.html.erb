@@ -7,6 +7,14 @@
 
     <div x-data="{ tab: 0 }">
 
+      <% status_labels = {
+        Waiting: "Đang chờ liên hệ",
+        Contacted: "Đã liên hệ",
+        Delivering: "Đang giao hàng",
+        Delivered: "Đã giao hàng",
+        Cancelled: "Đã hủy"
+      } %>
+
       <div class="border-b mb-4 flex space-x-4">
         <% @orders_by_status.keys.each_with_index do |status, index| %>
           <button
@@ -15,10 +23,11 @@
               ? 'border-b-2 border-blue-600 text-blue-600 font-semibold' 
               : 'text-gray-600'"
             class="pb-2 px-4 text-lg hover:text-blue-600 transition">
-            <%= status %>
+            <%= status_labels[status.to_sym] || status %>
           </button>
         <% end %>
       </div>
+                  
 
       <% @orders_by_status.each_with_index do |(status, orders), index| %>
         <div x-show="tab === <%= index %>" class="mt-4">
