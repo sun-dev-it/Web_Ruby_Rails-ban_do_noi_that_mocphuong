@@ -5,6 +5,10 @@ class Admin::ProductsController < ApplicationController
   def index
     @products = Product.order(created_at: :desc).limit(10)
     @product = Product.new
+
+    if params[:id].present?
+      @products_search = Product.where(id: params[:id])
+    end
   end
 
   def new

@@ -7,6 +7,25 @@
 
       <%= render "form", product: @product %>
 
+      <%= form_with url: admin_products_path, method: :get, local: true, class: "mb-6 flex justify-center" do %>
+        <input type="number" name="id" placeholder="Nhập ID sản phẩm"
+               class="border rounded-l px-4 py-2 w-40" />
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-r hover:bg-blue-700">
+          Tìm
+        </button>
+      <% end %>
+
+      <ul class="mt-4 space-y-2">
+        <li>
+          <%= @products_search.name %> - <%= @products_search.category&.name %>
+          <div class="flex w-full justify-end"
+            <%= link_to "Sửa", edit_admin_product_path(@products_search) %> |
+            <%= link_to "Xóa", admin_product_path(@products_search),
+                  data: { turbo_method: :delete } %>
+          </div>
+        </li>
+      </ul>
+
       <ul class="mt-4 space-y-2">
         <p class="font-bold"> Sản phẩm vừa thêm/chỉnh sửa </p>
         <% @products.each do |product| %>

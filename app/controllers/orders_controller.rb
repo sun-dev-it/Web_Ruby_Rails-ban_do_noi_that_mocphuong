@@ -15,7 +15,8 @@ class OrdersController < ApplicationController
     phone_number = params[:phone]
     order = current_user.orders.create!(
       total_price: total,
-      status: "Đang chờ liên hệ"
+      status: "Đang chờ liên hệ",
+      phone: phone_number
     )
 
     cart_items.each do |i|
