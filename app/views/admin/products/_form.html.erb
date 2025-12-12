@@ -58,7 +58,7 @@
 
 
 <% if @product.images.attached? %>
-  <div class="space-y-4 mt-6">
+  <div class="grid grid-cols-3 gap-4 mt-6">
     <% @product.images.each do |image| %>
       <div class="flex items-center space-x-4">
         

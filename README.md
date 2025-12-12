@@ -20,6 +20,8 @@ Alpine.js
 
 Tailwind CSS
 
+stimulus
+
 # note
 
 Reset data:

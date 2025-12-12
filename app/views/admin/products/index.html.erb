@@ -5,38 +5,40 @@
   <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
     <h1 class="text-2xl font-bold mb-6 text-center">Quản lí sản phẩm</h1>
 
-      <%= render "form", product: @product %>
+      <%= render "form", product: @product %> 
 
-      <%= form_with url: admin_products_path, method: :get, local: true, class: "mb-6 flex justify-center" do %>
+      <%= form_with url: admin_products_path, method: :get, local: true, class: "my-8 flex justify-center" do %>
         <input type="number" name="id" placeholder="Nhập ID sản phẩm"
-               class="border rounded-l px-4 py-2 w-40" />
+               class="border rounded-l px-4 py-2 w-full" />
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-r hover:bg-blue-700">
           Tìm
         </button>
       <% end %>
-
-      <ul class="mt-4 space-y-2">
-        <li>
-          <%= @products_search.name %> - <%= @products_search.category&.name %>
-          <div class="flex w-full justify-end"
-            <%= link_to "Sửa", edit_admin_product_path(@products_search) %> |
-            <%= link_to "Xóa", admin_product_path(@products_search),
-                  data: { turbo_method: :delete } %>
+              
+      <% if @products_search.present? %>
+        <div class="flex w-full">
+          <div class="flex-1"><%= @products_search.name %></div>
+          <div class="flex flex-1 w-full space-x-4 justify-end">
+            <%= link_to "Sửa", edit_admin_product_path(@products_search), class: "px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition" %>
+            <%= button_to "Xóa", admin_product_path(@products_search), method: :delete, class: "px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition" %>
           </div>
-        </li>
-      </ul>
+        </div>
+      <% end %>
+
 
       <ul class="mt-4 space-y-2">
         <p class="font-bold"> Sản phẩm vừa thêm/chỉnh sửa </p>
         <% @products.each do |product| %>
-          <li>
-            <%= product.name %> - <%= product.category&.name %>
-            <div class="flex w-full justify-end"
-              <%= link_to "Sửa", edit_admin_product_path(product) %> |
-              <%= link_to "Xóa", admin_product_path(product),
-                    data: { turbo_method: :delete } %>
+          <div class="flex w-full">
+            <div class="flex-1"><%= product.name %></div>
+            <div class="flex flex-1 w-full space-x-4 justify-end">
+              <%= link_to "Sửa", edit_admin_product_path(product),
+                    class: "px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition" %>
+              <%= button_to "Xóa", admin_product_path(product),
+                    method: :delete,
+                    class: "px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition" %>
             </div>
-          </li>
+          </div>
         <% end %>
       </ul>
   </div>
