@@ -84,7 +84,6 @@
 }
 
 
-
 /* Custom scrollbar */
 .custom-scroll {
   scrollbar-width: thin;               /* Firefox */
@@ -106,4 +105,17 @@
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+
+
+
+
+@keyframes slide-down-promotion {
+  0%   { opacity: 0; transform: translateY(-25px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-down {
+  animation: slide-down-promotion 0.8s ease-out;
 }

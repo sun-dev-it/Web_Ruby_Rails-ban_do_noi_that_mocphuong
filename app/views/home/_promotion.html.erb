@@ -21,11 +21,12 @@
         </div>
 
         
-        <div class="flex justify-center">
-            <% if promotion.image.attached? %>
-              <%= image_tag promotion.image, class: "w-full object-cover" %>
-            <% end %>
+        <div class="flex flex-col justify-center">
+          <% if promotion.image.attached? %>
+            <%= image_tag promotion.image, class: "w-full object-cover opacity-0 translate-y-6 transition-all duration-700 scroll-fade-promotion" %>
+          <% end %>
         </div>
+
 
 
         <div class="m-6 text-center">
@@ -47,3 +48,6 @@
     </div>
   <% end %>
 </div>
+
+
+<%= render "script/promotion" %>
