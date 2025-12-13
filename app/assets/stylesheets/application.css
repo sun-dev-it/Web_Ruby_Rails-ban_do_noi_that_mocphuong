@@ -161,7 +161,7 @@
     transform: scale(1.05) translateX(0);
   }
   50% {
-    transform: scale(1.08) translateX(-60px);
+    transform: scale(1.08) translateX(-40px);
   }
   100% {
     transform: scale(1.05) translateX(0);
