@@ -7,7 +7,10 @@ module.exports = {
     "./app/javascript/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        gilroy: ['Gilroy', 'sans-serif'],
+      },
+    },
   },
-  plugins: [],
 }

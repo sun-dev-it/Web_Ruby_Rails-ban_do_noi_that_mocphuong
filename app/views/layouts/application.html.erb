@@ -42,12 +42,10 @@
 
     <%= render "layouts/page_hidden_list" %>
 
-    <main class="flex-1" 
-          style="background-color: <%= Color.first&.background || '#ffffff' %>;">
+    <main class="flex-1" style="background-color: <%= Color.first&.background || '#ffffff' %>;">
       <%= yield %>
     </main> 
 
-    <%= render "items/name_web" %>
 
     <div class="w-full" style="background-color: <%= Color.first&.footer || '#ffffff' %>;">
       <%= render "layouts/footer" %>

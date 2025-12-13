@@ -3,10 +3,9 @@
 <div class="flex justify-center">
   <div class="w-[90%] sm:w-[80%] z-47">
 
-    <!-- Phần mô tả -->
     <div style="<%= bg_rgba(Color.first&.background1, 0.8) %>;"
          class="py-4 md:py-8 px-6 md:px-12 min-h-[200px] shadow-lg mt-[-80px] md:mt-[-120px] backdrop-blur-md">
-      <div class="text-base md:text-lg leading-relaxed italic text-center md:text-justify">
+      <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
         <%= simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
       </div>
     </div>
@@ -30,41 +29,89 @@
 
 
     <!-- Danh sách project -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-
-      <% @project_informations.each do |project_information| %>
-        <%= link_to project_information_path(project_information.id) do %>
-
-          <div class="group my-2">
-            <div class="relative overflow-hidden shadow-lg">
-
-              <% if project_information.image.attached? %>
-                <%= image_tag project_information.image,
-                    class: "w-full aspect-[4/3] object-cover transform transition duration-500 group-hover:scale-110" %>
-              <% end %>
-
-              <!-- Overlay đẹp với gradient tối -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
-                          opacity-0 group-hover:opacity-100 transition duration-500
-                          flex items-end p-5">
-                <p class="text-white text-lg font-medium translate-y-5
-                          group-hover:translate-y-0 transition duration-500">
-                  <%= truncate(project_information.content, length: 120) %>
-                </p>
-              </div>
-
-            </div>
-
-            <!-- Tên project -->
-            <div class="font-semibold text-xl text-center mt-4 text-gray-900">
-              <%= project_information.name %>
-            </div>
-          </div>
-
-        <% end %>
-      <% end %>
-
-    </div>
+    <%= render "project_informations" %>
 
   </div>
 </div>
+
+
+
+
+
+<section class="py-28 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- Title -->
+    <div class="text-center mb-20 scroll-fade-promotion opacity-0 translate-y-6 transition-all duration-700">
+      <p class="text-xs tracking-[0.35em] text-gray-400 mb-4">
+        WORKFLOW
+      </p>
+
+      <h2 class="text-3xl md:text-4xl font-light text-gray-900 tracking-wide">
+        Quy trình làm việc
+      </h2>
+
+      <div class="mt-6 flex justify-center">
+        <span class="w-20 h-[2px] bg-[#FFD2B8]"></span>
+      </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-10 text-center">
+
+      <% steps = [
+        ["01", "Tư vấn", "Lắng nghe nhu cầu & tư vấn giải pháp phù hợp"],
+        ["02", "Thiết kế", "Lên ý tưởng, bản vẽ & phối cảnh chi tiết"],
+        ["03", "Sản xuất", "Gia công trực tiếp tại xưởng"],
+        ["04", "Thi công", "Lắp đặt chuẩn xác, đúng tiến độ"],
+        ["05", "Bàn giao", "Hoàn thiện & nghiệm thu"]
+      ] %>
+
+      <% steps.each_with_index do |step, i| %>
+        <div
+          class="group scroll-fade-promotion opacity-0 translate-y-6
+                 transition-all duration-700 hover:-translate-y-2"
+          style="transition-delay: <%= i * 120 %>ms;">
+
+          <div class="mx-auto w-14 h-14 flex items-center justify-center
+                      rounded-full border border-gray-300
+                      text-sm tracking-widest text-gray-400
+                      group-hover:border-[#FFD2B8]
+                      group-hover:text-[#FFD2B8]
+                      transition">
+            <%= step[0] %>
+          </div>
+
+          <h3 class="mt-6 text-lg font-medium text-gray-900">
+            <%= step[1] %>
+          </h3>
+
+          <p class="mt-3 text-gray-500 text-sm leading-relaxed">
+            <%= step[2] %>
+          </p>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".scroll-fade-promotion");
+
+  function reveal() {
+    elements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 80) {
+        el.classList.remove("opacity-0", "translate-y-6");
+        el.classList.add("opacity-100", "translate-y-0");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", reveal);
+  reveal();
+});
+</script>

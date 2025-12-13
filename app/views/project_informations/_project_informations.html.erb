@@ -1,0 +1,36 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-10">
+    <% @project_informations.each do |project_information| %>
+        <%= link_to project_information_path(project_information.id) do %>
+
+          <div class="group my-2">
+            <div class="relative overflow-hidden shadow-lg">
+
+              <% if project_information.images.attached? %>
+                <%= render "project_informations/image_items", project_information: project_information %>
+              <% end %>
+
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
+                          opacity-0 group-hover:opacity-100 transition duration-500
+                          flex items-end p-5">
+                <p class="text-white text-lg font-normal italic translate-y-5
+                          group-hover:translate-y-0 transition duration-500">
+                  <%= truncate(project_information.content, length: 120) %>
+                </p>
+              </div>
+
+            </div>
+
+            <div class="font-semibold text-xl text-center mt-4 text-gray-800 group-hover:text-gray-900">
+              <%= project_information.name %>
+            </div>
+          </div>
+
+        <% end %>
+
+
+    <% end %>
+
+</div>
+
+
+<%= render "script/library/alpine" %>

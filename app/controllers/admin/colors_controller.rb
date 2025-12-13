@@ -18,7 +18,7 @@ module Admin
     private
 
     def color_params
-      params.require(:color).permit(:bachground, :background1, :header, :footer)
+      params.require(:color).permit(:background, :background1, :header, :footer)
     end
   end
 end

@@ -148,7 +148,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_08_184915) do
     t.integer "price"
     t.text "description"
     t.integer "discount", default: 0
-    t.text "size"
+    t.string "size"
+    t.string "material"
+    t.boolean "featured", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "category_id", null: false

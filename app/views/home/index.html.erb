@@ -1,7 +1,77 @@
-<%= render "home/image_main" %>
-<div class="flex justify-center">
-  <%= render "home/introduction" %>
+<div id="image-wrapper" class="relative w-full h-[80vh] sm:min-h-screen overflow-hidden">
+  <div
+    class="absolute inset-0 bg-cover bg-center animate-bg-move-about_us"
+    style="background-image: url('<%= url_for(@introduction.image) if @introduction.image.attached? %>');">
+  </div>
+
+  <div class="relative mt-20 z-10 h-full flex items-center justify-center text-center px-6">
+    <div>
+      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">
+        INTRODUCTION
+      </p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-white">
+        Giới thiệu
+      </h1>
+    </div>
+  </div>
+
+  <div class="absolute inset-0 left-door bg-black/90 origin-left"></div>
+  <div class="absolute inset-0 right-door bg-black/90 origin-right"></div>
 </div>
-<div class="flex justify-center">
-  <%= render "home/promotion" %>
+
+  <div class="flex justify-center">
+    <%= render "home/introduction" %>
+  </div>
+  <div class="flex justify-center">
+    <%= render "home/promotion" %>
+  </div>
+
+<div class="text-center mt-10 mb-10">
+  <h2 class="text-2xl md:text-3xl font-gilroy tracking-wide"
+      style="color: <%= Color.first&.header || '#ffffff' %>;">
+    <span class="inline-block relative">
+        
+      Sản phẩm nổi bật
+        
+      <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
+            style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+      </span>
+        
+    </span>
+  </h2>
+
+  <%= render "categories/product" %>
 </div>
+
+
+<section class="relative min-h-screen flex items-center overflow-hidden">
+
+  <!-- Background animated -->
+  <div
+    class="absolute inset-0 bg-cover bg-center animate-bg-pan"
+    style="background-image: url('<%= url_for(@projectInformationInfor.image) if @projectInformationInfor.image.attached? %>');">
+  </div>
+
+  <!-- Overlay tối -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-4xl mx-auto text-center text-white px-6">
+    <h1 class="text-4xl md:text-6xl font-light tracking-wide leading-tight">
+      Không gian sống <br>
+      <span class="font-semibold">được thiết kế để cảm nhận</span>
+    </h1>
+
+    <p class="mt-6 text-lg text-white/80">
+      Thiết kế – Sản xuất – Thi công nội thất trọn gói
+    </p>
+
+    <div class="mt-10">
+      <%= link_to "Xem dự án", project_informations_path,
+        class: "inline-block px-10 py-4 border border-white text-sm tracking-widest
+                hover:bg-white hover:text-black transition" %>
+    </div>
+  </div>
+
+</section>
+

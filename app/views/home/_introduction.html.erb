@@ -1,26 +1,17 @@
 <div class="flex justify-center px-4 md:px-0">
   <div style="<%= bg_rgba(Color.first&.background1, 0.8) %>;" 
-       class="w-[90%] md:w-[80%] backdrop-blur-sm py-6 md:py-10 px-6 md:px-12 shadow-xl mt-[-80px] md:mt-[-140px] z-40">
+       class="w-[90%] md:w-[80%] backdrop-blur-sm py-6 md:py-10 px-6 md:px-12 shadow-xl -mt-[20%] sm:-mt-[25%] z-40">
 
-    <!-- Tiêu đề -->
-    <div style="color: <%= Color.first&.header || '#ffffff' %>;"
-         class="text-3xl md:text-4xl font-semibold text-center mb-4 tracking-wide">
-      GIỚI THIỆU
-    </div>
-
-    <!-- Gạch nhỏ dưới tiêu đề -->
     <div class="flex justify-center mb-6">
       <div class="w-16 h-[3px] rounded-full" 
            style="background-color: <%= Color.first&.header || '#ffffff' %>;">
       </div>
     </div>
 
-    <!-- Nội dung -->
-    <div class="text-base md:text-lg leading-relaxed italic text-center md:text-justify">
+    <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
       <%= raw simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
     </div>
 
-    <!-- Video -->
     <% if @introduction&.link_video.present? %>
       <div class="mt-6 md:mt-10 flex justify-center">
         <iframe 

@@ -1,13 +1,21 @@
 module ApplicationHelper
   def header_link(name, path)
-    active = current_page?(path) ? "after:w-full after:bg-white" : "after:w-0 after:bg-transparent"
+    is_active = current_page?(path)
+  
+    text_color = is_active ? "text-[#853a00]" : "text-white"
+    underline = is_active ? "after:scale-x-100 after:bg-[#853a00]"
+                          : "after:scale-x-0 after:bg-transparent"
+  
     link_to name, path,
-      class: "relative pb-2 text-white 
-              after:absolute after:left-0 after:bottom-0 after:h-[2px] 
-              after:transition-all after:duration-300 
-              hover:after:w-full hover:after:bg-white
-              #{active}"
+      class: "relative pb-2 #{text_color}
+              after:absolute after:left-0 after:bottom-0 after:h-[2px]
+              after:w-full after:origin-left
+              after:transform after:transition-transform after:duration-300
+              hover:after:scale-x-100 hover:after:bg-white
+              #{underline}"
   end
+
+
 
   def bg_rgba(hex_color, opacity)
     return "" if hex_color.blank?
@@ -22,13 +30,15 @@ module ApplicationHelper
   end
 
   def header_hidden_link(name, path)
-    active = current_page?(path) ? "after:w-full after:bg-white" : "after:w-0 after:bg-transparent"
+    is_active = current_page?(path)
+
+    text_color = is_active ? "text-gray-900 font-semibold" : "text-gray-600"
+    bg_active  = is_active ? "bg-gray-100 rounded-lg px-3 py-2" : "px-3 py-2"
+
     link_to name, path,
-      class: "relative pb-2 text-black 
-              after:absolute after:left-0 after:bottom-0 after:h-[2px] 
-              after:transition-all after:duration-300 
-              hover:after:w-full hover:after:bg-white
-              #{active}"
+      class: "relative block transition-colors duration-200
+              #{text_color} #{bg_active}
+              hover:bg-gray-100 hover:rounded-lg hover:text-gray-900"
   end
 
 end

@@ -1,0 +1,114 @@
+<div class="relative min-h-screen overflow-hidden w-full">
+
+  <!-- Background animated -->
+  <div
+    class="absolute inset-0 bg-cover bg-center animate-bg-move-about_us"
+    style="background-image: url('<%= url_for(@design_office.image) if @design_office.image.attached? %>');">
+  </div>
+
+<div class="absolute inset-0 bg-black/50
+            animate-overlay-fade"></div>
+
+  <div class="w-full max-w-7xl mx-auto px-6 mt-[-20px]">
+
+    <div class="text-center mt-20 mb-15 animate-fade-up">
+      <p class="text-xs tracking-[0.35em] text-gray-300 mb-4">
+        ABOUT US
+      </p>
+
+      <h1 class="text-3xl md:text-4xl font-semibold text-gray-200 tracking-wide">
+        VỀ CHÚNG TÔI
+      </h1>
+
+      <div class="mt-6 flex justify-center">
+        <span class="w-20 h-[2px] bg-[#FFD2B8]"></span>
+      </div>
+
+      <p class="mt-6 mb-2 text-gray-200 max-w-2xl mx-auto leading-relaxed">
+        Giải pháp nội thất trọn gói – từ ý tưởng đến không gian hoàn thiện.
+      </p>
+    </div>
+
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- CARD -->
+      <%= link_to contact_path,
+        class: "group card-animate border border-gray-100 rounded-2xl p-10
+                transition-all duration-500 bg-[rgba(0,0,0,0.2)]
+                hover:-translate-y-2 hover:shadow-2xl
+                hover:border-[#c49980]" do %>
+
+        <span class="text-sm tracking-widest text-gray-300">
+          01
+        </span>
+
+        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+          Liên hệ
+        </h2>
+
+        <p class="mt-4 text-gray-300 leading-relaxed">
+          Tư vấn nhanh chóng, hỗ trợ chi tiết và đồng hành
+          xuyên suốt dự án của bạn.
+        </p>
+
+        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
+          <span class="mr-2">Xem chi tiết</span>
+          <span class="transform transition group-hover:translate-x-2">→</span>
+        </div>
+      <% end %>
+
+      <%= link_to factory_path,
+        class: "group card-animate border border-gray-100 rounded-2xl p-10
+                transition-all duration-500 delay-100 bg-[rgba(0,0,0,0.2)]
+                hover:-translate-y-2 hover:shadow-2xl
+                hover:border-[#c49980]" do %>
+
+        <span class="text-sm tracking-widest text-gray-300">
+          02
+        </span>
+
+        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+          Xưởng sản xuất
+        </h2>
+
+        <p class="mt-4 text-gray-300 leading-relaxed">
+          Sản xuất trực tiếp giúp kiểm soát chất lượng,
+          tiến độ và chi phí hiệu quả.
+        </p>
+
+        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
+          <span class="mr-2">Xem chi tiết</span>
+          <span class="transform transition group-hover:translate-x-2">→</span>
+        </div>
+      <% end %>
+
+      <%= link_to design_office_path,
+        class: "group card-animate border border-gray-100 rounded-2xl p-10
+                transition-all duration-500 delay-200 bg-[rgba(0,0,0,0.2)]
+                hover:-translate-y-2 hover:shadow-2xl
+                hover:border-[#c49980]" do %>
+
+        <span class="text-sm tracking-widest text-gray-300">
+          03
+        </span>
+
+        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+          Văn phòng thiết kế
+        </h2>
+
+        <p class="mt-4 text-gray-300 leading-relaxed">
+          Sáng tạo không gian phù hợp công năng,
+          thể hiện rõ cá tính của khách hàng.
+        </p>
+
+        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
+          <span class="mr-2">Xem chi tiết</span>
+          <span class="transform transition group-hover:translate-x-2">→</span>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

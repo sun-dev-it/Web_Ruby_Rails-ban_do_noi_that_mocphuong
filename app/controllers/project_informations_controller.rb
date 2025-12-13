@@ -6,6 +6,7 @@ class ProjectInformationsController < ApplicationController
   end
 
   def show
+    @project_informations = ProjectInformation.all
   end
 
   private

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get "requests/new"
   get "requests/create"
   root "home#index"
-
+  
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post   "login",  to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  resources :about_us, only: [:index]
   resources :products,              only: [:index, :show]
   resources :categories,            only: [:index, :show]
   resources :decorations,           only: [:index, :show]

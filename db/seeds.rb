@@ -35,7 +35,7 @@ cat1 = Category.find_or_create_by!(name: "Sofa")
 cat2 = Category.find_or_create_by!(name: "Kệ TV")
 cat3 = Category.find_or_create_by!(name: "Giường")
 
-prod1 = Product.create!(name: "Bàn ăn gỗ sồi", price: 2500000, category: cat1, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
+prod1 = Product.create!(name: "Bàn ăn gỗ sồi", featured: true, material: "Gỗ tự nhiên", price: 2500000, category: cat1, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
 prod1.images.attach(
   io: File.open(image_path),
   filename: "img.png",
@@ -62,7 +62,7 @@ prod1.images.attach(
   content_type: "image/png"
 )
 
-prod2 = Product.create!(name: "Ghế sofa vải", price: 3000000, category: cat1, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
+prod2 = Product.create!(name: "Ghế sofa vải", featured: true, price: 3000000, material: "Gỗ tự nhiên", category: cat1, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
 prod2.images.attach(
   io: File.open(image_path),
   filename: "img.png",
@@ -94,7 +94,7 @@ prod2.images.attach(
   content_type: "image/png"
 )
 
-prod3 = Product.create!(name: "Tủ quần áo gỗ công nghiệp", price: 4000000, category: cat2, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
+prod3 = Product.create!(name: "Tủ quần áo gỗ công nghiệp", featured: true, price: 4000000, material: "Gỗ tự nhiên", category: cat2, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
 prod3.images.attach(
   io: File.open(image_path),
   filename: "img.png",
@@ -126,7 +126,7 @@ prod3.images.attach(
   content_type: "image/png"
 )
 
-prod4 = Product.create!(name: "Kệ tivi hiện đại", price: 1500000, category: cat2, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
+prod4 = Product.create!(name: "Kệ tivi hiện đại", featured: true, price: 1500000, material: "Gỗ tự nhiên", category: cat2, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
 prod4.images.attach(
   io: File.open(image_path),
   filename: "img.png",
@@ -158,7 +158,7 @@ prod4.images.attach(
   content_type: "image/png"
 )
 
-prod5 = Product.create!(name: "Giường ngủ gỗ tự nhiên", price: 5000000, category: cat3, description: "Bàn ăn Coastal được làm từ gỗ Ash", size: "D1600 - R800 - C755 mm")
+prod5 = Product.create!(name: "Giường ngủ gỗ tự nhiên", featured: true, price: 5000000, material: "Gỗ tự nhiên", category: cat3, description: "Bàn ăn Coastal được làm từ gỗ Ash", size: "D1600 - R800 - C755 mm")
 prod5.images.attach(
   io: File.open(image_path),
   filename: "img.png",
@@ -269,7 +269,7 @@ slogan.image.attach(
 ######
 Color.delete_all
 Color.first_or_create!(
-  background: "#f0f0f0",
+  background: "#f8f8f8",
   background1:  "#d6d6d6",
   header:     "#FF6A2C",
   footer:     "#1F1F1F",
@@ -425,11 +425,24 @@ Tạo nên điểm nhấn nghệ thuật tổng thể bằng cách thiết kế 
 Sử dụng tối đa ánh sáng tự nhiên và xen kẽ những mảng cây xanh mang đến một không gian thoáng đãng và gần gũi.
 Inbox hoặc comment ngay Nội thất Mộc Phương nếu bạn có nhu cầu thiết kế quán cafe, nhà hàng nhé!")
   
-  projectInfor.image.attach(
-  io: File.open(image_path),
-  filename: "img.png",
-  content_type: "image/png")
+  projectInfor.images.attach(
+    io: File.open(image_path),
+    filename: "img.png",
+    content_type: "image/png")
+  
+  projectInfor.images.attach(
+    io: File.open(image_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+
+  projectInfor.images.attach(
+    io: File.open(image_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
 end
+
 
 #####
 

@@ -1,9 +1,54 @@
-<%= render "image" %>
+<div class="relative h-[80vh] w-full bg-cover bg-center"
+     style="background-image: url('<%= url_for(@design_office.image) %>')">
 
-<div class="flex justify-center mt-[-20%] sm:mt-[-25%]">
-  <div class="w-[90%] sm:w-[70%] z-[800]">
-    <div class="rounded-lg shadow-md shadow-gray-700 justify-between bg-white italic p-6 sm:p-12 space-y-4">
-      <p<%= raw @design_office.content %></p>
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
+    <div>
+      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">
+        DESIGN OFFICE
+      </p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-white">
+        Văn phòng thiết kế
+      </h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="relative -mt-40 flex justify-center">
+  <div class="w-[90%] sm:w-[70%] bg-white rounded-2xl
+              shadow-xl shadow-gray-800/15
+              p-8 sm:p-14
+              prose prose-gray max-w-none">
+    <%= raw @design_office.content %>
+  </div>
+</div>
+
+
+<div class="mt-32 mb-20 max-w-6xl mx-auto text-center">
+  <h2 class="text-3xl font-semibold mb-16">Giá trị chúng tôi theo đuổi</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div>
+      <h3 class="text-lg font-medium">Cá nhân hóa</h3>
+      <p class="text-sm text-gray-500 mt-2">
+        Mỗi thiết kế phù hợp từng không gian
+      </p>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-medium">Tính ứng dụng</h3>
+      <p class="text-sm text-gray-500 mt-2">
+        Ưu tiên trải nghiệm sử dụng thực tế
+      </p>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-medium">Đồng bộ thiết kế & thi công</h3>
+      <p class="text-sm text-gray-500 mt-2">
+        Giảm sai lệch khi triển khai
+      </p>
     </div>
   </div>
 </div>
