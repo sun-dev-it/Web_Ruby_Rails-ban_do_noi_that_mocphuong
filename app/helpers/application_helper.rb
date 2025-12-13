@@ -16,7 +16,6 @@ module ApplicationHelper
   end
 
 
-
   def bg_rgba(hex_color, opacity)
     return "" if hex_color.blank?
 

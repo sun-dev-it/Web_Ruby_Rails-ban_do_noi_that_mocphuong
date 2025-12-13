@@ -271,8 +271,8 @@ Color.delete_all
 Color.first_or_create!(
   background: "#f8f8f8",
   background1:  "#d6d6d6",
-  header:     "#FF6A2C",
-  footer:     "#1F1F1F",
+  header:     "#af3700",
+  footer:     "#af3700",
 )
 
 ######

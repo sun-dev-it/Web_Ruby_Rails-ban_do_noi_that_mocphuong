@@ -1,23 +1,122 @@
-<div id="image-wrapper" class="relative w-full h-[80vh] sm:min-h-screen overflow-hidden">
+<div id="image-wrapper" class="relative min-h-screen overflow-hidden w-full">
   <div
     class="absolute inset-0 bg-cover bg-center animate-bg-move-about_us"
     style="background-image: url('<%= url_for(@introduction.image) if @introduction.image.attached? %>');">
   </div>
 
-  <div class="relative mt-20 z-10 h-full flex items-center justify-center text-center px-6">
-    <div>
-      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">
-        INTRODUCTION
-      </p>
-      <h1 class="text-4xl md:text-5xl font-semibold text-white">
-        Giới thiệu
-      </h1>
-    </div>
-  </div>
-
   <div class="absolute inset-0 left-door bg-black/90 origin-left"></div>
   <div class="absolute inset-0 right-door bg-black/90 origin-right"></div>
+
+<div class="absolute inset-0 bg-black/50
+            animate-overlay-fade"></div>
+
+  <div class="w-full max-w-7xl mx-auto px-6 mt-[-20px]">
+
+    <div class="text-center mt-20 mb-15 animate-fade-up">
+      <p class="text-xs tracking-[0.35em] text-gray-300 mb-3">
+        INTRODUCTION
+      </p>
+
+      <h1 class="text-3xl md:text-4xl font-semibold text-gray-200 tracking-wide">
+        Giới thiệu
+      </h1>
+
+      <div class="mt-6 flex justify-center">
+        <span class="w-20 h-[2px] bg-[#FFD2B8]"></span>
+      </div>
+
+      <p class="mt-6 mb-6 text-gray-200 max-w-2xl mx-auto leading-relaxed">
+        NỘI THẤT MỘC PHƯƠNG – <%= @slogan.content %>
+      </p>
+    </div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <%= link_to categories_path,
+        class: "group card-animate border border-gray-100 rounded-2xl p-10
+                transition-all duration-500 bg-[rgba(0,0,0,0.2)]
+                hover:-translate-y-2 hover:shadow-2xl
+                hover:border-[#c49980]" do %>
+
+        <span class="text-sm tracking-widest text-gray-300">
+          01
+        </span>
+
+        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+          Sản phẩm
+        </h2>
+
+        <p class="mt-4 text-gray-300 leading-relaxed">
+          Đa dạng mẫu mã, phong cách hiện đại,
+          phù hợp xu hướng và nhu cầu thị trường.
+        </p>
+
+        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
+          <span class="mr-2">Xem thêm</span>
+          <span class="transform transition group-hover:translate-x-2">→</span>
+        </div>
+      <% end %>
+
+      <%= link_to project_informations_path,
+        class: "group card-animate border border-gray-100 rounded-2xl p-10
+                transition-all duration-500 delay-100 bg-[rgba(0,0,0,0.2)]
+                hover:-translate-y-2 hover:shadow-2xl
+                hover:border-[#c49980]" do %>
+
+        <span class="text-sm tracking-widest text-gray-300">
+          02
+        </span>
+
+        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+          Dự án
+        </h2>
+
+        <p class="mt-4 text-gray-300 leading-relaxed">
+          Thi công nội thất chất lượng cao,
+          tiến độ nhanh chóng, đúng cam kết.
+        </p>
+
+        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
+          <span class="mr-2">Xem thêm</span>
+          <span class="transform transition group-hover:translate-x-2">→</span>
+        </div>
+      <% end %>
+
+      <%= link_to decorations_path,
+        class: "group card-animate border border-gray-100 rounded-2xl p-10
+                transition-all duration-500 delay-200 bg-[rgba(0,0,0,0.2)]
+                hover:-translate-y-2 hover:shadow-2xl
+                hover:border-[#c49980]" do %>
+
+        <span class="text-sm tracking-widest text-gray-300">
+          03
+        </span>
+
+        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+          Trang trí nội thất
+        </h2>
+
+        <p class="mt-4 text-gray-300 leading-relaxed">
+          Tư vấn thiết kế và trang trí
+          không gian sống tiện nghi, thẩm mỹ.
+        </p>
+
+        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
+          <span class="mr-2">Xem chi tiết</span>
+          <span class="transform transition group-hover:translate-x-2">→</span>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
 </div>
+
+
+
+
+
+
 
   <div class="flex justify-center">
     <%= render "home/introduction" %>
@@ -41,6 +140,13 @@
   </h2>
 
   <%= render "categories/product" %>
+</div>
+
+<div class="flex justify-center mt-20">
+  <a href="#"
+     class="btn-view-more">
+    Xem thêm sản phẩm
+  </a>
 </div>
 
 
