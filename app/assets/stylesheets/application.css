@@ -206,7 +206,7 @@
 
 
 
-/* bg login */
+/* bg */
 #star-bg {
   position: fixed;
   inset: 0;
@@ -232,4 +232,12 @@
     opacity: 1;
     transform: scale(1.4);
   }
+}
+
+
+
+#meteor-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* không ảnh hưởng click */
 }
