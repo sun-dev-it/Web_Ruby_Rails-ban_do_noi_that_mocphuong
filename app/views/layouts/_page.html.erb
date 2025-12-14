@@ -1,172 +1,101 @@
-<div class="flex justify-left text-xs md:text-sm w-full space-x-4 px-1">
+<div class="hidden sm:flex justify-center text-xs md:text-sm w-full space-x-4 px-1">
 
-<div class="relative group flex items-center gap-1">
-  <%= header_link "TRANG CHỦ", root_path %>
-</div>
-
-
-
-<% column_class = @categories.size >= 12 ? "grid-cols-3" : "grid-cols-2" %>
-
-<div class="relative group flex items-center gap-1">
-
-  <%= header_link "SẢN PHẨM", categories_path %>
-
-  <!-- Mũi tên -->
-  <div class="mt-[-4px]">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-         stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-      <path stroke-linecap="round" stroke-linejoin="round"
-            d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-    </svg>
+  <div class="relative group flex items-center gap-1">
+    <%= header_link "TRANG CHỦ", root_path %>
   </div>
 
-  <div class="absolute left-1/2 -translate-x-1/2 top-full
-              p-4 z-50 
-              opacity-0 -translate-y-2 pointer-events-none
-              transition-all duration-500 ease-out
-              group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
-
-    <div class="bg-white shadow-lg w-[900px] relative">
-
-      <div class="absolute -top-1 left-1/2 -translate-x-1/2 
-                  w-3 h-3 bg-white rotate-45"></div>
-
-      <div class="p-10 grid gap-3 <%= column_class %>">
-        <% @categories.each do |category| %>
-          <%= link_to category_path(category), class: "text-gray-600 hover:text-black cursor-pointer transition text-base" do %>
-            <%= category.name %>
-          <% end %>
-        <% end %>
-
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-
-
-
-
-
-<% column_class = @project_informations.size >= 12 ? "grid-cols-3" : "grid-cols-2" %>
-
-<div class="relative group flex items-center gap-1">
-
-  <%= header_link "DỰ ÁN", project_informations_path %>
-
-  <div class="mt-[-4px]">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-         stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-      <path stroke-linecap="round" stroke-linejoin="round"
-            d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-    </svg>
-  </div>
-
-  <div class="absolute left-1/2 -translate-x-1/2 top-full p-4 z-50 
-              opacity-0 -translate-y-2 pointer-events-none
-              transition-all duration-500 ease-out
-              group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
-
-    <div class="bg-white shadow-lg w-[700px] relative">
-
-      <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
-
-      <div class="p-10 grid gap-3 <%= column_class %>">
-        <% @project_informations.each do |project_information| %>
-          <div class="text-gray-600 hover:text-black cursor-pointer transition text-base">
-            <%= link_to project_information.name, project_information_path(project_information.id) %>
-          </div>
-        <% end %>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-
-
-
-<% column_class = @decorations.size >= 12 ? "grid-cols-3" : "grid-cols-2" %>
-
-<div class="relative group flex items-center gap-1">
-
-  <%= header_link "TRANG TRÍ NỘI THẤT", decorations_path %>
-
-  <div class="mt-[-4px]">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-         stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-      <path stroke-linecap="round" stroke-linejoin="round"
-            d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+  <% column_class = @categories.size >= 12 ? "grid-cols-3" : "grid-cols-2" %>
+  <div class="relative group flex items-center gap-1">
+    <%= header_link "SẢN PHẨM", categories_path %>
+    <div class="mt-[-4px]">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
       </svg>
-  </div>
+    </div>
 
-  <div class="absolute left-1/2 -translate-x-1/2 top-full p-4 z-50 
-              opacity-0 -translate-y-2 pointer-events-none
-              transition-all duration-500 ease-out
-              group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
-
-    <div class="bg-white shadow-lg w-[900px] relative">
-
-      <div class="absolute -top-1 left-1/2 -translate-x-1/2 
-                  w-3 h-3 bg-white rotate-45"></div>
-
-      <div class="p-10 grid gap-3 <%= column_class %>">
-        <% @decorations.each do |decoration| %>
-          <div class="text-gray-600 hover:text-black cursor-pointer transition text-base">
-            <%= link_to decoration.name, decoration_path(decoration) %>
-          </div>
-        <% end %>
+    <div class="absolute left-1/2 -translate-x-1/2 top-full p-4 z-50 opacity-0 -translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
+      <div class="bg-white shadow-lg w-[900px] relative">
+        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
+        <div class="p-10 grid gap-3 <%= column_class %>">
+          <% @categories.each do |category| %>
+            <%= link_to category_path(category), class: "text-gray-600 hover:text-black cursor-pointer transition text-base" do %>
+              <%= category.name %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-
     </div>
   </div>
 
-</div>
 
+  <% column_class = @project_informations.size >= 12 ? "grid-cols-3" : "grid-cols-2" %>
+  <div class="relative group flex items-center gap-1">
+    <%= header_link "DỰ ÁN", project_informations_path %>
+    <div class="mt-[-4px]">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </div>
 
-
-<%= header_link "VỀ CHÚNG TÔI", about_us_path %>
-
-<% column_class = @accessories.size >= 12 ? "grid-cols-3" : "grid-cols-2" %>
-
-<div class="relative group flex items-center gap-1">
-
-  <%= header_link "THIẾT BỊ VÀ PHỤ KIỆN", accessories_path %>
-
-  <div class="mt-[-4px]">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-         stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-      <path stroke-linecap="round" stroke-linejoin="round"
-            d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-    </svg>
-  </div>
-
-  <div class="absolute left-1/2 -translate-x-1/2 top-full p-4 z-50 
-              opacity-0 -translate-y-2 pointer-events-none
-              transition-all duration-500 ease-out
-              group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
-
-    <div class="bg-white shadow-lg w-[500px] relative">
-
-      <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
-
-      <div class="p-10 grid gap-3 <%= column_class %>">
-        <% @accessories.each do |accessory| %>
-          <div class="text-gray-600 hover:text-black cursor-pointer transition text-base">
-            <%= link_to accessory.name, accessory_path(accessory) %>
-          </div>
-        <% end %>
+    <div class="absolute left-1/2 -translate-x-1/2 top-full p-4 z-50 opacity-0 -translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
+      <div class="bg-white shadow-lg w-[700px] relative">
+        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
+        <div class="p-10 grid gap-3 <%= column_class %>">
+          <% @project_informations.each do |project_information| %>
+            <div class="text-gray-600 hover:text-black cursor-pointer transition text-base">
+              <%= link_to project_information.name, project_information_path(project_information.id) %>
+            </div>
+          <% end %>
+        </div>
       </div>
-
     </div>
   </div>
 
-</div>
+
+  <% column_class = @decorations.size >= 12 ? "grid-cols-3" : "grid-cols-2" %>
+  <div class="relative group flex items-center gap-1">
+    <%= header_link "TRANG TRÍ NỘI THẤT", decorations_path %>
+    <div class="mt-[-4px]">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </div>
+    <div class="absolute left-1/2 -translate-x-1/2 top-full p-4 z-50 opacity-0 -translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
+      <div class="bg-white shadow-lg w-[900px] relative">
+        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
+        <div class="p-10 grid gap-3 <%= column_class %>">
+          <% @decorations.each do |decoration| %>
+            <div class="text-gray-600 hover:text-black cursor-pointer transition text-base">
+              <%= link_to decoration.name, decoration_path(decoration) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <%= header_link "VỀ CHÚNG TÔI", about_us_path %>
+  <% column_class = @accessories.size >= 12 ? "grid-cols-3" : "grid-cols-2" %>
+  <div class="relative group flex items-center gap-1">
+    <%= header_link "THIẾT BỊ VÀ PHỤ KIỆN", accessories_path %>
+    <div class="mt-[-4px]">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </div>
+    <div class="absolute left-1/2 -translate-x-1/2 top-full p-4 z-50 opacity-0 -translate-y-2 pointer-events-none transition-all duration-500 ease-out group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto">
+      <div class="bg-white shadow-lg w-[500px] relative">
+        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rotate-45"></div>
+        <div class="p-10 grid gap-3 <%= column_class %>">
+          <% @accessories.each do |accessory| %>
+            <div class="text-gray-600 hover:text-black cursor-pointer transition text-base">
+              <%= link_to accessory.name, accessory_path(accessory) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 

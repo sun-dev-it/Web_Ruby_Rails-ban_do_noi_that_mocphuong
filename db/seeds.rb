@@ -30,6 +30,10 @@ User.create!(
 )
 
 image_path = Rails.root.join("app/assets/images/default/img.png")
+image2_path = Rails.root.join("app/assets/images/default/img2.png")
+image3_path = Rails.root.join("app/assets/images/default/img3.png")
+image4_path = Rails.root.join("app/assets/images/default/img4.png")
+
 
 cat1 = Category.find_or_create_by!(name: "Sofa")
 cat2 = Category.find_or_create_by!(name: "Kệ TV")
@@ -37,7 +41,7 @@ cat3 = Category.find_or_create_by!(name: "Giường")
 
 prod1 = Product.create!(name: "Bàn ăn gỗ sồi", featured: true, material: "Gỗ tự nhiên", price: 2500000, category: cat1, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
 prod1.images.attach(
-  io: File.open(image_path),
+  io: File.open(image2_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -47,7 +51,7 @@ prod1.images.attach(
   content_type: "image/png"
 )
 prod1.images.attach(
-  io: File.open(image_path),
+  io: File.open(image3_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -57,7 +61,7 @@ prod1.images.attach(
   content_type: "image/png"
 )
 prod1.images.attach(
-  io: File.open(image_path),
+  io: File.open(image4_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -69,7 +73,12 @@ prod2.images.attach(
   content_type: "image/png"
 )
 prod2.images.attach(
-  io: File.open(image_path),
+  io: File.open(image3_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+prod2.images.attach(
+  io: File.open(image2_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -79,24 +88,29 @@ prod2.images.attach(
   content_type: "image/png"
 )
 prod2.images.attach(
-  io: File.open(image_path),
+  io: File.open(image4_path),
   filename: "img.png",
   content_type: "image/png"
 )
 prod2.images.attach(
-  io: File.open(image_path),
-  filename: "img.png",
-  content_type: "image/png"
-)
-prod2.images.attach(
-  io: File.open(image_path),
+  io: File.open(image2_path),
   filename: "img.png",
   content_type: "image/png"
 )
 
 prod3 = Product.create!(name: "Tủ quần áo gỗ công nghiệp", featured: true, price: 4000000, material: "Gỗ tự nhiên", category: cat2, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
 prod3.images.attach(
-  io: File.open(image_path),
+  io: File.open(image4_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+prod3.images.attach(
+  io: File.open(image3_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+prod3.images.attach(
+  io: File.open(image2_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -106,17 +120,7 @@ prod3.images.attach(
   content_type: "image/png"
 )
 prod3.images.attach(
-  io: File.open(image_path),
-  filename: "img.png",
-  content_type: "image/png"
-)
-prod3.images.attach(
-  io: File.open(image_path),
-  filename: "img.png",
-  content_type: "image/png"
-)
-prod3.images.attach(
-  io: File.open(image_path),
+  io: File.open(image3_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -133,7 +137,12 @@ prod4.images.attach(
   content_type: "image/png"
 )
 prod4.images.attach(
-  io: File.open(image_path),
+  io: File.open(image2_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+prod4.images.attach(
+  io: File.open(image4_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -143,12 +152,7 @@ prod4.images.attach(
   content_type: "image/png"
 )
 prod4.images.attach(
-  io: File.open(image_path),
-  filename: "img.png",
-  content_type: "image/png"
-)
-prod4.images.attach(
-  io: File.open(image_path),
+  io: File.open(image3_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -165,7 +169,7 @@ prod5.images.attach(
   content_type: "image/png"
 )
 prod5.images.attach(
-  io: File.open(image_path),
+  io: File.open(image4_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -175,12 +179,12 @@ prod5.images.attach(
   content_type: "image/png"
 )
 prod5.images.attach(
-  io: File.open(image_path),
+  io: File.open(image2_path),
   filename: "img.png",
   content_type: "image/png"
 )
 prod5.images.attach(
-  io: File.open(image_path),
+  io: File.open(image3_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -229,7 +233,7 @@ contactData = Contact.first_or_create!(
 )
 
 contactData.image.attach(
-  io: File.open(image_path),
+  io: File.open(image2_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -248,7 +252,7 @@ intro = Introduction.first_or_create!(
   link_video: "https://www.youtube.com/embed/Scxs7L0vhZ4")
 
 intro.image.attach(
-  io: File.open(image_path),
+  io: File.open(image4_path),
   filename: "img.png",
   content_type: "image/png"
 )
@@ -431,13 +435,13 @@ Inbox hoặc comment ngay Nội thất Mộc Phương nếu bạn có nhu cầu 
     content_type: "image/png")
   
   projectInfor.images.attach(
-    io: File.open(image_path),
+    io: File.open(image3_path),
     filename: "img.png",
     content_type: "image/png"
   )
 
   projectInfor.images.attach(
-    io: File.open(image_path),
+    io: File.open(image2_path),
     filename: "img.png",
     content_type: "image/png"
   )

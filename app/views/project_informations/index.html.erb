@@ -1,34 +1,39 @@
-<%= render "project_informations/image" %>
+<div class="relative h-[80vh] w-full bg-cover bg-center"
+     style="background-image: url('<%= url_for(@introduction.image) %>')">
+
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
+    <div>
+      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">
+        PROJECT
+      </p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-white">
+        Dự án
+      </h1>
+    </div>
+  </div>
+</div>
 
 <div class="flex justify-center">
   <div class="w-[90%] sm:w-[80%] z-47">
 
-    <div style="<%= bg_rgba(Color.first&.background1, 0.8) %>;"
-         class="py-4 md:py-8 px-6 md:px-12 min-h-[200px] shadow-lg mt-[-80px] md:mt-[-120px] backdrop-blur-md">
+    <div style="<%= bg_rgba(Color.first&.background1, 0.8) %>;" class="py-4 md:py-8 px-6 md:px-12 min-h-[200px] shadow-lg mt-[-80px] md:mt-[-120px] backdrop-blur-md">
       <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
         <%= simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
       </div>
     </div>
 
-    <hr class="border-0 h-[2px] rounded-full" style="background-color: <%= Color.first&.header || '#ffffff' %>;">
     <div class="text-center mt-10 mb-8">
       <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
           style="color: <%= Color.first&.header || '#ffffff' %>;">
         <span class="inline-block relative">
-
-          THÔNG TIN DỰ ÁN
-
-          <!-- Gạch highlight dưới -->
-          <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
-                style="background-color: <%= Color.first&.header || '#ffffff' %>;">
-          </span>
-
+          DỰ ÁN CỦA CHÚNG TÔI
+          <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full" style="background-color: <%= Color.first&.header || '#ffffff' %>;"></span>
         </span>
       </h2>
     </div>
 
-
-    <!-- Danh sách project -->
     <%= render "project_informations" %>
 
   </div>
@@ -37,11 +42,8 @@
 
 
 
-
 <section class="py-28 bg-gray-50">
   <div class="max-w-6xl mx-auto px-6">
-
-    <!-- Title -->
     <div class="text-center mb-20 scroll-fade-promotion opacity-0 translate-y-6 transition-all duration-700">
       <p class="text-xs tracking-[0.35em] text-gray-400 mb-4">
         WORKFLOW
@@ -56,7 +58,6 @@
       </div>
     </div>
 
-    <!-- Steps -->
     <div class="grid grid-cols-1 md:grid-cols-5 gap-10 text-center">
 
       <% steps = [
@@ -96,22 +97,4 @@
   </div>
 </section>
 
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll(".scroll-fade-promotion");
-
-  function reveal() {
-    elements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 80) {
-        el.classList.remove("opacity-0", "translate-y-6");
-        el.classList.add("opacity-100", "translate-y-0");
-      }
-    });
-  }
-
-  window.addEventListener("scroll", reveal);
-  reveal();
-});
-</script>
+<%= render "script/index_project_informations" %>

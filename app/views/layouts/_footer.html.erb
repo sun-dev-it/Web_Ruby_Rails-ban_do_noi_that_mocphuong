@@ -1,6 +1,6 @@
 <footer class="text-white w-full py-2 sm:py-4 mt-10">
-  <div class="px-8 flex justify-between">
-      <div class="flex items-center space-x-3">
+  <div class="px-8 sm:flex justify-between">
+      <div class="flex flex-col sm:flex-row items-center gap-3">
         <%= render "layouts/logo" %>
         <div class="flex flex-col justify-center items-center">
           <p class="text-2xl font-semibold">Công Ty Nội Thất Mộc Phương</p>
@@ -8,7 +8,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="hidden sm:block mb-4 sm:mb-0">
         <h3 class="text-2xl font-semibold mb-2">Liên hệ</h3>
         <p>Địa chỉ: <%= @contact.address %></p>
         <p>Số điện thoại: <%= @contact.phone %></p>
@@ -19,45 +19,29 @@
         <h3 class="text-lg font-semibold mb-3 w-full text-center">Kết nối với chúng tôi</h3>
         <div class="flex space-x-4 w-full justify-center">
 
-          <%= link_to "https://facebook.com/#{@contact.fb}", 
-                      target: "_blank", 
-                      rel: "noopener",
-                      class: "inline-block" do %>
+          <%= link_to "https://facebook.com/#{@contact.fb}", target: "_blank", rel: "noopener", class: "inline-block" do %>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28">
               <circle cx="12" cy="12" r="12" fill="#0068FF"/>
-              <path fill="white" 
-                    d="M15.117 8.999h-1.464c-.115 0-.552.004-.552.548v1.151h2.016l-.262 2.029h-1.754V21h-2.102v-8.273h-1.754v-2.029h1.754V9.83c0-1.73 1.054-2.667 2.594-2.667h1.89v2.136z"
-                    transform="scale(1,0.7) translate(0,3.5)"/>
+              <path fill="white" d="M15.117 8.999h-1.464c-.115 0-.552.004-.552.548v1.151h2.016l-.262 2.029h-1.754V21h-2.102v-8.273h-1.754v-2.029h1.754V9.83c0-1.73 1.054-2.667 2.594-2.667h1.89v2.136z" transform="scale(1,0.7) translate(0,3.5)"/>
             </svg>
           <% end %>
 
           
-          <%= link_to "https://zalo.me/#{@contact.zalo}",
-                      target: "_blank",
-                      rel: "noopener",
-                      class: "inline-block" do %>
+          <%= link_to "https://zalo.me/#{@contact.zalo}", target: "_blank", rel: "noopener", class: "inline-block" do %>
             <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
-              <!-- Hình tròn -->
-              <circle cx="60" cy="60" r="55" fill="#0068FF"/>
-                      
-              <!-- Chữ Zalo -->
-              <text x="60" y="72" text-anchor="middle" 
-                    font-family="Arial, Helvetica, sans-serif"
-                    font-weight="700" font-size="40" fill="#ffffff">
+              <circle cx="60" cy="60" r="55" fill="#0068FF"/>      
+              <text x="60" y="72" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="40" fill="#ffffff">
                 Zalo
               </text>
             </svg>
           <% end %>
-
           <%= link_to "tel:#{@contact.phone}", class: "inline-block hover:text-green-400" do %>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
               <path d="M9.36556 10.6821C10.302 12.3288 11.6712 13.698 13.3179 14.6344L14.2024 13.3961C14.4965 12.9845 15.0516 12.8573 15.4956 13.0998C16.9024 13.8683 18.4571 14.3353 20.0789 14.4637C20.599 14.5049 21 14.9389 21 15.4606V19.9234C21 20.4361 20.6122 20.8657 20.1022 20.9181C19.5723 20.9726 19.0377 21 18.5 21C9.93959 21 3 14.0604 3 5.5C3 4.96227 3.02742 4.42771 3.08189 3.89776C3.1343 3.38775 3.56394 3 4.07665 3H8.53942C9.0611 3 9.49513 3.40104 9.5363 3.92109C9.66467 5.54288 10.1317 7.09764 10.9002 8.50444C11.1427 8.9484 11.0155 9.50354 10.6039 9.79757L9.36556 10.6821Z"/>
             </svg>
           <% end %>
-
         </div>
       </div>
-
     </div>
 
     <div class="text-center text-gray-400 text-sm mt-10">
