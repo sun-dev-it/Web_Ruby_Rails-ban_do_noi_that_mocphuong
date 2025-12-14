@@ -204,3 +204,32 @@
   background: #e5e7eb;
 }
 
+
+
+/* bg login */
+#star-bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000 70%);
+  overflow: hidden;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}
