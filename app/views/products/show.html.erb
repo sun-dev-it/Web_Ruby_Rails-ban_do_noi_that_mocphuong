@@ -95,11 +95,19 @@
         <p class="text-base font-sans font-bold text-red-400 mt-2">
           <%= number_to_currency(@product.price, unit: "VND ", format: "%n %u", precision: 0) %>
         </p>
-        <hr class="text-black my-6">
+        <hr class="text-gray-900 my-6">
         <div class="flex items-center justify-between">
-          <div class="text-lg font-bold text-gray-800">Kích thước:</div> 
+          <div class="text-base font-semibold text-gray-800">Kích thước:</div> 
           <div class="border-2 border-gray-400 rounded p-1">
             <%= @product.size %>
+          </div>
+        </div>
+
+        <hr class="text-gray-900 my-6">
+        <div class="flex items-center justify-between">
+          <div class="text-base font-semibold text-gray-800">Chất liệu</div> 
+          <div class="border-2 border-gray-400 rounded p-1">
+            <%= @product.material %>
           </div>
         </div>
 
@@ -109,9 +117,9 @@
                 add_cart_path(product_id: @product.id),
                 method: :post,
                 form: { class: "w-full", data: { remote: true } },
-                class: "w-full bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-350 transition" %>
+                class: "w-full bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition" %>
         </div>
-        <p><strong>Bạn cần tư vấn?</strong> liên hệ với chúng tôi</p>
+        <p class="text-gray-900"><strong>Bạn cần tư vấn?</strong> liên hệ với chúng tôi</p>
         <div class="flex justify-between space-x-2 my-4">
           <%= link_to "https://zalo.me/#{@contact.zalo}",
                       target: "_blank",
@@ -136,11 +144,12 @@
             <div class="text-white">Facebook</div>
           <% end %>
         </div>
-        <hr class="text-black my-6">
-        <p class="text-xl font-bold mt-2 text-gray-800"> Mô tả:</p>
-        <p><%= @product.description %></p>
       </div>
     </div>
+
+    <hr class="text-black my-6">
+    <p class="text-xl font-semibold mt-2 text-gray-800"> Mô tả sản phẩm:</p>
+    <p><%= @product.description %></p>
   </div>
 </div>
 

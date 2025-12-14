@@ -39,6 +39,36 @@ cat1 = Category.find_or_create_by!(name: "Sofa")
 cat2 = Category.find_or_create_by!(name: "Kệ TV")
 cat3 = Category.find_or_create_by!(name: "Giường")
 
+
+prod11 = Product.create!(name: "Ghế ăn gỗ sồi", featured: true, material: "Gỗ tự nhiên", price: 2500000, category: cat1, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
+prod11.images.attach(
+  io: File.open(image4_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+prod11.images.attach(
+  io: File.open(image_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+prod11.images.attach(
+  io: File.open(image3_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+prod11.images.attach(
+  io: File.open(image_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+prod11.images.attach(
+  io: File.open(image4_path),
+  filename: "img.png",
+  content_type: "image/png"
+)
+
+
+
 prod1 = Product.create!(name: "Bàn ăn gỗ sồi", featured: true, material: "Gỗ tự nhiên", price: 2500000, category: cat1, description: "Bàn ăn Coastal được làm từ gỗ Ash, theo phong cách truyền thống và mang kết cấu vững chãi. Mặt bàn bằng phẳng với các đường vân tự nhiên, bốn cạnh được bo tròn mềm mại để tránh va chạm trong lúc sử dụng. Sản phẩm có 2 kích thước là 6 chỗ và 8 chỗ cho người dùng những lựa chọn linh hoạt, phù hợp với nhiều không gian và nhu cầu sử dụng.", size: "D1600 - R800 - C755 mm")
 prod1.images.attach(
   io: File.open(image2_path),

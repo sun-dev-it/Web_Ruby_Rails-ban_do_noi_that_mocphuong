@@ -142,12 +142,33 @@
   <%= render "categories/product" %>
 </div>
 
-<div class="flex justify-center mt-20">
-  <a href="#"
-     class="btn-view-more">
-    Xem thêm sản phẩm
-  </a>
+
+
+<div class="flex justify-center m-20">
+  <%= link_to categories_path,
+        class: "group inline-flex items-center gap-3
+                px-8 py-3
+                border border-gray-300 rounded-full
+                text-gray-800 font-medium
+                transition-all duration-300
+                hover:bg-black hover:text-white" do %>
+
+    <span>Xem thêm sản phẩm</span>
+
+    <!-- Arrow -->
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2"
+         class="w-5 h-5
+                transition-transform duration-300
+                group-hover:translate-x-2">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M5 12h14M13 5l7 7-7 7" />
+    </svg>
+
+  <% end %>
 </div>
+
 
 
 <section class="relative min-h-screen flex items-center overflow-hidden">

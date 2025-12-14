@@ -1,0 +1,79 @@
+<% if params[:q].present? %>
+  <div class="mb-10 mt-4">
+    <div class="py-3 px-5">
+      <h1 class="text-1xl md:text-3xl font-bold text-gray-700 my-1">
+        Kết quả tìm kiếm cho
+        <span class="text-1xl md:text-3xl font-bold text-gray-700">
+          “<%= params[:q] %>”
+        </span>
+        <span class="text-1xl md:text-3xl font-bold text-gray-700">
+          (<%= @products_search.count %> sản phẩm)
+        </span>
+      </h1>
+
+      <div class="flex text-xs italic">
+        <%= link_to root_path, class: "flex hover:text-black" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               stroke-width="1.5" stroke="currentColor"
+               class="size-3 mt-[2px]">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>
+          <span>Trang chủ</span>
+        <% end %>
+
+        <span class="mx-1">›</span>
+        <span>Sản phẩm</span>
+        <span class="mx-1">›</span>
+        <span>Tìm kiếm</span>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render "products_search", products_search: @products_search %>
+
+
+<div class="text-center mt-10 mb-10">
+  <h2 class="text-2xl md:text-3xl font-gilroy tracking-wide"
+      style="color: <%= Color.first&.header || '#ffffff' %>;">
+    <span class="inline-block relative">
+        
+      Các sản phẩm khác
+        
+      <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
+            style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+      </span>
+        
+    </span>
+  </h2>
+
+  <%= render "categories/product" %>
+</div>
+
+
+
+<div class="flex justify-center m-20">
+  <%= link_to categories_path,
+        class: "group inline-flex items-center gap-3
+                px-8 py-3
+                border border-gray-300 rounded-full
+                text-gray-800 font-medium
+                transition-all duration-300
+                hover:bg-black hover:text-white" do %>
+
+    <span>Xem thêm sản phẩm</span>
+
+    <!-- Arrow -->
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2"
+         class="w-5 h-5
+                transition-transform duration-300
+                group-hover:translate-x-2">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M5 12h14M13 5l7 7-7 7" />
+    </svg>
+
+  <% end %>
+</div>

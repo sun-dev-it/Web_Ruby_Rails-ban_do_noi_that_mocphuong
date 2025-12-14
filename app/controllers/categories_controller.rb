@@ -3,12 +3,12 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.order(:name)
-    @products = Product.all
+    @products = Product.order(created_at: :desc)
   end
 
   def show
     @category = Category.find(params[:id])
-    @products = @category.products  # nếu Category có quan hệ has_many :products
+    @products = @category.products.order(created_at: :desc)
   end
 
   
