@@ -1,6 +1,7 @@
 module Admin
   class ColorsController < ApplicationController
     before_action :require_admin
+    before_action :require_super_admin
 
     def edit
       @color ||= Color.first

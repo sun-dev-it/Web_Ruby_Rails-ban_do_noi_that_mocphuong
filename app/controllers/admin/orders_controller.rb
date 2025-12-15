@@ -1,6 +1,7 @@
 module Admin
   class OrdersController < ApplicationController
     before_action :require_admin
+    before_action :require_staff
     before_action :set_order, only: [:show, :update]
 
     def index

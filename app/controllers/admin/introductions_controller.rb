@@ -1,6 +1,7 @@
 module Admin
   class IntroductionsController < ApplicationController
     before_action :require_admin
+    before_action :require_super_admin
 
     def edit
       @introduction = Introduction.first_or_initialize

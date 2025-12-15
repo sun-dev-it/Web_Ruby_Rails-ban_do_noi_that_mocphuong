@@ -1,6 +1,7 @@
 module Admin
   class UsersController < ApplicationController
     before_action :require_admin
+    before_action :require_super_admin
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     # Hiển thị danh sách user

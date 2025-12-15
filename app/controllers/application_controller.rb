@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
 
 
   def admin?
-    logged_in? && (current_user.role == "super_admin" || current_user.role == "admin_manager" || current_user.role == "staff")
+    logged_in? && ["super_admin", "admin_manager", "staff"].include?(current_user.role)
   end
   def require_admin
     unless admin?
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
 
 
   def admin_manager?
-    logged_in? && current_user.role == "admin_manager"
+    logged_in? && ["admin_manager", "super_admin"].include?(current_user.role)
   end
   def require_admin_manager
     unless admin_manager?
@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
 
 
   def staff?
-    logged_in? && current_user.role == "staff"
+    logged_in? && ["staff", "super_admin"].include?(current_user.role)
   end
   def require_staff
     unless staff?
