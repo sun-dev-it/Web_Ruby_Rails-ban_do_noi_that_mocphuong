@@ -1,4 +1,5 @@
 class Admin::RequestsController < ApplicationController
+  before_action :require_admin
   before_action :set_request, only: [:show, :destroy]
 
   def index

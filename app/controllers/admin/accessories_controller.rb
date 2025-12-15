@@ -1,5 +1,5 @@
 class Admin::AccessoriesController < ApplicationController
-  before_action :require_admin_manager
+  before_action :require_admin
 
   def index
     @accessories = Accessory.all

@@ -1,5 +1,5 @@
 class Admin::DesignOfficesController < ApplicationController
-  before_action :require_admin_manager
+  before_action :require_admin
 
   def edit
     @design_office = DesignOffice.first

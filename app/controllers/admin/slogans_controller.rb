@@ -1,6 +1,6 @@
 module Admin
   class SlogansController < ApplicationController
-    before_action :require_admin_manager
+    before_action :require_admin
 
     def edit
     end

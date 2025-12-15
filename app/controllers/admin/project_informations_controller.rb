@@ -1,5 +1,5 @@
 class Admin::ProjectInformationsController < ApplicationController
-  before_action :require_admin_manager
+  before_action :require_admin
 
   def index
     @project_informations = ProjectInformation.all

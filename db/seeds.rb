@@ -8,11 +8,11 @@ User.delete_all
 
 #####
 User.find_or_create_by!(email: "nguyenducphong18012002@gmail.com") do |u|
-  u.role = "admin"
+  u.role = "super_admin"
 end
 
 User.find_or_create_by!(email: "daiphatle123@gmail.com") do |u|
-  u.role = "admin"
+  u.role = "super_admin"
 end
 
 

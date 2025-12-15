@@ -1,5 +1,5 @@
 class Admin::PromotionsController < ApplicationController
-  before_action :require_admin_manager
+  before_action :require_admin
 
   def index
     @promotions = Promotion.all

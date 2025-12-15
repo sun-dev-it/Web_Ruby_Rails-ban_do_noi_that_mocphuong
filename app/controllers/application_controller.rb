@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   allow_browser versions: :modern
-  helper_method :current_user, :logged_in?, :admin?
+  helper_method :current_user, :logged_in?, :admin?, :super_admin?, :staff?, :admin_manager?
   before_action :slogan, :categories, :project_informations, :decorations, :accessories, :requests, :contact
 
   private
@@ -44,18 +44,43 @@ class ApplicationController < ActionController::Base
 
 
   def admin?
-    logged_in? && (current_user.role == "admin")
+    logged_in? && (current_user.role == "super_admin" || current_user.role == "admin_manager" || current_user.role == "staff")
   end
-
   def require_admin
     unless admin?
       redirect_to root_path
     end
   end
 
+
   def admin_manager?
-    logged_in? && current_user.role == "admin"
+    logged_in? && current_user.role == "admin_manager"
   end
+  def require_admin_manager
+    unless admin_manager?
+      redirect_to root_path
+    end
+  end
+  
+  def super_admin?
+    logged_in? && current_user.role == "super_admin"
+  end
+  def require_super_admin
+    unless super_admin?
+      redirect_to root_path
+    end
+  end
+
+
+  def staff?
+    logged_in? && current_user.role == "staff"
+  end
+  def require_staff
+    unless staff?
+      redirect_to root_path
+    end
+  end
+
 
   def require_admin_manager
     unless admin_manager?

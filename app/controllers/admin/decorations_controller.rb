@@ -1,5 +1,5 @@
 class Admin::DecorationsController < ApplicationController
-  before_action :require_admin_manager
+  before_action :require_admin
 
   def index
     @decorations = Decoration.all
