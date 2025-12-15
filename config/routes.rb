@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   get "requests/create"
   root "home#index"
   
+  get "/auth/:provider/callback", to: "sessions#google_auth"
+  get "/logout", to: "sessions#destroy"
+
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
@@ -10,6 +13,8 @@ Rails.application.routes.draw do
   get    "login",  to: "sessions#new"
   post   "login",  to: "sessions#create"
   delete "logout", to: "sessions#destroy"
+
+
 
   resources :about_us, only: [:index]
   resources :products,              only: [:index, :show]

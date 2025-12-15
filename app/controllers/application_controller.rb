@@ -41,8 +41,10 @@ class ApplicationController < ActionController::Base
     current_user.present? 
   end
 
+
+
   def admin?
-    logged_in? && (current_user.role == "Quản lí web" || current_user.role == "Quản lí đơn hàng")
+    logged_in? && (current_user.role == "Admin")
   end
 
   def require_admin
@@ -52,7 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_manager?
-    logged_in? && current_user.role == "Quản lí web"
+    logged_in? && current_user.role == "Admin"
   end
 
   def require_admin_manager
@@ -60,6 +62,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+
+  
 
   def require_login
     unless logged_in?

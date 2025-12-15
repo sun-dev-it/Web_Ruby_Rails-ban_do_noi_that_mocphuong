@@ -1,5 +1,8 @@
 source "https://rubygems.org"
 
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 gem 'bcrypt'
 

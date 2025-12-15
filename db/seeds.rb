@@ -7,27 +7,14 @@ Category.delete_all
 User.delete_all
 
 #####
-User.create!(
-  name: "admin",
-  email: "admin@gmail.com",
-  password: "admin12",
-  password_confirmation: "admin12",
-  role: "Quản lí web",
-)
+User.find_or_create_by!(email: "nguyenducphong18012002@gmail.com") do |u|
+  u.role = "admin"
+end
 
-User.create!(
-  name: "test_user1",
-  email: "test_user1@gmail.com",
-  password: "test_user1",
-  password_confirmation: "test_user1",
-)
+User.find_or_create_by!(email: "daiphatle123@gmail.com") do |u|
+  u.role = "admin"
+end
 
-User.create!(
-  name: "test_user2",
-  email: "test_user2@gmail.com",
-  password: "test_user2",
-  password_confirmation: "test_user2",
-)
 
 image_path = Rails.root.join("app/assets/images/default/img.png")
 image2_path = Rails.root.join("app/assets/images/default/img2.png")

@@ -1,16 +1,21 @@
 class SessionsController < ApplicationController
-  def new
+  def google_auth
+    auth = request.env['omniauth.auth']
+
+    user = User.find_or_create_by(provider: auth['provider'], uid: auth['uid']) do |u|
+      u.name = auth['info']['name']
+      u.email = auth['info']['email']
+      u.role = 'customer'
+    end
+
+    user.save!
+    
+    session[:user_id] = user.id
+    redirect_to root_path, notice: "Đăng nhập thành công!"
   end
 
-  def create
-    user = User.find_by(email: params[:email])
-
-    if user&.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to root_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+  def new
+    # Hiển thị form đăng nhập
   end
 
   def destroy
