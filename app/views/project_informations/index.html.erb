@@ -1,26 +1,71 @@
-<div class="relative h-[80vh] w-full bg-cover bg-center"
-     style="background-image: url('<%= url_for(@introduction.image) %>')">
+<section class="relative min-h-screen flex items-center overflow-hidden group">
+  <!-- Carousel Background -->
+  <div id="bg-carousel" class="absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
+    <% if @projectInformationInfor.images.attached? %>
+      <% @projectInformationInfor.images.each_with_index do |img, index| %>
+        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000
+                    <%= index == 0 ? 'opacity-100' : 'opacity-0' %>"
+             style="background-image: url('<%= url_for(img) %>');">
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
-  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="absolute inset-0 bg-black/40 animate-overlay-fade"></div>
 
-  <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
+
+  <div class="relative w-full z-10 h-full flex items-center justify-center text-center px-6">
     <div>
-      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">
-        PROJECT
-      </p>
-      <h1 class="text-4xl md:text-5xl font-semibold text-white">
-        Dự án
-      </h1>
+      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">PROJECT</p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-white">Dự án</h1>
     </div>
   </div>
-</div>
+
+  <!-- Nút điều hướng -->
+  <button id="prev-bg" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full opacity-0 group-hover:opacity-100 transition">‹</button>
+  <button id="next-bg" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full opacity-0 group-hover:opacity-100 transition">›</button>
+</section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('#bg-carousel > div');
+    const nextBtn = document.getElementById('next-bg');
+    const prevBtn = document.getElementById('prev-bg');
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('opacity-100', i === index);
+        slide.classList.toggle('opacity-0', i !== index);
+      });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    });
+
+    // Tự động chuyển slide mỗi 5s
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 5000);
+  });
+</script>
+
 
 <div class="flex justify-center">
   <div class="w-[90%] sm:w-[80%] z-47">
 
     <div style="<%= bg_rgba(Color.first&.background1, 0.8) %>;" class="py-4 md:py-8 px-6 md:px-12 min-h-[200px] shadow-lg mt-[-80px] md:mt-[-120px] backdrop-blur-md">
       <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
-        <%= simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
+        <%= simple_format(@projectInformationInfor&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
       </div>
     </div>
 

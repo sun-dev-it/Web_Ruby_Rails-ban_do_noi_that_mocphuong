@@ -2,7 +2,7 @@ class ProjectInformationsController < ApplicationController
   before_action :set_project_information, only: [:show]
   def index
     @project_informations = ProjectInformation.all
-    @introduction= ProjectInformationInfor.first
+    @projectInformationInfor= ProjectInformationInfor.first
   end
 
   def show

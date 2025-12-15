@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     resources :orders,                only: [:index, :show, :update]
     resources :requests,              only: [:index, :show, :destroy]
     resources :project_informations
+    resources :project_information_infors
     resources :users
     resources :decorations
     resources :accessories

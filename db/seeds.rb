@@ -475,11 +475,21 @@ projectInforInfor = ProjectInformationInfor.first_or_create!(
   
   - Chất lượng sản phẩm và dịch vụ tốt, đa dạng sẽ giúp thu hút khách hàng và giữ chân khách hàng lâu dài.")
 
-projectInforInfor.image.attach(
-  io: File.open(image_path),
+projectInforInfor.images.attach(
+  io: File.open(image2_path),
   filename: "img.png",
   content_type: "image/png")
-  
+
+projectInforInfor.images.attach(
+  io: File.open(image4_path),
+  filename: "img.png",
+  content_type: "image/png")
+
+projectInforInfor.images.attach(
+  io: File.open(image3_path),
+  filename: "img.png",
+  content_type: "image/png")
+
 ######
 Decoration.delete_all
 decoration = [

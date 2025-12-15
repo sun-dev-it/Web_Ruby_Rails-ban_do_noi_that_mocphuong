@@ -171,13 +171,21 @@
 
 
 
-<section class="relative min-h-screen flex items-center overflow-hidden">
-  <div
-    class="absolute inset-0 bg-cover bg-center animate-bg-pan"
-    style="background-image: url('<%= url_for(@projectInformationInfor.image) if @projectInformationInfor.image.attached? %>');">
+<section class="relative min-h-screen flex items-center overflow-hidden group">
+  <!-- Carousel Background -->
+  <div id="bg-carousel" class="absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
+    <% if @projectInformationInfor.images.attached? %>
+      <% @projectInformationInfor.images.each_with_index do |img, index| %>
+        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000
+                    <%= index == 0 ? 'opacity-100' : 'opacity-0' %>"
+             style="background-image: url('<%= url_for(img) %>');">
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
-  <div class="absolute inset-0 bg-black/40"></div>
+  <div class="absolute inset-0 bg-black/40 animate-overlay-fade"></div>
+
 
   <div class="relative z-10 max-w-4xl mx-auto text-center text-white px-6">
     <h1 class="text-4xl md:text-6xl font-light tracking-wide leading-tight">
@@ -196,5 +204,40 @@
     </div>
   </div>
 
+  <!-- Nút điều hướng -->
+  <button id="prev-bg" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full opacity-0 group-hover:opacity-100 transition">‹</button>
+  <button id="next-bg" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full opacity-0 group-hover:opacity-100 transition">›</button>
 </section>
 
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('#bg-carousel > div');
+    const nextBtn = document.getElementById('next-bg');
+    const prevBtn = document.getElementById('prev-bg');
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('opacity-100', i === index);
+        slide.classList.toggle('opacity-0', i !== index);
+      });
+    }
+
+    nextBtn.addEventListener('click', () => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    });
+
+    // Tự động chuyển slide mỗi 5s
+    setInterval(() => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }, 5000);
+  });
+</script>

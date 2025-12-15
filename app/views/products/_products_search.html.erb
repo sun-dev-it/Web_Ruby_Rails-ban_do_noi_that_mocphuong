@@ -1,5 +1,5 @@
 <% if @products_search.present? %>
-  <div class="flex justify-center">
+  <div class="flex justify-center mb-4">
     <div class="w-[95%] sm:w-[85%] grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8 mt-4 px-2 sm:px-4">
 
       <% @products_search.each do |product| %>
@@ -78,5 +78,5 @@
     </div>
   </div>
 <% else %>
-  <p class="flex justify-center">Không có kết quả tìm kiếm</p>
+  <p class="flex justify-center mb-4">Không có kết quả tìm kiếm</p>
 <% end %>
