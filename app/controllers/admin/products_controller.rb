@@ -32,11 +32,11 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update(product_params)
+    if @product.update(product_params.except(:images))
       if params[:product][:images]
         @product.images.attach(params[:product][:images])
       end
-      redirect_to edit_admin_product_path(@product), notice: "Đã cập nhật sản phẩm"
+      redirect_to edit_admin_product_path(@product)
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class Admin::ProductsController < ApplicationController
   
   def destroy
     @product.destroy
-    redirect_to admin_products_path, notice: "Đã xóa sản phẩm!"
+    redirect_to admin_products_path
   end
 
   def remove_image
