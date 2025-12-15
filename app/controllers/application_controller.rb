@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
 
 
   def admin?
-    logged_in? && (current_user.role == "Admin")
+    logged_in? && (current_user.role == "admin")
   end
 
   def require_admin
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_manager?
-    logged_in? && current_user.role == "Admin"
+    logged_in? && current_user.role == "admin"
   end
 
   def require_admin_manager
