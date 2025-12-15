@@ -1,5 +1,4 @@
 <section class="relative min-h-screen flex items-center overflow-hidden group">
-  <!-- Carousel Background -->
   <div id="bg-carousel" class="absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
     <% if @projectInformationInfor.images.attached? %>
       <% @projectInformationInfor.images.each_with_index do |img, index| %>
@@ -20,18 +19,12 @@
       <h1 class="text-4xl md:text-5xl font-semibold text-white">Dự án</h1>
     </div>
   </div>
-
-  <!-- Nút điều hướng -->
-  <button id="prev-bg" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full opacity-0 group-hover:opacity-100 transition">‹</button>
-  <button id="next-bg" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full opacity-0 group-hover:opacity-100 transition">›</button>
 </section>
 
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('#bg-carousel > div');
-    const nextBtn = document.getElementById('next-bg');
-    const prevBtn = document.getElementById('prev-bg');
     let current = 0;
 
     function showSlide(index) {
@@ -41,17 +34,6 @@
       });
     }
 
-    nextBtn.addEventListener('click', () => {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    });
-
-    prevBtn.addEventListener('click', () => {
-      current = (current - 1 + slides.length) % slides.length;
-      showSlide(current);
-    });
-
-    // Tự động chuyển slide mỗi 5s
     setInterval(() => {
       current = (current + 1) % slides.length;
       showSlide(current);

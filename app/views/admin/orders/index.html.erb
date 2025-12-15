@@ -1,61 +1,62 @@
-<%= link_to "← Quay lại", admin_dashboard_path,
-      class:"text-blue-600 hover:text-blue-800 m-6 inline-block" %>
+<div class="min-h-screen">
+  <%= link_to "← Quay lại", admin_dashboard_path,
+        class:"text-blue-600 hover:text-blue-800 m-6 inline-block" %>
+          
+  <div class="flex justify-center">
+    <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
+      <h1 class="text-2xl font-bold mb-6 text-center">Quản lý đơn hàng</h1>
         
-<div class="flex justify-center">
-  <div class="sm:w-[80%] w-[90%] mt-10 bg-white rounded-lg p-6 sm:p-10">
-    <h1 class="text-2xl font-bold mb-6 text-center">Quản lý đơn hàng</h1>
-
-    <div x-data="{ tab: 0 }">
-
-      <% status_labels = {
-        Waiting: "Đang chờ liên hệ",
-        Contacted: "Đã liên hệ",
-        Delivering: "Đang giao hàng",
-        Delivered: "Đã giao hàng",
-        Cancelled: "Đã hủy"
-      } %>
-
-      <div class="border-b mb-4 flex space-x-4">
-        <% @orders_by_status.keys.each_with_index do |status, index| %>
-          <button
-            @click="tab = <%= index %>"
-            :class="tab === <%= index %> 
-              ? 'border-b-2 border-blue-600 text-blue-600 font-semibold' 
-              : 'text-gray-600'"
-            class="pb-2 px-4 text-lg hover:text-blue-600 transition">
-            <%= status_labels[status.to_sym] || status %>
-          </button>
-        <% end %>
-      </div>
-                  
-
-      <% @orders_by_status.each_with_index do |(status, orders), index| %>
-        <div x-show="tab === <%= index %>" class="mt-4">
-
-          <table class="w-full border-collapse bg-white shadow rounded-lg overflow-hidden">
-            <thead>
-              <tr class="bg-gray-100 text-left">
-                <th class="p-3 border">ID</th>
-                <th class="p-3 border">Khách hàng</th>
-                <th class="p-3 border">Tổng tiền</th>
-                <th class="p-3 border">Trạng thái</th>
-                <th class="p-3 border">Ngày tạo</th>
-                <th class="p-3 border"></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% orders.each do |order| %>
-                <%= render partial: "list_orders", locals: { order: order } %>
-              <% end %>
-            </tbody>
-          </table>
-
+      <div x-data="{ tab: 0 }">
+        
+        <% status_labels = {
+          Waiting: "Đang chờ liên hệ",
+          Contacted: "Đã liên hệ",
+          Delivering: "Đang giao hàng",
+          Delivered: "Đã giao hàng",
+          Cancelled: "Đã hủy"
+        } %>
+        
+        <div class="border-b mb-4 flex space-x-4">
+          <% @orders_by_status.keys.each_with_index do |status, index| %>
+            <button
+              @click="tab = <%= index %>"
+              :class="tab === <%= index %> 
+                ? 'border-b-2 border-blue-600 text-blue-600 font-semibold' 
+                : 'text-gray-600'"
+              class="pb-2 px-4 text-lg hover:text-blue-600 transition">
+              <%= status_labels[status.to_sym] || status %>
+            </button>
+          <% end %>
         </div>
-      <% end %>
-
+                    
+              
+        <% @orders_by_status.each_with_index do |(status, orders), index| %>
+          <div x-show="tab === <%= index %>" class="mt-4">
+        
+            <table class="w-full border-collapse bg-white shadow rounded-lg overflow-hidden">
+              <thead>
+                <tr class="bg-gray-100 text-left">
+                  <th class="p-3 border">ID</th>
+                  <th class="p-3 border">Khách hàng</th>
+                  <th class="p-3 border">Tổng tiền</th>
+                  <th class="p-3 border">Trạng thái</th>
+                  <th class="p-3 border">Ngày tạo</th>
+                  <th class="p-3 border"></th>
+                </tr>
+              </thead>
+        
+              <tbody>
+                <% orders.each do |order| %>
+                  <%= render partial: "list_orders", locals: { order: order } %>
+                <% end %>
+              </tbody>
+            </table>
+                
+          </div>
+        <% end %>
+                
+      </div>
     </div>
   </div>
 </div>
- 
 <%= render "script/library/alpine" %>
