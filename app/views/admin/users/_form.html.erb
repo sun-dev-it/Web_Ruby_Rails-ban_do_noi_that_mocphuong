@@ -6,46 +6,22 @@
       Thông tin Admin
     </h2>
 
-    <!-- Tên -->
-    <div>
-      <%= f.label :name, "Tên", class: "block font-medium mb-1" %>
-      <%= f.text_field :name,
-            class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
-    </div>
 
-    <!-- Email -->
     <div>
       <%= f.label :email, "Email", class: "block font-medium mb-1" %>
       <%= f.email_field :email,
             class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
     </div>
 
-    <!-- Vai trò -->
-    <div>
-      <%= f.label :role, "Vai trò", class: "block font-medium mb-1" %>
-      <%= f.select :role,
-            ["Admin tổng", "Admin quản lí", "Staff"],
-            { prompt: "Chọn vai trò" },
-            class: "w-full border border-gray-300 rounded-lg px-3 py-2 bg-white focus:ring focus:ring-blue-300 focus:outline-none" %>
-    </div>
+    <%= f.select :role,
+              options_for_select([["Admin tổng", "super_admin"],
+                                  ["Admin quản lí", "admin_manager"],
+                                  ["Staff ", "staff"]]),
+              { prompt: "Chọn vai trò" },
+              class: "w-full border border-gray-300 rounded-lg px-3 py-2 bg-white focus:ring focus:ring-blue-300 focus:outline-none" %>
 
-    <!-- Mật khẩu -->
-    <div>
-      <%= f.label :password, "Mật khẩu", class: "block font-medium mb-1" %>
-      <%= f.password_field :password,
-            autocomplete: "new-password",
-            class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
-    </div>
 
-    <!-- Xác nhận mật khẩu -->
-    <div>
-      <%= f.label :password_confirmation, "Xác nhận mật khẩu", class: "block font-medium mb-1" %>
-      <%= f.password_field :password_confirmation,
-            autocomplete: "new-password",
-            class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
-    </div>
 
-    <!-- Nút Đăng ký -->
     <div class="pt-4">
       <%= f.submit "Đăng ký",
             class: "w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition" %>

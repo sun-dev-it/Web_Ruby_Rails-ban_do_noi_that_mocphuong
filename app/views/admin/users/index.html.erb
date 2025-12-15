@@ -27,7 +27,7 @@
               <td class="px-4 py-2"><%= user.name %></td>
               <td class="px-4 py-2"><%= user.email %></td>
               <td class="px-4 py-2"><%= user.role %></td>
-              <td class="px-4 py-2 space-x-2">
+              <td class="flex px-4 py-2 space-x-2">
                 <%= link_to 'Chỉnh sửa', edit_admin_user_path(user),
                       class: "px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition" %>
                 <% unless @Manager %>

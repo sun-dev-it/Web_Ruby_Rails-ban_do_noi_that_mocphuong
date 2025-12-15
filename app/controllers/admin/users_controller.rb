@@ -6,8 +6,8 @@ module Admin
 
     # Hiển thị danh sách user
     def index
-      @users = User.where(role: ['Quản lí web', 'Quản lí đơn hàng']).order(role: :desc)
-      @Manager = User.where(role: 'Quản lí web').count < 2
+      @users = User.where(role: ['super_admin', 'admin_manager', 'staff']).order(role: :desc)
+      @Manager = User.where(role: 'super_admin').count < 2
       @user = User.new
     end
 
