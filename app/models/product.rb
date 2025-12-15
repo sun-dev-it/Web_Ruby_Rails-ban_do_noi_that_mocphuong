@@ -7,8 +7,7 @@ class Product < ApplicationRecord
 
     scope :search, ->(q) {
       where(
-        "unaccent(name) ILIKE unaccent(:q)
-         OR unaccent(description) ILIKE unaccent(:q)",
+        "unaccent(name) ILIKE unaccent(:q)",
         q: "%#{q}%"
       )
     }

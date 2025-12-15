@@ -9,8 +9,8 @@
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center gap-3">
-        <div class="flex flex-col justify-start items-center">
+      <div class="flex flex-col sm:flex-row items-start gap-3">
+        <div class="flex flex-col justify-start items-start">
           <%= link_to "Trang chủ", root_path %>
           <%= link_to "Sản phẩm", products_path %>
           <%= link_to "Dự án", project_informations_path %>
@@ -18,6 +18,7 @@
           <%= link_to "Thiết bị và phụ kiện", accessories_path %>
         </div>
       </div>
+
 
       <div class="hidden sm:block mb-4 sm:mb-0">
         <h3 class="text-xl font-semibold mb-2">Liên hệ</h3>
@@ -55,7 +56,67 @@
       </div>
     </div>
 
-    <div class="text-center text-gray-400 text-sm mt-10">
+    <div class="relative group overflow-hidden border-y border-gray-400 my-4 py-3">
+      <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
+        <% images = ["logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png"] %>
+        <% images.each do |img| %>
+          <div class="flex-none w-1/6 p-2">
+            <%= image_tag "default/#{img}", class: "w-full h-10 object-contain" %>
+          </div>
+        <% end %>
+      </div>
+        
+      <button id="prev" class="absolute left-2 top-1/2 -translate-y-1/2
+                   opacity-0 group-hover:opacity-100
+                   bg-black/40 hover:bg-black/60
+                   text-white w-10 h-10 rounded-full
+                   transition">
+            ‹
+      </button>
+      <button id="next" class="absolute right-2 top-1/2 -translate-y-1/2
+                   opacity-0 group-hover:opacity-100
+                   bg-black/40 hover:bg-black/60
+                   text-white w-10 h-10 rounded-full
+                   transition">
+            ›
+      </button>
+    </div>
+
+
+    <div class="text-center text-gray-400 text-sm my-2">
       © <%= Time.current.year %> Công Ty Nội Thất. All rights reserved.
     </div>
+
+
 </footer>
+
+
+<script>
+  const carousel = document.getElementById('carousel');
+  const next = document.getElementById('next');
+  const prev = document.getElementById('prev');
+
+  const totalImages = carousel.children.length;
+  const imagesPerPage = 6;
+  let currentIndex = 0;
+
+  next.addEventListener('click', () => {
+    if(currentIndex + imagesPerPage >= totalImages) {
+      // quay về đầu
+      currentIndex = 0;
+    } else {
+      currentIndex += imagesPerPage;
+    }
+    carousel.style.transform = `translateX(-${(100 / imagesPerPage) * currentIndex}%)`;
+  });
+
+  prev.addEventListener('click', () => {
+    if(currentIndex - imagesPerPage < 0) {
+      // quay về cuối
+      currentIndex = totalImages - imagesPerPage;
+    } else {
+      currentIndex -= imagesPerPage;
+    }
+    carousel.style.transform = `translateX(-${(100 / imagesPerPage) * currentIndex}%)`;
+  });
+</script>

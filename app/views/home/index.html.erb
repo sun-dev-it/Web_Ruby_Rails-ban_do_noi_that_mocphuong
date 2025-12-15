@@ -172,17 +172,13 @@
 
 
 <section class="relative min-h-screen flex items-center overflow-hidden">
-
-  <!-- Background animated -->
   <div
     class="absolute inset-0 bg-cover bg-center animate-bg-pan"
     style="background-image: url('<%= url_for(@projectInformationInfor.image) if @projectInformationInfor.image.attached? %>');">
   </div>
 
-  <!-- Overlay tối -->
   <div class="absolute inset-0 bg-black/40"></div>
 
-  <!-- Content -->
   <div class="relative z-10 max-w-4xl mx-auto text-center text-white px-6">
     <h1 class="text-4xl md:text-6xl font-light tracking-wide leading-tight">
       Không gian sống <br>
