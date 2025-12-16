@@ -70,7 +70,7 @@
 
 <% if @product.images.attached? %>
   <div class="grid grid-cols-3 gap-4 mt-6">
-    <% @product.images.each do |image| %>
+    <% @product.images.order(created_at: :desc).each do |image| %>
       <div class="flex items-center space-x-4">
         
         <%= image_tag image, class: "w-48 h-48 object-cover rounded border" %>

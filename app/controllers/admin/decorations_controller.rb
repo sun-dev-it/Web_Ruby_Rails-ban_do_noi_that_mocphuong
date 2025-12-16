@@ -3,12 +3,8 @@ class Admin::DecorationsController < ApplicationController
   before_action :require_admin_manager
 
   def index
-    @decorations = Decoration.all
+    @decorations = Decoration.all.order(created_at: :desc)
     @decoration = Decoration.new
-  end
-
-  def show
-    @decoration = Decoration.find(params[:id])
   end
 
   def new
@@ -22,7 +18,7 @@ class Admin::DecorationsController < ApplicationController
   def create
     @decoration = Decoration.new(decoration_params)
     if @decoration.save
-      redirect_to admin_decorations_path
+      redirect_to edit_admin_decoration_path(@decoration)
     else
       render :new
     end

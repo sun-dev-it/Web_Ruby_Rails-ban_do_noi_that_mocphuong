@@ -8,7 +8,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
     
     if params[:id].present?
-      @products_search = Product.find(params[:id])
+      @products_search = Product.find_by(id: params[:id])
     end
   end
 
@@ -20,7 +20,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params.except(:images))
     if @product.save
       @product.images.attach(params[:product][:images]) if params[:product][:images].present?
-      redirect_to admin_product_path(@product), notice: "Đã tạo sản phẩm"
+      redirect_to admin_products_path(@product)
     else
       render :new
     end

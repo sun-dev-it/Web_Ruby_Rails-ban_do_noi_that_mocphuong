@@ -50,10 +50,14 @@ Rails.application.routes.draw do
         patch :change_image 
       end
     end
-
+    resources :project_informations do
+      member do
+        delete :purge_image
+      end
+    end
+    
     resources :orders,                only: [:index, :show, :update]
     resources :requests,              only: [:index, :show, :destroy]
-    resources :project_informations
     resources :project_information_infors
     resources :users
     resources :decorations

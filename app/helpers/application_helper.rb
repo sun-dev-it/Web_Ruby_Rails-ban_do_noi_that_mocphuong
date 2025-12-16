@@ -39,4 +39,12 @@ module ApplicationHelper
               hover:bg-gray-100 hover:rounded-lg hover:text-gray-900"
   end
 
+
+  def role_to_vietnamese(role)
+    {
+      "super_admin" => "Admin tổng",
+      "admin_manager" => "Admin quản lý",
+      "staff" => "staff"
+    }[role] || role
+  end
 end

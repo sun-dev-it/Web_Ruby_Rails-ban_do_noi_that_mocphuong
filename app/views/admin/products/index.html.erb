@@ -24,6 +24,10 @@
               <%= button_to "Xóa", admin_product_path(@products_search), method: :delete, class: "px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition" %>
             </div>
           </div>
+        <% else %>
+          <% if params[:id].present? %>
+            <p class="text-center text-red-500 font-semibold">Không tìm thấy sản phẩm với ID đã nhập.</p>
+          <% end %>
         <% end %>
 
 

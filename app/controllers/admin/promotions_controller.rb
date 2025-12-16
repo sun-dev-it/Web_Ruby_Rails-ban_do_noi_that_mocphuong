@@ -3,12 +3,8 @@ class Admin::PromotionsController < ApplicationController
   before_action :require_super_admin
 
   def index
-    @promotions = Promotion.all
+    @promotions = Promotion.all.order(created_at: :desc)
     @promotion = Promotion.new
-  end
-
-  def show
-    @promotion = Promotion.find(params[:id])
   end
 
   def new
@@ -31,7 +27,7 @@ class Admin::PromotionsController < ApplicationController
   def update
     @promotion = Promotion.find(params[:id])
     if @promotion.update(promotion_params)
-      redirect_to admin_promotions_path
+      redirect_to edit_admin_promotion_path(@promotion)
     else
       render :edit
     end
