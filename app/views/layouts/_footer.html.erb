@@ -89,34 +89,3 @@
 
 
 </footer>
-
-
-<script>
-  const carousel = document.getElementById('carousel');
-  const next = document.getElementById('next');
-  const prev = document.getElementById('prev');
-
-  const totalImages = carousel.children.length;
-  const imagesPerPage = 6;
-  let currentIndex = 0;
-
-  next.addEventListener('click', () => {
-    if(currentIndex + imagesPerPage >= totalImages) {
-      // quay về đầu
-      currentIndex = 0;
-    } else {
-      currentIndex += imagesPerPage;
-    }
-    carousel.style.transform = `translateX(-${(100 / imagesPerPage) * currentIndex}%)`;
-  });
-
-  prev.addEventListener('click', () => {
-    if(currentIndex - imagesPerPage < 0) {
-      // quay về cuối
-      currentIndex = totalImages - imagesPerPage;
-    } else {
-      currentIndex -= imagesPerPage;
-    }
-    carousel.style.transform = `translateX(-${(100 / imagesPerPage) * currentIndex}%)`;
-  });
-</script>
