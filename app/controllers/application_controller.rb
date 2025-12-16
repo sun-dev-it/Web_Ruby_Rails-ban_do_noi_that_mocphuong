@@ -44,6 +44,8 @@ class ApplicationController < ActionController::Base
 
   def admin?
     logged_in? && ["super_admin", "admin_manager", "staff"].include?(current_user.role)
+  else
+    flash[:alert] = "Bạn không có quyền truy cập trang này."
   end
   def require_admin
     unless admin?
@@ -54,6 +56,8 @@ class ApplicationController < ActionController::Base
 
   def admin_manager?
     logged_in? && ["admin_manager", "super_admin"].include?(current_user.role)
+  else
+    flash[:alert] = "Bạn không có quyền truy cập trang này."
   end
   def require_admin_manager
     unless admin_manager?
@@ -62,8 +66,9 @@ class ApplicationController < ActionController::Base
   end
   
   def super_admin?
-    flash[:alert] = "Bạn không có quyền truy cập trang này."
     logged_in? && current_user.role == "super_admin"
+  else
+    flash[:alert] = "Bạn không có quyền truy cập trang này."
   end
   def require_super_admin
     unless super_admin?
@@ -74,6 +79,8 @@ class ApplicationController < ActionController::Base
 
   def staff?
     logged_in? && ["staff", "super_admin"].include?(current_user.role)
+  else
+    flash[:alert] = "Bạn không có quyền truy cập trang này."
   end
   def require_staff
     unless staff?
