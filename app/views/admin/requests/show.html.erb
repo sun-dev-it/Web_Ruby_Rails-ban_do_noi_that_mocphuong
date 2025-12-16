@@ -11,7 +11,7 @@
 
     <div class="mt-6 flex justify-between">
       <%= link_to "Quay lại", admin_requests_path, class: "px-4 py-2 bg-gray-300 rounded hover:bg-gray-400" %>
-      <%= link_to "Xóa", admin_request_path(@request), method: :delete, data: { confirm: "Bạn có chắc muốn xóa?" }, class: "px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" %>
+      <%= button_to "Xóa", admin_request_path(@request), method: :delete, class: "px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" %>
     </div>
   </div>
 </div>
