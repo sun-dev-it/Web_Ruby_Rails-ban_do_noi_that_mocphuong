@@ -31,8 +31,5 @@
   </div>
 <% end %>
 
-
-<% project.images.each do |image| %>
-  <%= image_tag image, class: "w-32 h-32 object-cover rounded border" %>
-<% end %>
-
+<% @introduction.image.attached? %>
+  <%= image_tag @introduction.image, class: "w-32 h-32 object-cover rounded border" %>
