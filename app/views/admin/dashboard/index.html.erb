@@ -1,49 +1,18 @@
 <div class="flex justify-center">
-    <div class="w-full boder bg-black p-4 sm:p-10">
-      <div class="min-h-screen flex">
-        <aside class="hidden md:flex w-64 text-white flex-col">
-          <nav class="flex-1 p-4 space-y-2 text-sm">
-            <%= link_to admin_orders_path, class: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800" do %>
-              📦 Quản lý đơn hàng
-            <% end %>
-            
-            <%= link_to admin_requests_path, class: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800" do %>
-              💬 Yêu cầu tư vấn
-            <% end %>
-            
-            <%= link_to admin_products_path, class: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800" do %>
-              🪑 Sản phẩm
-            <% end %>
-            
-            <%= link_to admin_categories_path, class: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800" do %>
-              📂 Danh mục
-            <% end %>
-            
-            <hr class="border-gray-700 my-3">
-            
-            <%= link_to edit_admin_color_path, class: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800" do %>
-              🎨 Màu giao diện
-            <% end %>
-            
-            <%= link_to admin_users_path, class: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800" do %>
-              👤 Quản trị viên
-            <% end %>
-
-            <div class="p-4 border-t border-gray-700">
-              <%= button_to "🚪 Đăng xuất",
-                  logout_path,
-                  method: :delete,
-                  class: "w-full text-left p-3 rounded-lg hover:bg-red-600 bg-red-500" %>
-            </div>
-          </nav>
-        </aside>
-              
+    <div class="w-full boder bg-black p-4 sm:p-16">
+      <div class="min-h-screen flex">             
         <main class="flex-1 p-6 sm:p-10">
               
           <div class="mb-8">
-            <h1 class="text-2xl sm:text-4xl font-bold text-gray-500">
-              Xin chào <span class="text-gray-500"><%= @current_user.name %></span> 👋
-            </h1>
+            <div class="flex items-center justify-between">
+              <p class="text-2xl sm:text-4xl font-bold text-gray-500">Xin chào <span class="text-gray-500"><%= @current_user.name %></span> 👋</p>
+              <div class="p-4">
+                <%= button_to "Đăng xuất",
+                    logout_path,
+                    method: :delete,
+                    class: "w-full text-left p-3 rounded-lg hover:bg-red-600 bg-red-500" %>
+              </div>
+            </div>
             <p class="text-gray-400 mt-2">
               Quản lý toàn bộ website nội thất Mộc Phương
             </p>
@@ -55,13 +24,23 @@
             <% dashboard_items = [
               ["📦", "Đơn hàng", admin_orders_path],
               ["💬", "Yêu cầu tư vấn", admin_requests_path],
+
               ["🪑", "Sản phẩm", admin_products_path],
               ["📂", "Danh mục", admin_categories_path],
-              ["🎨", "Màu giao diện", edit_admin_color_path],
+              
+
               ["🖼️", "Trang chủ", edit_admin_introduction_path],
+              ["💼", "Dự án", admin_project_informations_path],
+              ["🏠", "Trang trí nội thất", admin_decorations_path],
+              ["📞", "Liên hệ", edit_admin_contact_path],
+              ["🛋️", "Thiết bị và phụ kiện", admin_accessories_path],
               ["🏭", "Xưởng sản xuất", edit_admin_factory_path],
               ["🏢", "Văn phòng thiết kế", edit_admin_design_office_path],
-              ["🔥", "Khuyến mãi", admin_promotions_path]
+              ["🔥", "Khuyến mãi", admin_promotions_path],
+
+              ["👤", "Quản trị viên", admin_users_path],
+              ["🏷️", "Logan", edit_admin_slogan_path],
+              ["🎨", "Màu giao diện", edit_admin_color_path],
             ] %>
               
             <% dashboard_items.each do |icon, title, path| %>
