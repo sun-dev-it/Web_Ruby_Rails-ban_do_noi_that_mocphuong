@@ -1,4 +1,5 @@
 # Xóa dữ liệu cũ (theo thứ tự)
+OrderHistory.delete_all
 OrderItem.delete_all
 Order.delete_all
 CartItem.delete_all
