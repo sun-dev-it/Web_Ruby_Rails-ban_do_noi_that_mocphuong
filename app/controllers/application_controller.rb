@@ -57,16 +57,17 @@ class ApplicationController < ActionController::Base
   end
   def require_admin_manager
     unless admin_manager?
-      redirect_to root_path
+      redirect_to admin_dashboard_path
     end
   end
   
   def super_admin?
+    flash[:alert] = "Bạn không có quyền truy cập trang này."
     logged_in? && current_user.role == "super_admin"
   end
   def require_super_admin
     unless super_admin?
-      redirect_to root_path
+      redirect_to admin_dashboard_path
     end
   end
 
@@ -76,7 +77,7 @@ class ApplicationController < ActionController::Base
   end
   def require_staff
     unless staff?
-      redirect_to root_path
+      redirect_to admin_dashboard_path
     end
   end
 

@@ -1,5 +1,9 @@
+<% if flash[:alert] %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
 <div class="flex justify-center">
-    <div class="w-full boder bg-black p-4 sm:p-16">
+    <div class="w-full boder bg-black p-4 sm:px-16 sm:px-8">
       <div class="min-h-screen flex">             
         <main class="flex-1 p-6 sm:p-10">
               
@@ -31,6 +35,7 @@
 
               ["🖼️", "Trang chủ", edit_admin_introduction_path],
               ["💼", "Dự án", admin_project_informations_path],
+              ["📊", "Trang bìa dự án", admin_project_information_infors_path],
               ["🏠", "Trang trí nội thất", admin_decorations_path],
               ["📞", "Liên hệ", edit_admin_contact_path],
               ["🛋️", "Thiết bị và phụ kiện", admin_accessories_path],

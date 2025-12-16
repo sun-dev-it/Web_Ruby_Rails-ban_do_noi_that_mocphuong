@@ -1,31 +1,35 @@
-<%= form_with(model: [:admin, @project], local: true, html: { multipart: true }) do |f| %>
-  <div class="space-y-6">
-
-    <!-- Nội dung -->
-    <div>
-      <%= f.label :content, "Nội dung bìa", class: "block font-medium mb-1" %>
-      <%= f.text_area :content, rows: 4, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
-    </div>
-
-    <!-- Upload nhiều ảnh -->
-    <div>
-      <%= f.label :images, "Ảnh dự án (chọn nhiều ảnh nếu muốn)", class: "block font-medium mb-1" %>
-      <%= f.file_field :images, multiple: true, class: "block w-full border border-gray-300 rounded px-3 py-2 cursor-pointer" %>
-    </div>
-
-    <% if @project.images.attached? %>
-      <div class="grid grid-cols-3 gap-4 mt-4">
-        <% @project.images.each do |img| %>
-          <div class="relative">
-            <%= image_tag url_for(img), class: "w-full h-32 object-cover rounded" %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+<%= form_with model: [:admin, @projectInformationInfor], local: true, multipart: true do |form| %>
+  <div class="space-y-6 bg-white p-6 rounded-xl shadow-lg">
 
     <div>
-      <%= f.submit class: "bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition" %>
+      <%= form.label :content, "Nội dung", class: "block font-medium mb-1" %>
+      <%= form.text_field :content,
+            class: "w-full border border-gray-300 rounded-lg px-3 py-4 focus:ring focus:ring-blue-300 focus:outline-none" %>
     </div>
+
+
+    <div>
+      <%= form.label :images, "Ảnh dự án", class: "block font-medium mb-1" %>
+      <%= form.file_field :images, multiple: true,
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 bg-white" %>
+    </div>
+
+    <div class="pt-4">
+      <%= form.submit "Lưu",
+            class: "w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition" %>
+    </div>
+
+
+  </div>
+<% end %>
+
+<% @projectInformationInfor.images.order(created_at: :desc).each do |image| %>
+  <div class="relative inline-block p-4 m-2">
+    <%= image_tag image, class: "w-32 h-32 object-cover rounded border" %>
+    <%= button_to "Xóa ảnh",
+          purge_image_admin_project_information_infor_path(@projectInformationInfor, image_id: image.id),
+          method: :delete,
+          data: { confirm: "Bạn có chắc muốn xóa ảnh này?" } %>
 
   </div>
 <% end %>

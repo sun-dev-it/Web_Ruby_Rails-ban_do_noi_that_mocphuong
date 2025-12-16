@@ -58,7 +58,11 @@ Rails.application.routes.draw do
     
     resources :orders,                only: [:index, :show, :update]
     resources :requests,              only: [:index, :show, :destroy]
-    resources :project_information_infors
+    resources :project_information_infors do
+      member do
+        delete :purge_image
+      end
+    end
     resources :users
     resources :decorations
     resources :accessories

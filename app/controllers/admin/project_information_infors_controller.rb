@@ -1,39 +1,28 @@
 module Admin
   class ProjectInformationInforsController < ApplicationController
     before_action :require_super_admin
-    before_action :set_project, only: [:edit, :update, :destroy, :show]
+    before_action :set_project, only: [:update]
 
     def index
-      @projects = ProjectInformationInfor.all
-    end
-
-    def new
-      @project = ProjectInformationInfor.new
-    end
-
-    def create
-      @project = ProjectInformationInfor.new(project_params)
-      if @project.save
-        redirect_to admin_project_information_infors_path, notice: "Tạo dự án thành công"
-      else
-        render :new
-      end
-    end
-
-    def edit
+      @projectInformationInfor = ProjectInformationInfor.first_or_initialize
     end
 
     def update
-      if @project.update(project_params)
-        redirect_to admin_project_information_infors_path, notice: "Cập nhật dự án thành công"
+      if @project.update(project_params.except(:images))
+        if project_params[:images]
+          @project.images.attach(project_params[:images])
+        end
+        redirect_to admin_project_information_infors_path
       else
         render :edit
       end
     end
 
-    def destroy
-      @project.destroy
-      redirect_to admin_project_information_infors_path, notice: "Xóa dự án thành công"
+    def purge_image
+      @projectInformationInfor = ProjectInformationInfor.find(params[:id])
+      image = @projectInformationInfor.images.find(params[:image_id])
+      image.purge
+      redirect_back fallback_location: admin_project_information_infors_path(@projectInformationInfor)
     end
 
     private
