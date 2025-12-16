@@ -1,4 +1,4 @@
 class ProjectInformation < ApplicationRecord
-    has_many_attached :images
+    has_many_attached :images, dependent: :destroy
 end
 

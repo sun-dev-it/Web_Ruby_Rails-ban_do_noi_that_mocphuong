@@ -17,11 +17,9 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = Product.new(product_params.except(:images))
     if @product.save
-      if params[:product][:images]
-        @product.images.attach(params[:product][:images])
-      end
+      @product.images.attach(params[:product][:images]) if params[:product][:images].present?
       redirect_to admin_product_path(@product), notice: "Đã tạo sản phẩm"
     else
       render :new
