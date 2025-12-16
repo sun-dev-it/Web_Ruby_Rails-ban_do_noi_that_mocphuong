@@ -241,3 +241,49 @@
     }, 5000);
   });
 </script>
+
+
+
+
+
+<div class="min-h-screen flex flex-col items-center mt-2 justify-center p-6">
+  <div class="w-[90%] sm:w-[80%] text-center p-8">
+    <h1 class="text-xl sm:text-4xl font-semibold mb-4 text-gray-800">
+      Bạn có ý tưởng cho ngôi nhà của bạn?
+    </h1>
+    <p class="text-gray-600 mb-6">
+      Vui lòng để lại số điện thoại, chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.
+    </p>
+    <p class="text-gray-600 mb-6">
+      Nếu bạn cần hỗ trợ ngay lập tức, đừng ngần ngại gọi cho chúng tôi: 
+      <span class="text-yellow-700 font-medium"><%= @contact.phone %></span>
+    </p>
+
+    <%= form_with model: @request, local: true do |f| %>
+      <div class="flex flex-col gap-4">
+        <div>
+          <%= f.label :name, "Tên của bạn", class: "block text-left mb-1 text-gray-700" %>
+          <%= f.text_field :name, required: true, class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
+        </div>
+    
+        <div>
+          <%= f.label :phone, "Số điện thoại", class: "block text-left mb-1 text-gray-700" %>
+          <%= f.text_field :phone, required: true, class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
+        </div>
+    
+        <div>
+          <%= f.label :content, "Nội dung yêu cầu", class: "block text-left mb-1 text-gray-700" %>
+          <%= f.text_area :content, rows: 4, required: true, class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
+        </div>
+    
+        <div class="flex w-full justify-center">
+          <%= f.submit "Gửi yêu cầu", 
+                class: "w-[50%] px-6 text-white font-semibold py-3 rounded-lg transition", 
+                style: "background-color: #{Color.first&.header || '#ffffff'};" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
