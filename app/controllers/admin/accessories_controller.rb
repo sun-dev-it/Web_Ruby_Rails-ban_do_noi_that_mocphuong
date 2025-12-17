@@ -18,7 +18,7 @@ class Admin::AccessoriesController < ApplicationController
   def create
     @accessory = Accessory.new(accessory_params)
     if @accessory.save
-      redirect_to edit_admin_accessory_path(@accessory)
+      redirect_to admin_accessories_path(@accessory)
     else
       render :new
     end

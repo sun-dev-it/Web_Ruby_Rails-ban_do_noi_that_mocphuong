@@ -38,70 +38,23 @@
         <%= link_to accessory_path(accessory.id) do %>
 
           <div class="group my-2">
-            <div class="relative w-full overflow-hidden group">
+            <div class="relative overflow-hidden shadow-lg">
 
-              <div id="slider-track" class="flex transition-transform duration-700 ease-in-out">
-                <% @decoration.images.each do |img| %>
-                  <div class="w-full flex-shrink-0">
-                    <%= image_tag img, class: "w-full aspect-[4/3] object-cover" %>
-                  </div>
-                <% end %>
+              <% if accessory.images.attached? %>
+                <%= image_tag accessory.images.first,
+                    class: "w-full aspect-[4/3] object-cover transform transition duration-500 group-hover:scale-110" %>
+              <% end %>
+
+              <!-- Overlay đẹp với gradient tối -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
+                          opacity-0 group-hover:opacity-100 transition duration-500
+                          flex items-end p-5">
+                <p class="text-white text-lg font-medium translate-y-5
+                          group-hover:translate-y-0 transition duration-500">
+                  <%= truncate(accessory.content, length: 120) %>
+                </p>
               </div>
-                
-              <!-- Overlay gradient (nội thất style) -->
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-                
-              <!-- Prev -->
-              <button
-                id="prevSlide"
-                class="absolute left-4 top-1/2 -translate-y-1/2
-                       opacity-0 group-hover:opacity-100
-                       bg-black/40 hover:bg-black/60
-                       text-white w-10 h-10 rounded-full
-                       transition">
-                ‹
-              </button>
-                
-              <!-- Next -->
-              <button
-                id="nextSlide"
-                class="absolute right-4 top-1/2 -translate-y-1/2
-                       opacity-0 group-hover:opacity-100
-                       bg-black/40 hover:bg-black/60
-                       text-white w-10 h-10 rounded-full
-                       transition">
-                ›
-              </button>
-                <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  const track = document.getElementById("slider-track");
-                  if (!track) return;
-                            
-                  const slides = track.children;
-                  const total = slides.length;
-                  let index = 0;
-                            
-                  function updateSlide() {
-                    track.style.transform = `translateX(-${index * 100}%)`;
-                  }
-                
-                  document.getElementById("nextSlide")?.addEventListener("click", () => {
-                    index = (index + 1) % total;
-                    updateSlide();
-                  });
-                
-                  document.getElementById("prevSlide")?.addEventListener("click", () => {
-                    index = (index - 1 + total) % total;
-                    updateSlide();
-                  });
-                
-                  // Auto slide mỗi 5 giây
-                  setInterval(() => {
-                    index = (index + 1) % total;
-                    updateSlide();
-                  }, 5000);
-                });
-                </script>
+
             </div>
 
             <!-- Tên project -->

@@ -18,7 +18,7 @@ class Admin::DecorationsController < ApplicationController
   def create
     @decoration = Decoration.new(decoration_params)
     if @decoration.save
-      redirect_to edit_admin_decoration_path(@decoration)
+      redirect_to admin_decorations_path(@decoration)
     else
       render :new
     end
