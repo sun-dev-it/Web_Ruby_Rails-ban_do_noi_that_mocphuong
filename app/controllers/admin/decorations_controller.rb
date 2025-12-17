@@ -25,21 +25,20 @@ class Admin::DecorationsController < ApplicationController
   end
 
   def update
-    @decoration = Decoration.find(params[:id])
-  
-    # Lưu ảnh mới nếu có
-    if params[:decoration][:images]
-      params[:decoration][:images].each do |image|
-        @decoration.images.attach(image)
-      end
-    end
-  
-    # Cập nhật các attribute khác
     if @decoration.update(decoration_params.except(:images))
-      redirect_to admin_decorations_path, notice: "Cập nhật thành công"
+      if decoration_params[:images]
+        @decoration.images.attach(decoration_params[:images])
+      end
+      redirect_to admin_decoration_path
     else
       render :edit
     end
+  end
+  def purge_image
+    @decoration = Decoration.find(params[:id])
+    image = @decoration.images.find(params[:image_id])
+    image.purge
+    redirect_back fallback_location: admin_decoration_path(@decoration)
   end
 
 
@@ -49,13 +48,7 @@ class Admin::DecorationsController < ApplicationController
     redirect_to admin_decorations_path
   end
 
-  def destroy_image
-    @decoration = Decoration.find(params[:id])
-    image = @decoration.images.find(params[:image_id])
-    image.purge
-    redirect_back(fallback_location: @decoration_path, notice: "Đã xóa ảnh.")
-  end
-  
+
   private
 
   def decoration_params

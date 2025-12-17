@@ -46,8 +46,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :products do
       member do
-        delete "remove_image/:image_id",    to: "products#remove_image", as: :remove_image
-        patch :change_image 
+        delete :purge_image
       end
     end
     resources :project_informations do
