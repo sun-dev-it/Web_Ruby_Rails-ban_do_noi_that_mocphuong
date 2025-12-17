@@ -44,6 +44,11 @@ Rails.application.routes.draw do
     get "dashboard",                        to: "dashboard#index", as: "dashboard"
 
     resources :categories
+    resources :showroom do
+      member do
+        delete :purge_image
+      end
+    end
     resources :products do
       member do
         delete :purge_image

@@ -53,6 +53,12 @@ ProjectInformationInfor.all.each do |proj_info|
   end
 end
 
+Accessory.all.each do |proj_info|
+  proj_info.images.each do |img|
+    img.purge
+  end
+end
+
 image_path = Rails.root.join("app/assets/images/default/img.png")
 image2_path = Rails.root.join("app/assets/images/default/img2.png")
 image3_path = Rails.root.join("app/assets/images/default/img3.png")
