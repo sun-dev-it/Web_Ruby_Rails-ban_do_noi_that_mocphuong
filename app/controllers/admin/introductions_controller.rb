@@ -32,7 +32,7 @@ module Admin
     private
 
     def introduction_params
-      params.require(:introduction).permit(:title, images: [], :content, :link_video)
+      params.require(:introduction).permit(:title, :content, :link_video, images: [])
     end
   end
 end

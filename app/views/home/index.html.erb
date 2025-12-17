@@ -118,9 +118,23 @@
   <div class="flex justify-center">
     <%= render "home/introduction" %>
   </div>
-  <div class="flex justify-center">
-    <%= render "home/promotion" %>
-  </div>
+  
+<div class="text-center mt-10 mb-10">
+  <h2 class="text-2xl md:text-3xl font-gilroy tracking-wide"
+      style="color: <%= Color.first&.header || '#ffffff' %>;">
+    <span class="inline-block relative">
+        
+      Sản phẩm giảm giá
+        
+      <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
+            style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+      </span>
+        
+    </span>
+  </h2>
+
+  <%= render "promotion" %>
+</div>
 
 <div class="text-center mt-10 mb-10">
   <h2 class="text-2xl md:text-3xl font-gilroy tracking-wide"
