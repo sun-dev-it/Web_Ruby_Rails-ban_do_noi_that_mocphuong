@@ -67,7 +67,9 @@ Rails.application.routes.draw do
     resources :decorations do
       delete "images/:image_id", to: "decorations#destroy_image", as: :image
     end
-    resources :accessories
+    resources :accessories do
+      delete "images/:image_id", to: "accessories#destroy_image", as: :image
+    end
     resources :promotions
     resource :contact,                only: [:edit, :update]
     resource :introduction do

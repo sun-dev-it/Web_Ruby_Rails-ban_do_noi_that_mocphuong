@@ -26,23 +26,40 @@ class Admin::AccessoriesController < ApplicationController
 
   def update
     @accessory = Accessory.find(params[:id])
-    if @accessory.update(accessory_params)
-      redirect_to admin_accessories_path
+
+    # Lưu ảnh mới nếu có
+    if params[:accessory][:images]
+      params[:accessory][:images].each do |image|
+        @accessory.images.attach(image)
+      end
+    end
+
+    # Cập nhật các attribute khác
+    if @accessory.update(accessory_params.except(:images))
+      redirect_to admin_accessorys_path, notice: "Cập nhật thành công"
     else
       render :edit
     end
   end
+
 
   def destroy
     @accessory = Accessory.find(params[:id])
     @accessory.destroy
     redirect_to admin_accessories_path
   end
+
+  def destroy_image
+    @accessory = Accessory.find(params[:id])
+    image = @accessory.images.find(params[:image_id])
+    image.purge
+    redirect_back(fallback_location: @accessory_path, notice: "Đã xóa ảnh.")
+  end
   
   private
 
   def accessory_params
-    params.require(:accessory).permit(:name, :content, :image)
+    params.require(:accessory).permit(:name, :content, image: [])
   end
 
 end

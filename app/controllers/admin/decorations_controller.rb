@@ -26,12 +26,22 @@ class Admin::DecorationsController < ApplicationController
 
   def update
     @decoration = Decoration.find(params[:id])
-    if @decoration.update(decoration_params)
-      redirect_to admin_decorations_path
+  
+    # Lưu ảnh mới nếu có
+    if params[:decoration][:images]
+      params[:decoration][:images].each do |image|
+        @decoration.images.attach(image)
+      end
+    end
+  
+    # Cập nhật các attribute khác
+    if @decoration.update(decoration_params.except(:images))
+      redirect_to admin_decorations_path, notice: "Cập nhật thành công"
     else
       render :edit
     end
   end
+
 
   def destroy
     @decoration = Decoration.find(params[:id])
