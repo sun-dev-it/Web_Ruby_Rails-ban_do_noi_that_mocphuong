@@ -1,0 +1,9 @@
+<div id="image-wrapper" class="relative overflow-hidden opacity-0 transition-opacity duration-700 z-40">
+  <% if @showroom.images.attached? %>
+    <%= image_tag @showroom.images.first, class: "w-full aspect-[3/1] object-cover" %>
+  <% end %>
+
+  <!-- Doors -->
+  <div class="absolute inset-0 left-door bg-black/90 origin-left"></div>
+  <div class="absolute inset-0 right-door bg-black/90 origin-right"></div>
+</div>

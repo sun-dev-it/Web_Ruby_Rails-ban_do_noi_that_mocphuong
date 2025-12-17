@@ -1,0 +1,24 @@
+<div class="relative h-[70vh] bg-cover bg-center w-full"
+     style="background-image: url('<%= url_for(@showroom.images.first) %>')">
+
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
+    <div>
+      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">
+        SHOWROOM
+      </p>
+      <h1 class="text-4xl md:text-5xl font-semibold text-white">
+        SHOWROOM
+      </h1>
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-center -mt-20 mb-[140px]">
+  <div class="w-[90%] sm:w-[70%] z-[800]">
+    <div class="rounded-lg shadow-md shadow-gray-700 justify-between bg-white italic p-6 sm:p-12 space-y-4">
+      <p><%= raw @showroom.content %></p>
+    </div>
+  </div>
+</div>
