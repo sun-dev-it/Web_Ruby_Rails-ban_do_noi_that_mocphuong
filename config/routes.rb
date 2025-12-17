@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :decorations,           only: [:index, :show]
   resources :project_informations,  only: [:index, :show]
   resources :accessories,           only: [:index, :show]
+  resources :showroom,           only: [:index]
   resource  :contact,               only: [:show]
   resource  :design_office,         only: [:show]
   resource  :factory,               only: [:show]

@@ -1,0 +1,35 @@
+<%= form_with model: [:admin, @showroom], local: true, multipart: true do |form| %>
+  <div class="space-y-6 bg-white p-6 rounded-xl shadow-lg">
+
+    <div>
+      <%= form.label :content, "Nội dung", class: "block font-medium mb-1" %>
+      <%= form.text_field :content,
+            class: "w-full border border-gray-300 rounded-lg px-3 py-4 focus:ring focus:ring-blue-300 focus:outline-none" %>
+    </div>
+
+
+    <div>
+      <%= form.label :images, "Ảnh dự án", class: "block font-medium mb-1" %>
+      <%= form.file_field :images, multiple: true,
+            class: "w-full border border-gray-300 rounded-lg px-3 py-2 bg-white" %>
+    </div>
+
+    <div class="pt-4">
+      <%= form.submit "Lưu",
+            class: "w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition" %>
+    </div>
+
+
+  </div>
+<% end %>
+
+<% @showroom.images.order(created_at: :desc).each do |image| %>
+  <div class="relative inline-block p-4 m-2">
+    <%= image_tag image, class: "w-32 h-32 object-cover rounded border" %>
+    <%= button_to "Xóa ảnh",
+          purge_image_admin_showroom_path(@showroom, image_id: image.id),
+          method: :delete,
+          data: { confirm: "Bạn có chắc muốn xóa ảnh này?" } %>
+
+  </div>
+<% end %>

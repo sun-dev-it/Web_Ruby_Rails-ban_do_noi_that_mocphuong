@@ -1,7 +1,7 @@
 class Admin::ShowroomsController < ApplicationController
     
     before_action :require_super_admin
-    before_action :set_project, only: [:update]
+    before_action :set_showroom, only: [:update]
 
     def index
       @showroom = Showroom.first_or_initialize
@@ -9,7 +9,7 @@ class Admin::ShowroomsController < ApplicationController
 
     def update
       if @showroom.update(showroom_params.except(:images))
-        if project_params[:images]
+        if showroom_params[:images]
           @showroom.images.attach(showroom_params[:images])
         end
         redirect_to admin_showrooms_path
