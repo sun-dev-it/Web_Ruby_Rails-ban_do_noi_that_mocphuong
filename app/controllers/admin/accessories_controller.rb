@@ -37,12 +37,11 @@ class Admin::AccessoriesController < ApplicationController
   end
 
   def purge_image
-    @accessory = ProjectInformationInfor.find(params[:id])
+    @accessory = Accessory.find(params[:id])
     image = @accessory.images.find(params[:image_id])
     image.purge
     redirect_back fallback_location: admin_accessories_path(@accessory)
   end
-
 
   def destroy
     @accessory = Accessory.find(params[:id])
