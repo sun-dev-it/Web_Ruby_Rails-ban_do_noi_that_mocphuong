@@ -6,16 +6,17 @@
     </div>
 
     <% if @introduction&.youtube_embed_url.present? %>
-      <div class="mt-6 md:mt-10 flex justify-center">
+      <div class="mt-6 md:mt-10 flex justify-center w-full max-w-full h-[300px] sm:h-[500px]">
         <iframe
           src="<%= @introduction.youtube_embed_url %>"
           title="YouTube video"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-          class="w-full max-w-3xl <%= @introduction.youtube_aspect_class %> rounded-xl shadow-lg">
+          class="w-full <%= @introduction.youtube_aspect_class %> rounded-xl shadow-lg">
         </iframe>
       </div>
+
     <% end %>
   </div>
 </div>

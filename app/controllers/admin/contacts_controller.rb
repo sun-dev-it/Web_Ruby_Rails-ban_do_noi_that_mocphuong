@@ -18,6 +18,7 @@ class Admin::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:title, :email, :phone, :address, :content, :gmail, :image)
+    params.require(:contact).permit(:fb, :zalo, :phone, :address, :gmail, :image)
   end
 end
+
