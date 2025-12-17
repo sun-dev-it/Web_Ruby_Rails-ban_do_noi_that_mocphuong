@@ -33,14 +33,15 @@
           <%= promotion.content %>
         </div>
 
-        <% if promotion.video.present? %>
+        <% if promotion.youtube_embed_url.present? %>
           <div class="flex justify-center">
-            <iframe src="<%= promotion.video %>" 
-                    title="YouTube video" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    class="w-full max-w-3xl aspect-video rounded-lg shadow-lg">
+            <iframe
+              src="<%= promotion.youtube_embed_url %>"
+              title="YouTube video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              class="w-full max-w-3xl <%= promotion.youtube_aspect_class %> rounded-lg shadow-lg">
             </iframe>
           </div>
         <% end %>

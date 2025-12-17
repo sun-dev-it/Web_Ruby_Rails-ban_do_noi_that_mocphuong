@@ -5,15 +5,15 @@
       <%= raw simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
     </div>
 
-    <% if @introduction&.link_video.present? %>
+    <% if @introduction&.youtube_embed_url.present? %>
       <div class="mt-6 md:mt-10 flex justify-center">
-        <iframe 
-          src="<%= @introduction.link_video %>" 
-          title="YouTube video" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        <iframe
+          src="<%= @introduction.youtube_embed_url %>"
+          title="YouTube video"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-          class="w-full max-w-3xl aspect-video rounded-xl shadow-lg">
+          class="w-full max-w-3xl <%= @introduction.youtube_aspect_class %> rounded-xl shadow-lg">
         </iframe>
       </div>
     <% end %>

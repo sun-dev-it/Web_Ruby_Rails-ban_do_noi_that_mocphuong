@@ -29,12 +29,10 @@
                               group-hover:scale-110" %>
 
               <% else %>
-
-                <%= image_tag product.images.first,
-                      class: "w-full h-full object-cover
-                              transition-transform duration-700
-                              group-hover:scale-110" %>
-
+                <% if product.images.attached? %>
+                  <%= image_tag product.images.first,
+                        class: "w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" %>
+                <% end %>
               <% end %>
 
               <!-- Overlay -->

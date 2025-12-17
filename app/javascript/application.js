@@ -64,3 +64,10 @@ window.addEventListener("load", () => {
     loader.style.display = "none";
   }, 600);
 });
+
+// flash_controller.js
+export default class extends Controller {
+  connect() {
+    setTimeout(() => this.element.remove(), 3000)
+  }
+}

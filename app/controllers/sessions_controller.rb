@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
-  def google_auth
+  def oauth
     auth = request.env['omniauth.auth']
+    return redirect_to root_path if auth.nil?
 
     user = User.find_by(email: auth['info']['email'])
     if user

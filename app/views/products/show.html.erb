@@ -112,13 +112,17 @@
         </div>
 
         <hr class="text-black my-6">
-        <div class="my-4">
-          <%= button_to "Thêm vào giỏ",
-                add_cart_path(product_id: @product.id),
+<div class="my-4">
+  <%= form_with url: add_cart_path(product_id: @product.id),
                 method: :post,
-                form: { class: "w-full", data: { remote: true } },
-                class: "w-full bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition" %>
-        </div>
+                data: { turbo_stream: true } do %>
+
+    <%= submit_tag "Thêm vào giỏ",
+        class: "w-full bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition" %>
+
+  <% end %>
+</div>
+
         <p class="text-gray-900"><strong>Bạn cần tư vấn?</strong> liên hệ với chúng tôi</p>
         <div class="flex justify-between space-x-2 my-4">
           <%= link_to "https://zalo.me/#{@contact.zalo}",
