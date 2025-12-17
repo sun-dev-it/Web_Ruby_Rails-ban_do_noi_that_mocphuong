@@ -16,7 +16,7 @@
 <div class="flex justify-center">
   <div class="w-[90%] sm:w-[80%] z-47">
     <div class="text-center mt-10 mb-8">
-      <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
+      <h2 class="text-2xl md:text-4xl font-extrabold tracking-wide"
           style="color: <%= Color.first&.header || '#ffffff' %>;">
         <span class="inline-block relative">
 
@@ -44,11 +44,10 @@
                     class: "w-full aspect-[4/3] object-cover transform transition duration-500 group-hover:scale-110" %>
               <% end %>
 
-              <!-- Overlay đẹp với gradient tối -->
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent
                           opacity-0 group-hover:opacity-100 transition duration-500
                           flex items-end p-5">
-                <p class="text-white text-lg font-medium translate-y-5
+                <p class="text-white text-sm font-medium translate-y-5
                           group-hover:translate-y-0 transition duration-500">
                   <%= truncate(decoration.content, length: 120) %>
                 </p>
@@ -56,8 +55,7 @@
 
             </div>
 
-            <!-- Tên project -->
-            <div class="font-semibold text-xl text-center mt-4 text-gray-900">
+            <div class="font-semibold text-lg text-center mt-4 text-gray-900">
               <%= decoration.name %>
             </div>
           </div>
