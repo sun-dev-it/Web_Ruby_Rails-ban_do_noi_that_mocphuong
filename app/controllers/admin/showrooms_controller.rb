@@ -33,5 +33,4 @@ class Admin::ShowroomsController < ApplicationController
     def showroom_params
       params.require(:showroom).permit(:content, images: [])
     end
-  end
 end
