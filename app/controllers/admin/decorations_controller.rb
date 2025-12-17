@@ -25,6 +25,7 @@ class Admin::DecorationsController < ApplicationController
   end
 
   def update
+    @decoration = Decoration.find(params[:id])
     if @decoration.update(decoration_params.except(:images))
       if decoration_params[:images]
         @decoration.images.attach(decoration_params[:images])
@@ -40,7 +41,6 @@ class Admin::DecorationsController < ApplicationController
     image.purge
     redirect_back fallback_location: admin_decorations_path(@decoration)
   end
-
 
   def destroy
     @decoration = Decoration.find(params[:id])

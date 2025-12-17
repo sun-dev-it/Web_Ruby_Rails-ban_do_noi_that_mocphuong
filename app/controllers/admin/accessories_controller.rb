@@ -25,6 +25,7 @@ class Admin::AccessoriesController < ApplicationController
   end
 
   def update
+    @accessory = ProjectInformationInfor.find(params[:id])
     if @accessory.update(accessory_params.except(:images))
       if accessory_params[:images]
         @accessory.images.attach(accessory_params[:images])
