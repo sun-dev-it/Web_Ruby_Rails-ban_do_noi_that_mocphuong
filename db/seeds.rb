@@ -3,6 +3,12 @@ Slogan.all.each do |slogan|
   slogan.image.purge if slogan.image.attached?
 end
 
+Showroom.all.each do |decoration|
+  decoration.images.each do |img|
+    img.purge
+  end
+end
+
 # Xóa ảnh của Decoration
 Decoration.all.each do |decoration|
   decoration.images.each do |img|
@@ -230,6 +236,23 @@ accessoryData.each do |t|
   )
 end
 
-
-
+Showroom.create!(content: "Nội dung showroom")
+showroom = Showroom.all
+showroom.each do |t|
+  t.images.attach(
+    io: File.open(image2_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+  t.images.attach(
+    io: File.open(image3_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+  t.images.attach(
+    io: File.open(image4_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+end
 

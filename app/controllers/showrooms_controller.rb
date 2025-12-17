@@ -1,5 +1,5 @@
 class ShowroomsController < ApplicationController
-    def index 
+    def show 
         @showroom = Showroom.first
     end
 end
