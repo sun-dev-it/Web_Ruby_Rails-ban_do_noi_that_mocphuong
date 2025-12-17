@@ -21,7 +21,7 @@ class Admin::ShowroomsController < ApplicationController
     end
 
     def purge_image
-      @showroom = Showroom.find(params[:id])
+      @showroom = Showroom.first
       image = @showroom.images.find(params[:image_id])
       image.purge
       redirect_back fallback_location: edit_admin_showroom_path(@showroom)
