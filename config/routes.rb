@@ -68,7 +68,7 @@ Rails.application.routes.draw do
     resources :accessories
     resources :promotions
     resource :contact,                only: [:edit, :update]
-    resources :introductions do
+    resource :introduction do
       member do
         delete :destroy_image
       end
