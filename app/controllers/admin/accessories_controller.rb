@@ -59,7 +59,7 @@ class Admin::AccessoriesController < ApplicationController
   private
 
   def accessory_params
-    params.require(:accessory).permit(:name, :content, image: [])
+    params.require(:accessory).permit(:name, :content, images: [])
   end
 
 end

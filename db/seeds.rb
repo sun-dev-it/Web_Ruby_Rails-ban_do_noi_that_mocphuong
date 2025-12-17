@@ -205,3 +205,25 @@ decoration.each do |t|
 end
 
 
+accessoryData = Accessory.all
+accessoryData.each do |t|
+  t.images.attach(
+    io: File.open(image2_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+  t.images.attach(
+    io: File.open(image3_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+  t.images.attach(
+    io: File.open(image4_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+end
+
+
+
+
