@@ -54,7 +54,7 @@ Rails.application.routes.draw do
         delete :purge_image
       end
     end
-    
+    resources :users
     resources :orders,                only: [:index, :show, :update]
     resources :requests,              only: [:index, :show, :destroy]
     resources :project_information_infors do
@@ -62,12 +62,15 @@ Rails.application.routes.draw do
         delete :purge_image
       end
     end
-    resources :users
     resources :decorations do
-      delete "images/:image_id", to: "decorations#destroy_image", as: :image
+      member do
+        delete :purge_image
+      end
     end
     resources :accessories do
-      delete "images/:image_id", to: "accessories#destroy_image", as: :image
+      member do
+        delete :purge_image
+      end
     end
     resources :promotions
     resource :contact,                only: [:edit, :update]

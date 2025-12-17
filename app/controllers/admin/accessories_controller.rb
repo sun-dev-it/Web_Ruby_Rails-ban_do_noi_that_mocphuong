@@ -25,21 +25,21 @@ class Admin::AccessoriesController < ApplicationController
   end
 
   def update
-    @accessory = Accessory.find(params[:id])
-
-    # Lưu ảnh mới nếu có
-    if params[:accessory][:images]
-      params[:accessory][:images].each do |image|
-        @accessory.images.attach(image)
-      end
-    end
-
-    # Cập nhật các attribute khác
     if @accessory.update(accessory_params.except(:images))
-      redirect_to admin_accessorys_path, notice: "Cập nhật thành công"
+      if accessory_params[:images]
+        @accessory.images.attach(accessory_params[:images])
+      end
+      redirect_to admin_accessories_path
     else
       render :edit
     end
+  end
+
+  def purge_image
+    @accessory = ProjectInformationInfor.find(params[:id])
+    image = @accessory.images.find(params[:image_id])
+    image.purge
+    redirect_back fallback_location: admin_accessories_path(@accessory)
   end
 
 
@@ -47,13 +47,6 @@ class Admin::AccessoriesController < ApplicationController
     @accessory = Accessory.find(params[:id])
     @accessory.destroy
     redirect_to admin_accessories_path
-  end
-
-  def destroy_image
-    @accessory = Accessory.find(params[:id])
-    image = @accessory.images.find(params[:image_id])
-    image.purge
-    redirect_back(fallback_location: @accessory_path, notice: "Đã xóa ảnh.")
   end
   
   private

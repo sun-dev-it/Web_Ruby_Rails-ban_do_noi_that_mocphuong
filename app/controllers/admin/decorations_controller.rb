@@ -29,7 +29,7 @@ class Admin::DecorationsController < ApplicationController
       if decoration_params[:images]
         @decoration.images.attach(decoration_params[:images])
       end
-      redirect_to admin_decoration_path
+      redirect_to admin_decorations_path
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class Admin::DecorationsController < ApplicationController
     @decoration = Decoration.find(params[:id])
     image = @decoration.images.find(params[:image_id])
     image.purge
-    redirect_back fallback_location: admin_decoration_path(@decoration)
+    redirect_back fallback_location: admin_decorations_path(@decoration)
   end
 
 
