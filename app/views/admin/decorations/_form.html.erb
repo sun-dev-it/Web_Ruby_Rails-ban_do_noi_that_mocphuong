@@ -18,12 +18,13 @@
             class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
     </div>
 
-    <!-- Ảnh -->
     <div>
-      <%= f.label :image, "Ảnh", class: "block font-medium mb-1" %>
-      <%= f.file_field :image,
+      <%= f.label :images, "Ảnh", class: "block font-medium mb-1" %>
+      <%= f.file_field :images, 
+            multiple: true,  <!-- Thêm multiple để chọn nhiều file -->
             class: "w-full border border-gray-300 rounded-lg px-3 py-2 bg-white" %>
     </div>
+
 
     <!-- Nút Lưu -->
     <div class="pt-4">
@@ -34,11 +35,19 @@
   </div>
 <% end %>
 
-<!-- Hiển thị ảnh đã upload -->
-<% if @decoration.image.attached? %>
-  <div class="space-y-4 mt-6">
-    <div class="flex items-center space-x-4">
-      <%= image_tag @decoration.image, class: "w-48 h-48 object-cover rounded border" %>
-    </div>
+
+<% if @decoration.images.attached? %>
+  <div class="space-y-4 mt-6 grid grid-cols-3 gap-4">
+    <% @decoration.images.each do |img| %>
+      <div class="relative">
+        <%= image_tag img, class: "w-48 h-48 object-cover rounded border" %>
+
+        <!-- Nút xóa ảnh -->
+        <%= button_to "Xóa", decoration_image_path(@decoration, img), 
+              method: :delete, 
+              data: { confirm: "Bạn có chắc muốn xóa ảnh này?" }, 
+              class: "absolute top-1 right-1 bg-red-500 text-white px-2 py-1 rounded" %>
+      </div>
+    <% end %>
   </div>
 <% end %>

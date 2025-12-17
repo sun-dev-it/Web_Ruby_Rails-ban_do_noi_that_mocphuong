@@ -38,11 +38,18 @@ class Admin::DecorationsController < ApplicationController
     @decoration.destroy
     redirect_to admin_decorations_path
   end
+
+  def destroy_image
+    @decoration = Decoration.find(params[:id])
+    image = @decoration.images.find(params[:image_id])
+    image.purge
+    redirect_back(fallback_location: @decoration_path, notice: "Đã xóa ảnh.")
+  end
   
   private
 
   def decoration_params
-    params.require(:decoration).permit(:name, :content, :image)
+    params.require(:decoration).permit(:name, :content, image: [])
   end
 
 end

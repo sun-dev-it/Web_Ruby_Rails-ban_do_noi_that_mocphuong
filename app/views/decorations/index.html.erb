@@ -39,8 +39,8 @@
           <div class="group my-2">
             <div class="relative overflow-hidden shadow-lg">
 
-              <% if decoration.image.attached? %>
-                <%= image_tag decoration.image,
+              <% if decoration.images.attached? %>
+                <%= image_tag decoration.images.fisrt,
                     class: "w-full aspect-[4/3] object-cover transform transition duration-500 group-hover:scale-110" %>
               <% end %>
 

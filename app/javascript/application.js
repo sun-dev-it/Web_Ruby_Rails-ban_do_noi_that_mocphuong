@@ -71,3 +71,33 @@ export default class extends Controller {
     setTimeout(() => this.element.remove(), 3000)
   }
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("slider-track");
+  if (!track) return;
+    
+  const slides = track.children;
+  const total = slides.length;
+  let index = 0;
+    
+  function updateSlide() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  document.getElementById("nextSlide")?.addEventListener("click", () => {
+    index = (index + 1) % total;
+    updateSlide();
+  });
+
+  document.getElementById("prevSlide")?.addEventListener("click", () => {
+    index = (index - 1 + total) % total;
+    updateSlide();
+  });
+
+  // Auto slide mỗi 5 giây
+  setInterval(() => {
+    index = (index + 1) % total;
+    updateSlide();
+  }, 5000);
+});
