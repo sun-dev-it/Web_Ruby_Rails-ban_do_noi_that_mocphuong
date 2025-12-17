@@ -68,7 +68,11 @@ Rails.application.routes.draw do
     resources :accessories
     resources :promotions
     resource :contact,                only: [:edit, :update]
-    resource :introduction,           only: [:edit, :update]
+    resources :introductions do
+      member do
+        delete :destroy_image
+      end
+    end
     resource :slogan,                 only: [:edit, :update]
     resource :color,                  only: [:edit, :update]
     resource :design_office,          only: [:edit, :update]

@@ -1,5 +1,5 @@
 class Introduction < ApplicationRecord
-  has_one_attached :image
+  has_many_attached :images, dependent: :destroy
 
   def youtube_embed_url
     return if link_video.blank?

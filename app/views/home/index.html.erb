@@ -1,37 +1,35 @@
-<div id="image-wrapper" class="relative min-h-screen overflow-hidden w-full">
-  <div
-    class="absolute inset-0 bg-cover bg-center animate-bg-move-about_us"
-    style="background-image: url('<%= url_for(@introduction.image) if @introduction.image.attached? %>');">
+<div id="image-wrapper" class="relative min-h-screen flex items-center overflow-hidden group">
+  <div id="bg-carousel" class="absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
+    <% if @introduction.images.attached? %>
+      <% @introduction.images.each_with_index do |img, index| %>
+        <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000
+                    <%= index == 0 ? 'opacity-100' : 'opacity-0' %>"
+             style="background-image: url('<%= url_for(img) %>');">
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="absolute inset-0 left-door bg-black/90 origin-left"></div>
   <div class="absolute inset-0 right-door bg-black/90 origin-right"></div>
 
 <div class="absolute inset-0 bg-black/50 animate-overlay-fade"></div>
-
   <div class="w-full max-w-7xl mx-auto px-6 mt-[-20px]">
-
     <div class="text-center mt-20 mb-15 animate-fade-up">
       <p class="text-xs tracking-[0.35em] text-gray-300 mb-3">
         INTRODUCTION
       </p>
-
       <h1 class="text-3xl md:text-4xl font-semibold text-gray-200 tracking-wide">
         Giới thiệu
       </h1>
-
       <div class="mt-6 flex justify-center">
         <span class="w-20 h-[2px] bg-[#FFD2B8]"></span>
       </div>
-
       <p class="mt-6 mb-6 text-gray-200 max-w-2xl mx-auto leading-relaxed">
         NỘI THẤT MỘC PHƯƠNG – <%= @slogan.content %>
       </p>
     </div>
-
-
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
       <%= link_to categories_path,
         class: "group card-animate border border-gray-100 rounded-2xl p-10
                 transition-all duration-500 bg-[rgba(0,0,0,0.2)]

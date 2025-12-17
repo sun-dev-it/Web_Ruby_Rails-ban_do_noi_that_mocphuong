@@ -10,8 +10,8 @@
 
     <!-- Ảnh trang chủ -->
     <div>
-      <%= f.label :image, "Thay đổi ảnh trang chủ", class: "block font-medium mb-1" %>
-      <%= f.file_field :image,
+      <%= f.label :images, "Thay đổi ảnh trang chủ", class: "block font-medium mb-1" %>
+      <%= f.file_field :images, multiple: true,
             class: "w-full border border-gray-300 rounded-lg px-3 py-2 bg-white" %>
     </div>
 
@@ -31,5 +31,16 @@
   </div>
 <% end %>
 
-<% @introduction.image.attached? %>
-  <%= image_tag @introduction.image, class: "w-32 h-32 object-cover rounded border" %>
+<% if @introduction.images.attached? %>
+  <div class="flex gap-2">
+    <% @introduction.images.each do |img| %>
+      <div class="relative">
+        <%= image_tag img, class: "w-32 h-32 object-cover rounded border" %>
+        <%= button_to "Xóa", destroy_image_introduction_path(@introduction, image_id: img.id),
+                      method: :delete,
+                      data: { confirm: "Bạn có chắc muốn xóa ảnh này?" },
+                      class: "absolute top-1 right-1 bg-red-500 text-white px-2 py-1 text-xs rounded" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

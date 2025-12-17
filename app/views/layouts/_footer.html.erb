@@ -9,19 +9,8 @@
         </div>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-start gap-3">
-        <div class="flex flex-col justify-start items-start">
-          <%= link_to "Trang chủ", root_path %>
-          <%= link_to "Sản phẩm", products_path %>
-          <%= link_to "Dự án", project_informations_path %>
-          <%= link_to "Trang trí nội thất", decorations_path %>
-          <%= link_to "Thiết bị và phụ kiện", accessories_path %>
-        </div>
-      </div>
-
-
       <div class="hidden sm:block mb-4 sm:mb-0">
-        <h3 class="text-xl font-semibold mb-2">Liên hệ</h3>
+        <h3 class="text-lg font-semibold mb-2">Liên hệ</h3>
         <p>Địa chỉ: <%= @contact.address %></p>
         <p>Số điện thoại: <%= @contact.phone %></p>
         <p>Email: <%= @contact.gmail %></p>
