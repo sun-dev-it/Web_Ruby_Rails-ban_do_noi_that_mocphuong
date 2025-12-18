@@ -50,7 +50,7 @@ class Admin::ProductsController < ApplicationController
     product = Product.find(params[:id])
     image = product.images.find(params[:image_id])
     image.purge
-    redirect_back fallback_location: admin_product_path(product)
+    redirect_back fallback_location: edit_admin_product_path(product)
   end
 
   def change_image
@@ -70,6 +70,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :price, :description, :material, :category_id, :promotion, :new_price, images: [])
+    params.require(:product).permit(:name, :price, :description, :size, :material, :category_id, :promotion, :new_price, images: [])
   end
 end
