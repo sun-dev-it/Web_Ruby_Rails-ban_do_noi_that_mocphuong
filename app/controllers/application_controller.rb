@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
 
   def admin?
-    logged_in? && ["super_admin", "admin_manager", "staff"].include?(current_user.role) hoặc email = nguyenducphong18012002@gmail.com || daiphatle123@gmail.com
+    logged_in? && ["super_admin", "admin_manager", "staff"].include?(current_user.role)
   end
   def require_admin
     unless admin?
