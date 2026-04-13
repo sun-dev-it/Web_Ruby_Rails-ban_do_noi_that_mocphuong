@@ -65,13 +65,137 @@ Accessory.all.each do |proj_info|
   end
 end
 
+##########################################################################
+
+email = "daiphatle123@gmail.com"
+if (user = User.find_by(email: email))
+  user.destroy
+end
+User.create!(email: email, role: "super_admin")
+
+email = "nguyenducphong18012002@gmail.com"
+if (user = User.find_by(email: email))
+  user.destroy
+end
+User.create!(email: email, role: "super_admin")
+
+##########################################################################
+listCatalog = [
+  "Sofa",	
+  "Giường",
+	"Tab đầu giường",
+	"Tủ áo",
+	"Bàn học",
+	"Bàn trang điểm",
+	"Gương trang trí",
+	"Kệ vách ngăn",
+	"Kệ TV",
+	"Tủ trưng bày",
+	"Tủ giày",
+  "Bàn trang điểm",
+	"Bàn học",
+	"Bhế thư giãn",
+	"Bàn ăn",
+	"Chăn, ga, gối, nệm",
+	"Tủ nhựa ( đài loan, vinco)",
+	"Tủ DuyTan"
+]
+
+listCatalog.each do |i|
+  unless Category.exists?(name: i)
+    Category.create!(name: i)
+  end
+end
+
+##########################################################################
+
+listDecoration = [
+  "Sàn gỗ công nghiệp",
+  "Sàn nhựa terrazzo",
+  "Phào chỉ nhựa PU, PS",
+  "Tấm ốp (PVC, lam sóng, than tre, nano)",
+  "Cửa nhựa composite"
+]
+
+listDecoration.each do |i|
+  unless Decoration.exists?(name: i)
+    Decoration.create!(name: i)
+  end
+end
+
+##########################################################################
+
+listProjectInformation = [
+  "Biệt thự",
+  "Nhà phố",
+  "Cửa hàng",
+  "Nhà hàng",
+  "Khách sạn"
+]
+
+listProjectInformation.each do |i|
+  unless ProjectInformation.exists?(name: i)
+    ProjectInformation.create!(name: i)
+  end
+end
+
+##########################################################################
+
+listAccessory = [
+  "Hafele",
+  "Kaff",
+  "Garis",
+  "Eurogold",
+  "Euroking",
+  "Grandx"
+
+]
+
+listAccessory.each do |i|
+  unless Accessory.exists?(name: i)
+    Accessory.create!(name: i)
+  end
+end
+
+##########################################################################
+
+Slogan.delete_all
+slogan = Slogan.first_or_create!(
+  content: "Cam kết chất lượng - hậu mãi tốt nhất"
+)
+
+##########################################################################
+
+Contact.delete_all
+contactData = Contact.first || Contact.create!(
+  fb: "https://www.facebook.com/phong5335/",
+  zalo: "0868966404",
+  phone: "0868966404",
+  gmail: "nguyenducphong18012002@gmail.com",
+  address: "Ho Chi Minh City"
+)
+
+##########################################################################
+
+colorData = Color.first || Color.create!(
+  background: "#F3F4F6",
+  background1: "#FF5733",
+  header: "#FF5733",
+  footer: "#222222"
+)
+
+##########################################################################
+
+projectInforInfor = ProjectInformationInfor.first
+projectInforInfor = ProjectInformationInfor.first || ProjectInformationInfor.create!(
+  content: "test content"
+)
+
 image_path = Rails.root.join("app/assets/images/default/img.png")
 image2_path = Rails.root.join("app/assets/images/default/img2.png")
 image3_path = Rails.root.join("app/assets/images/default/img3.png")
 image4_path = Rails.root.join("app/assets/images/default/img4.png")
 logo_path = Rails.root.join("app/assets/images/default/logo.png")
-
-slogan = Slogan.first
 
 slogan.image.attach(
   io: File.open(logo_path),
@@ -118,9 +242,6 @@ product.each do |t|
 end
 
 
-
-contactData = Contact.first
-
 contactData.image.attach(
   io: File.open(image2_path),
   filename: "img.png",
@@ -128,6 +249,11 @@ contactData.image.attach(
 )
 
 intr = Introduction.first
+
+intr = Introduction.first || Introduction.create!(
+  content: "content",
+  link_video: "https://facebook.com/example"
+)
 
 intr.images.attach(
     io: File.open(image4_path),
@@ -146,14 +272,20 @@ intr.images.attach(
   )
 
 
-designOffice = DesignOffice.first
+designOffice = DesignOffice.first || DesignOffice.create!(
+  content: "test content"
+)
+
 designOffice.image.attach(
   io: File.open(image_path),
   filename: "img.png",
   content_type: "image/png"
 )
 
-factoryData = Factory.first
+factoryData = Factory.first || Factory.create!(
+  content: "test content"
+)
+
 factoryData.image.attach(
   io: File.open(image_path),
   filename: "img.png",
@@ -180,7 +312,6 @@ projectInformation.each do |t|
   )
 end
 
-projectInforInfor = ProjectInformationInfor.first
 
 projectInforInfor.images.attach(
   io: File.open(image2_path),
@@ -255,4 +386,3 @@ showroom.each do |t|
     content_type: "image/png"
   )
 end
-
