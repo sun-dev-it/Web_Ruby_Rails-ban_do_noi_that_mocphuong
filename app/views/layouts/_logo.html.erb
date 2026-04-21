@@ -1,7 +1,7 @@
 <div class="flex justify-start mr-4 sm:ml-6 sm:px-0">
   <%= link_to root_path do %>
     <% if @slogan.image.attached? %>
-      <%= image_tag @slogan.image, class: "h-16 w-auto object-contain" %>
+      <%= image_tag @slogan.image, class: "w-[250px] object-contain" %>
     <% end %>
   <% end %>
 </div>
