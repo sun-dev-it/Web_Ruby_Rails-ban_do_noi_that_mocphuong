@@ -1,9 +1,9 @@
-<div class="p-3 sm:p-1">
+<div class="p-1 py-4 sm:py-1">
   <%= form_with url: products_path, method: :get, local: true do |f| %>
     <div class="flex items-center w-[120px] sm:w-[250px] rounded-lg overflow-hidden bg-white">
       <%= f.text_field :q,
           placeholder: "Tìm kiếm...",
-          class: "flex-1 px-3 py-2 text-black outline-none" %>
+          class: "flex-1 px-2 py-1 sm:px-3 sm:py-2 text-black outline-none" %>
       <button type="submit" class="px-3 text-gray-700">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 text-gray-500">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197M16.803 16.803A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 11.607 11.607Z" />
