@@ -1,0 +1,20 @@
+<header class="font-semibold text-white font-sans text-sm fixed top-0 left-0 w-full z-[999] pt-4 pb-3"
+        style="background-color: <%= Color.first&.header || '#FF5733' %>;">
+  <div class="flex items-center justify-between">
+
+    <div class="flex">
+      <%= render "layouts/page_hidden" %>
+
+      <%= render "layouts/logo" %>
+    </div>
+    
+    <%= render "layouts/page" %>
+
+    <%= render "form/form_search_header" %>
+
+    <%= render "layouts/user" %>
+  </div>
+
+</header>
+
+<div class="h-20"></div>
