@@ -1,7 +1,6 @@
-<div class="flex justify-start mr-4 sm:ml-6 sm:px-0">
-  <%= link_to root_path do %>
-    <% if @slogan.image.attached? %>
-      <%= image_tag @slogan.image, class: "w-[200px]" %>
-    <% end %>
+<%= link_to root_path, class: "ml-2 lg:ml-0" do %>
+  <% if @slogan.image.attached? %>
+    <%= image_tag @slogan.image,
+        class: "w-[120px] sm:w-[160px] lg:w-[220px] h-auto" %>
   <% end %>
-</div>
+<% end %>

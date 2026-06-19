@@ -1,18 +1,50 @@
-<header class="font-semibold text-white font-sans text-sm fixed top-0 left-0 w-full z-[999] pt-4 pb-3"
-        style="background-color: <%= Color.first&.header || '#FF5733' %>;">
-  <div class="flex items-center justify-between">
+<header class="fixed top-0 left-0 w-full z-[999] text-white"
+  style="background-color: <%= Color.first&.header || '#FF5733' %>;">
+  <div class="w-full mx-full px-2 lg:px-4">
+    <div class="h-28 flex items-center justify-between">
+      <div class="flex items-center">
 
-    <div class="flex">
-      <%= render "layouts/page_hidden" %>
+        <!-- Menu mobile -->
+        <%= render "layouts/page_hidden" %>
 
-      <%= render "layouts/logo" %>
+        <!-- Logo -->
+        <%= render "layouts/logo" %>
+      </div>
+
+      <!-- Menu desktop -->
+      <nav class="hidden lg:flex items-center gap-6 text-sm">
+        <%= render "layouts/page" %>
+      </nav>
+
+      <!-- Right -->
+      <div class="flex items-center gap-2 lg:gap-4">
+
+        <!-- Search desktop -->
+        <%= render "form/form_search_header" %>
+
+        <%= render "layouts/user" %>
+
+      </div>
     </div>
-    
-    <%= render "layouts/page" %>
 
-    <%= render "layouts/user" %>
+    <!-- Search mobile -->
+    <div class="pb-2 md:hidden">
+      <%= form_with url: products_path, method: :get, local: true do |f| %>
+        <div class="flex items-center bg-white rounded-lg overflow-hidden">
+          <%= f.text_field :q,
+              placeholder: "Tìm kiếm...",
+              class: "flex-1 px-3 py-2 text-black outline-none" %>
+
+          <button type="submit" class="px-3 text-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 text-gray-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197M16.803 16.803A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 11.607 11.607Z" />
+            </svg>
+          </button>
+        </div>
+      <% end %>
+    </div>
+
   </div>
-
 </header>
 
-<div class="h-20"></div>
+<div class="h-28 md:h-20"></div>
