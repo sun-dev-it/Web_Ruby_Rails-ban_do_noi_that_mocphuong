@@ -4,18 +4,18 @@
 <% if flash[:alert] %>
   <div class="text-white m-2 p-2"><%= flash[:alert] %></div>
 <% end %>          
-        <main class="flex-1 p-6 sm:p-10">
+        <main class="flex-1 p-2 sm:p-10">
           <div class="mb-8">
             <div class="flex items-center justify-between">
-              <p class="text-2xl sm:text-4xl font-bold text-gray-500">Xin chào <span class="text-gray-500"><%= @current_user.name %></span> 👋</p>
-              <div class="p-4">
+              <p class="text-lg sm:text-4xl font-bold text-gray-500">Xin chào <span class="text-gray-500"><%= @current_user.name %></span> 👋</p>
+              <div class="p-1 sm:p-2">
                 <%= button_to "Đăng xuất",
                     logout_path,
                     method: :delete,
-                    class: "w-full text-left p-3 rounded-lg hover:bg-red-600 bg-red-500" %>
+                    class: "w-full text-left p-2 sm:p-3 rounded-lg hover:bg-red-600 bg-red-500" %>
               </div>
             </div>
-            <p class="text-gray-400 mt-2">
+            <p class="text-md sm:text-4xl text-gray-400 mt-1 sm:mt-2">
               Quản lý toàn bộ website nội thất Mộc Phương
             </p>
           </div>
@@ -48,7 +48,7 @@
             ] %>
               
             <% dashboard_items.each do |icon, title, path| %>
-              <%= link_to path, class: "bg-white/70 backdrop-blur-md rounded-2xl p-6 shadow hover:bg-white/80 transition group" do %>
+              <%= link_to path, class: "bg-white/70 backdrop-blur-md rounded-2xl p-4 sm:p-6 shadow hover:bg-white/80 transition group" do %>
               <div class="text-4xl mb-4 flex justify-center transform transition-transform group-hover:scale-110">
                   <%= icon %>
                 </div>
