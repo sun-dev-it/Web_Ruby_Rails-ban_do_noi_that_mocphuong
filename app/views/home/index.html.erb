@@ -22,14 +22,15 @@
       <h1 class="text-3xl md:text-4xl font-semibold text-gray-200 tracking-wide">
         Giới thiệu
       </h1>
-      <div class="mt-6 flex justify-center">
+      <div class="mt-2 sm:mt-6 flex justify-center">
         <span class="w-20 h-[2px] bg-[#FFD2B8]"></span>
       </div>
-      <p class="mt-6 mb-6 text-gray-200 max-w-2xl mx-auto leading-relaxed">
-        NỘI THẤT MỘC PHƯƠNG – <%= @slogan.content %>
-      </p>
+      <div class="my-4 my-6 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-gray-200">NỘI THẤT MỘC PHƯƠNG</p>
+        <p class="text-gray-200 text-sm"><%= @slogan.content %></p>
+      </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-10">
       <%= link_to categories_path,
         class: "group card-animate border border-gray-100 rounded-2xl p-2 sm:p-10
                 transition-all duration-500 bg-[rgba(0,0,0,0.2)]

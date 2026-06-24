@@ -22,7 +22,7 @@
             <div class="flex flex-col slide-down mt-[-5px] space-y-3 ml-6">  
               <% @categories.each do |category| %>
                 <%= link_to category_path(category) do %>
-                  <div><%= category.name %></div>
+                  <div class="text-gray-500"><%= category.name %></div>
                 <% end %>
               <% end %>   
             </div>     
@@ -34,20 +34,6 @@
 
           <div class="flex items-center justify-between">
             <%= header_hidden_link "DỰ ÁN", project_informations_path %>
-
-            <div id="ButtonListProjectInformationHidden">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-              </svg>
-            </div>
-          </div>
-
-          <div id="ListProjectInformationHidden" class="hidden">
-            <div class="flex flex-col slide-down mt-[-5px] space-y-3 ml-6">
-              <% @project_informations.each do |project_information| %>
-                <div><%= link_to project_information.name, project_information_path(project_information.id) %></div>
-              <% end %>      
-            </div> 
           </div>
 
           <hr class="border-gray-300" />
@@ -66,7 +52,7 @@
           <div id="ListDecorationHidden" class="hidden">
             <div class="flex flex-col slide-down mt-[-5px] space-y-3 ml-6">
               <% @decorations.each do |decoration| %>
-                <div><%= link_to decoration.name, decoration_path(decoration) %></div>
+                <div class="text-gray-500"><%= link_to decoration.name, decoration_path(decoration) %></div>
               <% end %>      
             </div>
           </div>
@@ -79,20 +65,6 @@
 
           <div class="flex items-center justify-between">
             <%= header_hidden_link "THIẾT BỊ VÀ PHỤ KIỆN", accessories_path %>
-
-            <div id="ButtonListAccessoriehidden">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-              </svg>
-            </div>
-          </div>
-
-          <div id="ListAccessoriehidden" class="hidden">
-            <div class="flex flex-col slide-down mt-[-5px] space-y-3 ml-6">
-              <% @accessories.each do |accessory| %>
-                <div><%= link_to accessory.name, accessory_path(accessory) %></div>
-              <% end %>      
-            </div>
           </div>
         </div>
       </div>
