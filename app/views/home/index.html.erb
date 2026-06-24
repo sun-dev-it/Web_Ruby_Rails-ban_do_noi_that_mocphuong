@@ -31,7 +31,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       <%= link_to categories_path,
-        class: "group card-animate border border-gray-100 rounded-2xl p-10
+        class: "group card-animate border border-gray-100 rounded-2xl p-2 sm:p-10
                 transition-all duration-500 bg-[rgba(0,0,0,0.2)]
                 hover:-translate-y-2 hover:shadow-2xl
                 hover:border-[#c49980]" do %>
@@ -40,23 +40,23 @@
           01
         </span>
 
-        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+        <h2 class="mt-2 sm:mt-6 text-2xl font-medium text-gray-200">
           Sản phẩm
         </h2>
 
-        <p class="mt-4 text-gray-300 leading-relaxed">
+        <p class="mt-2 sm:mt-4 text-gray-300 leading-relaxed">
           Đa dạng mẫu mã, phong cách hiện đại,
           phù hợp xu hướng và nhu cầu thị trường.
         </p>
 
-        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
+        <div class="mt-2 sm:mt-8 flex items-center text-sm font-medium text-gray-100">
           <span class="mr-2">Xem thêm</span>
           <span class="transform transition group-hover:translate-x-2">→</span>
         </div>
       <% end %>
 
       <%= link_to project_informations_path,
-        class: "group card-animate border border-gray-100 rounded-2xl p-10
+        class: "group card-animate border border-gray-100 rounded-2xl p-2 sm:p-10
                 transition-all duration-500 delay-100 bg-[rgba(0,0,0,0.2)]
                 hover:-translate-y-2 hover:shadow-2xl
                 hover:border-[#c49980]" do %>
@@ -65,23 +65,23 @@
           02
         </span>
 
-        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+        <h2 class="mt-2 sm:mt-6 text-2xl font-medium text-gray-200">
           Dự án
         </h2>
 
-        <p class="mt-4 text-gray-300 leading-relaxed">
+        <p class="mt-2 sm:mt-4 text-gray-300 leading-relaxed">
           Thi công nội thất chất lượng cao,
           tiến độ nhanh chóng, đúng cam kết.
         </p>
 
-        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
+        <div class="mt-2 sm:mt-8 flex items-center text-sm font-medium text-gray-100">
           <span class="mr-2">Xem thêm</span>
           <span class="transform transition group-hover:translate-x-2">→</span>
         </div>
       <% end %>
 
       <%= link_to decorations_path,
-        class: "group card-animate border border-gray-100 rounded-2xl p-10 mb-4 sm:mb-0
+        class: "group card-animate border border-gray-100 rounded-2xl p-2 sm:p-10 mb-4 sm:mb-0
                 transition-all duration-500 delay-200 bg-[rgba(0,0,0,0.2)]
                 hover:-translate-y-2 hover:shadow-2xl
                 hover:border-[#c49980]" do %>
@@ -90,17 +90,17 @@
           03
         </span>
 
-        <h2 class="mt-6 text-2xl font-medium text-gray-200">
+        <h2 class="mt-2 sm:mt-6 text-2xl font-medium text-gray-200">
           Trang trí nội thất
         </h2>
 
-        <p class="mt-4 text-gray-300 leading-relaxed">
+        <p class="mt-2 sm:mt-4 text-gray-300 leading-relaxed">
           Tư vấn thiết kế và trang trí
           không gian sống tiện nghi, thẩm mỹ.
         </p>
 
-        <div class="mt-8 flex items-center text-sm font-medium text-gray-100">
-          <span class="mr-2">Xem chi tiết</span>
+        <div class="mt-2 sm:mt-8 flex items-center text-sm font-medium text-gray-100">
+          <span class="mr-2">Xem thêm</span>
           <span class="transform transition group-hover:translate-x-2">→</span>
         </div>
       <% end %>
@@ -156,26 +156,32 @@
 
 
 
-<div class="flex justify-center m-20">
+<div class="flex justify-center my-8 sm:my-12 lg:my-20 px-4">
   <%= link_to categories_path,
-        class: "group inline-flex items-center gap-3
-                px-8 py-3
+        class: "group inline-flex items-center gap-2 sm:gap-3
+                px-5 py-2.5
+                sm:px-7 sm:py-3
+                lg:px-8 lg:py-3.5
                 border border-gray-300 rounded-full
+                text-sm sm:text-base
                 text-gray-800 font-medium
                 transition-all duration-300
                 hover:bg-black hover:text-white" do %>
 
     <span>Xem thêm sản phẩm</span>
 
-    <!-- Arrow -->
     <svg xmlns="http://www.w3.org/2000/svg"
-         viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="2"
-         class="w-5 h-5
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         class="w-4 h-4 sm:w-5 sm:h-5
                 transition-transform duration-300
                 group-hover:translate-x-2">
-      <path stroke-linecap="round" stroke-linejoin="round"
-            d="M5 12h14M13 5l7 7-7 7" />
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M5 12h14M13 5l7 7-7 7" />
     </svg>
 
   <% end %>
@@ -258,40 +264,64 @@
 
 
 
-<div class="min-h-screen flex flex-col items-center mt-2 justify-center p-6">
-  <div class="w-full sm:w-[80%] text-center p-8">
-    <h1 class="text-xl sm:text-4xl font-semibold mb-4 text-gray-800">
+<div class="min-h-screen flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+
+  <div class="w-full max-w-3xl bg-white rounded-2xl shadow-sm p-6 sm:p-8 lg:p-10">
+
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-center text-gray-800 mb-4">
       Bạn có ý tưởng cho ngôi nhà của bạn?
     </h1>
-    <p class="text-gray-600 mb-6">
+
+    <p class="text-sm sm:text-base text-center text-gray-600 mb-4">
       Vui lòng để lại số điện thoại, chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.
     </p>
-    <p class="text-gray-600 mb-6">
-      Nếu bạn cần hỗ trợ ngay lập tức, đừng ngần ngại gọi cho chúng tôi: 
-      <span class="text-yellow-700 font-medium"><%= @contact.phone %></span>
+
+    <p class="text-sm sm:text-base text-center text-gray-600 mb-8">
+      Nếu bạn cần hỗ trợ ngay lập tức, vui lòng gọi:
+      <span class="font-semibold text-yellow-700">
+        <%= @contact.phone %>
+      </span>
     </p>
 
     <%= form_with model: @request, local: true do |f| %>
-      <div class="flex flex-col gap-4">
+
+      <div class="space-y-5">
+
         <div>
-          <%= f.label :name, "Tên của bạn", class: "block text-left mb-1 text-gray-700" %>
-          <%= f.text_field :name, required: true, class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
+          <%= f.label :name,
+                "Tên của bạn",
+                class: "block mb-2 text-sm sm:text-base font-medium text-gray-700" %>
+
+          <%= f.text_field :name,
+                required: true,
+                class: "w-full rounded-lg border border-gray-300 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
         </div>
-    
+
         <div>
-          <%= f.label :phone, "Số điện thoại", class: "block text-left mb-1 text-gray-700" %>
-          <%= f.text_field :phone, required: true, class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
+          <%= f.label :phone,
+                "Số điện thoại",
+                class: "block mb-2 text-sm sm:text-base font-medium text-gray-700" %>
+
+          <%= f.text_field :phone,
+                required: true,
+                class: "w-full rounded-lg border border-gray-300 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
         </div>
-    
+
         <div>
-          <%= f.label :content, "Nội dung yêu cầu", class: "block text-left mb-1 text-gray-700" %>
-          <%= f.text_area :content, rows: 4, required: true, class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
+          <%= f.label :content,
+                "Nội dung yêu cầu",
+                class: "block mb-2 text-sm sm:text-base font-medium text-gray-700" %>
+
+          <%= f.text_area :content,
+                rows: 5,
+                required: true,
+                class: "w-full rounded-lg border border-gray-300 px-4 py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-yellow-500" %>
         </div>
-    
-        <div class="flex w-full justify-center">
-          <%= f.submit "Gửi yêu cầu", 
-                class: "w-full px-6 text-white font-semibold py-3 rounded-lg transition", 
-                style: "background-color: #{Color.first&.header || '#ffffff'};" %>
+
+        <div class="pt-2">
+          <%= f.submit "Gửi yêu cầu",
+                class: "w-full sm:w-auto sm:min-w-[220px] px-8 py-3 text-white font-semibold rounded-lg transition hover:opacity-90 mx-auto block",
+                style: "background-color: #{Color.first&.header || '#FF5733'};" %>
         </div>
       </div>
     <% end %>
