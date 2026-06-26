@@ -23,9 +23,13 @@ module Admin
     end
 
     def destroy_image
+      @introduction = Introduction.first
+    
       image = @introduction.images.find(params[:image_id])
       image.purge
-      redirect_back(fallback_location: introduction_path(@introduction), notice: "Xóa ảnh thành công")
+    
+      redirect_to edit_admin_introduction_path,
+                  notice: "Xóa ảnh thành công"
     end
 
 
