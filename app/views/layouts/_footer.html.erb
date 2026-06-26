@@ -1,4 +1,4 @@
-<footer class="text-white w-full pt-1 pb-2 sm:pb-4 sm:pt-2 mt-10">
+<footer class="text-white w-full pb-2 sm:pb-4 sm:pt-1 mt-10">
   <div class="px-8 sm:flex justify-between">
       <div class="flex flex-col sm:flex-row items-center gap-3">
         <%= render "layouts/logo" %>
@@ -44,12 +44,12 @@
       </div>
     </div>
 
-    <div class="relative group overflow-hidden border-y border-gray-400 my-2 py-3">
+    <div class="relative group overflow-hidden border-y border-gray-400 my-2 py-2">
       <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
-        <% images = ["logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png", "logo.png"] %>
+        <% images = ["logo/1.png", "logo/2.png", "logo/3.png", "logo/4.png", "logo/5.png", "logo/6.png", "logo/7.png", "logo/8.png", "logo/9.png", "logo/10.png", "logo/11.png", "logo/12.png"] %>
         <% images.each do |img| %>
-          <div class="flex-none w-1/6 p-2">
-            <%= image_tag "default/#{img}", class: "w-full h-10 object-contain" %>
+          <div class="flex-none w-1/6 sm:p-1">
+            <%= image_tag "default/#{img}", class: "w-full h-16 object-contain" %>
           </div>
         <% end %>
       </div>

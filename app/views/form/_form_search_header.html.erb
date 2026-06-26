@@ -1,6 +1,6 @@
 <div class="p-1 py-4 sm:py-1">
   <%= form_with url: products_path, method: :get, local: true do |f| %>
-    <div class="flex items-center w-[120px] sm:w-[250px] rounded-sm sm:rounded-lg overflow-hidden bg-white">
+    <div class="flex items-center w-[120px] sm:w-[250px] rounded-md sm:rounded-lg overflow-hidden bg-white">
       <%= f.text_field :q,
           placeholder: "Tìm kiếm...",
           class: "flex-1 px-1 sm:px-3 sm:py-2 text-black outline-none" %>
