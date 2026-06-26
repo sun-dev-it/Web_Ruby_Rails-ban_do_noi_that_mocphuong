@@ -5,7 +5,7 @@ module Admin
     before_action :set_category, only: [:edit, :update, :destroy]
 
     def index
-      @categories = Category.all
+      @categories = Category.order(created_at: :desc)
       @category = Category.new
     end
 

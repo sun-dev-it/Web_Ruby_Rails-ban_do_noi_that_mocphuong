@@ -14,7 +14,6 @@ module Admin
         @introduction.images.attach(params[:introduction][:images])
       end
     
-      # Cập nhật các trường khác
       if @introduction.update(introduction_params.except(:images))
         redirect_to edit_admin_introduction_path
       else
