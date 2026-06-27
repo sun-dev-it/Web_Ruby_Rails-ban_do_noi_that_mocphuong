@@ -56,12 +56,6 @@ class ApplicationController < ActionController::Base
   def admin_manager?
     logged_in? && ["admin_manager", "super_admin"].include?(current_user.role)
   end
-  def require_admin_manager
-    unless admin_manager?
-      flash[:alert] = "Bạn không có quyền truy cập trang này."
-      redirect_to admin_dashboard_path
-    end
-  end
   
   def super_admin?
     logged_in? && (

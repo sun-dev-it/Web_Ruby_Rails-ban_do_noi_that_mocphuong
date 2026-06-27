@@ -18,7 +18,7 @@ class RequestsController < ApplicationController
   end
 
   def require_login
-    unless current_user.present?
+    unless logged_in?
       redirect_to login_path, alert: "Bạn cần đăng nhập trước"
     end
   end
