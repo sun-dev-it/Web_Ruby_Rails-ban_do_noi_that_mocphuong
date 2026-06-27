@@ -4,7 +4,7 @@ class CreateProjectInformations < ActiveRecord::Migration[8.0]
       t.timestamps
       t.string :name
       t.text :content
-      
+      t.boolean :featured, default: false
     end
   end
 end

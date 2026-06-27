@@ -188,7 +188,11 @@ colorData = Color.first || Color.create!(
 
 projectInforInfor = ProjectInformationInfor.first
 projectInforInfor = ProjectInformationInfor.first || ProjectInformationInfor.create!(
-  content: "test content"
+  content: "Mỗi dự án là sự kết hợp hài hòa giữa ý tưởng sáng tạo, chất lượng thi công và sự tận tâm trong từng chi tiết. Mộc Phương tự hào đồng hành cùng khách hàng để kiến tạo những không gian sống và làm việc hiện đại, tiện nghi, đáp ứng cả về công năng lẫn tính thẩm mỹ.
+
+Danh mục dự án của chúng tôi bao gồm nhà phố, căn hộ, biệt thự, văn phòng, showroom, cửa hàng và nhiều công trình khác. Với đội ngũ giàu kinh nghiệm cùng quy trình thiết kế – sản xuất – thi công khép kín, Mộc Phương luôn nỗ lực mang đến những công trình chất lượng, đúng tiến độ và phù hợp với nhu cầu thực tế của từng khách hàng.
+
+Hãy cùng khám phá những dự án tiêu biểu để cảm nhận rõ hơn về phong cách thiết kế, chất lượng hoàn thiện và giá trị mà Mộc Phương mang đến trong mỗi công trình."
 )
 
 image_path = Rails.root.join("app/assets/images/default/img.png")
@@ -248,7 +252,6 @@ contactData.image.attach(
   content_type: "image/png"
 )
 
-Introduction.delete_all
 intr = Introduction.first || Introduction.create!(
   content: <<~TEXT,
     Mộc Phương là đơn vị chuyên thiết kế, sản xuất và thi công nội thất với mong muốn mang đến những không gian sống hiện đại, tiện nghi và giàu tính thẩm mỹ. Chúng tôi kết hợp giữa chất liệu gỗ chất lượng, tay nghề thủ công tỉ mỉ và phong cách thiết kế sáng tạo để tạo nên những sản phẩm bền đẹp, phù hợp với nhu cầu của từng khách hàng.
@@ -278,7 +281,13 @@ intr.images.attach(
 
 
 designOffice = DesignOffice.first || DesignOffice.create!(
-  content: "test content"
+  content: "VĂN PHÒNG THIẾT KẾ MỘC PHƯƠNG
+
+Văn phòng Thiết kế Mộc Phương là nơi những ý tưởng sáng tạo được hình thành và phát triển thành các giải pháp nội thất phù hợp với nhu cầu thực tế của từng khách hàng. Với đội ngũ kiến trúc sư và nhà thiết kế giàu kinh nghiệm, chúng tôi luôn lắng nghe mong muốn của khách hàng để tạo nên những không gian hài hòa giữa công năng, thẩm mỹ và phong cách riêng.
+
+Mỗi bản thiết kế đều được nghiên cứu kỹ lưỡng về bố cục, vật liệu, màu sắc và ánh sáng nhằm tối ưu diện tích sử dụng, nâng cao trải nghiệm sinh hoạt và đảm bảo tính đồng bộ trong toàn bộ công trình. Từ nhà ở, căn hộ, biệt thự đến văn phòng, showroom và cửa hàng, Mộc Phương luôn mang đến những giải pháp thiết kế sáng tạo, hiện đại và phù hợp với ngân sách của khách hàng.
+
+Với sự kết hợp chặt chẽ giữa đội ngũ thiết kế và xưởng sản xuất, Mộc Phương đảm bảo mọi ý tưởng đều được hiện thực hóa một cách chính xác, góp phần tạo nên những không gian sống và làm việc chất lượng, bền vững theo thời gian."
 )
 
 designOffice.image.attach(
@@ -288,7 +297,14 @@ designOffice.image.attach(
 )
 
 factoryData = Factory.first || Factory.create!(
-  content: "test content"
+  content: "Xưởng sản xuất
+XƯỞNG SẢN XUẤT MỘC PHƯƠNG
+
+Xưởng sản xuất Mộc Phương là nơi hiện thực hóa những ý tưởng thiết kế thành các sản phẩm nội thất chất lượng, đáp ứng yêu cầu về thẩm mỹ, công năng và độ bền. Với hệ thống máy móc hiện đại cùng đội ngũ kỹ thuật viên, thợ mộc giàu kinh nghiệm, mỗi sản phẩm đều được gia công tỉ mỉ và kiểm tra kỹ lưỡng trước khi bàn giao đến khách hàng.
+
+Quy trình sản xuất được thực hiện khép kín từ lựa chọn nguyên vật liệu, cắt, gia công, sơn hoàn thiện đến lắp ráp và kiểm định chất lượng. Điều này giúp Mộc Phương chủ động kiểm soát tiến độ, tối ưu chi phí và đảm bảo mỗi công trình đều đạt tiêu chuẩn cao về chất lượng.
+
+Với phương châm **"Chất lượng tạo nên giá trị – Uy tín tạo dựng niềm tin"**, xưởng sản xuất Mộc Phương luôn không ngừng cải tiến công nghệ, nâng cao tay nghề và mang đến những giải pháp nội thất bền đẹp, góp phần kiến tạo không gian sống và làm việc tiện nghi, hiện đại cho mọi khách hàng."
 )
 
 factoryData.image.attach(
@@ -372,7 +388,11 @@ accessoryData.each do |t|
   )
 end
 
-Showroom.create!(content: "Nội dung showroom")
+Showroom.create!(content: "Chào mừng bạn đến với Showroom Mộc Phương – nơi trưng bày những mẫu nội thất được thiết kế tinh tế, hiện đại và đa dạng phong cách. Đây là không gian giúp khách hàng trực tiếp trải nghiệm chất lượng sản phẩm, cảm nhận từng chất liệu, màu sắc và sự hoàn thiện trong từng chi tiết.
+
+Tại showroom, Mộc Phương giới thiệu các giải pháp nội thất dành cho phòng khách, phòng ngủ, phòng bếp, văn phòng, showroom và nhiều không gian khác. Đội ngũ tư vấn luôn sẵn sàng lắng nghe, hỗ trợ và đưa ra những giải pháp phù hợp với nhu cầu, phong cách cũng như ngân sách của từng khách hàng.
+
+Hãy ghé thăm Showroom Mộc Phương để khám phá những sản phẩm chất lượng, cập nhật xu hướng nội thất mới và tìm kiếm nguồn cảm hứng cho không gian sống và làm việc của bạn.")
 showroom = Showroom.all
 showroom.each do |t|
   t.images.attach(

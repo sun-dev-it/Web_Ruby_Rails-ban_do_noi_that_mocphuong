@@ -171,6 +171,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_17_181113) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.text "content"
+    t.boolean "featured", default: false
   end
 
   create_table "promotions", force: :cascade do |t|

@@ -59,7 +59,7 @@ class Admin::ProjectInformationsController < ApplicationController
   private
 
   def project_information_params
-    params.require(:project_information).permit(:name, :content, images: [])
+    params.require(:project_information).permit(:name, :content, :featured, images: [])
   end
 
 end

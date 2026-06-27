@@ -10,6 +10,13 @@
     </div>
 
     <div>
+      <%= f.label :featured, "Đánh dấu là dự án nổi bật", class: "block font-medium mb-1" %>
+      <%= f.check_box :featured,
+            class: "w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" %>
+
+    </div>
+
+    <div>
       <%= f.label :content, "Mô tả", class: "block font-medium mb-1" %>
       <%= f.text_area :content, rows: 4,
             class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-300 focus:outline-none" %>
