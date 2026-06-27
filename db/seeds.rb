@@ -248,15 +248,15 @@ contactData.image.attach(
   content_type: "image/png"
 )
 
-
+Introduction.delete_all
 intr = Introduction.first || Introduction.create!(
-  content:"
+  content: <<~TEXT,
     Mộc Phương là đơn vị chuyên thiết kế, sản xuất và thi công nội thất với mong muốn mang đến những không gian sống hiện đại, tiện nghi và giàu tính thẩm mỹ. Chúng tôi kết hợp giữa chất liệu gỗ chất lượng, tay nghề thủ công tỉ mỉ và phong cách thiết kế sáng tạo để tạo nên những sản phẩm bền đẹp, phù hợp với nhu cầu của từng khách hàng.
 
     Với phương châm "Cam kết chất lượng - hậu mãi tốt nhất", Mộc Phương luôn đặt sự hài lòng của khách hàng lên hàng đầu trong từng công trình. Từ nội thất nhà ở, căn hộ, biệt thự đến văn phòng, showroom và cửa hàng, chúng tôi cam kết mang đến giải pháp tối ưu về công năng, thẩm mỹ và chi phí.
 
     Mộc Phương không chỉ tạo ra những món đồ nội thất, mà còn kiến tạo những không gian sống truyền cảm hứng, nơi mỗi chi tiết đều góp phần nâng tầm chất lượng cuộc sống của bạn.
-  "
+  TEXT
   link_video: "https://facebook.com/example"
 )
 
