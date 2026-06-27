@@ -2,7 +2,9 @@
   <div class="md:w-[80%] bg-white backdrop-blur-sm py-4 md:py-10 px-4 md:px-12 shadow-xl z-40">
 
     <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
-      <%= raw simple_format(@introduction&.content || "Chúng tôi đang cập nhật thông tin giới thiệu...") %>
+      <div class="whitespace-pre-wrap">
+        <%= @introduction&.content %>
+      </div>
     </div>
 
     <% if @introduction&.youtube_embed_url.present? %>
