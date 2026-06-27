@@ -1,8 +1,8 @@
 <div class="flex justify-center px-4 md:px-0">
   <div class="md:w-[80%] bg-white backdrop-blur-sm py-4 md:py-10 px-4 md:px-12 shadow-xl z-40">
 
-    <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify whitespace-pre-wrap">
-      <%= @introduction&.content %>
+    <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
+      <%= @introduction&.content.to_s.gsub("\n", "<br>").html_safe %>
     </div>
 
     <% if @introduction&.youtube_embed_url.present? %>
