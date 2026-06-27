@@ -297,14 +297,16 @@ designOffice.image.attach(
 )
 
 factoryData = Factory.first || Factory.create!(
-  content: "Xưởng sản xuất
-XƯỞNG SẢN XUẤT MỘC PHƯƠNG
+  content: <<~TEXT
+    Xưởng sản xuất
+    XƯỞNG SẢN XUẤT MỘC PHƯƠNG
 
-Xưởng sản xuất Mộc Phương là nơi hiện thực hóa những ý tưởng thiết kế thành các sản phẩm nội thất chất lượng, đáp ứng yêu cầu về thẩm mỹ, công năng và độ bền. Với hệ thống máy móc hiện đại cùng đội ngũ kỹ thuật viên, thợ mộc giàu kinh nghiệm, mỗi sản phẩm đều được gia công tỉ mỉ và kiểm tra kỹ lưỡng trước khi bàn giao đến khách hàng.
+    Xưởng sản xuất Mộc Phương là nơi hiện thực hóa những ý tưởng thiết kế thành các sản phẩm nội thất chất lượng, đáp ứng yêu cầu về thẩm mỹ, công năng và độ bền. Với hệ thống máy móc hiện đại cùng đội ngũ kỹ thuật viên, thợ mộc giàu kinh nghiệm, mỗi sản phẩm đều được gia công tỉ mỉ và kiểm tra kỹ lưỡng trước khi bàn giao đến khách hàng.
 
-Quy trình sản xuất được thực hiện khép kín từ lựa chọn nguyên vật liệu, cắt, gia công, sơn hoàn thiện đến lắp ráp và kiểm định chất lượng. Điều này giúp Mộc Phương chủ động kiểm soát tiến độ, tối ưu chi phí và đảm bảo mỗi công trình đều đạt tiêu chuẩn cao về chất lượng.
+    Quy trình sản xuất được thực hiện khép kín từ lựa chọn nguyên vật liệu, cắt, gia công, sơn hoàn thiện đến lắp ráp và kiểm định chất lượng. Điều này giúp Mộc Phương chủ động kiểm soát tiến độ, tối ưu chi phí và đảm bảo mỗi công trình đều đạt tiêu chuẩn cao về chất lượng.
 
-Với phương châm "Chất lượng tạo nên giá trị – Uy tín tạo dựng niềm tin", xưởng sản xuất Mộc Phương luôn không ngừng cải tiến công nghệ, nâng cao tay nghề và mang đến những giải pháp nội thất bền đẹp, góp phần kiến tạo không gian sống và làm việc tiện nghi, hiện đại cho mọi khách hàng."
+    Với phương châm "Chất lượng tạo nên giá trị – Uy tín tạo dựng niềm tin", xưởng sản xuất Mộc Phương luôn không ngừng cải tiến công nghệ, nâng cao tay nghề và mang đến những giải pháp nội thất bền đẹp, góp phần kiến tạo không gian sống và làm việc tiện nghi, hiện đại cho mọi khách hàng.
+  TEXT
 )
 
 factoryData.image.attach(
