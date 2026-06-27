@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_action :require_login
+
   def create
     @request = Request.new(request_params)
 
@@ -13,5 +15,11 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:name, :phone, :content)
+  end
+
+  def require_login
+    unless current_user.present?
+      redirect_to login_path, alert: "Bạn cần đăng nhập trước"
+    end
   end
 end
