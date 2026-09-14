@@ -1,6 +1,6 @@
 <div id="image-wrapper" class="relative min-h-screen flex items-center overflow-hidden group">
-  <div id="bg-carousel" class="absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
-    <% if @introduction.images.attached? %>
+  <div class="bg-carousel absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
+    <% if @introduction&.images&.attached? %>
       <% @introduction.images.each_with_index do |img, index| %>
         <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000
                     <%= index == 0 ? 'opacity-100' : 'opacity-0' %>"
@@ -13,125 +13,122 @@
   <div class="absolute inset-0 left-door bg-black/90 origin-left"></div>
   <div class="absolute inset-0 right-door bg-black/90 origin-right"></div>
 
-<div class="absolute inset-0 bg-black/50 animate-overlay-fade"></div>
+  <div class="absolute inset-0 bg-black/50 animate-overlay-fade"></div>
+
   <div class="w-full max-w-7xl mx-auto px-6 mt-[-20px]">
     <div class="text-center mt-20 mb-15 animate-fade-up">
       <p class="text-xs tracking-[0.35em] text-gray-300 mb-3">
         INTRODUCTION
       </p>
+
       <h1 class="text-3xl md:text-4xl font-semibold text-gray-200 tracking-wide">
         Giới thiệu
       </h1>
+
       <div class="mt-2 sm:mt-6 flex justify-center">
         <span class="w-20 h-[2px] bg-[#FFD2B8]"></span>
       </div>
+
       <div class="my-4 my-6 max-w-2xl mx-auto leading-relaxed">
         <p class="text-gray-200">NỘI THẤT MỘC PHƯƠNG</p>
-        <p class="text-gray-200 text-sm"><%= @slogan.content %></p>
+        <p class="text-gray-200 text-sm">
+          <%= @slogan&.content.to_s.presence || "Nội dung đang cập nhật." %>
+        </p>
       </div>
     </div>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-10">
       <%= link_to categories_path,
         class: "group card-animate border border-gray-100 rounded-2xl p-2 sm:p-10
                 transition-all duration-500 bg-[rgba(0,0,0,0.2)]
                 hover:-translate-y-2 hover:shadow-2xl
                 hover:border-[#c49980]" do %>
-
-        <span class="text-sm tracking-widest text-gray-300">
-          01
-        </span>
-
+        
+        <span class="text-sm tracking-widest text-gray-300">01</span>
+        
         <h2 class="mt-2 sm:mt-6 text-2xl font-medium text-gray-200">
           Sản phẩm
         </h2>
-
+        
         <p class="mt-2 sm:mt-4 text-gray-300 leading-relaxed">
           Đa dạng mẫu mã, phong cách hiện đại,
           phù hợp xu hướng và nhu cầu thị trường.
         </p>
-
+        
         <div class="mt-2 sm:mt-8 flex items-center text-sm font-medium text-gray-100">
           <span class="mr-2">Xem thêm</span>
-          <span class="transform transition group-hover:translate-x-2">→</span>
+          <span class="inline-block transform transition duration-300 group-hover:translate-x-2">
+            →
+          </span>
         </div>
       <% end %>
-
+        
       <%= link_to project_informations_path,
         class: "group card-animate border border-gray-100 rounded-2xl p-2 sm:p-10
                 transition-all duration-500 delay-100 bg-[rgba(0,0,0,0.2)]
                 hover:-translate-y-2 hover:shadow-2xl
                 hover:border-[#c49980]" do %>
-
-        <span class="text-sm tracking-widest text-gray-300">
-          02
-        </span>
-
+        
+        <span class="text-sm tracking-widest text-gray-300">02</span>
+        
         <h2 class="mt-2 sm:mt-6 text-2xl font-medium text-gray-200">
           Dự án
         </h2>
-
+        
         <p class="mt-2 sm:mt-4 text-gray-300 leading-relaxed">
           Thi công nội thất chất lượng cao,
           tiến độ nhanh chóng, đúng cam kết.
         </p>
-
+        
         <div class="mt-2 sm:mt-8 flex items-center text-sm font-medium text-gray-100">
           <span class="mr-2">Xem thêm</span>
-          <span class="transform transition group-hover:translate-x-2">→</span>
+          <span class="inline-block transform transition duration-300 group-hover:translate-x-2">
+            →
+          </span>
         </div>
       <% end %>
-
+        
       <%= link_to decorations_path,
         class: "group card-animate border border-gray-100 rounded-2xl p-2 sm:p-10 mb-4 sm:mb-0
                 transition-all duration-500 delay-200 bg-[rgba(0,0,0,0.2)]
                 hover:-translate-y-2 hover:shadow-2xl
                 hover:border-[#c49980]" do %>
-
-        <span class="text-sm tracking-widest text-gray-300">
-          03
-        </span>
-
+        
+        <span class="text-sm tracking-widest text-gray-300">03</span>
+        
         <h2 class="mt-2 sm:mt-6 text-2xl font-medium text-gray-200">
           Trang trí nội thất
         </h2>
-
+        
         <p class="mt-2 sm:mt-4 text-gray-300 leading-relaxed">
           Tư vấn thiết kế và trang trí
           không gian sống tiện nghi, thẩm mỹ.
         </p>
-
+        
         <div class="mt-2 sm:mt-8 flex items-center text-sm font-medium text-gray-100">
           <span class="mr-2">Xem thêm</span>
-          <span class="transform transition group-hover:translate-x-2">→</span>
+          <span class="inline-block transform transition duration-300 group-hover:translate-x-2">
+            →
+          </span>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>
 
-
-
-
-
-
-
-  <div class="flex justify-center">
-    <%= render "home/introduction" %>
-  </div>
+<div class="flex justify-center">
+  <%= render "home/introduction" %>
+</div>
 
 <% if @promotions.present? %>
   <div class="text-center mt-10 mb-10">
     <h2 class="text-2xl md:text-3xl font-gilroy tracking-wide"
         style="color: <%= Color.first&.header || '#ffffff' %>;">
       <span class="inline-block relative">
-          
         Sản phẩm giảm giá
-          
         <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
               style="background-color: <%= Color.first&.header || '#ffffff' %>;">
         </span>
-          
       </span>
     </h2>
 
@@ -143,19 +140,15 @@
   <h2 class="text-2xl md:text-3xl font-gilroy tracking-wide"
       style="color: <%= Color.first&.header || '#ffffff' %>;">
     <span class="inline-block relative">
-        
       Sản phẩm nổi bật
-        
       <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
             style="background-color: <%= Color.first&.header || '#ffffff' %>;">
       </span>
-        
     </span>
   </h2>
+
   <%= render "categories/product" %>
 </div>
-
-
 
 <div class="flex justify-center my-8 sm:my-12 lg:my-20 px-4">
   <%= link_to categories_path,
@@ -184,16 +177,12 @@
         stroke-linejoin="round"
         d="M5 12h14M13 5l7 7-7 7" />
     </svg>
-
   <% end %>
 </div>
 
-
-
 <section class="relative min-h-screen flex items-center overflow-hidden group">
-  <!-- Carousel Background -->
-  <div id="bg-carousel" class="absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
-    <% if @projectInformationInfor.images.attached? %>
+  <div class="bg-carousel absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
+    <% if @projectInformationInfor&.images&.attached? %>
       <% @projectInformationInfor.images.each_with_index do |img, index| %>
         <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000
                     <%= index == 0 ? 'opacity-100' : 'opacity-0' %>"
@@ -204,7 +193,6 @@
   </div>
 
   <div class="absolute inset-0 bg-black/40 animate-overlay-fade"></div>
-
 
   <div class="relative z-10 max-w-4xl mx-auto text-center text-white px-6">
     <h1 class="text-4xl md:text-6xl font-light tracking-wide leading-tight">
@@ -224,47 +212,34 @@
   </div>
 </section>
 
-
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('#bg-carousel > div');
-    const nextBtn = document.getElementById('next-bg');
-    const prevBtn = document.getElementById('prev-bg');
+document.addEventListener('DOMContentLoaded', () => {
+  const carousels = document.querySelectorAll('.bg-carousel');
+
+  carousels.forEach((carousel) => {
+    const slides = carousel.querySelectorAll('div.absolute.inset-0.bg-cover.bg-center');
+
+    if (slides.length === 0) return;
+
     let current = 0;
 
-    function showSlide(index) {
+    const showSlide = (index) => {
       slides.forEach((slide, i) => {
         slide.classList.toggle('opacity-100', i === index);
         slide.classList.toggle('opacity-0', i !== index);
       });
-    }
+    };
 
-    nextBtn.addEventListener('click', () => {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    });
-
-    prevBtn.addEventListener('click', () => {
-      current = (current - 1 + slides.length) % slides.length;
-      showSlide(current);
-    });
-
-    // Tự động chuyển slide mỗi 5s
     setInterval(() => {
       current = (current + 1) % slides.length;
       showSlide(current);
     }, 5000);
   });
+});
 </script>
 
-
-
-
-
 <div class="min-h-screen flex items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
-
   <div class="w-full max-w-3xl bg-white rounded-2xl shadow-sm p-6 sm:p-8 lg:p-10">
-
     <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-center text-gray-800 mb-4">
       Bạn có ý tưởng cho ngôi nhà của bạn?
     </h1>
@@ -276,14 +251,12 @@
     <p class="text-sm sm:text-base text-center text-gray-600 mb-8">
       Nếu bạn cần hỗ trợ ngay lập tức, vui lòng gọi:
       <span class="font-semibold text-yellow-700">
-        <%= @contact.phone %>
+        <%= @contact&.phone.to_s.presence || "Liên hệ trực tiếp." %>
       </span>
     </p>
 
     <%= form_with model: @request, local: true do |f| %>
-
       <div class="space-y-5">
-
         <div>
           <%= f.label :name,
                 "Tên của bạn",
@@ -322,7 +295,5 @@
         </div>
       </div>
     <% end %>
-
   </div>
 </div>
-

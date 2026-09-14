@@ -1,6 +1,6 @@
 <section class="relative min-h-screen flex items-center overflow-hidden group">
   <div id="bg-carousel" class="absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
-    <% if @projectInformationInfor.images.attached? %>
+    <% if @projectInformationInfor&.images&.attached? %>
       <% @projectInformationInfor.images.each_with_index do |img, index| %>
         <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000
                     <%= index == 0 ? 'opacity-100' : 'opacity-0' %>"
@@ -25,6 +25,7 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('#bg-carousel > div');
+    if (slides.length === 0) return;
     let current = 0;
 
     function showSlide(index) {
@@ -47,7 +48,7 @@
 
     <div class="py-4 md:py-8 px-6 md:px-12 min-h-[200px] shadow-lg bg-white">
       <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
-        <%= @projectInformationInfor&.content.to_s.gsub("\n", "<br>").html_safe %>
+        <%= simple_format(@projectInformationInfor&.content.presence || "Chưa có nội dung.") %>
       </div>
     </div>
 
@@ -61,9 +62,9 @@
       </h2>
     </div>
 
-    <%= render "project_informations" %>
-
     <%= render "project_informations_featured" %>
+
+    <%= render "project_informations" %>
 
   </div>
 </div>

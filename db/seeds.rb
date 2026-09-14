@@ -139,6 +139,26 @@ listProjectInformation.each do |i|
   end
 end
 
+# ...existing code...
+listProjectInformation = [
+  "Biệt thự",
+  "Nhà phố",
+  "Cửa hàng",
+  "Nhà hàng",
+  "Khách sạn"
+]
+
+listProjectInformationFeatured = [
+  "Biệt thự",
+  "Nhà phố",
+  "Cửa hàng"
+]
+
+listProjectInformation.each do |name|
+  project = ProjectInformation.find_or_create_by!(name: name)
+  project.update!(featured: listProjectInformationFeatured.include?(name))
+end
+
 ##########################################################################
 
 listAccessory = [

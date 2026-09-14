@@ -1,8 +1,7 @@
 <div class="flex justify-center px-4 md:px-0">
   <div class="md:w-[80%] bg-white backdrop-blur-sm py-4 md:py-10 px-4 md:px-12 shadow-xl z-40">
-
     <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
-      <%= @introduction&.content.to_s.gsub("\n", "<br>").html_safe %>
+      <%= simple_format(@introduction&.content.to_s.presence || "Nội dung đang cập nhật.") %>
     </div>
 
     <% if @introduction&.youtube_embed_url.present? %>
@@ -13,10 +12,9 @@
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-          class="w-full <%= @introduction.youtube_aspect_class %> rounded-xl shadow-lg">
+          class="w-full <%= @introduction.youtube_aspect_class.to_s %> rounded-xl shadow-lg">
         </iframe>
       </div>
-
     <% end %>
   </div>
 </div>

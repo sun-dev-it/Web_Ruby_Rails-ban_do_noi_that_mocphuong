@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   allow_browser versions: :modern
+
   helper_method :current_user, :logged_in?, :admin?, :super_admin?, :staff?, :admin_manager?
+
   before_action :slogan, :categories, :project_informations, :decorations, :accessories, :requests, :contact
 
   private
@@ -38,63 +40,55 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    current_user.present? 
+    current_user.present?
   end
-
 
   def admin?
-    logged_in? && ["super_admin", "admin_manager", "staff"].include?(current_user.role)
+    logged_in? && %w[super_admin admin_manager staff].include?(current_user.role)
   end
-  def require_admin
-    unless admin?
-      flash[:alert] = "Bạn không có quyền truy cập trang này."
-      redirect_to root_path
-    end
-  end
-
 
   def admin_manager?
-    logged_in? && ["admin_manager", "super_admin"].include?(current_user.role)
+    logged_in? && %w[admin_manager super_admin].include?(current_user.role)
   end
-  
+
   def super_admin?
-    logged_in? && (
-  current_user.role == "super_admin" ||
-  ["nguyenducphong18012002@gmail.com", "daiphatle123@gmail.com"].include?(current_user.email)
-)
-
+    logged_in? && (current_user.role == "super_admin" || %w[nguyenducphong18012002@gmail.com daiphatle123@gmail.com].include?(current_user.email))
   end
-  def require_super_admin
-    unless super_admin?
-      flash[:alert] = "Bạn không có quyền truy cập trang này."
-      redirect_to admin_dashboard_path
-    end
-  end
-
 
   def staff?
-    logged_in? && ["staff", "super_admin"].include?(current_user.role)
-  end
-  def require_staff
-    unless staff?
-      flash[:alert] = "Bạn không có quyền truy cập trang này."
-      redirect_to admin_dashboard_path
-    end
+    logged_in? && %w[staff super_admin].include?(current_user.role)
   end
 
+  def require_admin
+    return if admin?
+
+    flash[:alert] = "Bạn không có quyền truy cập trang này."
+    redirect_to root_path
+  end
+
+  def require_super_admin
+    return if super_admin?
+
+    flash[:alert] = "Bạn không có quyền truy cập trang này."
+    redirect_to admin_dashboard_path
+  end
+
+  def require_staff
+    return if staff?
+
+    flash[:alert] = "Bạn không có quyền truy cập trang này."
+    redirect_to admin_dashboard_path
+  end
 
   def require_admin_manager
-    unless admin_manager?
-      redirect_to root_path
-    end
+    return if admin_manager?
+
+    redirect_to root_path
   end
 
-
-  
-
   def require_login
-    unless logged_in?
-      redirect_to login_path
-    end
+    return if logged_in?
+
+    redirect_to login_path
   end
 end
