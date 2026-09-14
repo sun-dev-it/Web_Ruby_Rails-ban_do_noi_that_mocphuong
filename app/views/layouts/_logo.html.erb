@@ -1,6 +1,10 @@
 <%= link_to root_path, class: "ml-1 sm:ml-2" do %>
-  <% if @slogan.image.attached? %>
+  <% if @slogan&.image&.attached? %>
     <%= image_tag @slogan.image,
         class: "w-[120px] sm:w-[160px] lg:w-[220px] h-auto" %>
+  <% else %>
+    <span class="text-sm font-semibold tracking-[0.2em] text-white sm:text-base">
+      MỘC PHƯƠNG
+    </span>
   <% end %>
 <% end %>

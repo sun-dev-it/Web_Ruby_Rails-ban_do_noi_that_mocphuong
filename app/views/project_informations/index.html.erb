@@ -69,6 +69,15 @@
 
     <%= render "project_informations" %>
 
+    <% if @has_more_projects %>
+      <div class="mt-10 flex justify-center px-4">
+        <%= link_to project_informations_path(page: @next_page, anchor: "project-list"), class: "group inline-flex items-center gap-2 rounded-full border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-800 transition hover:bg-gray-900 hover:text-white" do %>
+          <span>Xem thêm dự án</span>
+          <span class="transition-transform duration-300 group-hover:translate-y-1">↓</span>
+        <% end %>
+      </div>
+    <% end %>
+
   </div>
 </div>
 
