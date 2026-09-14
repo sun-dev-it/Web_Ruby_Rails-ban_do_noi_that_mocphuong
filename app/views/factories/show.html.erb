@@ -5,7 +5,7 @@
 </div>
 
 <div class="relative h-[60vh] min-h-[420px] w-full bg-gray-800 bg-cover bg-center"
-  <% if @factory.image.attached? %>style="background-image: url('<%= url_for(@factory.image) %>')"<% end %>>
+  <% if @factory&.image&.attached? %>style="background-image: url('<%= url_for(@factory.image) %>')"<% end %>>
 
   <div class="absolute inset-0 bg-black/40"></div>
 
@@ -30,7 +30,7 @@
       <div>
         <p class="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">Năng lực sản xuất</p>
         <div class="space-y-4 text-base leading-8 text-gray-700">
-          <%= simple_format(@factory.content) %>
+          <%= simple_format(@factory&.content.presence || "Thông tin xưởng sản xuất đang được cập nhật.") %>
         </div>
       </div>
 

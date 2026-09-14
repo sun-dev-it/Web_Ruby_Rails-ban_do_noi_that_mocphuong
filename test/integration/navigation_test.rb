@@ -6,8 +6,8 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "contacts index loads successfully" do
-    get contacts_path
+  test "contact page loads successfully" do
+    get contact_path
     assert_response :success
   end
 
@@ -21,23 +21,18 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "factorys index loads successfully" do
-    get factorys_path
+  test "factory page loads successfully" do
+    get factory_path
     assert_response :success
   end
 
-  test "design offices index loads successfully" do
-    get design_offices_path
+  test "design office page loads successfully" do
+    get design_office_path
     assert_response :success
   end
 
-  test "users index loads successfully" do
-    get users_path
-    assert_response :success
-  end
-
-  test "shoppings index loads successfully" do
-    get shoppings_path
+  test "user registration page loads successfully" do
+    get new_user_path
     assert_response :success
   end
 end
