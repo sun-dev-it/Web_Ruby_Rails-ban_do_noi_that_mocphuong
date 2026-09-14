@@ -1,24 +1,84 @@
-<div class="relative h-[70vh] bg-cover bg-center w-full"
-     style="background-image: url('<%= url_for(@showroom.images.first) %>')">
+<div class="px-5 py-3 text-xs text-gray-600">
+  <%= link_to "Trang chủ", root_path, class: "hover:text-gray-900" %>
+  <span class="mx-2">›</span>
+  <span>Showroom</span>
+</div>
+
+<div class="relative h-[60vh] min-h-[420px] w-full bg-gray-800 bg-cover bg-center"
+  <% if @showroom.images.attached? %>style="background-image: url('<%= url_for(@showroom.images.first) %>')"<% end %>>
 
   <div class="absolute inset-0 bg-black/40"></div>
 
   <div class="relative z-10 h-full flex items-center justify-center text-center px-6">
     <div>
-      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">
+      <p class="mb-4 text-xs tracking-[0.4em] text-gray-200">
         SHOWROOM
       </p>
-      <h1 class="text-4xl md:text-5xl font-semibold text-white">
-        SHOWROOM
+      <h1 class="text-4xl font-semibold text-white md:text-6xl">
+        Không gian showroom
       </h1>
+      <p class="mx-auto mt-4 max-w-xl text-sm leading-6 text-gray-200 md:text-base">
+        Nơi bạn có thể trực tiếp cảm nhận chất liệu, kiểu dáng và tinh thần nội thất Mộc Phương.
+      </p>
     </div>
   </div>
 </div>
 
-<div class="flex justify-center -mt-20 mb-[140px]">
-  <div class="w-[90%] sm:w-[70%] z-[800]">
-    <div class="rounded-lg shadow-md shadow-gray-700 justify-between bg-white italic p-6 sm:p-12 space-y-4">
-      <%= simple_format(@showroom.content) %>
+<div class="relative z-20 mx-auto -mt-16 mb-20 w-[90%] max-w-6xl">
+  <div class="rounded-xl bg-white p-6 shadow-xl sm:p-10">
+    <div class="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+      <div>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">Về showroom</p>
+        <div class="space-y-4 text-base leading-8 text-gray-700">
+          <%= simple_format(@showroom.content) %>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-200 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+        <h2 class="mb-4 text-xl font-semibold text-gray-900">Ghé thăm chúng tôi</h2>
+        <div class="space-y-3 text-sm leading-6 text-gray-600">
+          <p><strong class="text-gray-900">Địa chỉ:</strong> <%= @contact&.address.presence || "Đang cập nhật" %></p>
+          <p><strong class="text-gray-900">Điện thoại:</strong> <%= @contact&.phone.presence || "Đang cập nhật" %></p>
+          <p><strong class="text-gray-900">Email:</strong> <%= @contact&.gmail.presence || "Đang cập nhật" %></p>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <% if @contact&.phone.present? %>
+            <%= link_to "Gọi ngay", "tel:#{@contact.phone}", class: "rounded-md bg-gray-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-700" %>
+          <% end %>
+          <% if @contact&.address.present? %>
+            <%= link_to "Chỉ đường", "https://www.google.com/maps/search/?api=1&query=#{ERB::Util.url_encode(@contact.address)}", target: "_blank", rel: "noopener", class: "rounded-md border border-gray-300 px-5 py-2.5 text-sm font-semibold text-gray-800 transition hover:border-gray-900" %>
+          <% end %>
+          <%= link_to "Gửi yêu cầu tư vấn", new_request_path, class: "rounded-md border border-gray-300 px-5 py-2.5 text-sm font-semibold text-gray-800 transition hover:border-gray-900" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if @showroom.images.attached? %>
+    <div class="mt-14">
+      <div class="mb-6 flex items-end justify-between gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">Không gian thực tế</p>
+          <h2 class="mt-2 text-2xl font-semibold text-gray-900">Hình ảnh showroom</h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+        <% @showroom.images.each do |image| %>
+          <%= image_tag image, class: "aspect-[4/3] w-full rounded-lg object-cover shadow-sm transition duration-300 hover:scale-[1.02] hover:shadow-lg" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="mt-14">
+    <h2 class="mb-6 text-center text-2xl font-semibold text-gray-900 md:text-3xl">Trải nghiệm tại showroom</h2>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <% [["Trải nghiệm thực tế", "Trực tiếp cảm nhận chất liệu và kiểu dáng sản phẩm"], ["Tư vấn tận tâm", "Đội ngũ đồng hành để tìm giải pháp phù hợp"], ["Không gian cảm hứng", "Khơi nguồn ý tưởng cho ngôi nhà của bạn"]].each do |title, description| %>
+        <div class="rounded-lg border border-gray-200 bg-white p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
+          <h3 class="text-lg font-semibold text-gray-900"><%= title %></h3>
+          <p class="mt-2 text-sm leading-6 text-gray-500"><%= description %></p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

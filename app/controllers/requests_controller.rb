@@ -1,6 +1,10 @@
 class RequestsController < ApplicationController
   before_action :require_login
 
+  def new
+    @request = Request.new
+  end
+
   def create
     @request = Request.new(request_params)
 

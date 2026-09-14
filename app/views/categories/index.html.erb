@@ -1,20 +1,36 @@
 <div class="mb-10 mt-4">
-  <div class="py-3 px-5 ">
-      <h1 class="text-1xl md:text-3xl font-semi font-bold text-gray-700 my-1">
-        Tất cả sản phẩm
-      </h1>
-      <div class="flex text-xs italic">
+  <div class="px-5 py-5">
+      <div class="flex items-center text-xs text-gray-500">
           <%= link_to root_path do %>
-              <div class="flex hover:text-black">
+              <div class="flex items-center gap-1 transition hover:text-gray-900">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 mt-[2px]">
                     <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
                   </svg>
-                  <div>Trang chủ</div>
+                    <div>Trang chủ</div>
               </div>
           <% end %>
           
-          >Sản phẩm >Tất cả sản phẩm
+                <span class="mx-2">›</span> 
+                <span>Sản phẩm › Tất cả sản phẩm</span>
+      </div>
+      <div class="mt-3 text-center">
+        <p class="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Bộ sưu tập Mộc Phương</p>
+        <h1 class="my-1 text-2xl font-semibold tracking-wide text-gray-800 md:text-3xl">
+        Tất cả sản phẩm
+        </h1>
       </div>
   </div>  
   <%= render "product" %>
+
+  <section class="mx-5 mt-16 rounded-xl bg-gray-50 px-6 py-12 text-center sm:px-10">
+    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Cần tư vấn thêm?</p>
+    <h2 class="mt-3 text-2xl font-semibold text-gray-900 md:text-3xl">Cùng tạo nên không gian của bạn</h2>
+    <p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-600">
+      Đội ngũ Mộc Phương sẵn sàng hỗ trợ bạn lựa chọn sản phẩm phù hợp với nhu cầu và phong cách riêng.
+    </p>
+    <%= link_to new_request_path, class: "mt-6 inline-flex items-center gap-2 rounded-full bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-gray-700" do %>
+      <span>Gửi yêu cầu tư vấn</span>
+      <span>→</span>
+    <% end %>
+  </section>
 </div>

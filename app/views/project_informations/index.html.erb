@@ -1,4 +1,4 @@
-<section class="relative min-h-screen flex items-center overflow-hidden group">
+<section class="relative min-h-[520px] overflow-hidden group md:min-h-[650px]">
   <div id="bg-carousel" class="absolute inset-0 w-full h-full overflow-hidden animate-bg-move-about_us">
     <% if @projectInformationInfor&.images&.attached? %>
       <% @projectInformationInfor.images.each_with_index do |img, index| %>
@@ -13,10 +13,13 @@
   <div class="absolute inset-0 bg-black/40 animate-overlay-fade"></div>
 
 
-  <div class="relative w-full z-10 h-full flex items-center justify-center text-center px-6">
+  <div class="relative z-10 flex min-h-[520px] w-full items-center justify-center px-6 text-center md:min-h-[650px]">
     <div>
-      <p class="text-xs tracking-[0.4em] text-gray-200 mb-4">PROJECT</p>
-      <h1 class="text-4xl md:text-5xl font-semibold text-white">Dự án</h1>
+      <p class="mb-4 text-xs font-semibold tracking-[0.4em] text-gray-200">PROJECT</p>
+      <h1 class="text-4xl font-semibold tracking-wide text-white md:text-6xl">Dự án</h1>
+      <p class="mx-auto mt-4 max-w-xl text-sm leading-6 text-gray-200 md:text-base">
+        Những không gian được thiết kế, sản xuất và hoàn thiện theo dấu ấn riêng của từng khách hàng.
+      </p>
     </div>
   </div>
 </section>
@@ -44,10 +47,10 @@
 
 
 <div class="flex justify-center">
-  <div class="w-[90%] sm:w-[80%] z-47">
+  <div class="w-[90%] sm:w-[80%] z-[47]">
 
-    <div class="py-4 md:py-8 px-6 md:px-12 min-h-[200px] shadow-lg bg-white">
-      <div class="font-light md:text-lg leading-relaxed italic text-center md:text-justify">
+    <div class="min-h-[200px] rounded-xl bg-white px-6 py-8 shadow-lg md:px-12">
+      <div class="text-base leading-8 text-gray-700 md:text-lg">
         <%= simple_format(@projectInformationInfor&.content.presence || "Chưa có nội dung.") %>
       </div>
     </div>

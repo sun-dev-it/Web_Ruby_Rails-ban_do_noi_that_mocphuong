@@ -1,10 +1,14 @@
-<div class="flex justify-center">
-    <div class="w-[90%] sm:w-[60%] mt-6 sm:mt-14 boder bg-white rounded-lg p-2 sm:p-10">
-      <p class="text-center font-bold text-2xl sm:text-4xl mb-4">Danh sách đơn hàng của bạn</p>
+<div class="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 sm:py-14">
+    <div class="mx-auto w-full max-w-5xl rounded-2xl border border-gray-200 bg-white p-4 shadow-lg sm:p-8">
+      <div class="mb-8 text-center">
+        <p class="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Tài khoản Mộc Phương</p>
+        <p class="text-2xl font-semibold tracking-wide text-gray-900 sm:text-4xl">Danh sách đơn hàng</p>
+        <p class="mt-3 text-sm text-gray-500">Theo dõi trạng thái và lịch sử mua hàng của bạn.</p>
+      </div>
       
 <% if @orders.empty? %>
   <div class="flex justify-center items-center min-h-[60vh] px-4">
-    <div class="bg-white rounded-2xl shadow-sm border p-8 sm:p-10 text-center max-w-md w-full">
+    <div class="mx-auto w-full max-w-md rounded-2xl border border-gray-200 bg-gray-50 p-8 text-center sm:p-10">
 
       <div class="flex justify-center mb-4">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -45,8 +49,9 @@
 
 
 
-<table class="w-full border border-gray-300 rounded-lg overflow-hidden text-center">
-  <thead class="bg-gray-100 border-b border-gray-300">
+<div class="overflow-x-auto rounded-xl border border-gray-200">
+<table class="w-full min-w-[650px] overflow-hidden text-center">
+  <thead class="border-b border-gray-200 bg-gray-50">
     <tr>
       <th class="px-4 py-2 border-r border-gray-300">Trạng thái</th>
       <th class="px-4 py-2 border-r border-gray-300">Tổng tiền</th>
@@ -59,9 +64,9 @@
     <% total = 0 %>
     <% @orders.each do |order| %>
       <% total = order.order_items.sum { |item| item.price * item.quantity } %>
-      <tr class="border-b border-gray-200 hover:bg-gray-50">
+      <tr class="border-b border-gray-100 transition hover:bg-gray-50">
         <td class="flex flex-col items-center justify-center px-4 py-2 border-r border-gray-200">
-          <%= order.status %>
+          <span class="inline-flex rounded-full bg-gray-900 px-3 py-1 text-xs font-semibold text-white"><%= order.status %></span>
         </td>
         <td class="px-4 py-2 border-r border-gray-200 align-middle">
           <%= number_to_currency(total, unit: "VND ", format: "%n %u", precision: 0) %>
@@ -71,13 +76,14 @@
         </td>
 
         <td>
-          <%= link_to "Xem chi tiết", order_path(order) %>
+          <%= link_to "Xem chi tiết", order_path(order), class: "font-semibold text-gray-700 underline underline-offset-4 transition hover:text-gray-500" %>
         </td>
 
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
 
 

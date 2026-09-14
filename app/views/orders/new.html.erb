@@ -1,17 +1,24 @@
-<div class="flex justify-center">
-    <div class="w-[90%] sm:w-[60%] mt-6 sm:mt-14 boder bg-white rounded-lg p-2 sm:p-10">
-      <p class="text-center font-bold text-2xl sm:text-4xl mb-4">Xác nhận đơn hàng</p>
+<div class="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 sm:py-14">
+    <div class="mx-auto w-full max-w-5xl rounded-2xl border border-gray-200 bg-white p-4 shadow-lg sm:p-8">
+      <div class="mb-8 text-center">
+        <p class="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Hoàn tất lựa chọn</p>
+        <p class="text-2xl font-semibold tracking-wide text-gray-900 sm:text-4xl">Xác nhận đơn hàng</p>
+        <p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-500">Kiểm tra lại sản phẩm và để lại số điện thoại để chúng tôi liên hệ xác nhận.</p>
+      </div>
       
 <% if @cart_items.empty? %>
-  <p>Giỏ hàng trống!</p>
-  <%= link_to "Quay lại", user_path(current_user) %>
+  <div class="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center">
+    <p class="text-lg font-semibold text-gray-800">Giỏ hàng trống</p>
+    <%= link_to "Quay lại mua sắm", categories_path, class: "mt-5 inline-flex rounded-lg bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-700" %>
+  </div>
 <% else %>
 
 
 
 
-<table class="w-full border border-gray-300 rounded-lg overflow-hidden text-center">
-  <thead class="bg-gray-100 border-b border-gray-300">
+<div class="overflow-x-auto rounded-xl border border-gray-200">
+<table class="w-full min-w-[700px] overflow-hidden text-center">
+  <thead class="border-b border-gray-200 bg-gray-50">
     <tr>
       <th class="px-4 py-2 border-r border-gray-300">Sản phẩm</th>
       <th class="px-4 py-2 border-r border-gray-300">Giá</th>
@@ -25,10 +32,10 @@
     <% total = 0 %>
     <% @cart_items.each do |item| %>
       <% total += item.quantity * item.product.price %>
-      <tr class="border-b border-gray-200 hover:bg-gray-50">
+      <tr class="border-b border-gray-100 transition hover:bg-gray-50">
         <td class="flex flex-col items-center justify-center px-4 py-2 border-r border-gray-200">
           <% if item.product.images.attached? %>
-            <%= image_tag item.product.images.first, class: "w-16 h-16 object-cover rounded mb-2" %>
+            <%= image_tag item.product.images.first, class: "mb-2 h-16 w-16 rounded-lg object-cover" %>
           <% end %>
           <span class="font-medium text-gray-700"><%= item.product.name %></span>
         </td>
@@ -42,33 +49,35 @@
           <%= number_to_currency(item.quantity * item.product.price, unit: "VND ", format: "%n %u", precision: 0) %>
         </td>
         <td class="flex justify-center space-x-2 px-4 py-2">
-          <%= button_to "Xóa", remove_all_cart_path(product_id: item.product.id), method: :post, class: "px-2 py-1 rounded" %>
+          <%= button_to "Xóa", remove_all_cart_path(product_id: item.product.id), method: :post, class: "rounded-md px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50" %>
         </td>
       </tr>
     <% end %>
 
-    <tr class="bg-gray-100 font-bold">
-      <td colspan="3" class="px-4 py-2 border-r border-gray-300">Tổng tiền</td>
-      <td colspan="2" class="px-4 py-2"><%= number_to_currency(total, unit: "VND ", format: "%n %u", precision: 0) %></td>
+    <tr class="bg-gray-50 font-semibold text-gray-900">
+      <td colspan="3" class="border-r border-gray-200 px-4 py-4 text-right">Tổng tiền</td>
+      <td colspan="2" class="px-4 py-4"><%= number_to_currency(total, unit: "VND ", format: "%n %u", precision: 0) %></td>
     </tr>
   </tbody>
 </table>
+</div>
 
 
 
-  <br>
-  <div class="flex justify-end">
+  <div class="mt-8 ml-auto w-full max-w-md rounded-xl border border-gray-200 bg-gray-50 p-5">
     
     <%= form_with url: orders_path, method: :post do %>
-      <div class="mb-4">
-        <%= label_tag :phone, "Số điện thoại", class: "block mb-2 font-medium" %>
+      <div class="mb-5">
+        <%= label_tag :phone, "Số điện thoại", class: "mb-2 block text-sm font-semibold text-gray-800" %>
         <%= text_field_tag :phone, nil, 
-              class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400",
+              class: "w-full rounded-lg border border-gray-300 px-4 py-3 text-sm transition focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200",
+              placeholder: "Nhập số điện thoại",
+              autocomplete: "tel",
               required: true %> <!-- thêm required -->
       </div>
-      <div class="flex justify-between space-x-2">
-        <%= link_to "Quay lại giỏ hàng", cart_path, class: "border border-gray-200 hover:bg-gray-200 px-4 py-2 rounded" %>
-        <%= submit_tag "Xác nhận đặt hàng", class: "border border-gray-200 hover:bg-gray-200 px-4 py-2 rounded transition duration-300" %>
+      <div class="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+        <%= link_to "Quay lại giỏ hàng", cart_path, class: "rounded-lg border border-gray-300 px-4 py-3 text-center text-sm font-medium text-gray-700 transition hover:bg-white" %>
+        <%= submit_tag "Xác nhận đặt hàng", class: "rounded-lg bg-gray-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-gray-700" %>
       </div>
     <% end %>
       

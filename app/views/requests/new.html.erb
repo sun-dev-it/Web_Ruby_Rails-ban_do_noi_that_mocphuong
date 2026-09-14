@@ -1,4 +1,69 @@
-<div>
-  <h1 class="font-bold text-4xl">Requests#new</h1>
-  <p>Find me in app/views/requests/new.html.erb</p>
+<div class="px-5 py-3 text-xs text-gray-600">
+  <%= link_to "Trang chủ", root_path, class: "hover:text-gray-900" %>
+  <span class="mx-2">›</span>
+  <span>Gửi yêu cầu</span>
+</div>
+
+<div class="mx-auto w-[90%] max-w-6xl pb-16 pt-10">
+  <div class="mb-10 max-w-2xl">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">Đồng hành cùng bạn</p>
+    <h1 class="text-3xl font-semibold text-gray-900 md:text-5xl">Gửi yêu cầu tư vấn</h1>
+    <p class="mt-4 text-sm leading-7 text-gray-600 md:text-base">
+      Chia sẻ nhu cầu của bạn, đội ngũ Mộc Phương sẽ liên hệ để tư vấn sản phẩm và giải pháp phù hợp.
+    </p>
+  </div>
+
+  <div class="grid gap-8 lg:grid-cols-[1.4fr_0.8fr]">
+    <div class="rounded-xl bg-white p-6 shadow-lg sm:p-10">
+      <% if @request.errors.any? %>
+        <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+          <p class="font-semibold">Vui lòng kiểm tra lại thông tin.</p>
+          <ul class="mt-2 list-disc pl-5">
+            <% @request.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form_with model: @request, url: requests_path, class: "space-y-6" do |form| %>
+        <div>
+          <%= form.label :name, "Họ và tên", class: "mb-2 block text-sm font-semibold text-gray-800" %>
+          <%= form.text_field :name, required: true, autocomplete: "name", placeholder: "Nhập họ và tên", class: "w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-gray-900 focus:ring-2 focus:ring-gray-200" %>
+        </div>
+
+        <div>
+          <%= form.label :phone, "Số điện thoại", class: "mb-2 block text-sm font-semibold text-gray-800" %>
+          <%= form.telephone_field :phone, required: true, autocomplete: "tel", placeholder: "Nhập số điện thoại", class: "w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-gray-900 focus:ring-2 focus:ring-gray-200" %>
+        </div>
+
+        <div>
+          <%= form.label :content, "Nội dung yêu cầu", class: "mb-2 block text-sm font-semibold text-gray-800" %>
+          <%= form.text_area :content, required: true, rows: 6, placeholder: "Bạn đang cần tư vấn về sản phẩm hoặc không gian nào?", class: "w-full resize-y rounded-md border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-gray-900 focus:ring-2 focus:ring-gray-200" %>
+        </div>
+
+        <%= form.submit "Gửi yêu cầu", class: "w-full rounded-md bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-700 sm:w-auto" %>
+      <% end %>
+    </div>
+
+    <aside class="rounded-xl bg-gray-900 p-6 text-white sm:p-8">
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-gray-400">Liên hệ trực tiếp</p>
+      <h2 class="mt-4 text-2xl font-semibold">Cần trao đổi nhanh?</h2>
+      <p class="mt-4 text-sm leading-7 text-gray-300">
+        Đội ngũ của chúng tôi sẵn sàng lắng nghe và hỗ trợ bạn trong quá trình lựa chọn.
+      </p>
+
+      <div class="mt-8 space-y-4 border-t border-gray-700 pt-6 text-sm text-gray-300">
+        <% if @contact&.phone.present? %>
+          <p><span class="block text-xs uppercase tracking-wider text-gray-500">Điện thoại</span><%= @contact.phone %></p>
+        <% end %>
+        <% if @contact&.gmail.present? %>
+          <p><span class="block text-xs uppercase tracking-wider text-gray-500">Email</span><%= @contact.gmail %></p>
+        <% end %>
+        <% if @contact&.address.present? %>
+          <p><span class="block text-xs uppercase tracking-wider text-gray-500">Địa chỉ</span><%= @contact.address %></p>
+        <% end %>
+      </div>
+    </aside>
+  </div>
 </div>
