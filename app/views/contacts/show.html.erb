@@ -1,5 +1,5 @@
-<div class="relative h-[80vh] bg-cover bg-center w-full"
-     style="background-image: url('<%= url_for(@contact.image) %>')">
+<div class="relative h-[60vh] min-h-[420px] w-full bg-gray-800 bg-cover bg-center"
+  <% if @contact&.image&.attached? %>style="background-image: url('<%= url_for(@contact.image) %>')"<% end %>>
 
   <div class="absolute inset-0 bg-black/40"></div>
 
@@ -40,11 +40,11 @@
           <strong class="font-semibold text-gray-700">Số điện thoại:</strong>
           <span class="text-gray-600"><%= @contact.phone %></span>
         </p>
-        <p class="flex justify-center">
+        <div class="flex justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
             <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
           </svg>
-        <p class="flex justify-center">
+        </div>
         <p class="text-lg mb-6">
           <strong class="font-semibold text-gray-700">Zalo:</strong>
           <%= link_to @contact.zalo, "https://zalo.me/#{@contact.zalo}",
@@ -52,11 +52,11 @@
                 target: "_blank",
                 rel: "noopener" %>
         </p>
-        <p class="flex justify-center">
+        <div class="flex justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-10">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
           </svg>
-        </p>          
+        </div>
 
         <p class="text-lg">
           <strong class="font-semibold text-gray-700">Facebook:</strong>

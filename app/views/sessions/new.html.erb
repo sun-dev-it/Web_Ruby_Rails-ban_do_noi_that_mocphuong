@@ -31,5 +31,28 @@
       Đăng nhập với Facebook
     <% end %>
 
+    <div class="my-6 flex items-center gap-3 text-xs uppercase tracking-wider text-gray-400">
+      <span class="h-px flex-1 bg-gray-200"></span>
+      <span>Hoặc</span>
+      <span class="h-px flex-1 bg-gray-200"></span>
+    </div>
+
+    <%= form_with url: login_path, method: :post, local: true, class: "space-y-4 text-left" do |form| %>
+      <div>
+        <%= form.label :email, "Email", class: "mb-2 block text-sm font-semibold text-gray-700" %>
+        <%= form.email_field :email, required: true, autocomplete: "email", class: "w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200" %>
+      </div>
+      <div>
+        <%= form.label :password, "Mật khẩu", class: "mb-2 block text-sm font-semibold text-gray-700" %>
+        <%= form.password_field :password, required: true, autocomplete: "current-password", class: "w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200" %>
+      </div>
+      <%= form.submit "Đăng nhập", class: "w-full rounded-lg bg-gray-900 px-4 py-3 font-semibold text-white transition hover:bg-gray-700" %>
+    <% end %>
+
+    <p class="mt-5 text-sm text-gray-500">
+      Chưa có tài khoản?
+      <%= link_to "Đăng ký", new_user_path, class: "font-semibold text-gray-900 hover:underline" %>
+    </p>
+
   </div>
 </div>

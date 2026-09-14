@@ -18,6 +18,8 @@ class Promotion < ApplicationRecord
     end
 
     def youtube_aspect_class
+      return "aspect-video" if video.blank?
+
         video.include?("shorts") ? "aspect-[9/16]" : "aspect-video"
     end
 

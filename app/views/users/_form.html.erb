@@ -27,8 +27,8 @@
           <%= label_tag :password, "Mật khẩu", class: "mb-2 block text-sm font-semibold text-gray-700" %>
                 
           <div class="relative">
-            <%= password_field_tag :password, nil, required: true,
-              id: "passwordField",
+              <%= f.password_field :password, required: true,
+                id: "passwordField",
               class: "w-full rounded-lg border border-gray-300 px-4 py-3 pr-12 transition focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200" %>
               
             <!-- Nút toggle -->
@@ -56,8 +56,8 @@
           <%= label_tag :password_confirmation, "Xác nhận mật khẩu", class: "mb-2 block text-sm font-semibold text-gray-700" %>
                 
           <div class="relative">
-            <%= password_field_tag :password_confirmation, nil, required: true,
-              id: "passwordFieldconf",
+              <%= f.password_field :password_confirmation, required: true,
+                id: "passwordFieldconf",
               class: "w-full rounded-lg border border-gray-300 px-4 py-3 pr-12 transition focus:border-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200" %>
               
             <!-- Nút toggle -->

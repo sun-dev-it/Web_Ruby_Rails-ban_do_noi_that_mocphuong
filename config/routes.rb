@@ -1,14 +1,7 @@
 Rails.application.routes.draw do
-  get "requests/new"
-  get "requests/create"
   root "home#index"
   
   get "/auth/:provider/callback", to: "sessions#oauth"
-  get "/logout", to: "sessions#destroy"
-
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
 
   get    "login",  to: "sessions#new"
   post   "login",  to: "sessions#create"

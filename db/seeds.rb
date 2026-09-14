@@ -1,83 +1,79 @@
-# Xóa ảnh của Slogan
-Slogan.all.each do |slogan|
-  slogan.image.purge if slogan.image.attached?
-end
+reset_seed_media = Rails.env.development? && ENV["RESET_SEED_MEDIA"] == "true"
 
-Showroom.all.each do |decoration|
-  decoration.images.each do |img|
-    img.purge
+if reset_seed_media
+  # Xóa ảnh seed cũ chỉ khi chủ động yêu cầu reset media.
+  Slogan.all.each do |slogan|
+    slogan.image.purge if slogan.image.attached?
   end
-end
 
-# Xóa ảnh của Decoration
-Decoration.all.each do |decoration|
-  decoration.images.each do |img|
-    img.purge
+  Showroom.all.each do |decoration|
+    decoration.images.each do |img|
+      img.purge
+    end
   end
-end
 
-# Xóa ảnh của Product
-Product.all.each do |product|
-  product.images.each do |img|
-    img.purge
+  Decoration.all.each do |decoration|
+    decoration.images.each do |img|
+      img.purge
+    end
   end
-end
 
-# Xóa ảnh của Contact
-Contact.all.each do |contact|
-  contact.image.purge if contact.image.attached?
-end
-
-# Xóa ảnh của Introduction
-Introduction.all.each do |intr|
-  intr.images.each do |img|
-    img.purge
+  Product.all.each do |product|
+    product.images.each do |img|
+      img.purge
+    end
   end
-end
 
-# Xóa ảnh của DesignOffice
-DesignOffice.all.each do |office|
-  office.image.purge if office.image.attached?
-end
-
-# Xóa ảnh của Factory
-Factory.all.each do |factory|
-  factory.image.purge if factory.image.attached?
-end
-
-# Xóa ảnh của ProjectInformation
-ProjectInformation.all.each do |proj|
-  proj.images.each do |img|
-    img.purge
+  Contact.all.each do |contact|
+    contact.image.purge if contact.image.attached?
   end
-end
 
-# Xóa ảnh của ProjectInformationInfor
-ProjectInformationInfor.all.each do |proj_info|
-  proj_info.images.each do |img|
-    img.purge
+  Introduction.all.each do |intr|
+    intr.images.each do |img|
+      img.purge
+    end
   end
-end
 
-Accessory.all.each do |proj_info|
-  proj_info.images.each do |img|
-    img.purge
+  DesignOffice.all.each do |office|
+    office.image.purge if office.image.attached?
+  end
+
+  Factory.all.each do |factory|
+    factory.image.purge if factory.image.attached?
+  end
+
+  ProjectInformation.all.each do |proj|
+    proj.images.each do |img|
+      img.purge
+    end
+  end
+
+  ProjectInformationInfor.all.each do |proj_info|
+    proj_info.images.each do |img|
+      img.purge
+    end
+  end
+
+  Accessory.all.each do |proj_info|
+    proj_info.images.each do |img|
+      img.purge
+    end
   end
 end
 
 ##########################################################################
 
 email = "daiphatle123@gmail.com"
-if (user = User.find_by(email: email))
-  user.destroy
-end
-User.create!(email: email, role: "super_admin")
+user = User.find_or_initialize_by(email: email)
+user.role = "super_admin"
+user.password = "mocphuong" if user.new_record? || user.password_digest.blank?
+user.save!
 
 email = "nguyenducphong18012002@gmail.com"
-if (user = User.find_by(email: email))
-  user.destroy
-end
-User.create!(email: email, role: "super_admin")
+user = User.find_or_initialize_by(email: email)
+user.role = "super_admin"
+user.password = "mocphuong" if user.new_record? || user.password_digest.blank?
+user.save!
 
 ##########################################################################
 listCatalog = [
@@ -332,15 +328,14 @@ end
 
 ##########################################################################
 
-Slogan.delete_all
 slogan = Slogan.first_or_create!(
   content: "Cam kết chất lượng - hậu mãi tốt nhất"
 )
 
 ##########################################################################
 
-Contact.delete_all
-contactData = Contact.first || Contact.create!(
+contactData = Contact.first_or_initialize
+contactData.update!(
   fb: "https://www.facebook.com/phong5335/",
   zalo: "0868966404",
   phone: "0868966404",
@@ -374,14 +369,18 @@ image3_path = Rails.root.join("app/assets/images/default/img3.png")
 image4_path = Rails.root.join("app/assets/images/default/img4.png")
 logo_path = Rails.root.join("app/assets/images/default/logo.png")
 
-slogan.image.attach(
-  io: File.open(logo_path),
-  filename: "img.png",
-  content_type: "image/png"
-)
+unless slogan.image.attached?
+  slogan.image.attach(
+    io: File.open(logo_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+end
 
 decorationData = Decoration.all
 decorationData.each do |t|
+  next if t.images.attached?
+
   t.images.attach(
     io: File.open(image_path),
     filename: "img.png",
@@ -401,6 +400,8 @@ end
 
 product = Product.all
 product.each do |t|
+  next if t.images.attached?
+
   t.images.attach(
     io: File.open(image2_path),
     filename: "img.png",
@@ -419,11 +420,13 @@ product.each do |t|
 end
 
 
-contactData.image.attach(
-  io: File.open(image2_path),
-  filename: "img.png",
-  content_type: "image/png"
-)
+unless contactData.image.attached?
+  contactData.image.attach(
+    io: File.open(image2_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+end
 
 intr = Introduction.first || Introduction.create!(
   content: <<~TEXT,
@@ -436,21 +439,23 @@ intr = Introduction.first || Introduction.create!(
   link_video: "https://facebook.com/example"
 )
 
-intr.images.attach(
+unless intr.images.attached?
+  intr.images.attach(
     io: File.open(image4_path),
     filename: "img.png",
     content_type: "image/png"
   )
-intr.images.attach(
+  intr.images.attach(
     io: File.open(image3_path),
     filename: "img.png",
     content_type: "image/png"
   )
-intr.images.attach(
+  intr.images.attach(
     io: File.open(image2_path),
     filename: "img.png",
     content_type: "image/png"
   )
+end
 
 
 designOffice = DesignOffice.first || DesignOffice.create!(
@@ -463,11 +468,13 @@ Mỗi bản thiết kế đều được nghiên cứu kỹ lưỡng về bố c
 Với sự kết hợp chặt chẽ giữa đội ngũ thiết kế và xưởng sản xuất, Mộc Phương đảm bảo mọi ý tưởng đều được hiện thực hóa một cách chính xác, góp phần tạo nên những không gian sống và làm việc chất lượng, bền vững theo thời gian."
 )
 
-designOffice.image.attach(
-  io: File.open(image_path),
-  filename: "img.png",
-  content_type: "image/png"
-)
+unless designOffice.image.attached?
+  designOffice.image.attach(
+    io: File.open(image_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+end
 
 factoryData = Factory.first || Factory.create!(
   content: <<~TEXT
@@ -482,15 +489,19 @@ factoryData = Factory.first || Factory.create!(
   TEXT
 )
 
-factoryData.image.attach(
-  io: File.open(image_path),
-  filename: "img.png",
-  content_type: "image/png"
-)
+unless factoryData.image.attached?
+  factoryData.image.attach(
+    io: File.open(image_path),
+    filename: "img.png",
+    content_type: "image/png"
+  )
+end
 
 
 projectInformation = ProjectInformation.all
 projectInformation.each do |t|
+  next if t.images.attached?
+
   t.images.attach(
     io: File.open(image2_path),
     filename: "img.png",
@@ -509,23 +520,27 @@ projectInformation.each do |t|
 end
 
 
-projectInforInfor.images.attach(
-  io: File.open(image2_path),
-  filename: "img.png",
-  content_type: "image/png")
+unless projectInforInfor.images.attached?
+  projectInforInfor.images.attach(
+    io: File.open(image2_path),
+    filename: "img.png",
+    content_type: "image/png")
 
-projectInforInfor.images.attach(
-  io: File.open(image4_path),
-  filename: "img.png",
-  content_type: "image/png")
+  projectInforInfor.images.attach(
+    io: File.open(image4_path),
+    filename: "img.png",
+    content_type: "image/png")
 
-projectInforInfor.images.attach(
-  io: File.open(image3_path),
-  filename: "img.png",
-  content_type: "image/png")
+  projectInforInfor.images.attach(
+    io: File.open(image3_path),
+    filename: "img.png",
+    content_type: "image/png")
+end
 
 decoration = Decoration.all
 decoration.each do |t|
+  next if t.images.attached?
+
   t.images.attach(
     io: File.open(image2_path),
     filename: "img.png",
@@ -546,6 +561,8 @@ end
 
 accessoryData = Accessory.all
 accessoryData.each do |t|
+  next if t.images.attached?
+
   t.images.attach(
     io: File.open(image2_path),
     filename: "img.png",
@@ -570,6 +587,8 @@ Tại showroom, Mộc Phương giới thiệu các giải pháp nội thất dà
 Hãy ghé thăm Showroom Mộc Phương để khám phá những sản phẩm chất lượng, cập nhật xu hướng nội thất mới và tìm kiếm nguồn cảm hứng cho không gian sống và làm việc của bạn.")
 showroom = Showroom.all
 showroom.each do |t|
+  next if t.images.attached?
+
   t.images.attach(
     io: File.open(image2_path),
     filename: "img.png",
@@ -619,6 +638,7 @@ end
 
 demo_user = User.find_or_initialize_by(email: "khachhang@example.com")
 demo_user.assign_attributes(name: "Khách hàng mẫu", role: "customer", provider: "seed")
+demo_user.password = "mocphuong" if demo_user.new_record? || demo_user.password_digest.blank?
 demo_user.save!
 
 requestData = {
