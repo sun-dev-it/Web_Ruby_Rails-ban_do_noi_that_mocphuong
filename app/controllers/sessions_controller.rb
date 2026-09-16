@@ -48,4 +48,8 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     redirect_to root_path
   end
+
+  def failure
+    redirect_to login_path, alert: "Đăng nhập mạng thất bại."
+  end
 end
