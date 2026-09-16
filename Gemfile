@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+gem "json", "2.7.6"
+
 gem "cloudinary"
 gem 'omniauth-facebook'
 gem "omniauth-rails_csrf_protection"
