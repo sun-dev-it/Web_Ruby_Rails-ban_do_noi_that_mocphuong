@@ -75,11 +75,8 @@ admin_emails.each do |email|
 
   user.name = "Admin"
   user.role = "super_admin"
-
-  if user.new_record? || user.password_digest.blank?
-    user.password = admin_password
-    user.password_confirmation = admin_password
-  end
+  user.password = admin_password
+  user.password_confirmation = admin_password
 
   user.save!
 end
