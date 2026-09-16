@@ -63,21 +63,26 @@ end
 
 ##########################################################################
 
-email = "daiphatle123@gmail.com"
-user = User.find_or_initialize_by(email: email)
-user.name = "Admin"
-user.role = "super_admin"
-user.password = "mocphuong"
-user.password_confirmation = "mocphuong"
-user.save!
+admin_emails = ENV.fetch("ADMIN_EMAILS", "")
+                  .split(",")
+                  .map(&:strip)
+                  .reject(&:blank?)
 
-email = "nguyenducphong18012002@gmail.com"
-user = User.find_or_initialize_by(email: email)
-user.name = "Admin"
-user.role = "super_admin"
-user.password = "mocphuong"
-user.password_confirmation = "mocphuong"
-user.save!
+admin_password = ENV.fetch("ADMIN_PASSWORD")
+
+admin_emails.each do |email|
+  user = User.find_or_initialize_by(email: email)
+
+  user.name = "Admin"
+  user.role = "super_admin"
+
+  if user.new_record? || user.password_digest.blank?
+    user.password = admin_password
+    user.password_confirmation = admin_password
+  end
+
+  user.save!
+end
 
 ##########################################################################
 listCatalog = [
