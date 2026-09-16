@@ -65,14 +65,18 @@ end
 
 email = "daiphatle123@gmail.com"
 user = User.find_or_initialize_by(email: email)
+user.name = "Admin"
 user.role = "super_admin"
-user.password = "mocphuong" if user.new_record? || user.password_digest.blank?
+user.password = "mocphuong"
+user.password_confirmation = "mocphuong"
 user.save!
 
 email = "nguyenducphong18012002@gmail.com"
 user = User.find_or_initialize_by(email: email)
+user.name = "Admin"
 user.role = "super_admin"
-user.password = "mocphuong" if user.new_record? || user.password_digest.blank?
+user.password = "mocphuong"
+user.password_confirmation = "mocphuong"
 user.save!
 
 ##########################################################################
@@ -637,8 +641,13 @@ end
 ##########################################################################
 
 demo_user = User.find_or_initialize_by(email: "khachhang@example.com")
-demo_user.assign_attributes(name: "Khách hàng mẫu", role: "customer", provider: "seed")
-demo_user.password = "mocphuong" if demo_user.new_record? || demo_user.password_digest.blank?
+demo_user.assign_attributes(
+  name: "Khách hàng mẫu",
+  role: "customer"
+)
+demo_user.password = "mocphuong"
+demo_user.password_confirmation = "mocphuong"
+
 demo_user.save!
 
 requestData = {

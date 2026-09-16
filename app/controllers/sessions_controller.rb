@@ -1,32 +1,36 @@
 class SessionsController < ApplicationController
   def oauth
-    auth = request.env['omniauth.auth']
-    return redirect_to root_path if auth.nil?
+    auth = request.env["omniauth.auth"]
 
-    user = User.find_by(email: auth['info']['email'])
+    return redirect_to login_path, alert: "Đăng nhập Facebook thất bại." if auth.nil?
+
+    email = auth.dig("info", "email").to_s.downcase.strip
+
+    if email.blank?
+      return redirect_to login_path, alert: "Facebook không cung cấp email."
+    end
+
+    user = User.find_by(email: email)
+
     if user
-      user.update(
-        provider: auth['provider'],
-        uid: auth['uid'],
-        name: auth['info']['name'],
-        email: auth['info']['email']
+      user.update!(
+        provider: auth["provider"],
+        uid: auth["uid"],
+        name: auth.dig("info", "name")
       )
     else
       user = User.create!(
-        provider: auth['provider'],
-        uid: auth['uid'],
-        name: auth['info']['name'],
-        email: auth['info']['email'],
-        role: 'customer'
+        provider: auth["provider"],
+        uid: auth["uid"],
+        name: auth.dig("info", "name"),
+        email: email,
+        role: "customer"
       )
     end
 
-    user.save!
-    
     session[:user_id] = user.id
-    
-    redirect_to root_path
-    
+
+    redirect_to root_path, notice: "Đăng nhập thành công."
   end
 
   def new
@@ -38,7 +42,7 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Đăng nhập thành công."
+      redirect_to root_path, notice: "Đăng nhập thành công.", anchor: nil
     else
       redirect_to login_path, alert: "Email hoặc mật khẩu không đúng."
     end
