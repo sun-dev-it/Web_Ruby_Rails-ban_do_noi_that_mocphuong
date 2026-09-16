@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "cloudinary"
 gem 'omniauth-facebook'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth'

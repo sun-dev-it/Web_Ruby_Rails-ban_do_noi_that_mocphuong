@@ -2,6 +2,7 @@
 
 Ruby on Rails Integration Test with Minitest
 Automated route & controller testing
+Use Storage Cloudinary save images
 
 # Database
 
