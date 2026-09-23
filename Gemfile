@@ -7,6 +7,7 @@ gem 'omniauth-facebook'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem "resend"
 
 gem 'bcrypt'
 
