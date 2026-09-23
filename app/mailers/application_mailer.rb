@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV.fetch("MAILER_FROM_EMAIL")
+  default from: "onboarding@resend.dev"
   layout "mailer"
 end
