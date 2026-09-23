@@ -1,0 +1,63 @@
+<h1>Có đơn hàng mới</h1>
+
+<p>
+  <strong>Mã đơn hàng:</strong>
+  #<%= @order.id %>
+</p>
+
+<p>
+  <strong>Khách hàng:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Số điện thoại:</strong>
+  <%= @order.phone %>
+</p>
+
+<p>
+  <strong>Tổng tiền:</strong>
+  <%= number_to_currency(@order.total_price, unit: "₫", format: "%n %u") %>
+</p>
+
+<p>
+  <strong>Trạng thái:</strong>
+  <%= @order.status %>
+</p>
+
+<h2>Sản phẩm</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sản phẩm</th>
+      <th>Số lượng</th>
+      <th>Đơn giá</th>
+      <th>Thành tiền</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order.order_items.includes(:product).each do |item| %>
+      <tr>
+        <td><%= item.product.name %></td>
+        <td><%= item.quantity %></td>
+        <td>
+          <%= number_to_currency(item.price, unit: "₫", format: "%n %u") %>
+        </td>
+        <td>
+          <%= number_to_currency(
+                item.price * item.quantity,
+                unit: "₫",
+                format: "%n %u"
+              ) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
