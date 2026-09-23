@@ -26,6 +26,8 @@ class OrdersController < ApplicationController
         price: i.product.price
       )
     end
+    
+    OrderMailer.order_created(order).deliver_now
 
     cart_items.destroy_all
 

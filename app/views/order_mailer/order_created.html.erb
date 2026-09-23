@@ -22,7 +22,11 @@
 
 <p>
   <strong>Tổng tiền:</strong>
-  <%= number_to_currency(@order.total_price, unit: "₫", format: "%n %u") %>
+  <%= number_to_currency(
+        @order.total_price,
+        unit: "₫",
+        format: "%n %u"
+      ) %>
 </p>
 
 <p>
@@ -48,7 +52,11 @@
         <td><%= item.product.name %></td>
         <td><%= item.quantity %></td>
         <td>
-          <%= number_to_currency(item.price, unit: "₫", format: "%n %u") %>
+          <%= number_to_currency(
+                item.price,
+                unit: "₫",
+                format: "%n %u"
+              ) %>
         </td>
         <td>
           <%= number_to_currency(
