@@ -83,19 +83,3 @@ Dự án này cho thấy khả năng của tôi trong các lĩnh vực sau:
 ## Mô tả ngắn dùng cho CV
 
 Tôi đã xây dựng và triển khai website thương mại nội thất bằng Ruby on Rails, sử dụng PostgreSQL, Tailwind CSS, Stimulus, Turbo và Active Storage để phát triển giao diện hiện đại, tối ưu trải nghiệm người dùng và quản lý dữ liệu hiệu quả. Dự án bao gồm các module như giới thiệu công ty, danh mục sản phẩm, dự án nội thất, form liên hệ, quản trị nội dung và upload hình ảnh qua Cloudinary. Tôi cũng tích hợp OAuth với Google/Facebook, gửi email bằng Resend và triển khai trên Render, đồng thời áp dụng test tự động để đảm bảo tính ổn định cho ứng dụng.
-
-## Cài đặt và chạy local
-
-```bash
-bundle install
-bin/rails db:create
-bin/rails db:migrate
-bin/rails db:seed
-bin/rails server
-```
-
-Chạy Tailwind nếu cần theo dõi giao diện:
-
-```bash
-bin/rails tailwindcss:watch
-```
