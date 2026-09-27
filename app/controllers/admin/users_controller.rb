@@ -64,7 +64,7 @@ class Admin::UsersController < ApplicationController
       :password_confirmation
     )
   end
-  
+
   def role_param
     params.dig(:user, :role).presence_in(
       %w[super_admin admin_manager staff]
