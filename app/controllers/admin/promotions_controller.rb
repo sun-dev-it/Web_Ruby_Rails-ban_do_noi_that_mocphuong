@@ -38,11 +38,10 @@ class Admin::PromotionsController < ApplicationController
     @promotion.destroy
     redirect_to admin_promotions_path
   end
-  
+
   private
 
   def promotion_params
     params.require(:promotion).permit(:name, :content, :video, :image)
   end
-
 end

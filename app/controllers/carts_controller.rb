@@ -1,12 +1,12 @@
   class CartsController < ApplicationController
     before_action :require_login
-    
+
     def show
       @cart_items = current_user.cart_items.includes(:product)
       @products = @cart_items.map(&:product)
     end
 
-    # Thêm sản phẩm vào giỏ
+# Thêm sản phẩm vào giỏ
 def add
   @product = Product.find(params[:product_id])
 
@@ -26,7 +26,7 @@ end
     def remove
       item = current_user.cart_items.find_by(product_id: params[:product_id])
       return unless item
-    
+
       item.quantity -= 1
       if item.quantity <= 0
         item.destroy
@@ -41,5 +41,4 @@ end
       current_user.cart_items.destroy_all
       redirect_back(fallback_location: products_path)
     end
-
   end

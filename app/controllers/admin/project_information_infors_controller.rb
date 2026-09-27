@@ -1,6 +1,6 @@
 class Admin::ProjectInformationInforsController < ApplicationController
   before_action :require_super_admin
-  before_action :set_project, only: [:update]
+  before_action :set_project, only: [ :update ]
 
   def index
     @projectInformationInfor = ProjectInformationInfor.first_or_initialize

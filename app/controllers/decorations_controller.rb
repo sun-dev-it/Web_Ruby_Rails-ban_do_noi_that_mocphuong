@@ -1,5 +1,5 @@
 class DecorationsController < ApplicationController
-  before_action :set_decoration, only: [:show]
+  before_action :set_decoration, only: [ :show ]
   def index
     @decorations = Decoration.all
   end

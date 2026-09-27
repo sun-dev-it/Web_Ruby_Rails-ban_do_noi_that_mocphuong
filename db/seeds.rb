@@ -83,24 +83,24 @@ end
 
 ##########################################################################
 listCatalog = [
-  "Sofa",	
+  "Sofa",
   "Giường",
-	"Tab đầu giường",
-	"Tủ áo",
-	"Bàn học",
-	"Bàn trang điểm",
-	"Gương trang trí",
-	"Kệ vách ngăn",
-	"Kệ TV",
-	"Tủ trưng bày",
-	"Tủ giày",
+  "Tab đầu giường",
+  "Tủ áo",
+  "Bàn học",
   "Bàn trang điểm",
-	"Bàn học",
+  "Gương trang trí",
+  "Kệ vách ngăn",
+  "Kệ TV",
+  "Tủ trưng bày",
+  "Tủ giày",
+  "Bàn trang điểm",
+  "Bàn học",
   "Ghế thư giãn",
-	"Bàn ăn",
-	"Chăn, ga, gối, nệm",
-	"Tủ nhựa ( đài loan, vinco)",
-	"Tủ DuyTan"
+  "Bàn ăn",
+  "Chăn, ga, gối, nệm",
+  "Tủ nhựa ( đài loan, vinco)",
+  "Tủ DuyTan"
 ]
 
 listCatalog.each do |i|
@@ -268,24 +268,24 @@ featuredProducts.each do |data|
 end
 
 catalogProducts = [
-  ["Tab đầu giường gỗ sồi", 3200000, "Tab đầu giường nhỏ gọn với ngăn kéo tiện dụng.", "Gỗ sồi tự nhiên", "500 x 400 x 550 mm", "Tab đầu giường"],
-  ["Bàn học liền kệ sách", 4800000, "Bàn học tối ưu diện tích cho phòng ngủ và phòng làm việc.", "Gỗ công nghiệp phủ Melamine", "1200 x 600 x 1800 mm", "Bàn học"],
-  ["Gương trang trí khung gỗ", 2100000, "Gương decor tạo điểm nhấn thanh lịch cho không gian.", "Kính cao cấp, gỗ tự nhiên", "800 x 1200 mm", "Gương trang trí"],
-  ["Kệ vách ngăn phòng khách", 6500000, "Kệ vách ngăn đa năng giúp phân chia không gian nhẹ nhàng.", "Gỗ công nghiệp phủ Acrylic", "1800 x 350 x 2200 mm", "Kệ vách ngăn"],
-  ["Tủ trưng bày cửa kính", 9800000, "Tủ trưng bày hiện đại với hệ đèn làm nổi bật vật dụng.", "Gỗ công nghiệp, kính cường lực", "900 x 400 x 2000 mm", "Tủ trưng bày"],
-  ["Tủ giày thông minh", 5900000, "Tủ giày nhiều ngăn, thiết kế gọn gàng cho khu vực sảnh vào.", "Gỗ công nghiệp phủ Melamine", "1200 x 350 x 1100 mm", "Tủ giày"],
-  ["Ghế thư giãn bọc vải", 4200000, "Ghế thư giãn êm ái cho góc đọc sách và nghỉ ngơi.", "Khung gỗ, vải bố cao cấp", "750 x 800 x 950 mm", "Ghế thư giãn"],
-  ["Bộ chăn ga cotton cao cấp", 1850000, "Bộ chăn ga mềm mại với màu sắc trang nhã và dễ phối.", "Cotton 100%", "Bộ tiêu chuẩn 1m8", "Chăn, ga, gối, nệm"],
-  ["Bàn làm việc chân sắt", 3650000, "Bàn làm việc tối giản, chắc chắn cho văn phòng hiện đại.", "Gỗ công nghiệp, sắt sơn tĩnh điện", "1400 x 600 x 750 mm", "Bàn làm việc"],
-  ["Ghế văn phòng công thái học", 4750000, "Ghế hỗ trợ tư thế ngồi thoải mái trong thời gian dài.", "Lưới thoáng khí, khung hợp kim", "650 x 650 x 1150 mm", "Ghế văn phòng"],
-  ["Kệ sách âm tường", 5300000, "Kệ sách thanh thoát giúp tận dụng chiều cao của tường.", "Gỗ công nghiệp phủ sơn mờ", "1600 x 300 x 2000 mm", "Kệ sách"],
-  ["Bàn trà mặt đá", 3900000, "Bàn trà mặt đá sang trọng cho phòng khách hiện đại.", "Đá ceramic, chân sắt sơn tĩnh điện", "1000 x 600 x 420 mm", "Bàn trà"],
-  ["Ghế ăn bọc nệm", 1250000, "Ghế ăn có đệm ngồi êm và thiết kế đồng bộ với bàn ăn.", "Gỗ cao su, vải nỉ", "480 x 520 x 820 mm", "Ghế ăn"],
-  ["Tủ bếp chữ L hiện đại", 28500000, "Tủ bếp chữ L tối ưu công năng và không gian lưu trữ.", "Gỗ công nghiệp chống ẩm, đá quartz", "Theo kích thước thực tế", "Tủ bếp"],
-  ["Tủ lavabo phòng tắm", 4600000, "Tủ lavabo chống ẩm với thiết kế gọn và dễ vệ sinh.", "Nhựa PVC phủ sơn, đá nhân tạo", "800 x 500 x 850 mm", "Tủ lavabo"],
-  ["Giường tầng trẻ em", 8900000, "Giường tầng chắc chắn, tối ưu không gian cho phòng trẻ em.", "Gỗ tự nhiên sơn an toàn", "1000 x 2000 x 1800 mm", "Giường tầng"],
-  ["Tủ áo cửa lùa tối giản", 11200000, "Tủ áo cửa lùa giúp tiết kiệm diện tích phòng ngủ.", "Gỗ công nghiệp phủ Melamine", "1800 x 600 x 2200 mm", "Tủ áo"],
-  ["Bàn trang điểm có ngăn kéo", 7200000, "Bàn trang điểm tinh tế với nhiều ngăn lưu trữ.", "Gỗ công nghiệp phủ Acrylic", "1100 x 500 x 1350 mm", "Bàn trang điểm"]
+  [ "Tab đầu giường gỗ sồi", 3200000, "Tab đầu giường nhỏ gọn với ngăn kéo tiện dụng.", "Gỗ sồi tự nhiên", "500 x 400 x 550 mm", "Tab đầu giường" ],
+  [ "Bàn học liền kệ sách", 4800000, "Bàn học tối ưu diện tích cho phòng ngủ và phòng làm việc.", "Gỗ công nghiệp phủ Melamine", "1200 x 600 x 1800 mm", "Bàn học" ],
+  [ "Gương trang trí khung gỗ", 2100000, "Gương decor tạo điểm nhấn thanh lịch cho không gian.", "Kính cao cấp, gỗ tự nhiên", "800 x 1200 mm", "Gương trang trí" ],
+  [ "Kệ vách ngăn phòng khách", 6500000, "Kệ vách ngăn đa năng giúp phân chia không gian nhẹ nhàng.", "Gỗ công nghiệp phủ Acrylic", "1800 x 350 x 2200 mm", "Kệ vách ngăn" ],
+  [ "Tủ trưng bày cửa kính", 9800000, "Tủ trưng bày hiện đại với hệ đèn làm nổi bật vật dụng.", "Gỗ công nghiệp, kính cường lực", "900 x 400 x 2000 mm", "Tủ trưng bày" ],
+  [ "Tủ giày thông minh", 5900000, "Tủ giày nhiều ngăn, thiết kế gọn gàng cho khu vực sảnh vào.", "Gỗ công nghiệp phủ Melamine", "1200 x 350 x 1100 mm", "Tủ giày" ],
+  [ "Ghế thư giãn bọc vải", 4200000, "Ghế thư giãn êm ái cho góc đọc sách và nghỉ ngơi.", "Khung gỗ, vải bố cao cấp", "750 x 800 x 950 mm", "Ghế thư giãn" ],
+  [ "Bộ chăn ga cotton cao cấp", 1850000, "Bộ chăn ga mềm mại với màu sắc trang nhã và dễ phối.", "Cotton 100%", "Bộ tiêu chuẩn 1m8", "Chăn, ga, gối, nệm" ],
+  [ "Bàn làm việc chân sắt", 3650000, "Bàn làm việc tối giản, chắc chắn cho văn phòng hiện đại.", "Gỗ công nghiệp, sắt sơn tĩnh điện", "1400 x 600 x 750 mm", "Bàn làm việc" ],
+  [ "Ghế văn phòng công thái học", 4750000, "Ghế hỗ trợ tư thế ngồi thoải mái trong thời gian dài.", "Lưới thoáng khí, khung hợp kim", "650 x 650 x 1150 mm", "Ghế văn phòng" ],
+  [ "Kệ sách âm tường", 5300000, "Kệ sách thanh thoát giúp tận dụng chiều cao của tường.", "Gỗ công nghiệp phủ sơn mờ", "1600 x 300 x 2000 mm", "Kệ sách" ],
+  [ "Bàn trà mặt đá", 3900000, "Bàn trà mặt đá sang trọng cho phòng khách hiện đại.", "Đá ceramic, chân sắt sơn tĩnh điện", "1000 x 600 x 420 mm", "Bàn trà" ],
+  [ "Ghế ăn bọc nệm", 1250000, "Ghế ăn có đệm ngồi êm và thiết kế đồng bộ với bàn ăn.", "Gỗ cao su, vải nỉ", "480 x 520 x 820 mm", "Ghế ăn" ],
+  [ "Tủ bếp chữ L hiện đại", 28500000, "Tủ bếp chữ L tối ưu công năng và không gian lưu trữ.", "Gỗ công nghiệp chống ẩm, đá quartz", "Theo kích thước thực tế", "Tủ bếp" ],
+  [ "Tủ lavabo phòng tắm", 4600000, "Tủ lavabo chống ẩm với thiết kế gọn và dễ vệ sinh.", "Nhựa PVC phủ sơn, đá nhân tạo", "800 x 500 x 850 mm", "Tủ lavabo" ],
+  [ "Giường tầng trẻ em", 8900000, "Giường tầng chắc chắn, tối ưu không gian cho phòng trẻ em.", "Gỗ tự nhiên sơn an toàn", "1000 x 2000 x 1800 mm", "Giường tầng" ],
+  [ "Tủ áo cửa lùa tối giản", 11200000, "Tủ áo cửa lùa giúp tiết kiệm diện tích phòng ngủ.", "Gỗ công nghiệp phủ Melamine", "1800 x 600 x 2200 mm", "Tủ áo" ],
+  [ "Bàn trang điểm có ngăn kéo", 7200000, "Bàn trang điểm tinh tế với nhiều ngăn lưu trữ.", "Gỗ công nghiệp phủ Acrylic", "1100 x 500 x 1350 mm", "Bàn trang điểm" ]
 ]
 
 catalogProducts.each do |name, price, description, material, size, category_name|
@@ -322,9 +322,9 @@ listCatalog.uniq.each_with_index do |category_name, index|
 end
 
 promotionProducts = [
-  ["Sofa phòng khách hiện đại", 15900000],
-  ["Giường ngủ gỗ hiện đại", 10900000],
-  ["Bàn trang điểm thanh lịch", 5200000]
+  [ "Sofa phòng khách hiện đại", 15900000 ],
+  [ "Giường ngủ gỗ hiện đại", 10900000 ],
+  [ "Bàn trang điểm thanh lịch", 5200000 ]
 ]
 
 promotionProducts.each do |name, new_price|
@@ -661,7 +661,7 @@ Request.find_or_create_by!(phone: requestData[:phone], content: requestData[:con
   request.name = requestData[:name]
 end
 
-sample_products = Product.where(name: ["Sofa phòng khách hiện đại", "Giường ngủ gỗ hiện đại"]).to_a
+sample_products = Product.where(name: [ "Sofa phòng khách hiện đại", "Giường ngủ gỗ hiện đại" ]).to_a
 sample_order = demo_user.orders.find_or_initialize_by(phone: demo_user.email)
 sample_order.assign_attributes(
   total_price: sample_products.sum { |product| product.price },

@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
         price: i.product.price
       )
     end
-    
+
     OrderMailer.order_created(order).deliver_now
 
     cart_items.destroy_all
@@ -44,6 +44,4 @@ class OrdersController < ApplicationController
     @order = current_user.orders.find(params[:id])
     @order_items = @order.order_items.includes(:product)
   end
-
-  
 end

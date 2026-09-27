@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [ :show, :edit, :update, :destroy ]
+  before_action :authorize_user, only: [ :show, :edit, :update, :destroy ]
 
   def show
     @user = User.find(params[:id])

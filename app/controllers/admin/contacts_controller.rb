@@ -21,4 +21,3 @@ class Admin::ContactsController < ApplicationController
     params.require(:contact).permit(:fb, :zalo, :phone, :address, :gmail, :image)
   end
 end
-

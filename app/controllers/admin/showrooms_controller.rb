@@ -1,5 +1,4 @@
 class Admin::ShowroomsController < ApplicationController
-    
     before_action :require_super_admin
 
     def edit

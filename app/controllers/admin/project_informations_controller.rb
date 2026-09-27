@@ -1,7 +1,7 @@
 class Admin::ProjectInformationsController < ApplicationController
   before_action :require_admin
   before_action :require_admin_manager
-  
+
   def index
     @project_informations = ProjectInformation.all.order(created_at: :desc)
     @project_information = ProjectInformation.new
@@ -30,7 +30,7 @@ class Admin::ProjectInformationsController < ApplicationController
 
   def update
     @project_information = ProjectInformation.find(params[:id])
-  
+
     if @project_information.update(project_information_params.except(:images))
       if project_information_params[:images]
         @project_information.images.attach(project_information_params[:images])
@@ -47,7 +47,7 @@ class Admin::ProjectInformationsController < ApplicationController
     image.purge
     redirect_back fallback_location: edit_admin_project_information_path(@project_information), notice: "Đã xóa ảnh"
   end
-  
+
 
 
   def destroy
@@ -55,11 +55,10 @@ class Admin::ProjectInformationsController < ApplicationController
     @project_information.destroy
     redirect_to admin_project_informations_path
   end
-  
+
   private
 
   def project_information_params
     params.require(:project_information).permit(:name, :content, :featured, images: [])
   end
-
 end

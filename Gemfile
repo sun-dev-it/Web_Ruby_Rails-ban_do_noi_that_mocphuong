@@ -3,17 +3,17 @@ source "https://rubygems.org"
 gem "json", "2.7.6"
 
 gem "cloudinary"
-gem 'omniauth-facebook'
+gem "omniauth-facebook"
 gem "omniauth-rails_csrf_protection"
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
+gem "omniauth"
+gem "omniauth-google-oauth2"
 gem "resend"
 
-gem 'bcrypt'
+gem "bcrypt"
 
 gem "tailwindcss-rails", "~> 3.3.1"
 
-gem 'dotenv-rails'
+gem "dotenv-rails"
 
 gem "rails", "~> 8.0.3"
 gem "propshaft"

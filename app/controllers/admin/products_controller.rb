@@ -1,12 +1,12 @@
 class Admin::ProductsController < ApplicationController
   before_action :require_admin
   before_action :require_super_admin
-  before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :set_product, only: [ :edit, :update, :destroy ]
 
   def index
     @products = Product.order(created_at: :desc).limit(10)
     @product = Product.new
-    
+
     if params[:id].present?
       @products_search = Product.find_by(id: params[:id])
     end
@@ -40,7 +40,7 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
-  
+
   def destroy
     @product.destroy
     redirect_to admin_products_path

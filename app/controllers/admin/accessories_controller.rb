@@ -48,12 +48,10 @@ class Admin::AccessoriesController < ApplicationController
     @accessory.destroy
     redirect_to admin_accessories_path
   end
-  
+
   private
 
   def accessory_params
     params.require(:accessory).permit(:name, :content, images: [])
   end
-
 end
-

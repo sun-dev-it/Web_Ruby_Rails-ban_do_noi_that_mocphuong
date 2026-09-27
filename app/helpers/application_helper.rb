@@ -1,10 +1,10 @@
 module ApplicationHelper
   def header_link(name, path)
     is_active = current_page?(path)
-  
+
     underline = is_active ? "after:scale-x-100 after:bg-white"
                           : "after:scale-x-0 after:bg-transparent"
-  
+
     link_to name, path,
       class: "relative pb-2 text-white
               after:absolute after:left-0 after:bottom-0 after:h-[2px]

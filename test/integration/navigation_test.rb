@@ -36,4 +36,3 @@ class NavigationTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 end
-

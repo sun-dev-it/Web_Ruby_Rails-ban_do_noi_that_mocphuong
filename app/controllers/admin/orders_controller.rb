@@ -1,7 +1,7 @@
 class Admin::OrdersController < ApplicationController
   before_action :require_admin
   before_action :require_staff
-  before_action :set_order, only: [:show, :update]
+  before_action :set_order, only: [ :show, :update ]
 
   def index
     @orders_by_status = {

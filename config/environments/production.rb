@@ -52,16 +52,16 @@ Rails.application.configure do
   # Replace the default in-process and non-durable queuing backend for Active Job.
   # config.active_job.queue_adapter = :resque
 
-# =========================
-# Action Mailer
-# =========================
+  # =========================
+  # Action Mailer
+  # =========================
 
   config.action_mailer.raise_delivery_errors = true
-  
-# SEND MAIL SMTP
-  #config.action_mailer.delivery_method = :smtp
- #
-  #config.action_mailer.smtp_settings = {
+
+  # SEND MAIL SMTP
+  # config.action_mailer.delivery_method = :smtp
+  #
+  # config.action_mailer.smtp_settings = {
   #  address:              "smtp.gmail.com",
   #  port:                 587,
   #  domain:               "gmail.com",
@@ -69,13 +69,13 @@ Rails.application.configure do
   #  password:             ENV.fetch("MAILER_PASSWORD"),
   #  authentication:        "plain",
   #  enable_starttls_auto: true
-  #}
+  # }
   #
-  #config.action_mailer.default_url_options = {
+  # config.action_mailer.default_url_options = {
   #  host: "mocphuong.onrender.com",
   #  protocol: "https"
-  #}
-  
+  # }
+
   config.action_mailer.delivery_method = :resend
   config.action_mailer.raise_delivery_errors = true
 

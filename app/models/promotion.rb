@@ -22,5 +22,4 @@ class Promotion < ApplicationRecord
 
         video.include?("shorts") ? "aspect-[9/16]" : "aspect-video"
     end
-
 end

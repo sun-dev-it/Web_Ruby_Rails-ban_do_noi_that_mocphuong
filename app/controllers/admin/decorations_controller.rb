@@ -54,5 +54,4 @@ class Admin::DecorationsController < ApplicationController
   def decoration_params
     params.require(:decoration).permit(:name, :content, images: [])
   end
-
 end

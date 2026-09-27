@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "home#index"
-  
+
   get  "/auth/:provider/callback", to: "sessions#oauth"
   post "/auth/:provider/callback", to: "sessions#oauth"
   get  "/auth/failure", to: "sessions#failure"
@@ -11,27 +11,27 @@ Rails.application.routes.draw do
 
 
 
-  resources :about_us, only: [:index]
-  resources :products,              only: [:index, :show]
-  resources :categories,            only: [:index, :show]
-  resources :decorations,           only: [:index, :show]
-  resources :project_informations,  only: [:index, :show]
-  resources :accessories,           only: [:index, :show]
-  resource  :showroom,              only: [:show]
-  resource  :contact,               only: [:show]
-  resource  :design_office,         only: [:show]
-  resource  :factory,               only: [:show]
-  resources :requests,              only: [:new, :create]
+  resources :about_us, only: [ :index ]
+  resources :products,              only: [ :index, :show ]
+  resources :categories,            only: [ :index, :show ]
+  resources :decorations,           only: [ :index, :show ]
+  resources :project_informations,  only: [ :index, :show ]
+  resources :accessories,           only: [ :index, :show ]
+  resource  :showroom,              only: [ :show ]
+  resource  :contact,               only: [ :show ]
+  resource  :design_office,         only: [ :show ]
+  resource  :factory,               only: [ :show ]
+  resources :requests,              only: [ :new, :create ]
   resources :users
 
-  resource :cart,               only: [:show] do
+  resource :cart,               only: [ :show ] do
     post "add/:product_id",     to: "carts#add",        as: :add
     post "remove/:product_id",  to: "carts#remove",     as: :remove
     post "remove_all",          to: "carts#remove_all", as: :remove_all
   end
 
-  resources :cart_items,        only: [:create, :update, :destroy]
-  resources :orders,            only: [:new, :create, :show, :index]
+  resources :cart_items,        only: [ :create, :update, :destroy ]
+  resources :orders,            only: [ :new, :create, :show, :index ]
 
   namespace :admin do
     get "requests/index"
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     resources :products do
       member do
         delete "remove_image/:image_id",    to: "products#remove_image", as: :remove_image
-        patch :change_image 
+        patch :change_image
       end
     end
     resources :project_informations do
@@ -57,8 +57,8 @@ Rails.application.routes.draw do
       end
     end
     resources :users
-    resources :orders,                only: [:index, :show, :update]
-    resources :requests,              only: [:index, :show, :destroy]
+    resources :orders,                only: [ :index, :show, :update ]
+    resources :requests,              only: [ :index, :show, :destroy ]
     resources :project_information_infors do
       member do
         delete :purge_image
@@ -75,18 +75,16 @@ Rails.application.routes.draw do
       end
     end
     resources :promotions
-    resource :contact,                only: [:edit, :update]
+    resource :contact,                only: [ :edit, :update ]
     resource :introduction do
       member do
         delete :destroy_image
       end
     end
-    resource :slogan,                 only: [:edit, :update]
-    resource :color,                  only: [:edit, :update]
-    resource :design_office,          only: [:edit, :update]
-    resource :factory,                only: [:edit, :update]
-    
-
+    resource :slogan,                 only: [ :edit, :update ]
+    resource :color,                  only: [ :edit, :update ]
+    resource :design_office,          only: [ :edit, :update ]
+    resource :factory,                only: [ :edit, :update ]
   end
 
 

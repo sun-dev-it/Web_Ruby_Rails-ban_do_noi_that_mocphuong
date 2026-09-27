@@ -1,12 +1,12 @@
 class Admin::UsersController < ApplicationController
   before_action :require_admin
   before_action :require_super_admin
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
 
   # Hiển thị danh sách user
   def index
-    @users = User.where(role: ['super_admin', 'admin_manager', 'staff']).order(role: :desc)
-    @Manager = User.where(role: 'super_admin').count < 2
+    @users = User.where(role: [ "super_admin", "admin_manager", "staff" ]).order(role: :desc)
+    @Manager = User.where(role: "super_admin").count < 2
     @user = User.new
   end
 

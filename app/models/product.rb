@@ -11,5 +11,4 @@ class Product < ApplicationRecord
         q: "%#{q}%"
       )
     }
-
 end
