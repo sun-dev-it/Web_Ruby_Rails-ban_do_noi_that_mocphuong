@@ -88,7 +88,7 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200">
-            <% @order.order_histories.each do |history| %>
+            <% @order.order_histories.latest.each do |history| %>
               <tr>
                 <td class="px-4 py-2"><%= history.user.name %></td>
                 <td class="px-4 py-2"><%= history.previous_status %> → <%= history.new_status %></td>
