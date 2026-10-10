@@ -3,12 +3,12 @@
       <div class="mb-8 text-center">
         <p class="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Mộc Phương</p>
         <p class="text-2xl font-semibold tracking-wide text-gray-900 sm:text-4xl">Giỏ hàng của bạn</p>
-        <p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray-500">Kiểm tra sản phẩm và số lượng trước khi tiến hành đặt hàng.</p>
+        <p class="mt-2 sm:mt-3 text-sm text-gray-500">Kiểm tra sản phẩm và số lượng trước khi tiến hành đặt hàng.</p>
       </div>
       
 <% if @cart_items.empty? %>
-  <div class="flex justify-center items-center min-h-[60vh] px-4">
-    <div class="mx-auto w-full max-w-md rounded-2xl border border-gray-200 bg-gray-50 p-8 text-center">
+  <div class="flex justify-center items-center min-h-[60vh] px-2 sm:px-4">
+    <div class="mx-auto w-full max-w-md rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center sm:p-10">
 
       <div class="flex justify-center mb-5">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -23,11 +23,11 @@
         </svg>
       </div>
 
-      <h2 class="text-2xl font-semibold text-gray-800 mb-3">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-3">
         Giỏ hàng trống
       </h2>
 
-      <p class="text-gray-500 mb-8">
+      <p class="text-gray-500 mb:4 sm:mb-8">
         Bạn chưa thêm sản phẩm nào vào giỏ hàng.
       </p>
 

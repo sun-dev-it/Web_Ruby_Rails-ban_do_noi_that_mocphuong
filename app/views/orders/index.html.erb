@@ -3,12 +3,12 @@
       <div class="mb-8 text-center">
         <p class="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Tài khoản Mộc Phương</p>
         <p class="text-2xl font-semibold tracking-wide text-gray-900 sm:text-4xl">Danh sách đơn hàng</p>
-        <p class="mt-3 text-sm text-gray-500">Theo dõi trạng thái và lịch sử mua hàng của bạn.</p>
+        <p class="mt-2 sm:mt-3 text-sm text-gray-500">Trạng thái và lịch sử mua hàng của bạn.</p>
       </div>
       
 <% if @orders.empty? %>
-  <div class="flex justify-center items-center min-h-[60vh] px-4">
-    <div class="mx-auto w-full max-w-md rounded-2xl border border-gray-200 bg-gray-50 p-8 text-center sm:p-10">
+  <div class="flex justify-center items-center min-h-[60vh] px-2 sm:px-4">
+    <div class="mx-auto w-full max-w-md rounded-2xl border border-gray-200 bg-gray-50 p-6 text-center sm:p-10">
 
       <div class="flex justify-center mb-4">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -23,23 +23,24 @@
         </svg>
       </div>
 
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-2">
         Chưa có đơn hàng
       </h2>
 
-      <p class="text-gray-500 mb-8">
+      <p class="text-gray-500 mb:4 sm:mb-8">
         Bạn chưa có đơn hàng nào. Hãy khám phá các sản phẩm và đặt hàng ngay!
       </p>
 
-      <div class="flex justify-center gap-3">
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+
         <%= link_to "Trang cá nhân",
               user_path(current_user),
-              class: "px-5 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 transition" %>
+              class: "rounded-lg border border-gray-300 px-5 py-3 text-center transition hover:bg-white" %>
 
-        <%= link_to "Mua sắm ngay",
+        <%= link_to "Tiếp tục mua sắm",
               categories_path,
-              class: "px-5 py-2 rounded-lg text-white transition",
-              style: "background-color: #{Color.first&.header || '#FF5733'};" %>
+              class: "rounded-lg bg-gray-900 px-5 py-3 text-center text-white transition hover:bg-gray-700" %>
+
       </div>
 
     </div>
