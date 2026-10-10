@@ -40,8 +40,8 @@
       <% @decorations.each do |decoration| %>
         <%= link_to decoration_path(decoration.id) do %>
 
-          <div class="group my-2">
-            <div class="relative aspect-[4/3] overflow-hidden rounded-lg bg-gray-100 shadow-md transition duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
+          <div class="group my-1 sm:my-2">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-md sm:rounded-lg bg-gray-100 shadow-md transition duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
 
               <% if decoration.images.attached? %>
                 <%= image_tag decoration.images.first,
@@ -60,7 +60,7 @@
 
             </div>
 
-            <div class="mt-4 text-center text-lg font-semibold text-gray-900 transition-colors group-hover:text-gray-600">
+            <div class="mt-2 sm:mt-4 text-center text-base sm:text-lg font-semibold text-gray-900 transition-colors group-hover:text-gray-600">
               <%= decoration.name %>
             </div>
           </div>
