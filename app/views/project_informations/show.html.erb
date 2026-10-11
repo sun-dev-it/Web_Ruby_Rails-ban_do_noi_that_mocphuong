@@ -1,28 +1,35 @@
-<div class="px-5 py-5 mt-4">
-  <div class="text-center">
-    <p class="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Dấu ấn Mộc Phương</p>
-    <h1 class="my-1 text-2xl font-semibold tracking-wide text-gray-800 md:text-3xl">
-    Thông tin dự án
-    </h1>
-  </div>
-  <div class="mt-3 flex items-center text-xs text-gray-500">
-      <%= link_to root_path do %>
-          <div class="flex items-center gap-1 transition hover:text-gray-900">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 mt-[2px]">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-              </svg>
-              <div>Trang chủ </div>
-          </div>
-      <% end %>
-      
-      <span class="mx-2">›</span>
-      <%= link_to "Dự án", project_informations_path, class: "transition hover:text-gray-900" %>
-      <span class="mx-2">›</span>
-      <span><%= @project_information.name %></span>
+<div class="py-1 sm:py-3 px-4 sm:px-5 sm:mt-4 mt-2">
+  <div class="flex items-center text-xs text-gray-500">
+    <%= link_to root_path do %>
+      <div class="flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3 mt-[2px]">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+        <div>Trang chủ </div>
+      </div>
+    <% end %>
+    <span class="mx-2">›</span> 
+    <%= link_to "Dự án", project_informations_path %>
+    <span class="mx-2">›</span>
+    <span><%= @project_information.name %></span>
   </div>
 </div>
 
-<div class="flex justify-center bg-gray-50 px-4 py-8 sm:px-6 sm:py-12">
+<div class="text-center mt-4 sm:mt-10 mb-10">
+  <p class="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Dấu ấn Mộc Phương</p>
+  <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
+      style="color: <%= Color.first&.header || '#ffffff' %>;">
+    <span class="inline-block relative">
+      <%= @project_information.name %>
+      <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
+            style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+      </span>
+    </span>
+  </h2>
+</div>
+
+
+<div class="flex justify-center px-2 py-8 sm:px-4 sm:py-12">
   <div class="w-full max-w-6xl sm:flex sm:justify-between sm:gap-8">
     <div class="overflow-hidden rounded-xl bg-white shadow-lg sm:w-2/3">
       <% if @project_information.images.attached? %>
@@ -136,15 +143,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         
 
-<div class="flex justify-center bg-gray-50 px-4 py-12 sm:px-6 sm:py-16">
-  <div class="w-full max-w-6xl">
-    <div class="mb-10 text-center">
-      <p class="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Khám phá thêm</p>
-      <h2 class="mt-3 text-2xl font-semibold tracking-wide text-gray-900 sm:text-3xl">Các dự án khác</h2>
-    </div>
-    <%= render "project_informations" %>
-  </div>
+<div class="text-center mt-4 sm:mt-10 mb-10">
+  <p class="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Khám phá thêm</p>
+  <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
+      style="color: <%= Color.first&.header || '#ffffff' %>;">
+    <span class="inline-block relative">
+      Các dự án khác
+      <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
+            style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+      </span>
+    </span>
+  </h2>
 </div>
+
+<%= render "project_informations" %>
 
 <%= render "script/library/alpine" %>
 <%= render "form/advise" %>
