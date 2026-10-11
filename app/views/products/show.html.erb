@@ -23,15 +23,12 @@
   <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
       style="color: <%= Color.first&.header || '#ffffff' %>;">
     <span class="inline-block relative">
-      SẢN PHẨM CỦA MÔC PHƯƠNG
+      <%= @product.name %>
       <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
             style="background-color: <%= Color.first&.header || '#ffffff' %>;">
       </span>
     </span>
   </h2>
-  <p class="mx-auto mt-5 max-w-2xl text-sm leading-6 text-gray-600 md:text-base">
-    <%= @product.name %>
-  </p>
 </div>
 
 
