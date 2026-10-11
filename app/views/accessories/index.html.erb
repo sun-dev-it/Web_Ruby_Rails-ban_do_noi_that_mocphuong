@@ -13,28 +13,24 @@
   </div>
 </div>
 
+<div class="text-center mt-4 sm:mt-10 mb-10">
+  <p class="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Tiện nghi cho không gian sống</p>
+  <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
+      style="color: <%= Color.first&.header || '#ffffff' %>;">
+    <span class="inline-block relative">
+      THIẾT BỊ VÀ PHỤ KIỆN
+      <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
+            style="background-color: <%= Color.first&.header || '#ffffff' %>;">
+      </span>
+    </span>
+  </h2>
+  <p class="mx-auto mt-5 max-w-2xl text-sm leading-6 text-gray-600 md:text-base">
+    Những thiết bị và phụ kiện được chọn lọc để hoàn thiện không gian tiện nghi, hiện đại và đồng điệu.
+  </p>
+</div>
+
 <div class="flex justify-center pb-10">
   <div class="w-[90%] sm:w-[80%] z-[47]">
-    <div class="text-center mt-4 sm:mt-10 mb-10">
-      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">Tiện nghi cho không gian sống</p>
-      <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide"
-          style="color: <%= Color.first&.header || '#ffffff' %>;">
-        <span class="inline-block relative">
-
-          THIẾT BỊ VÀ PHỤ KIỆN
-
-          <span class="absolute left-1/2 -bottom-2 w-16 h-[3px] -translate-x-1/2 rounded-full"
-                style="background-color: <%= Color.first&.header || '#ffffff' %>;">
-          </span>
-
-        </span>
-      </h2>
-      <p class="mx-auto mt-5 max-w-2xl text-sm leading-6 text-gray-600 md:text-base">
-        Những thiết bị và phụ kiện được chọn lọc để hoàn thiện không gian tiện nghi, hiện đại và đồng điệu.
-      </p>
-    </div>
-
-
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 sm:mt-10">
 
       <% @accessories.each do |accessory| %>
