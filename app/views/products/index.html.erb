@@ -11,8 +11,6 @@
     <span class="mx-2">›</span> 
     <%= link_to "Sản phẩm", request.referer %>
     <span class="mx-2">›</span>
-    <%= link_to @product.category.name, category_path(@product.category) %>
-    <span class="mx-2">›</span>
     <% if params[:q].present? %>
       <span class="mx-2">›</span>
       <span>Tìm kiếm</span>
