@@ -32,7 +32,7 @@
 </div>
 
 
-<div class="flex justify-center my-4">
+<div class="flex justify-center my-4 bg-white rounded-lg shadow-md p-2 sm:p-4">
   <div class="w-[90%] sm:w-[80%]"> 
     <div class="sm:flex">
       <div class="sm:w-3/5 px-3">
@@ -124,16 +124,16 @@
         </div>
 
         <hr class="text-black my-6">
-<div class="my-4">
-  <%= form_with url: add_cart_path(product_id: @product.id),
-                method: :post,
-                data: { turbo_stream: true } do %>
-
-    <%= submit_tag "Thêm vào giỏ",
-        class: "w-full bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition" %>
-
-  <% end %>
-</div>
+        <div class="my-4">
+          <%= form_with url: add_cart_path(product_id: @product.id),
+                        method: :post,
+                        data: { turbo_stream: true } do %>
+                        
+            <%= submit_tag "Thêm vào giỏ",
+                class: "w-full bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition" %>
+                
+          <% end %>
+        </div>
 
         <p class="text-gray-900"><strong>Bạn cần tư vấn?</strong> liên hệ với chúng tôi</p>
         <div class="flex justify-between space-x-2 my-4">
