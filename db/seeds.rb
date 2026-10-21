@@ -442,7 +442,7 @@ intr = Introduction.first || Introduction.create!(
 
     Mộc Phương không chỉ tạo ra những món đồ nội thất, mà còn kiến tạo những không gian sống truyền cảm hứng, nơi mỗi chi tiết đều góp phần nâng tầm chất lượng cuộc sống của bạn.
   TEXT
-  link_video: "https://facebook.com/example"
+  link_video: "https://www.youtube.com/shorts/yOH-erj03lc"
 )
 
 unless intr.images.attached?
