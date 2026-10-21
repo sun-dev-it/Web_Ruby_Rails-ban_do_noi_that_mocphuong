@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "json", "3.0.2"
+gem "json", "3.1.0"
 
 gem "cloudinary"
 gem "omniauth-facebook"
