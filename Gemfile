@@ -2,7 +2,8 @@ source "https://rubygems.org"
 
 gem "json", "3.1.0"
 
-gem "aws-sdk-s3", require: false
+
+gem "aws-sdk-s3", "~> 1.235", require: false
 gem "cloudinary"
 gem "omniauth-facebook"
 gem "omniauth-rails_csrf_protection"
@@ -48,5 +49,3 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.7", group: :development
-
-gem "aws-sdk-s3", "~> 1.235", require: false
