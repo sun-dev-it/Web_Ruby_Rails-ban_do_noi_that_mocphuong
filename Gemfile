@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "json", "3.1.0"
 
+gem "aws-sdk-s3", require: false
 gem "cloudinary"
 gem "omniauth-facebook"
 gem "omniauth-rails_csrf_protection"
