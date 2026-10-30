@@ -17,7 +17,7 @@ services:
   web:
     image: mocphuong
     ports:
-      - "10000:80"
+      - "10000:10000"
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/mocphuong_production
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
@@ -25,7 +25,6 @@ services:
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
       AWS_REGION: ${AWS_REGION}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
-      THRUSTER_TARGET_PORT: 10000
     depends_on:
       db:
         condition: service_healthy

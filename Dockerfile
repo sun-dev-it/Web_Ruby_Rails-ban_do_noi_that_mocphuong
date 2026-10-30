@@ -73,4 +73,5 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Render web service
 EXPOSE 10000
-CMD ["./bin/thrust", "./bin/rails", "server", "-b", "0.0.0.0", "-p", "10000"]
+
+CMD ["sh", "-c", "./bin/rails server -b 0.0.0.0 -p ${PORT:-10000}"]

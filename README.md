@@ -62,7 +62,7 @@ Dự án này được phát triển với Ruby on Rails để tạo ra một we
 - Render deployment
 - Dockerfile hỗ trợ triển khai
 - dotenv cho biến môi trường
-- Cloudinary cho lưu trữ hình ảnh
+- AWS S3 cho lưu trữ hình ảnh
 
 ### Công cụ hỗ trợ
 - Git / GitHub
