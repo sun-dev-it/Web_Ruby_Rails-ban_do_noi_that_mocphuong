@@ -74,7 +74,6 @@ Rails.application.routes.draw do
         delete :purge_image
       end
     end
-    resources :promotions
     resource :contact,                only: [ :edit, :update ]
     resource :introduction do
       member do

@@ -614,32 +614,6 @@ end
 
 ##########################################################################
 
-promotionData = [
-  {
-    name: "Ưu đãi nội thất phòng khách",
-    content: "Ưu đãi dành cho các sản phẩm phòng khách hiện đại, số lượng có hạn.",
-    video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-  },
-  {
-    name: "Không gian phòng ngủ tinh tế",
-    content: "Khám phá các lựa chọn phòng ngủ với thiết kế tiện nghi và ấm áp.",
-    video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-  }
-]
-
-promotionData.each do |data|
-  promotion = Promotion.find_or_initialize_by(name: data[:name])
-  promotion.assign_attributes(content: data[:content], video: data[:video])
-  promotion.save!
-  unless promotion.image.attached?
-    promotion.image.attach(
-      io: File.open(image2_path),
-      filename: "promotion.png",
-      content_type: "image/png"
-    )
-  end
-end
-
 ##########################################################################
 
 demo_user = User.find_or_initialize_by(email: "khachhang@example.com")
