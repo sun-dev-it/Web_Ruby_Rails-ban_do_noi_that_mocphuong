@@ -13,7 +13,7 @@ gem "resend"
 
 gem "bcrypt"
 
-gem "tailwindcss-rails", "~> 3.3.1"
+gem "tailwindcss-rails", "~> 4.7.0"
 
 gem "dotenv-rails"
 
